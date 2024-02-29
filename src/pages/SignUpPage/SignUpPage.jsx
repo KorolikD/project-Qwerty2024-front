@@ -1,6 +1,6 @@
-import { Container, Block, Title, StyledLink } from './SecondPage.styled';
+import { Container, Block, Title, StyledLink } from './SignUpPage.styled';
 
-const SecondPage = () => {
+const SignUpPage = () => {
   return (
     <Container>
       <Block>
@@ -11,4 +11,4 @@ const SecondPage = () => {
   );
 };
 
-export default SecondPage;
+export default SignUpPage;
