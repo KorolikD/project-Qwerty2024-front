@@ -12,5 +12,5 @@ export default defineConfig({
       assets: '/src/assets',
     },
   },
-  base: '/project-Qwerty2024-front',
+  base: '/project-Qwerty2024-front/',
 });
