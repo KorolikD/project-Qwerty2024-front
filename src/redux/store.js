@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './auth/authSlice';
 
 import {
   FLUSH,
@@ -18,12 +19,10 @@ const persistConfig = {
   whitelist: ['token'],
 };
 
-// const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
-    contacts: contactReducer,
-    filter: filterReducer,
     auth: persistedAuthReducer,
   },
   middleware: (getDefaultMiddleware) => [
