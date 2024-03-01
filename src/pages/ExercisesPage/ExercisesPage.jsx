@@ -1,5 +1,5 @@
 const ExercisesPage = () => {
-  return <></>;
+  return <>ExercisesPage</>;
 };
 
 export default ExercisesPage;

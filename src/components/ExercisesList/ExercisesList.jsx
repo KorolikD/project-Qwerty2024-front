@@ -1,3 +1,5 @@
-export const ExercisesList = () => {
-  return <></>;
+const ExercisesList = () => {
+  return <div>ExercisesList</div>;
 };
+
+export default ExercisesList;
