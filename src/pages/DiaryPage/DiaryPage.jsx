@@ -1,5 +1,5 @@
 const DiaryPage = () => {
-  return <></>;
+  return <>Diary</>;
 };
 
 export default DiaryPage;
