@@ -1,4 +1,4 @@
-import { Container, Block, Title, StyledLink } from './SignUpPage.styled';
+import { Container, Block, Title, StyledLink } from './SignUpPage.styled.js';
 
 const SignUpPage = () => {
   return (
