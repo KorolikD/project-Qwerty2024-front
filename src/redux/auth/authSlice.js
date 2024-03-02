@@ -14,11 +14,11 @@ const initialState = {
   isRefreshing: false,
   isLoading: false,
   error: null,
-  avatarURL: null,
   user: {
     name: null,
     email: null,
     height: null,
+    avatarURL: null,
     currentWeight: null,
     desiredWeight: null,
     birthday: null,
@@ -37,6 +37,8 @@ const authSlice = createSlice({
     builder
       .addCase(register.fulfilled, (state, action) => {
         state.token = action.payload.token;
+        state.user.name = action.payload.user.name;
+        state.user.emai = action.payload.user.email;
         state.isAuth = true;
         state.isLoading = false;
         state.error = null;
@@ -46,10 +48,11 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.token = action.payload.token;
+        state.user = action.payload.user;
         state.isLoading = false;
         state.isAuth = true;
         state.error = null;
@@ -59,10 +62,10 @@ const authSlice = createSlice({
       })
       .addCase(logIn.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoading = false;
         state.isRefreshing = false;
         state.error = null;
@@ -72,10 +75,10 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.user;
         state.isLoading = false;
         state.error = null;
       })
@@ -84,10 +87,10 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(updateAvatar.fulfilled, (state, action) => {
-        state.avatarURL = action.payload.avatarURL;
+        state.user.avatarURL = action.payload.avatarURL;
         state.isLoading = false;
         state.error = null;
       })
@@ -96,10 +99,10 @@ const authSlice = createSlice({
       })
       .addCase(updateAvatar.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.user = {};
+        state.user = null;
         state.token = null;
         state.isLoading = false;
         state.isAuth = false;
@@ -110,7 +113,7 @@ const authSlice = createSlice({
       })
       .addCase(logOut.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload.message;
       });
   },
 });
