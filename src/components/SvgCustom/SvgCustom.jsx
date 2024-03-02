@@ -1,9 +1,9 @@
 import sprite from '../../img/sprite.svg';
 import { SvgWrap } from './SvgCustom.styled';
 
-const SvgCustom = ({ svgName, width, height, background }) => {
+const SvgCustom = ({ svgName, width, height, color }) => {
   return (
-    <SvgWrap width={width} height={height} background={background}>
+    <SvgWrap svgName={svgName} width={width} height={height} color={color}>
       <svg width={width} height={height}>
         <use href={`${sprite}#${svgName}`} />
       </svg>
