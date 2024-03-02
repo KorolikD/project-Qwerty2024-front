@@ -17,16 +17,16 @@ const initialState = {
   user: {
     name: null,
     email: null,
-    height: null,
     avatarURL: null,
+    height: null,
     currentWeight: null,
     desiredWeight: null,
     birthday: null,
     blood: null,
     sex: null,
-    calorie: null,
     levelActivity: null,
-    registerDate: null,
+    bmr: null,
+    dpa: null,
   },
 };
 
