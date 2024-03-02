@@ -1,5 +1,9 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefresh } from './redux/auth/authSelectors.js';
+import { refreshUser } from './redux/auth/authOperations.js';
+import { Loader } from './components/Loader/Loader.jsx';
 
 const SharedLayout = lazy(() => import('./components/SharedLayout'));
 const DiaryPage = lazy(() => import('./pages/DiaryPage'));
@@ -16,7 +20,14 @@ const ExercisesSubcategoriesList = lazy(() =>
 );
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefresh);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Suspense>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
