@@ -5,6 +5,7 @@ import { selectIsRefresh } from './redux/auth/authSelectors.js';
 import { refreshUser } from './redux/auth/authOperations.js';
 import { Loader } from './components/Loader/Loader.jsx';
 
+
 const SharedLayout = lazy(() => import('./components/SharedLayout'));
 const DiaryPage = lazy(() => import('./pages/DiaryPage'));
 const ExercisesPage = lazy(() => import('./pages/ExercisesPage'));
