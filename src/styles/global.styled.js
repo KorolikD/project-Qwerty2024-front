@@ -18,6 +18,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
-    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;  
+      border: none;
+      padding: 0;
   }
 `;

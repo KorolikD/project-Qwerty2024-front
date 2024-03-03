@@ -1,14 +1,14 @@
 import Logo from '../Logo/index.js';
 import Nav from '../Nav/index.js';
 import UserBar from '../UserBar/index.js';
+import { Topper } from './Header.styled.js';
 
 const Header = () => {
   return (
-    <div>
+    <Topper>
       <Logo />
-      <Nav />
       <UserBar />
-    </div>
+    </Topper>
   );
 };
 
