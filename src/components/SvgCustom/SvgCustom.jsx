@@ -1,12 +1,16 @@
 import sprite from '../../img/sprite.svg';
 import { SvgWrap } from './SvgCustom.styled';
 
-const SvgCustom = ({ svgName, width, height, color }) => {
+const SvgCustom = ({ icon, width, height, color, stroke, hover }) => {
   return (
-    <SvgWrap svgName={svgName} width={width} height={height} color={color}>
-      <svg width={width} height={height}>
-        <use href={`${sprite}#${svgName}`} />
-      </svg>
+    <SvgWrap
+      width={width}
+      height={height}
+      $color={color}
+      $stroke={stroke}
+      $hover={hover}
+    >
+      <use href={`${sprite}#${icon}`} />
     </SvgWrap>
   );
 };
