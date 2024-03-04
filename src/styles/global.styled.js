@@ -4,12 +4,13 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     background-color: ${({ theme }) => theme.colors.black};
-    
+    color:${({ theme }) => theme.colors.white}
   }
 
   img {
     display: block;
     max-width: 100%;
+      object-fit: contain;
   }
 
   ul {

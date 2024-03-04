@@ -1,8 +1,9 @@
 import SvgCustom from '../SvgCustom/index.js';
-import { Wrapper, Link, Circle, Burger } from './UserBar.styled.js';
-import theme from '../../styles/theme.js';
-
+import { Wrapper, Link, Circle } from './UserBar.styled.js';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/authSelectors.js';
 const UserBar = () => {
+  const { avatarURL } = useSelector(selectUser);
   return (
     <Wrapper>
       <Link to="#">
@@ -15,22 +16,18 @@ const UserBar = () => {
       </Link>
       <Link to="#">
         <Circle>
-          <SvgCustom
-            icon="icon-user"
-            size="21"
-            color="rgba(239, 237, 232, 0.1)"
-            tabSize="24"
-          />
+          {avatarURL ? (
+            <img src={avatarURL} alt="avatar" />
+          ) : (
+            <SvgCustom
+              icon="icon-user"
+              size="21"
+              color="rgba(239, 237, 232, 0.1)"
+              tabSize="24"
+            />
+          )}
         </Circle>
       </Link>
-      <Burger type="button">
-        <SvgCustom
-          icon="icon-menu"
-          size="24"
-          color={theme.colors.primary}
-          tabSize="32"
-        />
-      </Burger>
     </Wrapper>
   );
 };
