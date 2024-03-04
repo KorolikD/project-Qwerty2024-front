@@ -1,3 +1,4 @@
+import 'modern-normalize/modern-normalize.css';
 import { Container, Title, Paragraph, InfoContainer } from './ErrorPage.styled.js';
 import {HomeButton} from './HomeButton';
 
