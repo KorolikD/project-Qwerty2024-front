@@ -7,3 +7,5 @@ export const Topper = styled.header`
   padding: 12px 20px;
   border-bottom: 1px solid rgba(239, 237, 232, 0.2);
 `;
+
+export const Wrapp = styled.

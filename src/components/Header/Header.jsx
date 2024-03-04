@@ -7,6 +7,7 @@ const Header = () => {
   return (
     <Topper>
       <Logo />
+      <Nav />
       <UserBar />
     </Topper>
   );

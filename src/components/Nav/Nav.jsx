@@ -1,14 +1,19 @@
 const navigationItem = ['Diary', 'Products', 'Exercises'];
+import { Link, NanList } from './Nav.styled.js';
 
 const Nav = () => {
   return (
-    <ul>
-      {navigationItem.map((item) => (
-        <li key={item}>
-          <a href="#">{item}</a>
-        </li>
-      ))}
-    </ul>
+    <nav>
+      <NanList>
+        {navigationItem.map((item) => (
+          <li key={item}>
+            <Link to="#" href="#">
+              {item}
+            </Link>
+          </li>
+        ))}
+      </NanList>
+    </nav>
   );
 };
 
