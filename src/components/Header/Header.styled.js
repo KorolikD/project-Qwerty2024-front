@@ -14,10 +14,10 @@ export const Topper = styled.header`
   }
   @media screen and (min-width: 1440px) {
     position: ${({ $isAuth }) => ($isAuth ? 'static' : 'absolute')};
-      top:0;
-      left: 0;
+    top: 0;
+    left: 0;
     padding: ${({ $isAuth }) => ($isAuth ? '19px 96px' : '32px 96px')};
-  
+  }
 `;
 
 export const Wrapper = styled.div`
