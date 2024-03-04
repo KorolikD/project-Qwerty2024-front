@@ -12,7 +12,6 @@ const Header = () => {
   const { blood } = useSelector(selectUser);
   const isAuth = useSelector(selectIsAuth);
   const isDesktop = useMediaQuery({ minWidth: 1440 });
-  console.log(isAuth);
   return (
     <Topper $isAuth={isAuth}>
       <Logo />
