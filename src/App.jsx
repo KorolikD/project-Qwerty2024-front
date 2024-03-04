@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { RestrictedRoute, PrivateRoute, ProtectedRoute } from './routes';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { selectIsRefresh } from './redux/auth/authSelectors.js';
 // import { refreshUser } from './redux/auth/authOperations.js';
@@ -29,16 +30,70 @@ const App = () => {
     <Suspense>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<WelcomePage />} />
-          <Route path="diary" element={<DiaryPage />} />
-          <Route path="exercises" element={<ExercisesPage />}>
+          <Route
+            index
+            element={
+              <RestrictedRoute component={WelcomePage} redirectTo="/diary" />
+            }
+          />
+          <Route
+            path="diary"
+            element={
+              <PrivateRoute
+                component={
+                  <ProtectedRoute component={DiaryPage} redirectTo="/profile" />
+                }
+                redirectTo="/"
+              />
+            }
+          />
+          <Route
+            path="exercises"
+            element={
+              <PrivateRoute
+                component={
+                  <ProtectedRoute
+                    component={ExercisesPage}
+                    redirectTo="/profile"
+                  />
+                }
+                redirectTo="/"
+              />
+            }
+          >
             <Route path=":category" element={<ExercisesSubcategoriesList />} />
             <Route path=":category/:subcategory" element={<ExercisesList />} />
           </Route>
-          <Route path="products" element={<ProductsPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="signin" element={<SignInPage />} />
-          <Route path="signup" element={<SignUpPage />} />
+          <Route
+            path="products"
+            element={
+              <PrivateRoute
+                component={
+                  <ProtectedRoute
+                    component={ProductsPage}
+                    redirectTo="/profile"
+                  />
+                }
+                redirectTo="/"
+              />
+            }
+          />
+          <Route
+            path="profile"
+            element={<PrivateRoute component={<ProfilePage />} />}
+          />
+          <Route
+            path="signin"
+            element={
+              <RestrictedRoute component={SignInPage} redirectTo="/diary" />
+            }
+          />
+          <Route
+            path="signup"
+            element={
+              <RestrictedRoute component={SignUpPage} redirectTo="/diary" />
+            }
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
