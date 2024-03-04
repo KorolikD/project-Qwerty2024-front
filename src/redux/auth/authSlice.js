@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   token: null,
-  isAuth: false,
+  isAuth: true,
   isRefreshing: false,
   isLoading: false,
   error: null,
@@ -22,7 +22,7 @@ const initialState = {
     currentWeight: null,
     desiredWeight: null,
     birthday: null,
-    blood: null,
+    blood: 1,
     sex: null,
     levelActivity: null,
     bmr: null,
