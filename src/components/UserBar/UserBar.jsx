@@ -16,13 +16,16 @@ const UserBar = () => {
       </Link>
       <Link to="#">
         <Circle>
-          <img src={avatarURL} alt="avatar" />
-          <SvgCustom
-            icon="icon-user"
-            size="21"
-            color="rgba(239, 237, 232, 0.1)"
-            tabSize="24"
-          />
+          {avatarURL ? (
+            <img src={avatarURL} alt="avatar" />
+          ) : (
+            <SvgCustom
+              icon="icon-user"
+              size="21"
+              color="rgba(239, 237, 232, 0.1)"
+              tabSize="24"
+            />
+          )}
         </Circle>
       </Link>
     </Wrapper>

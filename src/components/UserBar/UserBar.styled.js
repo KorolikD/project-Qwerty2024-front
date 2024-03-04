@@ -27,6 +27,7 @@ export const Circle = styled.span`
   height: 37px;
   border-radius: 50%;
   border: 1px solid ${(props) => props.theme.colors.primary};
+  overflow: hidden;
   @media screen and (min-width: 768px) {
     width: 46px;
     height: 46px;
