@@ -1,10 +1,11 @@
 import { Formik, Field, ErrorMessage } from 'formik';
-import { Form, Input, message, Radio } from 'antd'; 
+import { Form, Input, message, Radio, DatePicker } from 'antd'; 
 import { updateUser } from '../../redux/auth/authOperations';
 import { StyledButton } from '../Button/Button.styled';
 import { useSelector } from 'react-redux';
 import validationSchema from './validationSchema';
-import { selectIsRefresh } from '../../redux/auth/authSelectors'; 
+import { selectIsRefresh } from '../../redux/auth/authSelectors';
+// import Calendar from '../Calendar/Calendar'; 
 
 const { Item } = Form;
 
@@ -117,7 +118,8 @@ const UserForm = () => {
               }),
             ]}
           >
-            {/* <DatePicker  /> */}
+            <DatePicker />
+             {/* <Calendar /> */}
            </Item>
           
           {radioGroups.map((group, index) => (
