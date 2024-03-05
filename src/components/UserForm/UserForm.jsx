@@ -74,7 +74,7 @@ const UserForm = () => {
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <Field as={Input} type="email" name="email" disabled />
+            <Field as={Input} type="email" name="email"  />
             <ErrorMessage name="email" component="div" className="error-message" />
           </div>
           <div className="form-group">
