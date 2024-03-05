@@ -104,9 +104,10 @@ gap: 10px;
 }
 `;
 
-export const Logo = styled.div`
-background-image: url('../../img/sprite.svg#icon-logo-mob');
-width; 126px;
-height: 13px;
-
+export const LogoWrapper = styled.div`
+  width: 130px; /* or any other size */
+  height: auto;
+  fill: #efede8;
+  display: flex;
+  flex-direction: row;
 `;
