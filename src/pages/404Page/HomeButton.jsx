@@ -1,17 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
 import {Button} from './ErrorPage.styled'; 
+import { useNavigate } from 'react-router-dom'; 
 
+export const HomeButton = () => {
+  const navigate = useNavigate();
 
-export const HomeButton = ({ onClick }) => {
+  const handleGoHome = () => {
+  
+    navigate('/');
+  };
 
   return (
-    <Link to="/">
-    <Button onClick={onClick}>Go Home</Button>
-    </Link>
+    <Button onClick={handleGoHome}>
+      GO HOME
+    </Button>
   );
 };
+
+
+
 
 
 

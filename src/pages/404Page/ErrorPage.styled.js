@@ -15,11 +15,12 @@ export const Container = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  font: Roboto;
+  font: roboto;
   width: 240px;
   min-height: 812px;
   background-color: #e6533c;
   color: #efede8;
+  padding: 20px 24px;
 
   display: flex;
   flex-direction: column;
@@ -37,8 +38,11 @@ export const InfoContainer = styled.div`
 export const Title = styled.h1`
   font-size: 66px;
   font-weight: 500;
-  line-height: 66px;
+
   letter-spacing: 0.01em;
+  margin: 0px 213px 0px 0px;
+
+  padding: 0;
 
   font-size: 24px;
 
@@ -75,20 +79,19 @@ height: 162px
 
 export const Button = styled.button`
 
-padding: 12px 40px 12px 40px;
+padding: 12px 40px;
 font-size: 16px;
 font-weight: 500;
-// line-height: 18px;
 
-text-align: left;
+
+text-align: justify;
 
 color: rgba(239, 237, 232, 1);
 
 background-color: transparent;
 border: 1px solid rgba(239, 237, 232, 0.3);
-
-width: 147px;
-height: 42px;
+width: 160px;
+height: 45px;
 border-radius: 12px;
 
 gap: 10px;
@@ -99,4 +102,11 @@ gap: 10px;
 @media (min-width: 1024px) {
   font-size: 72px; 
 }
+`;
+
+export const Logo = styled.div`
+background-image: url('../../img/sprite.svg#icon-logo-mob');
+width; 126px;
+height: 13px;
+
 `;
