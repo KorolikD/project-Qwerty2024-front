@@ -19,7 +19,7 @@ const Header = () => {
         {isDesktop && isAuth && blood && <Nav />}
         {isAuth && <UserBar />}
       </Wrapper>
-      {!isDesktop && isAuth && blood && <BurgerBtn />}
+      {/*{!isDesktop && isAuth && blood && <BurgerBtn />}*/}
       {isDesktop && isAuth && <LogOutBtn />}
     </Topper>
   );

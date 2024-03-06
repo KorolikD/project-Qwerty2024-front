@@ -5,7 +5,8 @@ export const Topper = styled.header`
   margin: 0 auto;
   max-width: 1440px;
   align-items: center;
-  padding: 12px 20px;
+  padding: 12px 58px 12px 20px;
+
   background-color: transparent;
   border-bottom: ${({ $isAuth }) =>
     $isAuth ? '1px solid rgba(239, 237, 232, 0.2)' : 'none'};
