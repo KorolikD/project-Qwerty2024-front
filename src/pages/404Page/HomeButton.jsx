@@ -12,7 +12,7 @@ export const HomeButton = () => {
 
   return (
     <Button onClick={handleGoHome}>
-      GO HOME
+      Go Home
     </Button>
   );
 };

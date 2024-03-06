@@ -3,10 +3,10 @@ import { LogoWrapper } from './ErrorPage.styled';
 
 export const Logo = () => (
   <LogoWrapper>
-    <svg width={36} height={13}> 
+    <svg width={36} height={13} fill="#EFEDE8"> 
    <use xlinkHref={`${sprite}#icon-dumbbell`} />
    </svg>
-   <svg preserveAspectRatio="none" >
+   <svg fill="#EFEDE8" >
    <use xlinkHref={`${sprite}#icon-logo-mob`} />
    </svg>
   </LogoWrapper>
