@@ -1,18 +1,16 @@
-const navigationItem = ['Diary', 'Products', 'Exercises'];
-import { Link, NanList } from './Nav.styled.js';
+import navigationItem from '../../helpers/navItems.js';
+import { Link, NavList } from './Nav.styled.js';
 
 const Nav = () => {
   return (
     <nav>
-      <NanList>
+      <NavList>
         {navigationItem.map((item) => (
           <li key={item}>
-            <Link to="#" href="#">
-              {item}
-            </Link>
+            <Link to={item.toLowerCase()}>{item}</Link>
           </li>
         ))}
-      </NanList>
+      </NavList>
     </nav>
   );
 };

@@ -47,5 +47,8 @@
     <symbol id="icon-trash" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M12 4h8m-6.667 10v6.667M18.667 14v6.667M4 8h24m-2.667 0-.935 14.026c-.14 2.104-.21 3.156-.665 3.954a4.007 4.007 0 0 1-1.731 1.62c-.826.4-1.881.4-3.99.4h-4.025c-2.109 0-3.163 0-3.99-.4a3.996 3.996 0 0 1-1.731-1.62c-.455-.798-.525-1.85-.665-3.954L6.666 8"/>
     </symbol>
+    <symbol id="icon-cross" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" d="M24 8 8 24M8 8l16 16"/>
+    </symbol>
   </defs>
 </svg>

@@ -7,21 +7,21 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    src: url('../fonts/roboto-v30-latin-regular.woff2') format('woff2'); 
+    src: url('./fonts/roboto-v30-latin-regular.woff2') format('woff2'); 
   }
   @font-face {
     font-display: swap; 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
-    src: url('../fonts/roboto-v30-latin-500.woff2') format('woff2'); 
+    src: url('./fonts/roboto-v30-latin-500.woff2') format('woff2'); 
   }
   @font-face {
     font-display: swap; 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    src: url('../fonts/roboto-v30-latin-700.woff2') format('woff2'); 
+    src: url('./fonts/roboto-v30-latin-700.woff2') format('woff2'); 
   }
 
 

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const Logo = () => {
   return (
-    <Link to="#">
+    <Link to="diary">
       <picture>
         <source
           media="(max-width: 768px)"

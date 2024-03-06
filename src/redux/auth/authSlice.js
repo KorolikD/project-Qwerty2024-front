@@ -27,6 +27,7 @@ const initialState = {
     levelActivity: null,
     bmr: null,
     dpa: null,
+    createdAt: null,
   },
 };
 
@@ -65,9 +66,10 @@ const authSlice = createSlice({
         state.error = action.payload.message;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.isLoading = false;
         state.isRefreshing = false;
+        state.isAuth = true;
         state.error = null;
       })
       .addCase(refreshUser.pending, (state) => {
