@@ -22,3 +22,7 @@ export const CategoryExercisesStyle = styled.a`
     color: orange;
   }
 `;
+
+export const ExerciseCards = styled.div`
+  color: red;
+`;
