@@ -42,7 +42,12 @@ export const DashboardItem = styled.li`
   justify-content: space-between;
   height: 96px;
   padding: 14px;
-  border: 1px solid rgba(239, 237, 232, 0.4);
+
+  border: ${(props) => {
+    if (props.$border === 'green') return '1px solid #3CBF61';
+    if (props.$border === 'red') return '1px solid #E9101D';
+    return `1px solid ${props.theme.colors.textWhite40}`;
+  }};
   border-radius: 12px;
   background: rgba(239, 237, 232, 0.05);
 
@@ -105,5 +110,3 @@ export const AttentionDiv = styled.div`
     }
   }
 `;
-
-
