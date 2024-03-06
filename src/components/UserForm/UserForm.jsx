@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import validationSchema from './validationSchema';
 import { selectIsRefresh } from '../../redux/auth/authSelectors';
 // import Calendar from '../Calendar/Calendar'; 
-import { Label, } from './UserForm.styled';
+import { StyledForm, Label, Span, Wrapper } from './UserForm.styled';
+
 const { Item } = Form;
 
 const UserForm = () => {
@@ -65,22 +66,23 @@ const UserForm = () => {
    return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
       {(formikProps) => (
-        <Form>
+        <StyledForm>
           <div>
             <Label htmlFor="name">Name</Label>
             <Field as={Input} type="text" name="name" />
-            <ErrorMessage name="name" component="div" className="error-message" />
+            <ErrorMessage name="name" />
           </div>
           <div>
             <Label htmlFor="email">Email</Label>
             <Field as={Input} type="email" name="email"  />
-            <ErrorMessage name="email" component="div" className="error-message" />
-          </div>
-          <div>
+            <ErrorMessage name="email" />
+           </div>
+          <Wrapper>
+          <Item>
             <Label htmlFor="height">Height</Label>
             <Field as={Input} type="number" name="height" />
-            <ErrorMessage name="height" component="div" className="error-message" />
-          </div>
+            <ErrorMessage name="height"/>
+          </Item>
           <Item
             rules={[
               { required: true, message: 'Please input your current weight!' },
@@ -89,8 +91,10 @@ const UserForm = () => {
           >
             <Label>Current Weight</Label>
             <Input type="number" />
-          </Item>
-
+             </Item>
+          </Wrapper>
+ 
+          <Wrapper>
           <Item
             rules={[
               { required: true, message: 'Please input your desired weight!' },
@@ -119,14 +123,16 @@ const UserForm = () => {
             <DatePicker />
              {/* <Calendar /> */}
            </Item>
-          
+          </Wrapper>
           {radioGroups.map((group, index) => (
             <div key={index}>
               <Label>{group.label}</Label>
               <Item name={group.name}>
                 <Radio.Group>
                   {group.options.map((option, idx) => (
-                    <Radio key={idx} value={option}>{option}</Radio>
+                    <Radio key={idx} value={option}>
+                      <Span>{option}</Span>
+                    </Radio>
                   ))}
                 </Radio.Group>
               </Item>
@@ -134,9 +140,9 @@ const UserForm = () => {
           ))}
 
           <Item>
-            <StyledButton type="submit" variant="filled" disabled={formikProps.isSubmitting}>Save</StyledButton>
+            <StyledButton type="submit" $type="filled" disabled={formikProps.isSubmitting}>Save</StyledButton>
           </Item>
-        </Form>
+        </StyledForm>
       )}
     </Formik>
   );
