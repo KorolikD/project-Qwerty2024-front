@@ -6,7 +6,7 @@ const UserBar = () => {
   const { avatarURL } = useSelector(selectUser);
   return (
     <Wrapper>
-      <Link to="#">
+      <Link to="profile">
         <SvgCustom
           icon="icon-settings"
           size="24"
@@ -14,7 +14,7 @@ const UserBar = () => {
           tabSize="28"
         />
       </Link>
-      <Link to="#">
+      <Link to="profile">
         <Circle>
           {avatarURL ? (
             <img src={avatarURL} alt="avatar" />
