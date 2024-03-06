@@ -1,12 +1,14 @@
-import navItems from '../../helpers/navItems.js';
 import SvgCustom from '../SvgCustom/index.js';
 import theme from '../../styles/theme.js';
-import { slide as Menu } from 'react-burger-menu';
-import MenuNav from './MenuNav/index.js';
+import { reveal as Menu } from 'react-burger-menu';
 
 var styles = {
   bmBurgerButton: {
-    display: 'none',
+    position: 'fixed',
+    width: '36px',
+    height: '30px',
+    left: '36px',
+    top: '36px',
   },
   bmBurgerBars: {
     background: '#373a47',
@@ -47,8 +49,17 @@ var styles = {
 
 const MobileMenu = () => {
   return (
-    <Menu right styles={styles} isOpen={true}>
-      <MenuNav />
+    <Menu
+      pageWrapId={'page-wrap'}
+      outerContainerId={'outer-container'}
+      right
+      styles={styles}
+    >
+      <a>1</a>
+      <a>1</a>
+      <a>1</a>
+      <a>1</a>
+      <a>1</a>
     </Menu>
   );
 };
