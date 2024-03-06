@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import validationSchema from './validationSchema';
 import { selectIsRefresh } from '../../redux/auth/authSelectors';
 // import Calendar from '../Calendar/Calendar'; 
-
+import { Label, } from './UserForm.styled';
 const { Item } = Form;
 
 const UserForm = () => {
@@ -42,17 +42,15 @@ const UserForm = () => {
 
   const radioGroups = [
     {
-      label: 'Blood Type',
+      label: 'Blood',
       name: 'blood',
       options: [1, 2, 3, 4],
     },
     {
-      label: 'Sex',
       name: 'sex',
       options: ['male', 'female'],
     },
     {
-      label: 'Level of Activity',
       name: 'levelActivity',
       options: [
         'Sedentary lifestyle (little or no physical activity)',
@@ -68,43 +66,42 @@ const UserForm = () => {
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
       {(formikProps) => (
         <Form>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
+          <div>
+            <Label htmlFor="name">Name</Label>
             <Field as={Input} type="text" name="name" />
             <ErrorMessage name="name" component="div" className="error-message" />
           </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
+          <div>
+            <Label htmlFor="email">Email</Label>
             <Field as={Input} type="email" name="email"  />
             <ErrorMessage name="email" component="div" className="error-message" />
           </div>
-          <div className="form-group">
-            <label htmlFor="height">Height (cm)</label>
+          <div>
+            <Label htmlFor="height">Height</Label>
             <Field as={Input} type="number" name="height" />
             <ErrorMessage name="height" component="div" className="error-message" />
           </div>
           <Item
-            label="Current Weight"
             rules={[
               { required: true, message: 'Please input your current weight!' },
               { type: 'number', min: 35, message: 'Weight must be at least 35 kg!' },
             ]}
           >
+            <Label>Current Weight</Label>
             <Input type="number" />
           </Item>
 
           <Item
-            label="Desired Weight"
             rules={[
               { required: true, message: 'Please input your desired weight!' },
               { type: 'number', min: 35, message: 'Weight must be at least 35 kg!' },
             ]}
           >
+            <Label>Desired Weight</Label>
             <Input type="number" />
           </Item>
 
           <Item
-            label="Birthday"
             rules={[
               { required: true, message: 'Please select your birthday!' },
               () => ({
@@ -117,19 +114,23 @@ const UserForm = () => {
                 },
               }),
             ]}
-          >
+           >
+            <Label>Date of birth</Label>
             <DatePicker />
              {/* <Calendar /> */}
            </Item>
           
           {radioGroups.map((group, index) => (
-            <Item key={index} label={group.label} name={group.name}>
-              <Radio.Group>
-                {group.options.map((option, idx) => (
-                  <Radio key={idx} value={option}>{option}</Radio>
-                ))}
-              </Radio.Group>
-            </Item>
+            <div key={index}>
+              <Label>{group.label}</Label>
+              <Item name={group.name}>
+                <Radio.Group>
+                  {group.options.map((option, idx) => (
+                    <Radio key={idx} value={option}>{option}</Radio>
+                  ))}
+                </Radio.Group>
+              </Item>
+            </div>
           ))}
 
           <Item>
