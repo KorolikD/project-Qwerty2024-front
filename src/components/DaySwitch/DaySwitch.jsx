@@ -1,3 +1,5 @@
-export const DaySwitch = () => {
-  return <></>;
+const DaySwitch = () => {
+  return <>DaySwitch</>;
 };
+
+export default DaySwitch;

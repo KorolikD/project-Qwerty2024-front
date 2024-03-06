@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const getDayInfo = async (day) => {
-  const response = await axios.get(`/diary/day?date=${day}`);
+  const response = await axios.get(`/diary?date=${day}`);
   return response.data;
 };
 
