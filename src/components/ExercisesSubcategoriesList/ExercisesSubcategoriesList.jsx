@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { slider } from '../../helpers/slider/slider';
+import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { slider } from '../../helpers/slider/slider';
-import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 
 const ExercisesSubcategoriesList = () => {
   const [exercises, setExercises] = useState([]);
@@ -13,7 +14,7 @@ const ExercisesSubcategoriesList = () => {
     const fetchExercises = async () => {
       try {
         const token =
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTc2MzU3OSwiZXhwIjoxNzA5ODQ2Mzc5fQ.LWW3hoO8WkEMJMowiFKe5akGF9MorPWW978hlN0YSQU';
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTgyNDg2MSwiZXhwIjoxNzA5OTA3NjYxfQ.06vBjein3Yw25toON6Mk7M4eNDHYy1F6CkiXJ30kgvM';
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -43,7 +44,12 @@ const ExercisesSubcategoriesList = () => {
   return (
     <Slider {...slider}>
       {exercises.map((exercise) => (
-        <ExercisesSubcategoriesItem key={exercise._id} subcategory={exercise} />
+        <Link
+          key={exercise._id}
+          to={`/exercises/${exercise.filter}/${exercise.name}`}
+        >
+          <ExercisesSubcategoriesItem subcategory={exercise} />
+        </Link>
       ))}
     </Slider>
   );

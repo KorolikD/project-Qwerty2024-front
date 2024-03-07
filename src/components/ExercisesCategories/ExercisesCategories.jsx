@@ -51,7 +51,7 @@ const ExercisesCategories = () => {
           {exercises.map((exercise) => (
             <ExercisesSubcategoriesItem
               key={exercise._id}
-              subcategory={exercise}
+              subcategory={exercise.filter}
             />
           ))}
         </ExerciseCards>
