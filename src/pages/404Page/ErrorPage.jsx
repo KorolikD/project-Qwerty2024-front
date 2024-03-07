@@ -8,7 +8,7 @@ const ErrorPage = () => {
     <Container>
  
       <InfoContainer>
-      <Logo/>
+      {/* <Logo/> */}
      <Title>404</Title>
       <Paragraph>Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience.</Paragraph>
       <HomeButton/>

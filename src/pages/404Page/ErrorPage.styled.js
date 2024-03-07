@@ -1,17 +1,17 @@
 import styled from '@emotion/styled';
-import backgroundImage from '../../img/exercises-side-1x.jpg';
+import backgroundImage from '../../img/side-view-people-training-gym-1.png';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 100%;
+  // width: 100%;
+
   @media (min-width: 768px) {
-    padding-top: 300px;
   }
 
   @media (min-width: 1024px) {
-    padding-top: 500px;
+    // padding-top: 500px;
   }
 `;
 
@@ -32,30 +32,32 @@ export const InfoContainer = styled.div`
   @media (min-width: 768px) {
     width: 420px;
     min-height: 1024px;
+    padding: 32px;
   }
 
   @media (min-width: 1024px) {
-    padding-top: 500px;
+    width: 669px;
+    min-height: 800px;
+    padding: 32px 96px;
   }
 `;
 
 export const Title = styled.h1`
+  padding: 0;
+  margin: 0;
   font-size: 66px;
   font-weight: 500;
 
   letter-spacing: 0.01em;
-  margin: 0px 213px 0px 0px;
 
-  padding: 0;
-
-  font-size: 24px;
+  margin-top: 213px;
 
   @media (min-width: 768px) {
-    font-size: 48px;
+    font-size: 160px;
   }
 
   @media (min-width: 1024px) {
-    font-size: 72px;
+    // font-size: 72px;
   }
 `;
 
@@ -74,7 +76,9 @@ height: 162px
 
 
   @media (min-width: 768px) {
-    font-size: 48px; 
+    font-size: 16px; 
+    margin-top: 28px;
+    margin-bottom: 28px;
 
   @media (min-width: 1024px) {
     font-size: 72px;
@@ -88,7 +92,7 @@ font-size: 16px;
 font-weight: 500;
 
 
-text-align: justify;
+text-align: center;
 
 color: rgba(239, 237, 232, 1);
 
@@ -101,10 +105,16 @@ border-radius: 12px;
 gap: 10px;
 
 @media (min-width: 768px) {
-  font-size: 48px; 
+  font-size: 20px; 
+  width: 208px;
+height: 56px;
+padding: 16px 60px;
 
 @media (min-width: 1024px) {
-  font-size: 72px; 
+  font-size: 20px; 
+  width: 208px;
+height: 56px;
+padding: 16px 60px;
 }
 `;
 
@@ -118,7 +128,7 @@ export const LogoWrapper = styled.div`
   flex-direction: row;
 
   @media (min-width: 768px) {
-    font-size: 48px; 
+    // font-size: 48px; 
   
   @media (min-width: 1024px) {
     font-size: 72px; 
@@ -126,8 +136,11 @@ export const LogoWrapper = styled.div`
 `;
 
 export const BackgroundImage = styled.div`
-  background-image: url(${backgroundImage});
-  background-repeat: no-repeat;
+  background:
+    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+    linear-gradient(170.48deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    url(${backgroundImage}) no-repeat;
+  background-size: cover;
 
   position: absolute;
   width: 446px;
@@ -138,9 +151,16 @@ export const BackgroundImage = styled.div`
   right: 0;
 
   @media (min-width: 768px) {
-    font-size: 48px; 
-  
+    width: 670px;
+    height: 1005px;
+    top: 131px;
+    left: 331px;
+  }
+
   @media (min-width: 1024px) {
-    font-size: 72px; 
+    width: 670px;
+    height: 1005px;
+    top: -152px;
+    left: 770px;
   }
 `;
