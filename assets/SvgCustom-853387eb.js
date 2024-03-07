@@ -1,4 +1,4 @@
-import{u as n,j as t}from"./index-fdc3a640.js";const a="/project-Qwerty2024-front/assets/sprite-e124ee28.svg",c=n.svg`
+import{u as n,j as t}from"./index-dbd44d83.js";const a="/project-Qwerty2024-front/assets/sprite-e124ee28.svg",c=n.svg`
   stroke: ${e=>e.$color||e.$stroke?e.$color||e.$stroke:e.theme.colors.secondary};
   fill: ${e=>e.$color?e.$color:"none"};
   width: ${e=>`${e.$size}px`};

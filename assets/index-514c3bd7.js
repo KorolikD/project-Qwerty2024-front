@@ -1,4 +1,4 @@
-import{j as e,u as i,t as r}from"./index-fdc3a640.js";import{S as s}from"./SvgCustom-365a49cd.js";const a=()=>e.jsx(e.Fragment,{children:"DaySwitch"}),t=i.section`
+import{j as e,u as i,t as r}from"./index-dbd44d83.js";import{S as s}from"./SvgCustom-853387eb.js";const a=()=>e.jsx(e.Fragment,{children:"DaySwitch"}),t=i.section`
   @media screen and (min-width: 768px) {
     max-width: 593px;
   }
