@@ -8,15 +8,23 @@ import {
   DashboardText,
   SvgTextWrap,
 } from './DayDashboard.styled.js';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/authSelectors.js';
+import {
+  selectBurnedCalories,
+  selectTimeSpentOnExercises,
+  selectTotalCalories,
+} from '../../redux/diary/selectors.js';
 
-const DayDashboard = ({
-  bmr,
-  dpa,
-  totalCalories,
-  burnedCalories,
-  restOfCalories,
-  restOfSports,
-}) => {
+const DayDashboard = () => {
+  const { bmr, dpa } = useSelector(selectUser);
+  const totalCalories = useSelector(selectTotalCalories);
+  const burnedCalories = useSelector(selectBurnedCalories);
+  const timeSpentOnExercises = useSelector(selectTimeSpentOnExercises);
+
+  const restOfSports = dpa - timeSpentOnExercises;
+  const restOfCalories = bmr - totalCalories;
+
   const caloriesIndicator = restOfCalories < 0 ? 'red' : 'green';
   const timeIndicator = restOfSports < 0 ? 'green' : 'red';
 
