@@ -5,7 +5,7 @@ import {
   ExercisesItem,
 } from './ExercisesSubcategoriesItem.styled';
 
-export const ExercisesSubcategoriesItem = ({ subcategory }) => {
+const ExercisesSubcategoriesItem = ({ subcategory }) => {
   return (
     <ExercisesItem>
       <ExerscisesItemContainer

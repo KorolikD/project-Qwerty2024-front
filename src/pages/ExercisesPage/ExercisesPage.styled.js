@@ -20,15 +20,6 @@ export const Headed = styled.h1`
   font-weight: 700;
   font-size: 24px;
   line-height: 1.17;
-  color: ${(props) => props.theme.colors.white};
+  color: white;
   margin: 0;
-`;
-
-export const ContainerNav = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 72px;
-    padding-bottom: 64px;
-  }
 `;

@@ -10,8 +10,8 @@ export const slider = {
   appendDots: (dots) => (
     <div
       style={{
-        borderRadius: '15px',
-        padding: '15px',
+        borderRadius: '10px',
+        padding: '10px',
       }}
     >
       <ul style={{ margin: '0px' }}> {dots} </ul>
@@ -27,6 +27,12 @@ export const slider = {
         border: '1px black solid',
         transition: 'background-color 0.3s ease',
       }}
+      onMouseEnter={(e) => {
+        e.target.style.backgroundColor = '#e6533c';
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.backgroundColor = 'rgba(239, 237, 232, 0.2)';
+      }}
     ></div>
   ),
 
@@ -34,10 +40,9 @@ export const slider = {
     {
       breakpoint: 1440,
       settings: {
-        slidesToShow: 5,
-        slidesToScroll: 5,
-        rows: 2,
-
+        slidesToShow: 10,
+        slidesToScroll: 10,
+        infinite: false,
         dots: true,
       },
     },
@@ -56,6 +61,7 @@ export const slider = {
         slidesToShow: 1,
         slidesToScroll: 1,
         rows: 10,
+
         dots: true,
       },
     },

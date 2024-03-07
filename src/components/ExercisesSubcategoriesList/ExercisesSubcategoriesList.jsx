@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { slider } from '../../pages/ExercisesPage/slider/slider';
+import { slider } from '../../helpers/slider/slider';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 
 const ExercisesSubcategoriesList = () => {
@@ -13,7 +13,7 @@ const ExercisesSubcategoriesList = () => {
     const fetchExercises = async () => {
       try {
         const token =
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTQ1MzkzYmZjNWExMzNmOTExMDZiZCIsImlhdCI6MTcwOTYyODMwOSwiZXhwIjoxNzA5NzExMTA5fQ.EuGaXjrDFsutOL4ZXiYBEIyB8zUoU3JvwSisHFXBiYc';
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTc2MzU3OSwiZXhwIjoxNzA5ODQ2Mzc5fQ.LWW3hoO8WkEMJMowiFKe5akGF9MorPWW978hlN0YSQU';
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,

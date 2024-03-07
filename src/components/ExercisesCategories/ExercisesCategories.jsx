@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
@@ -9,7 +9,6 @@ import {
 
 const ExercisesCategories = () => {
   const [exercises, setExercises] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
 
   const fetchExercises = async (category) => {
     try {
@@ -18,14 +17,13 @@ const ExercisesCategories = () => {
         {
           headers: {
             Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTc0NTkzOSwiZXhwIjoxNzA5ODI4NzM5fQ.sZyVWKJZRsXGu1GpoBKqmeruBZ0Mc22ezRmPAhEL55Y',
+              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTc2MzU3OSwiZXhwIjoxNzA5ODQ2Mzc5fQ.LWW3hoO8WkEMJMowiFKe5akGF9MorPWW978hlN0YSQU',
           },
         }
       );
       setExercises(response.data[category]);
-      setSelectedCategory(category);
     } catch (error) {
-      console.error('Error fetching exercises:', error);
+      console.error('Error', error);
     }
   };
 
