@@ -20,7 +20,8 @@ const DiaryPage = () => {
   const {
     bmr,
     dpa,
-    //  blood, createdAt
+    // blood,
+    createdAt,
   } = useSelector(selectUser);
 
   const restOfCalories = bmr - totalCalories;
@@ -33,17 +34,30 @@ const DiaryPage = () => {
     const fetchDayInfo = async () => {
       try {
         const resp = await getDayInfo(date);
-        // Якщо повернено повідомлення, що немає нічого, виходимо
+        // Якщо повернено повідомлення, що немає нічого, очищаємо дані
         if (resp.message) {
-          return;
+          setTotalCalories(0);
+          setBurnedCalories(0);
+          setTimeSpentOnExercises(0);
         }
-        // Якщо повернено не null у userProductsDiary, записуємо дані
-        if (resp.userProductsDiary) {
+        // Якщо повернено не null у userProductsDiary і null у userExercisesDiary, записуємо дані продуктів та очищаємо вправи
+        if (resp.userProductsDiary && !resp.userExercisesDiary) {
           setProductsList(resp.userProductsDiary.products);
           setTotalCalories(resp.userProductsDiary.totalCalories);
+          setBurnedCalories(0);
+          setTimeSpentOnExercises(0);
         }
-        // Якщо повернено не null у userExercisesDiary, записуємо дані
-        if (resp.userExercisesDiary) {
+        // Якщо повернено не null у userExercisesDiary і null у userProductsDiary, записуємо дані вправ та очищаємо продукти
+        if (resp.userExercisesDiary && !resp.userProductsDiary) {
+          setExercisesList(resp.userExercisesDiary.exercises);
+          setBurnedCalories(resp.userExercisesDiary.burnedCalories);
+          setTimeSpentOnExercises(resp.userExercisesDiary.totalTime);
+          setTotalCalories(0);
+        }
+        // коли немає null ніде, записуємо
+        if (resp.userExercisesDiary && resp.userProductsDiary) {
+          setProductsList(resp.userProductsDiary.products);
+          setTotalCalories(resp.userProductsDiary.totalCalories);
           setExercisesList(resp.userExercisesDiary.exercises);
           setBurnedCalories(resp.userExercisesDiary.burnedCalories);
           setTimeSpentOnExercises(resp.userExercisesDiary.totalTime);
@@ -55,15 +69,12 @@ const DiaryPage = () => {
     fetchDayInfo();
   }, [date]);
 
-  const onChangeDate = (newDate) => {
-    setDate(newDate);
-  };
-
   return (
     <DiaryWrapper>
       <div>
         <div>
-          Title + <DaySwitch />
+          Title +{' '}
+          <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
         </div>
       </div>
       <DiaryContainer>
@@ -74,11 +85,10 @@ const DiaryPage = () => {
           burnedCalories={burnedCalories}
           restOfCalories={restOfCalories}
           restOfSports={restOfSports}
-          //Wі 3 пропси будуть видалені звідси, зараз по іншому не можу зараз запушити той код, що є, не використавши десь їх
+          //Ці 2 пропси будуть видалені звідси, зараз по іншому не можу запушити той код, що є, не використавши десь їх
           //Закоментувати теж не можу, бо впливає на масив залежностей і циклиться компонент
           exercisesList={exercisesList}
           productsList={productsList}
-          onChange={onChangeDate}
         />
         <div>
           <span>ProductsTable</span> <span>ExercisesTable</span>

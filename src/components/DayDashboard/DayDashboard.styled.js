@@ -59,6 +59,7 @@ export const DashboardItem = styled.li`
 
   &:hover {
     background: ${(props) => props.theme.colors.primary};
+    border-color: ${(props) => props.theme.colors.textWhite40};
     div {
       color: rgba(239, 237, 232, 0.8);
     }
