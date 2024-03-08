@@ -1,36 +1,52 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { updateAvatar } from '../../redux/auth/authOperations';
-import { DayDashboard } from '../DayDashboard/DayDashboard';
-// import { LogOutBtn } from '../LogOutBtn/LogOutBtn';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateAvatar } from '../../redux/auth/authOperations.js';
+import { selectUser } from '../../redux/auth/authSelectors';
+import { Container, AvatarContainer, Avatar, UserSvg, Label, UserName, SubTitle, AddBtn, AddSvg  } from './UserCard.styled.js';
+import sprite from '../../img/sprite.svg';
 
-export const UserCard = () => {
-  const user = useSelector(state => state.auth.user);
+const UserCard = () => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const avatarDef = ( <UserSvg><use href={`${sprite}#icon-user`}></use></UserSvg>);
+  const avatarImg = (<Avatar src={user.avatarUrl} alt="Avatar"/>)
+  const avatarShown = user.avatarUrl ? avatarImg : avatarDef;
 
-  const handleAvatarChange = async (e) => {
-    const formData = new FormData();
-    formData.append('avatar', e.target.files[0]);
-    try {
-      await dispatch(updateAvatar(formData));
-    } catch (error) {
-      console.error('Failed to update avatar:', error);
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      dispatch(updateAvatar(file)); 
     }
   };
 
+  const openFileInput = () => {
+    const fileInput = document.getElementById("fileInput");
+    fileInput.click();
+  };
+
   return (
-    <div>
-      <label htmlFor="avatar">+</label>
-      <input type="file" id="avatar" accept="image/*" onChange={handleAvatarChange} />
-      <p>{user.name}</p>
-      <DayDashboard user={user} />
-      <p>
-        We understand that each individual is unique, so the entire approach to diet is relative and tailored to your unique body and goals.
-      </p>
-      {/* <LogOutBtn/> */}
-      <button type="button">Logout</button>
-    </div>
+    <Container>
+      <AvatarContainer>
+        {avatarShown}
+      </AvatarContainer>
+      <AddBtn>
+        <Label htmlFor="fileInput" onClick={openFileInput}>
+          <AddSvg className="upload-icon">
+            <use href={`${sprite}#icon-add-avatar`} aria-label="Upload Avatar"></use>
+          </AddSvg>
+        </Label>
+        <input 
+          type="file" 
+          accept=".jpg, .jpeg" 
+          id="fileInput" 
+          name="fileInput"
+          style={{ display: 'none' }}
+          onChange={handleAvatarChange} 
+        />
+      </AddBtn>
+      <UserName>{user.name}</UserName>
+      <SubTitle>User</SubTitle>
+    </Container>
   );
 };
 
 export default UserCard;
-

@@ -14,7 +14,6 @@ export const TitleWrapper = styled.div`
 
 export const Title = styled.h1`
     margin-top: 40px;
-    margin-left: 20px;
     margin-bottom: 40px;
     font-family: ${({ theme }) => theme.fonts.mainFont};
     font-weight: 700;

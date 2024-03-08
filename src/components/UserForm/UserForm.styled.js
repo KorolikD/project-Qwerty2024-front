@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledForm = styled.div`
-    margin-left: 20px;
-    margin-right: 20px;
+    
     @media screen and (max-width: 375px) {
 
   }
@@ -34,7 +33,7 @@ export const Label = styled.label`
     margin-bottom: 4px;
     font-weight: 400;
     font-size: 12px;
-    color: rgba(239, 237, 232, 0.5);
+    color: ${({ theme }) => theme.colors.textWhite50};
     line-height: 1.5;
   @media screen and (max-width: 375px) {
 

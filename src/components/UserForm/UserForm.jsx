@@ -1,44 +1,35 @@
-import { Formik, Field, ErrorMessage } from 'formik';
-import { Form, Input, message, Radio, DatePicker } from 'antd'; 
-import { updateUser } from '../../redux/auth/authOperations';
-import { StyledButton } from '../Button/Button.styled';
-import { useSelector } from 'react-redux';
+import { useFormik } from 'formik';
+import { Input, Radio } from 'antd'; 
 import validationSchema from './validationSchema';
-import { selectIsRefresh } from '../../redux/auth/authSelectors';
-// import Calendar from '../Calendar/Calendar'; 
+import { StyledButton } from '../Button/Button.styled';
+import Calendar from '../Calendar/Calendar'; 
 import { StyledForm, Label, Span, Wrapper } from './UserForm.styled';
-
-const { Item } = Form;
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../redux/auth/authOperations';
+import { selectUser } from '../../redux/auth/authSelectors';
 
 const UserForm = () => {
-  const userData = useSelector(state => state.auth.user);
-  const isRefreshing = useSelector(selectIsRefresh); 
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
-  const initialValues = {
-    name: userData.name || '',
-    email: userData.email || '',
-    height: '',
-    currentWeight: '',
-    desiredWeight: '',
-    birthday: '',
-    blood: '',
-    sex: '',
-    levelActivity: '',
-  };
+  const handleSubmit = (values, { setSubmitting }) => {
+    console.log('Submitting form with values:', values); 
+    setSubmitting(true);
 
-  const handleSubmit = async (values, { setSubmitting }) => {
-    if (isRefreshing) { 
-      message.warning('User data is being refreshed. Please wait.'); 
-      return; 
-    }
-
-    try {
-      await updateUser(values);
-      message.success('User data updated successfully');
-    } catch (error) {
-      message.error('Failed to update user data');
-    }
-    setSubmitting(false);
+    return validationSchema
+      .validate(values, { abortEarly: false })
+      .then(() => dispatch(updateUser(values)))
+      .then(() => {
+        formik.setFieldValue('isSubmitSuccessful', true);
+        formik.setFieldValue('submitError', null);
+      })
+      .catch(error => {
+        formik.setFieldValue('isSubmitSuccessful', false);
+        formik.setFieldValue('submitError', error.message || 'Failed to update user data');
+      })
+      .finally(() => {
+        setSubmitting(false); 
+      });
   };
 
   const radioGroups = [
@@ -63,88 +54,91 @@ const UserForm = () => {
     },
   ];
 
-   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-      {(formikProps) => (
-        <StyledForm>
-          <div>
-            <Label htmlFor="name">Name</Label>
-            <Field as={Input} type="text" name="name" />
-            <ErrorMessage name="name" />
-          </div>
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Field as={Input} type="email" name="email"  />
-            <ErrorMessage name="email" />
-           </div>
-          <Wrapper>
-          <Item>
-            <Label htmlFor="height">Height</Label>
-            <Field as={Input} type="number" name="height" />
-            <ErrorMessage name="height"/>
-          </Item>
-          <Item
-            rules={[
-              { required: true, message: 'Please input your current weight!' },
-              { type: 'number', min: 35, message: 'Weight must be at least 35 kg!' },
-            ]}
-          >
-            <Label>Current Weight</Label>
-            <Input type="number" />
-             </Item>
-          </Wrapper>
- 
-          <Wrapper>
-          <Item
-            rules={[
-              { required: true, message: 'Please input your desired weight!' },
-              { type: 'number', min: 35, message: 'Weight must be at least 35 kg!' },
-            ]}
-          >
-            <Label>Desired Weight</Label>
-            <Input type="number" />
-          </Item>
+  const formik = useFormik({
+    initialValues: {
+      name: user.name || '',
+      email: user.email || '',
+      height: user.height || '',
+      currentWeight: user.currentWeight || '0',
+      desiredWeight: user.desiredWeight || '0',
+      birthday: user.birthday || '00/00/0000',
+      blood: user.blood || '',
+      sex: user.sex || '',
+      levelActivity: user.levelActivity || '',
+      isSubmitSuccessful: false,
+      submitError: null,
+    },
+    validationSchema: validationSchema,
+    onSubmit: handleSubmit,
+  });
 
-          <Item
-            rules={[
-              { required: true, message: 'Please select your birthday!' },
-              () => ({
-                validator(_, value) {
-                  const age = value ? new Date().getFullYear() - value.year() : 0;
-                  if (age < 18) {
-                    return Promise.reject('You must be older than 18 years!');
-                  }
-                  return Promise.resolve();
-                },
-              }),
-            ]}
-           >
-            <Label>Date of birth</Label>
-            <DatePicker />
-             {/* <Calendar /> */}
-           </Item>
-          </Wrapper>
-          {radioGroups.map((group, index) => (
-            <div key={index}>
-              <Label>{group.label}</Label>
-              <Item name={group.name}>
-                <Radio.Group>
-                  {group.options.map((option, idx) => (
-                    <Radio key={idx} value={option}>
-                      <Span>{option}</Span>
-                    </Radio>
-                  ))}
-                </Radio.Group>
-              </Item>
-            </div>
+  return (
+    <StyledForm onSubmit={formik.handleSubmit}>
+      <div>
+        <Label htmlFor="name">Name</Label>
+        <Input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Your name"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+        />
+      </div>
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          style={{ color: 'rgba(239, 237, 232, 0.60)' }}
+          readOnly
+          disabled
+        />
+      </div>
+      <Wrapper>
+        <div>
+          <Label htmlFor="height">Height</Label>
+          <Input type="number" name="height" id="height" value={formik.values.height} onChange={formik.handleChange} />
+        </div>
+        <div>
+          <Label htmlFor="currentWeight">Current Weight</Label>
+          <Input type="number" name="currentWeight" id="currentWeight" value={formik.values.currentWeight} onChange={formik.handleChange} />
+        </div>
+      </Wrapper>
+      <Wrapper>  
+        <div>
+          <Label htmlFor="desiredWeight">Desired Weight</Label>
+          <Input type="number" name="desiredWeight" id="desiredWeight" value={formik.values.desiredWeight} onChange={formik.handleChange} />
+        </div>
+        <div>
+          <Label htmlFor="birthday">Date of birth</Label>
+          <Calendar id="birthday" value={formik.values.birthday} onChange={date => formik.setFieldValue('birthday', date)} />
+          {/* <DatePicker id="birthday" onChange={date => formik.setFieldValue('birthday', date)}/> */}
+        </div>
+      </Wrapper>
+      {radioGroups.map((group, index) => (
+        <Radio.Group key={index} name={group.name} value={formik.values[group.name]} onChange={formik.handleChange}>
+          <Label>{group.label}</Label>
+          {group.options.map((option, idx) => (
+            <Radio key={idx} value={option}>
+              <Span>{option}</Span>
+            </Radio>
           ))}
-
-          <Item>
-            <StyledButton type="submit" $type="filled" disabled={formikProps.isSubmitting}>Save</StyledButton>
-          </Item>
-        </StyledForm>
+        </Radio.Group>
+      ))}
+      {formik.values.isSubmitSuccessful && (
+        <div style={{ color: 'green' }}>Form submitted successfully!</div>
       )}
-    </Formik>
+      {formik.values.submitError && (
+        <div style={{ color: 'red' }}>{formik.values.submitError}</div>
+      )}
+      <StyledButton type="submit" $type="filled" >
+        Save
+      </StyledButton>
+    </StyledForm>
   );
 };
 

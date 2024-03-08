@@ -2,7 +2,7 @@ import * as Yup from 'yup';
   
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    email: Yup.string().matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Invalid email').required('Required'),
     height: Yup.number().min(150, 'Minimum height is 150').required('Required'),
     currentWeight: Yup.number().min(35, 'Minimum weight is 35').required('Required'),
     desiredWeight: Yup.number().min(35, 'Minimum weight is 35').required('Required'),
