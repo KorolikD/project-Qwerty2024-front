@@ -6,7 +6,6 @@ export const HomeButton = () => {
   const navigate = useNavigate();
 
   const handleGoHome = () => {
-  
     navigate('/');
   };
 

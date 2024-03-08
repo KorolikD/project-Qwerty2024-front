@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import backgroundImage from '../../img/side-view-people-training-gym-1.png';
 
 export const Container = styled.div`
   display: flex;
@@ -11,12 +10,11 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1024px) {
-    // padding-top: 500px;
   }
 `;
 
 export const InfoContainer = styled.div`
-  font: roboto;
+  font: Roboto;
   width: 240px;
   min-height: 812px;
   background-color: #e6533c;
@@ -75,6 +73,7 @@ export const Paragraph = styled.p`
 height: 162px
 
 
+
   @media (min-width: 768px) {
     font-size: 16px; 
     margin-top: 28px;
@@ -90,7 +89,7 @@ export const Button = styled.button`
 padding: 12px 40px;
 font-size: 16px;
 font-weight: 500;
-
+margin-top: 28px;
 
 text-align: center;
 
@@ -118,37 +117,18 @@ padding: 16px 60px;
 }
 `;
 
-export const LogoWrapper = styled.div`
-  width: 130px;
-  height: 13px;
-  margin-bottom: 213px;
- 
-  
-  display: flex;
-  flex-direction: row;
-
-  @media (min-width: 768px) {
-    // font-size: 48px; 
-  
-  @media (min-width: 1024px) {
-    font-size: 72px; 
-  }
-`;
-
-export const BackgroundImage = styled.div`
-  background:
-    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-    linear-gradient(170.48deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
-    url(${backgroundImage}) no-repeat;
-  background-size: cover;
-
+export const Background = styled.div`
   position: absolute;
+  background-size: cover;
   width: 446px;
   height: 669px;
   top: 240px;
   left: 110px;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  background-image: url(${(props) => props.image}),
+    linear-gradient(170.48deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
 
   @media (min-width: 768px) {
     width: 670px;
@@ -158,8 +138,6 @@ export const BackgroundImage = styled.div`
   }
 
   @media (min-width: 1024px) {
-    width: 670px;
-    height: 1005px;
     top: -152px;
     left: 770px;
   }

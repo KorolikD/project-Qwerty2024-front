@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   cursor: pointer;
+
   width: ${({ $size }) => ($size === 'large' ? '136px' : '115px')};
   background-color: ${(props) =>
     props.$type === 'filled' ? props.theme.colors.primary : 'transparent'};
