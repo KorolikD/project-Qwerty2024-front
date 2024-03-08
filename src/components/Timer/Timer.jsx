@@ -27,7 +27,7 @@ const timerProps = {
   /* <Timer time={3 * 60} />; // ! виклик компонента для підключення. Вимагає час в секундах. Ще не дороблений*/
 }
 
-export const Timer = ({ time, handleDataFromRenderTime }) => {
+export const Timer = ({ time, onDataFromChild }) => {
   const [playing, setPlaying] = useState(false);
 
   const handleButtonStart = () => {
@@ -53,7 +53,7 @@ export const Timer = ({ time, handleDataFromRenderTime }) => {
           })}
         >
           {({ remainingTime }) =>
-            renderTime(remainingTime, playing, handleDataFromRenderTime)
+            renderTime(remainingTime, playing, onDataFromChild)
           }
         </CountdownCircleTimer>
       </TimerClock>
@@ -102,9 +102,9 @@ export const Timer = ({ time, handleDataFromRenderTime }) => {
   );
 };
 
-const renderTime = (remainingTime, playing, handleDataFromRenderTime) => {
+const renderTime = (remainingTime, playing, onDataFromChild) => {
   const sendDataToParent = () => {
-    handleDataFromRenderTime(remainingTime);
+    onDataFromChild(remainingTime);
   };
 
   if (!playing) {
