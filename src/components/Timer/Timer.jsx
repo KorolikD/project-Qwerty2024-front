@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   TimerWrapper,
   TimerClock,
@@ -23,45 +23,20 @@ const timerProps = {
   colors: theme.colors.primary, // ? -------Кольори на якы змінювати коло
 };
 
-const renderTime = (remainingTime) => {
-  if (remainingTime === 0) {
-    return <TimerValue>Training completed!</TimerValue>;
-  }
-
-  const minutes = Math.floor(remainingTime / 60);
-  const seconds = remainingTime % 60;
-
-  return (
-    <TimerValue role="timer" aria-live="assertive">
-      {minutes}:{seconds}
-    </TimerValue>
-  );
-};
-
 {
   /* <Timer time={3 * 60} />; // ! виклик компонента для підключення. Вимагає час в секундах. Ще не дороблений*/
 }
 
-export const Timer = ({ time }) => {
-  const [timer, setTimer] = useState(0);
-  const [run, setRun] = useState(false);
+export const Timer = ({ time, handleDataFromRenderTime }) => {
   const [playing, setPlaying] = useState(false);
 
-  const onStart = () => {
-    setRun(true);
+  const handleButtonStart = () => {
+    setPlaying(true);
   };
 
-  const onStop = () => {
-    setRun(false);
+  const handleButtonStop = () => {
+    setPlaying(false);
   };
-
-  useEffect(() => {
-    setTimer(time);
-  }, [time]);
-
-  useEffect(() => {
-    run === false ? setPlaying(false) : setPlaying(true);
-  }, [run]);
 
   return (
     <TimerWrapper>
@@ -69,25 +44,22 @@ export const Timer = ({ time }) => {
       <TimerClock>
         <CountdownCircleTimer
           {...timerProps}
-          duration={timer}
-          initialRemainingTime={timer}
+          duration={time}
+          initialRemainingTime={time}
           isPlaying={playing}
           onComplete={() => ({
             shouldRepeat: false,
             delay: 1,
           })}
-
-          //* {onComplete}--------------На анімації завершити обробник події
-          //* {onUpdate}----------------Обробник події оновлення за залишковим часом
-          //* {renderTime}--------------Функція рендерингу для налаштування часу/вмісту в центрі кола
         >
-          {({ remainingTime, isPlaying }) =>
-            renderTime(remainingTime, isPlaying, run)
+          {({ remainingTime }) =>
+            renderTime(remainingTime, playing, handleDataFromRenderTime)
           }
         </CountdownCircleTimer>
       </TimerClock>
-      {run === false ? (
-        <TimerButton type="button" onClick={onStart}>
+
+      {playing === false ? (
+        <TimerButton type="button" onClick={handleButtonStart}>
           {/* <SvgCustom icon="icon-play" size="14" color={theme.colors.white} /> */}
           <svg
             width="14"
@@ -107,7 +79,7 @@ export const Timer = ({ time }) => {
           </svg>
         </TimerButton>
       ) : (
-        <TimerButton type="button" onClick={onStop}>
+        <TimerButton type="button" onClick={handleButtonStop}>
           {/* <SvgCustom icon="icon-cross" size="10" color={theme.colors.white} /> */}
           <svg
             width="8"
@@ -127,5 +99,28 @@ export const Timer = ({ time }) => {
         </TimerButton>
       )}
     </TimerWrapper>
+  );
+};
+
+const renderTime = (remainingTime, playing, handleDataFromRenderTime) => {
+  const sendDataToParent = () => {
+    handleDataFromRenderTime(remainingTime);
+  };
+
+  if (!playing) {
+    sendDataToParent(remainingTime);
+  }
+
+  if (remainingTime === 0) {
+    return <TimerValue>Training completed!</TimerValue>;
+  }
+
+  const minutes = Math.floor(remainingTime / 60);
+  const seconds = remainingTime % 60;
+
+  return (
+    <TimerValue role="timer" aria-live="assertive">
+      {minutes}:{seconds}
+    </TimerValue>
   );
 };

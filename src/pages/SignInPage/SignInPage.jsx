@@ -1,8 +1,17 @@
 import { useFormik } from 'formik';
 import { logIn } from '../../redux/auth/authOperations.js';
 import { useDispatch } from 'react-redux';
+import { Timer } from '../../components/Timer/Timer.jsx';
+import { useState } from 'react';
 
 const SignInPage = () => {
+  const [timer, setTimer] = useState(30);
+  console.log('🤬>>>  timer:\n', timer);
+
+  const handleDataFromRenderTime = (data) => {
+    setTimer(data);
+  };
+
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -14,6 +23,7 @@ const SignInPage = () => {
       action.resetForm();
     },
   });
+
   return (
     <>
       <form style={{ marginTop: '100px' }} onSubmit={formik.handleSubmit}>
@@ -33,6 +43,8 @@ const SignInPage = () => {
         />
         <button>Submit</button>
       </form>
+
+      <Timer time={3 * 60} onDataFromChild={handleDataFromRenderTime} />
     </>
   );
 };

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 
 export const TimerWrapper = styled.div`
-  outline: dashed red;
   display: flex;
   flex-direction: column;
   align-items: center;
