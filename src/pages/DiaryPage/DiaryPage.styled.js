@@ -34,3 +34,9 @@ export const DiaryContainer = styled.div`
     gap: 32px;
   }
 `;
+
+export const DiaryTablesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+`;

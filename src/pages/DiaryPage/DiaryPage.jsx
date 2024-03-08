@@ -5,22 +5,21 @@ import { selectUser } from '../../redux/auth/authSelectors.js';
 import { getDayInfo } from '../../redux/diary/operations.js';
 import DaySwitch from '../../components/DaySwitch/index.js';
 import DayDashboard from '../../components/DayDashboard/index.js';
-import { DiaryContainer, DiaryWrapper } from './DiaryPage.styled.js';
-import // selectDiaryExercises,
-// selectDiaryProducts,
-'../../redux/diary/selectors.js';
+import DiaryTableForWhat from '../../components/DiaryTableForWhat/DiaryTableForWhat.jsx';
+import { DiaryContainer, DiaryTablesContainer, DiaryWrapper } from './DiaryPage.styled.js';
+import {
+  selectDiaryExercises,
+  selectDiaryProducts,
+} from '../../redux/diary/selectors.js';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
 const DiaryPage = () => {
   const [date, setDate] = useState(dayjs().format(DATE_FORMAT));
 
-  // const productsList = useSelector(selectDiaryProducts);
-  // const exercisesList = useSelector(selectDiaryExercises);
-  const {
-    // blood,
-    createdAt,
-  } = useSelector(selectUser);
+  const productsList = useSelector(selectDiaryProducts);
+  const exercisesList = useSelector(selectDiaryExercises);
+  const { createdAt } = useSelector(selectUser);
 
   const dispatch = useDispatch();
 
@@ -41,9 +40,20 @@ const DiaryPage = () => {
       </div>
       <DiaryContainer>
         <DayDashboard />
-        <div>
-          <span>ProductsTable</span> <span>ExercisesTable</span>
-        </div>
+        <DiaryTablesContainer>
+          <DiaryTableForWhat
+            list={productsList}
+            date={date}
+            to="/products"
+            forProductsTable
+          />{' '}
+          <DiaryTableForWhat
+            list={exercisesList}
+            date={date}
+            to="/exercises"
+            forExercisesTable
+          />
+        </DiaryTablesContainer>
       </DiaryContainer>
     </DiaryWrapper>
   );

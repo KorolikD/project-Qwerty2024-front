@@ -30,6 +30,8 @@ const handleGetDayInfoRejected = (state) => {
 const handleGetDayInfoSuccess = (state, { payload }) => {
   state.isLoading = false;
   if (!payload.userProductsDiary && !payload.userExercisesDiary) {
+    state.productsList = null;
+    state.exercisesList = null;
     state.burnedCalories = 0;
     state.timeSpentOnExercises = 0;
     state.totalCalories = 0;
@@ -37,6 +39,7 @@ const handleGetDayInfoSuccess = (state, { payload }) => {
   if (payload.userProductsDiary && !payload.userExercisesDiary) {
     state.productsList = payload.userProductsDiary.products;
     state.totalCalories = payload.userProductsDiary.totalCalories;
+    state.exercisesList = null;
     state.burnedCalories = 0;
     state.timeSpentOnExercises = 0;
   }
@@ -44,6 +47,7 @@ const handleGetDayInfoSuccess = (state, { payload }) => {
     state.exercisesList = payload.userExercisesDiary.exercises;
     state.burnedCalories = payload.userExercisesDiary.burnedCalories;
     state.timeSpentOnExercises = payload.userExercisesDiary.totalTime;
+    state.productsList = null;
     state.totalCalories = 0;
   }
   if (payload.userProductsDiary && payload.userExercisesDiary) {
