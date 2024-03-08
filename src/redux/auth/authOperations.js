@@ -68,7 +68,7 @@ export const updateUser = createAsyncThunk(
   'updateStatus',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.patch('users/update', credentials);
+      const res = await axios.patch('users/params', credentials);
       return res.data;
     } catch (e) {
       return rejectWithValue(e.message);
