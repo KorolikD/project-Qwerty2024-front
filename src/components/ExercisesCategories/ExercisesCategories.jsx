@@ -1,26 +1,18 @@
 import { useState } from 'react';
-import axios from 'axios';
-import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
   CategoryLists,
   CategoryExercisesStyle,
   ExerciseCards,
 } from './ExercisesCategories.styled';
+import exercisesLink from '../../services/api/exercises';
+import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 
 const ExercisesCategories = () => {
   const [exercises, setExercises] = useState([]);
 
   const fetchExercises = async (category) => {
     try {
-      const response = await axios.get(
-        `https://project-qwerty2024-back.onrender.com/api/exercises?filter=${category}`,
-        {
-          headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTc2MzU3OSwiZXhwIjoxNzA5ODQ2Mzc5fQ.LWW3hoO8WkEMJMowiFKe5akGF9MorPWW978hlN0YSQU',
-          },
-        }
-      );
+      const response = await exercisesLink.get(`/exercises?filter=${category}`);
       setExercises(response.data[category]);
     } catch (error) {
       console.error('Error', error);
@@ -46,16 +38,15 @@ const ExercisesCategories = () => {
           </CategoryExercisesStyle>
         </li>
       </CategoryLists>
-      {exercises.length > 0 && (
-        <ExerciseCards>
-          {exercises.map((exercise) => (
+      <ExerciseCards>
+        {exercises &&
+          exercises.map((exercise) => (
             <ExercisesSubcategoriesItem
               key={exercise._id}
-              subcategory={exercise.filter}
+              subcategory={exercise}
             />
           ))}
-        </ExerciseCards>
-      )}
+      </ExerciseCards>
     </div>
   );
 };
