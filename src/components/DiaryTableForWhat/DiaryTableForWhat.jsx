@@ -20,14 +20,18 @@ const DiaryTableForWhat = ({
   forProductsTable,
 }) => {
   const dispatch = useDispatch();
+  
+  const heightCondition =
+    list && list.length !== undefined && list.length !== 0 ? 'yes' : 'no';
+  const listCondition = list && list.length !== undefined && list.length !== 0;
 
-  const onDiaryDelete = (id) => {
+  const onDiaryDelete = ({ id }) => {
     forExercisesTable
       ? dispatch(deleteExercise({ id, date }))
       : dispatch(deleteProduct({ id, date }));
   };
   return (
-    <DiaryTablesWrap list={list}>
+    <DiaryTablesWrap list={heightCondition}>
       <DiaryTableHeader>
         <p>{forExercisesTable ? 'Exercises' : 'Products'}</p>
         <Link to={to}>
@@ -36,10 +40,10 @@ const DiaryTableForWhat = ({
         </Link>
       </DiaryTableHeader>
 
-      {list ? (
+      {listCondition ? (
         <>
-          <MediaQuery minWidth={768}>
-            <DiaryTableFromTablet
+          <MediaQuery maxWidth={767}>
+            <DiaryMobileTable
               list={list}
               date={date}
               forExercisesTable={forExercisesTable}
@@ -47,8 +51,8 @@ const DiaryTableForWhat = ({
               onDelete={onDiaryDelete}
             />
           </MediaQuery>
-          <MediaQuery maxWidth={767}>
-            <DiaryMobileTable
+          <MediaQuery minWidth={768}>
+            <DiaryTableFromTablet
               list={list}
               date={date}
               forExercisesTable={forExercisesTable}

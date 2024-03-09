@@ -63,7 +63,7 @@ const handleDeleteProductSuccess = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.productsList = state.productsList.filter(
-    (exercise) => exercise.id !== payload
+    (product) => product._id !== payload
   );
 };
 
@@ -71,7 +71,7 @@ const handleDeleteExerciseSuccess = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
   state.exercisesList = state.exercisesList.filter(
-    (product) => product.id !== payload
+    (exercise) => exercise._id !== payload
   );
 };
 

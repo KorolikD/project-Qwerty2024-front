@@ -6,14 +6,14 @@ export const DiaryTablesWrap = styled.div`
   overflow: auto;
   margin: 0 auto;
   padding: 16px 8px 16px 16px;
-  height: ${(props) => (!props.list ? '335px' : 'auto')};
+  height: ${(props) => (props.list === 'no' ? '335px' : 'auto')};
   width: 335px;
   border: 1px solid ${(props) => props.theme.colors.textWhite40};
   background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
 
   @media screen and (min-width: 768px) {
-    height: ${(props) => (!props.list ? '234px' : 'auto')};
+    height: ${(props) => (props.list === 'no' ? '234px' : 'auto')};
     width: 704px;
   }
 

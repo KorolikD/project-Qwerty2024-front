@@ -15,9 +15,10 @@ export const getDayInfo = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   'deleteProduct',
-  async (id, date, thunkAPI) => {
+  async (productDate, thunkAPI) => {
+    const { id, date } = productDate;
     try {
-      await axios.delete(`/diary/product/delete?id=${id}&date=${date}`);
+      await axios.delete(`/diary/product/${id}?date=${date}`);
       return id;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
@@ -27,9 +28,10 @@ export const deleteProduct = createAsyncThunk(
 
 export const deleteExercise = createAsyncThunk(
   'deleteExercise',
-  async (id, date, thunkAPI) => {
+  async (exerciseDate, thunkAPI) => {
+    const { id, date } = exerciseDate;
     try {
-      await axios.delete(`/diary/exercise/delete?id=${id}&date=${date}`);
+      await axios.delete(`/diary/exercise/${id}?date=${date}`);
       return id;
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);

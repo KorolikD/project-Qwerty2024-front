@@ -11,7 +11,6 @@ import {
 
 const DiaryMobileTable = ({
   list,
-  date,
   forExercisesTable,
   forProductsTable,
   onDelete,
@@ -49,7 +48,7 @@ const DiaryMobileTable = ({
                 </div>
                 <button
                   onClick={() => {
-                    onDelete({ date, id: exercise._id });
+                    onDelete({ id: exercise._id });
                   }}
                 >
                   <SvgCustom
@@ -95,7 +94,7 @@ const DiaryMobileTable = ({
                 </div>
                 <button
                   onClick={() => {
-                    onDelete({ date, id: product._id });
+                    onDelete({ id: product._id });
                   }}
                 >
                   <SvgCustom

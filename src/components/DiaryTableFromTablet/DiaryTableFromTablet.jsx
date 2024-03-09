@@ -15,7 +15,6 @@ import {
 
 const DiaryTableFromTablet = ({
   list,
-  date,
   forExercisesTable,
   forProductsTable,
   onDelete,
@@ -50,7 +49,7 @@ const DiaryTableFromTablet = ({
                 <td>
                   <DiaryBtn
                     onClick={() => {
-                      onDelete({ date, id: exercise._id });
+                      onDelete({ id: exercise._id});
                     }}
                   >
                     <SvgCustom
@@ -94,7 +93,7 @@ const DiaryTableFromTablet = ({
                 <td>
                   <DiaryBtn
                     onClick={() => {
-                      onDelete({ date, id: product._id });
+                      onDelete({ id: product._id});
                     }}
                   >
                     <SvgCustom
