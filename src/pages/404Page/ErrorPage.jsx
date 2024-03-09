@@ -1,8 +1,10 @@
 import 'modern-normalize/modern-normalize.css';
-import { Container, Title, Paragraph, InfoContainer,} from './ErrorPage.styled.js';
+import {  Title, Paragraph, InfoContainer,} from './ErrorPage.styled.js';
 import {HomeButton} from './HomeButton';
 import Logo404 from './Logo.jsx';
 import ResponsiveBackground from './ResponsiveBackground';
+import Container from '../../components/Container/Container.jsx';
+
 import backgroundImageHero1x from '../../img/hero-1x.jpg';
 import backgroundImageHero2x from '../../img/hero-2x.jpg';
 import backgroundImageHeroMob2x from '../../img/hero-mob-2x.jpg';
