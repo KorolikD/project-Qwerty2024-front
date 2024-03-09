@@ -1,5 +1,5 @@
-import { color } from '@mui/system';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const InfoContainer = styled.div`
   width: 240px;
@@ -70,7 +70,7 @@ export const Paragraph = styled.p`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   padding: 12px 40px;
   font-size: 16px;
   font-weight: 500;
