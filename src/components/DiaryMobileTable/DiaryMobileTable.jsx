@@ -1,7 +1,7 @@
-import SvgCustom from '../SvgCustom';
-import theme from '../../styles/theme.js';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../redux/auth/authSelectors.js';
+import SvgCustom from '../SvgCustom';
+import theme from '../../styles/theme.js';
 import {
   DiaryItemInfo,
   DiaryTableItem,

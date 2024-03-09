@@ -7,6 +7,13 @@ export const DiaryTableList = styled.ul`
   font-size: 12px;
   line-height: 1.5;
   color: ${(props) => props.theme.colors.secondary};
+  height: 350px;
+  /* ::-webkit-scrollbar {
+    
+  }
+  ::-webkit-scrollbar-thumb {
+    
+  } */
 `;
 
 export const DiaryTableItem = styled.li`
@@ -17,9 +24,11 @@ export const DiaryTableItem = styled.li`
 
 export const GroupTableItemWrap = styled.div`
   display: flex;
-
   > div {
     overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:nth-child(1) {
       width: 81px;
@@ -53,6 +62,9 @@ export const DiaryItemInfo = styled.p`
   color: ${(props) => props.theme.colors.white};
   font-size: 14px;
   line-height: 1.28;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &::first-letter {
     text-transform: uppercase;

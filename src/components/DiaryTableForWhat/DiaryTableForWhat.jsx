@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import MediaQuery from 'react-responsive';
+import { deleteExercise, deleteProduct } from '../../redux/diary/operations.js';
 import SvgCustom from '../SvgCustom';
 import DiaryMobileTable from '../DiaryMobileTable';
+import DiaryTableFromTablet from '../DiaryTableFromTablet';
 import theme from '../../styles/theme.js';
 import {
   DiaryNotFoundText,
@@ -9,7 +11,6 @@ import {
   DiaryTablesWrap,
   Link,
 } from './DiaryTableForWhat.styled';
-import { deleteExercise, deleteProduct } from '../../redux/diary/operations.js';
 
 const DiaryTableForWhat = ({
   list,
@@ -19,7 +20,6 @@ const DiaryTableForWhat = ({
   forProductsTable,
 }) => {
   const dispatch = useDispatch();
-  console.log(list);
 
   const onDiaryDelete = (id) => {
     forExercisesTable
@@ -37,15 +37,26 @@ const DiaryTableForWhat = ({
       </DiaryTableHeader>
 
       {list ? (
-        <MediaQuery maxWidth={767}>
-          <DiaryMobileTable
-            list={list}
-            date={date}
-            forExercisesTable={forExercisesTable}
-            forProductsTable={forProductsTable}
-            onDelete={onDiaryDelete}
-          />
-        </MediaQuery>
+        <>
+          <MediaQuery minWidth={768}>
+            <DiaryTableFromTablet
+              list={list}
+              date={date}
+              forExercisesTable={forExercisesTable}
+              forProductsTable={forProductsTable}
+              onDelete={onDiaryDelete}
+            />
+          </MediaQuery>
+          <MediaQuery maxWidth={767}>
+            <DiaryMobileTable
+              list={list}
+              date={date}
+              forExercisesTable={forExercisesTable}
+              forProductsTable={forProductsTable}
+              onDelete={onDiaryDelete}
+            />
+          </MediaQuery>
+        </>
       ) : (
         <DiaryNotFoundText>
           Not found {forExercisesTable ? 'exercises' : 'products'}

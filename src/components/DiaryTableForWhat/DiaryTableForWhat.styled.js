@@ -6,10 +6,20 @@ export const DiaryTablesWrap = styled.div`
   overflow: auto;
   margin: 0 auto;
   padding: 16px 8px 16px 16px;
+  height: ${(props) => (!props.list ? '335px' : 'auto')};
+  width: 335px;
   border: 1px solid ${(props) => props.theme.colors.textWhite40};
   background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
-  height: ${(props) => (!props.list ? '335px' : 'auto')};
+
+  @media screen and (min-width: 768px) {
+    height: ${(props) => (!props.list ? '234px' : 'auto')};
+    width: 704px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 826px;
+  }
 `;
 
 export const DiaryTableHeader = styled.div`
@@ -27,6 +37,12 @@ export const Link = styled(NavLink)`
   gap: 8px;
   align-items: center;
   color: ${(props) => props.theme.colors.primary};
+
+  @media screen and (min-width: 768px) {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+  }
 `;
 
 export const DiaryNotFoundText = styled.p`
