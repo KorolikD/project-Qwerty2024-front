@@ -1,10 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { slider } from '../../helpers/slider/slider';
-import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
+
 import exercisesLink from '../../services/api/exercises';
 
 const ExercisesSubcategoriesList = () => {
@@ -28,18 +23,7 @@ const ExercisesSubcategoriesList = () => {
     fetchExercises();
   }, []);
 
-  return (
-    <Slider {...slider}>
-      {exercises.map((exercise) => (
-        <Link
-          key={exercise._id}
-          to={`/exercises/${exercise.filter}/${exercise.name}`}
-        >
-          <ExercisesSubcategoriesItem subcategory={exercise} />
-        </Link>
-      ))}
-    </Slider>
-  );
+  return <div></div>;
 };
 
 export default ExercisesSubcategoriesList;

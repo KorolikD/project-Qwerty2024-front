@@ -4,7 +4,7 @@ import ExercisesItem from '../ExercisesItem/ExercisesItem';
 const ExercisesList = () => {
   const [exercises, setExercises] = useState([]);
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTg5NjIzMywiZXhwIjoxNzA5OTc5MDMzfQ.QiyfBp1CKgKL4YGk6H-if0EjJcGbq9Z8PaSQJqsiMMo';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcwOTk3NTQ4MSwiZXhwIjoxNzEwMDU4MjgxfQ.wF2thTn3bQUAtOBegAnpcxhCjs38FlTmRF_s0l9rgD8';
 
   useEffect(() => {
     fetch('https://project-qwerty2024-back.onrender.com/api/exercises', {
