@@ -8,7 +8,7 @@ import {
 } from './Timer.styled';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import theme from '../../styles/theme';
-import sprite from '../../img/sprite.svg';
+import SvgCustom from '../SvgCustom/SvgCustom';
 
 //* ===================================================================
 // TODO Підключення в модалці для відправлення форми на бекенд
@@ -30,7 +30,9 @@ import sprite from '../../img/sprite.svg';
 // useEffect(() => {
 //   const handleBurnedCalories = () => {
 //     setBurnedCalories(
-//       (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
+//       Math.round(
+//         (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
+//       )
 //     );
 //   };
 
@@ -72,16 +74,20 @@ export const Timer = ({ time, getDataFromTimer }) => {
 
   useEffect(() => {
     const handleSpaceKeyDown = (event) => {
-      if (event.keyCode === 32) {
-        !playing ? handleButtonStart() : handleButtonStop();
+      if (trainingCompleted) {
+        return;
       }
+
+      event.keyCode === 32 && !playing
+        ? handleButtonStart()
+        : handleButtonStop();
     };
 
     document.addEventListener('keydown', handleSpaceKeyDown);
     return () => {
       document.removeEventListener('keydown', handleSpaceKeyDown);
     };
-  }, [playing]);
+  }, [playing, trainingCompleted]);
 
   return (
     <TimerWrapper>
@@ -105,47 +111,32 @@ export const Timer = ({ time, getDataFromTimer }) => {
         </CountdownCircleTimer>
       </TimerClock>
 
-      {/* <SvgCustom
-            icon="icon-pause"
-            size="14"
-            color={theme.colors.white}
-            fill={theme.colors.white}
-          /> */}
-
-      {/* //! Поки немає залитого SvgCustom компонента на іконки підключив через svg */}
-
       {playing === false || trainingCompleted === true ? (
         <TimerButton type="button" onClick={handleButtonStart}>
           {trainingCompleted !== true ? (
-            <svg
-              width="14"
-              height="14"
-              fill={theme.colors.white}
+            <SvgCustom
+              icon="icon-play"
+              size="14"
+              color={theme.colors.white}
               stroke={theme.colors.white}
-            >
-              <use href={`${sprite}#icon-play`} />
-            </svg>
+            />
           ) : (
-            <svg
-              width="14"
-              height="14"
-              fill={theme.colors.white}
+            <SvgCustom
+              icon="icon-done"
+              size="14"
+              color={theme.colors.white}
               stroke={theme.colors.white}
-            >
-              <use href={`${sprite}#icon-done`} />
-            </svg>
+            />
           )}
         </TimerButton>
       ) : (
         <TimerButton type="button" onClick={handleButtonStop}>
-          <svg
-            width="14"
-            height="14"
-            fill={theme.colors.white}
+          <SvgCustom
+            icon="icon-pause"
+            size="14"
+            color={theme.colors.white}
             stroke={theme.colors.white}
-          >
-            <use href={`${sprite}#icon-pause`} />
-          </svg>
+          />
         </TimerButton>
       )}
     </TimerWrapper>
