@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TimerWrapper,
   TimerClock,
@@ -8,6 +8,41 @@ import {
 } from './Timer.styled';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 import theme from '../../styles/theme';
+import sprite from '../../img/sprite.svg';
+
+//* ===================================================================
+// TODO Підключення в модалці для відправлення форми на бекенд
+//! Стейт в якому будуть дані про кількість калорій і час з одної вправи exercises/params
+// const [timeFromExerciseParam] = useState(3);
+// const [burnedCaloriesFromExerciseParam] = useState(309);
+
+//! Стейт даних для формування запиту на бекенд /diary/exercise
+// const [time, setTimer] = useState(0);
+// const [burnedCalories, setBurnedCalories] = useState(0);
+// console.log('🤬>>>  time:\n', time);
+// console.log('🤬>>>  burnedCalories:\n', burnedCalories);
+
+// const handleDataFromRenderTime = (timeInSeconds) => {
+//   const minutes = Number(timeFromExerciseParam - timeInSeconds / 60);
+//   setTimer(minutes);
+// };
+
+// useEffect(() => {
+//   const handleBurnedCalories = () => {
+//     setBurnedCalories(
+//       (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
+//     );
+//   };
+
+//   handleBurnedCalories();
+// }, [burnedCaloriesFromExerciseParam, timeFromExerciseParam, time]);
+
+//TODO  В рендер додати Розмітку таймера
+// <Timer
+//   time={timeFromExerciseParam}
+//   getDataFromTimer={handleDataFromRenderTime}
+// />;
+//* ===================================================================
 
 const timerProps = {
   isSmoothColorTransition: true, // ?-------Вказує, чи повинні кольори плавно переходити до наступного кольору
@@ -23,12 +58,9 @@ const timerProps = {
   colors: theme.colors.primary, // ? -------Кольори на якы змінювати коло
 };
 
-{
-  /* <Timer time={3 * 60} />; // ! виклик компонента для підключення. Вимагає час в секундах. Ще не дороблений*/
-}
-
-export const Timer = ({ time, onDataFromChild }) => {
+export const Timer = ({ time, getDataFromTimer }) => {
   const [playing, setPlaying] = useState(false);
+  const [trainingCompleted, setTrainingCompleted] = useState(false);
 
   const handleButtonStart = () => {
     setPlaying(true);
@@ -38,63 +70,81 @@ export const Timer = ({ time, onDataFromChild }) => {
     setPlaying(false);
   };
 
+  useEffect(() => {
+    const handleSpaceKeyDown = (event) => {
+      if (event.keyCode === 32) {
+        !playing ? handleButtonStart() : handleButtonStop();
+      }
+    };
+
+    document.addEventListener('keydown', handleSpaceKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleSpaceKeyDown);
+    };
+  }, [playing]);
+
   return (
     <TimerWrapper>
       <TimerTitle>Time</TimerTitle>
       <TimerClock>
         <CountdownCircleTimer
           {...timerProps}
-          duration={time}
-          initialRemainingTime={time}
+          duration={time * 60}
+          initialRemainingTime={time * 60}
           isPlaying={playing}
+          onUpdate={(remainingTime) => {
+            remainingTime === 0 && setTrainingCompleted(true);
+            getDataFromTimer(remainingTime);
+          }}
           onComplete={() => ({
             shouldRepeat: false,
             delay: 1,
           })}
         >
-          {({ remainingTime }) =>
-            renderTime(remainingTime, playing, onDataFromChild)
-          }
+          {({ remainingTime }) => renderTime(remainingTime)}
         </CountdownCircleTimer>
       </TimerClock>
 
-      {playing === false ? (
+      {/* <SvgCustom
+            icon="icon-pause"
+            size="14"
+            color={theme.colors.white}
+            fill={theme.colors.white}
+          /> */}
+
+      {/* //! Поки немає залитого SvgCustom компонента на іконки підключив через svg */}
+
+      {playing === false || trainingCompleted === true ? (
         <TimerButton type="button" onClick={handleButtonStart}>
-          {/* <SvgCustom icon="icon-play" size="14" color={theme.colors.white} /> */}
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.91667 1.75L11.0833 7L2.91667 12.25V1.75Z"
-              fill="#EFEDE8"
-              stroke="#EFEDE8"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          {trainingCompleted !== true ? (
+            <svg
+              width="14"
+              height="14"
+              fill={theme.colors.white}
+              stroke={theme.colors.white}
+            >
+              <use href={`${sprite}#icon-play`} />
+            </svg>
+          ) : (
+            <svg
+              width="14"
+              height="14"
+              fill={theme.colors.white}
+              stroke={theme.colors.white}
+            >
+              <use href={`${sprite}#icon-done`} />
+            </svg>
+          )}
         </TimerButton>
       ) : (
         <TimerButton type="button" onClick={handleButtonStop}>
-          {/* <SvgCustom icon="icon-cross" size="10" color={theme.colors.white} /> */}
           <svg
-            width="8"
-            height="10"
-            viewBox="0 0 8 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            fill={theme.colors.white}
+            stroke={theme.colors.white}
           >
-            <path
-              d="M0.66629 9V1M7.33296 9V1"
-              stroke="#EFEDE8"
-              strokeWidth="1.3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <use href={`${sprite}#icon-pause`} />
           </svg>
         </TimerButton>
       )}
@@ -102,15 +152,7 @@ export const Timer = ({ time, onDataFromChild }) => {
   );
 };
 
-const renderTime = (remainingTime, playing, onDataFromChild) => {
-  const sendDataToParent = () => {
-    onDataFromChild(remainingTime);
-  };
-
-  if (!playing) {
-    sendDataToParent(remainingTime);
-  }
-
+const renderTime = (remainingTime) => {
   if (remainingTime === 0) {
     return <TimerValue>Training completed!</TimerValue>;
   }
@@ -119,8 +161,8 @@ const renderTime = (remainingTime, playing, onDataFromChild) => {
   const seconds = remainingTime % 60;
 
   return (
-    <TimerValue role="timer" aria-live="assertive">
-      {minutes}:{seconds}
+    <TimerValue>
+      {`0${minutes}`}:{seconds < 10 ? `0${seconds}` : seconds}
     </TimerValue>
   );
 };
