@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ExercisesItem = styled.li`
+export const ExercisesItemWrappoer = styled.li`
   display: block;
   padding-bottom: 20px;
 
@@ -28,7 +28,7 @@ export const ExerscisesItemContainer = styled.div`
   border-radius: 12px;
 
   @media screen and (min-width: 768px) {
-    width: 215px;
+    width: 224px;
   }
 
   @media screen and (min-width: 1440px) {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const CategoryLists = styled.ul`
   list-style-type: none;
   display: flex;
-  gap: 28px;
+  gap: 20px;
   margin-bottom: 40px;
   padding-top: 20px;
   @media screen and (min-width: 768px) {
@@ -24,5 +24,8 @@ export const CategoryExercisesStyle = styled.a`
 `;
 
 export const ExerciseCards = styled.div`
-  color: red;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 23px;
 `;

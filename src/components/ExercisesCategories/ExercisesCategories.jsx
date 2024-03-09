@@ -1,72 +1,138 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
   CategoryLists,
   CategoryExercisesStyle,
+  ExerciseCards,
 } from './ExercisesCategories.styled';
-import exercisesLink from '../../services/api/exercises';
-import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { slider } from '../../helpers/slider/slider';
-import { Link } from 'react-router-dom';
+import ExercisesItem from '../CustomExercisesItem/CustomExercisesItem';
+
+export const Categories = {
+  'Body parts': 'bodyParts',
+  Equipment: 'equipment',
+  Muscles: 'target',
+};
+
+export const CATEGORIES = {
+  'Body parts': 'bodyParts',
+  Equipment: 'equipment',
+  Muscles: 'target',
+};
 
 const ExercisesCategories = () => {
   const [exercises, setExercises] = useState([]);
+  // [key, value] для цього апі params?key=equipment&value=barbell
+  const [exercisesList, setExercisesList] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const isCategorySelected = selectedCategory !== null;
 
-  const fetchExercises = async (category, subcategory) => {
+  const fetchExercises = async (category) => {
+    setSelectedCategory(null);
     try {
-      const response = await exercisesLink.get('/exercises');
-      const allExercises = [
-        ...response.data.bodyPart,
-        ...response.data.equipment,
-        ...response.data.target,
-      ];
-
-      const filteredExercises = allExercises.filter(
-        (exercise) => exercise.filter === subcategory
+      const response = await axios.get(
+        `https://project-qwerty2024-back.onrender.com/api/exercises?filter=${category}`,
+        {
+          headers: {
+            Authorization:
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNDgyNiwiZXhwIjoxNzEwMDk3NjI2fQ.KHNi-Abea7UVqHuhxCFwv-WzSdzHIlPAV2dusZ9uSCc',
+          },
+        }
       );
-      setExercises(filteredExercises);
+
+      console.log(response, 'response');
+      setExercises(response.data[category]);
+      // setSelectedCategory(category);
     } catch (error) {
-      console.error('Error', error);
+      console.error('Error fetching exercises:', error);
     }
+  };
+
+  const fetchExerciseList = async (key, value) => {
+    try {
+      const response = await axios.get(
+        `https://project-qwerty2024-back.onrender.com/api/exercises/params?key=${key}&value=${value}`,
+        {
+          headers: {
+            Authorization:
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNDgyNiwiZXhwIjoxNzEwMDk3NjI2fQ.KHNi-Abea7UVqHuhxCFwv-WzSdzHIlPAV2dusZ9uSCc',
+          },
+        }
+      );
+
+      setExercisesList(response.data.exercises);
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchExercises('bodyPart');
+  }, []);
+
+  const renderExercisesList = () => {
+    if (isCategorySelected) {
+      return (
+        <div>
+          <button
+            onClick={() => {
+              document.title = 'React App';
+              setSelectedCategory(null);
+            }}
+          >
+            back
+          </button>
+          <ExerciseCards>
+            {exercisesList.length > 0
+              ? exercisesList.map((exercise) => (
+                  <ExercisesItem key={exercise._id} subcategory={exercise} />
+                ))
+              : 'Empty'}
+          </ExerciseCards>
+        </div>
+      );
+    }
+
+    return (
+      exercises &&
+      exercises.length > 0 && (
+        <ExerciseCards>
+          {exercises.map((exercise) => (
+            <ExercisesSubcategoriesItem
+              key={exercise._id}
+              subcategory={exercise}
+              onSelect={async (key, value) => {
+                document.title = key;
+                await fetchExerciseList(key, value);
+                setSelectedCategory([key, value]);
+              }}
+            />
+          ))}
+        </ExerciseCards>
+      )
+    );
   };
 
   return (
     <div>
       <CategoryLists>
         <li>
-          <CategoryExercisesStyle
-            onClick={() => fetchExercises('Body parts', 'Body parts')}
-          >
+          <CategoryExercisesStyle onClick={() => fetchExercises('bodyPart')}>
             Body parts
           </CategoryExercisesStyle>
         </li>
         <li>
-          <CategoryExercisesStyle
-            onClick={() => fetchExercises('Muscles', 'Muscles')}
-          >
-            Muscles
-          </CategoryExercisesStyle>
-        </li>
-        <li>
-          <CategoryExercisesStyle
-            onClick={() => fetchExercises('Equipment', 'Equipment')}
-          >
+          <CategoryExercisesStyle onClick={() => fetchExercises('equipment')}>
             Equipment
           </CategoryExercisesStyle>
         </li>
+        <li>
+          <CategoryExercisesStyle onClick={() => fetchExercises('target')}>
+            Muscles
+          </CategoryExercisesStyle>
+        </li>
       </CategoryLists>
-      <Slider {...slider}>
-        {exercises.map((exercise) => (
-          <Link
-            key={exercise._id}
-            to={`/exercises/${exercise.filter}/${exercise.name}`}
-          >
-            <ExercisesSubcategoriesItem subcategory={exercise} />
-          </Link>
-        ))}
-      </Slider>
+      {renderExercisesList()}
     </div>
   );
 };
