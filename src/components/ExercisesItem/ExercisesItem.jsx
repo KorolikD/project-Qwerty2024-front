@@ -3,7 +3,7 @@ import {
   BodyPart,
   BodyPartCategory,
   ExercisesItemWrappoer,
-} from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem.styled';
+} from './ExercisesSubcategoriesItem.styled';
 
 const ExercisesItem = ({ subcategory }) => {
   return (

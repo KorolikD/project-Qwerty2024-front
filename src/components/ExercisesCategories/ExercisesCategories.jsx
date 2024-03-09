@@ -6,7 +6,7 @@ import {
   CategoryExercisesStyle,
   ExerciseCards,
 } from './ExercisesCategories.styled';
-import ExercisesItem from '../CustomExercisesItem/CustomExercisesItem';
+import ExercisesItem from '../ExercisesItem/ExercisesItem';
 
 export const Categories = {
   'Body parts': 'bodyParts',
