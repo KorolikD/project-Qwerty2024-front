@@ -1,4 +1,4 @@
-import 'modern-normalize/modern-normalize.css';
+
 import {  Title, Paragraph, InfoContainer, Button} from './ErrorPage.styled.js';
 import Logo404 from '../../components/Logo/404Logo.jsx';
 import ResponsiveBackground from './ResponsiveBackground';

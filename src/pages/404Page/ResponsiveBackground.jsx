@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import { Background } from "./ErrorPage.styled";
 
 const ResponsiveBackground = ({ images }) => {
