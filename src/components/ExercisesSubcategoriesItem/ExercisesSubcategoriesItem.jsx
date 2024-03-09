@@ -4,19 +4,12 @@ import {
   BodyPartCategory,
   ExercisesItem,
 } from './ExercisesSubcategoriesItem.styled';
-import {
-  CATEGORIES,
-  Categories,
-} from '../ExercisesCategories/ExercisesCategories';
 
 const ExercisesSubcategoriesItem = ({ subcategory, onSelect }) => {
   return (
     <ExercisesItem
       onClick={() =>
-        onSelect(
-          subcategory.filter.toLowerCase(),
-          subcategory.name.toLowerCase()
-        )
+        onSelect(subcategory.filter, subcategory.name.toLowerCase())
       }
     >
       <ExerscisesItemContainer

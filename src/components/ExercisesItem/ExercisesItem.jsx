@@ -5,7 +5,7 @@ import {
   ExercisesItemWrappoer,
 } from './ExercisesSubcategoriesItem.styled';
 
-const ExercisesItem = ({ subcategory }) => {
+const CustomExercisesItem = ({ subcategory }) => {
   return (
     <ExercisesItemWrappoer>
       <ExerscisesItemContainer
@@ -21,4 +21,4 @@ const ExercisesItem = ({ subcategory }) => {
   );
 };
 
-export default ExercisesItem;
+export default CustomExercisesItem;

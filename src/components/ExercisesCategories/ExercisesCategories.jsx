@@ -6,13 +6,7 @@ import {
   CategoryExercisesStyle,
   ExerciseCards,
 } from './ExercisesCategories.styled';
-import ExercisesItem from '../ExercisesItem/ExercisesItem';
-
-export const Categories = {
-  'Body parts': 'bodyPart',
-  Equipment: 'equipment',
-  Muscles: 'target',
-};
+import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 
 export const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -85,7 +79,10 @@ const ExercisesCategories = () => {
           <ExerciseCards>
             {exercisesList.length > 0
               ? exercisesList.map((exercise) => (
-                  <ExercisesItem key={exercise._id} subcategory={exercise} />
+                  <CustomExercisesItem
+                    key={exercise._id}
+                    subcategory={exercise}
+                  />
                 ))
               : 'Empty'}
           </ExerciseCards>
