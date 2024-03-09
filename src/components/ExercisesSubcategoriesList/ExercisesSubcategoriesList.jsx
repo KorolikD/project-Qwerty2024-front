@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Slider from 'react-slick';
+
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { slider } from '../../helpers/slider/slider';
-import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 
 const ExercisesSubcategoriesList = () => {
   const [exercises, setExercises] = useState([]);
@@ -40,13 +38,7 @@ const ExercisesSubcategoriesList = () => {
     fetchExercises();
   }, []);
 
-  return (
-    <Slider {...slider}>
-      {exercises.map((exercise) => (
-        <ExercisesSubcategoriesItem key={exercise._id} subcategory={exercise} />
-      ))}
-    </Slider>
-  );
+  return <div></div>;
 };
 
 export default ExercisesSubcategoriesList;
