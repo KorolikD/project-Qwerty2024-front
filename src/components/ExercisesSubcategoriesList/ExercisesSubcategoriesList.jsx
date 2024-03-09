@@ -8,7 +8,7 @@ const ExercisesSubcategoriesList = () => {
     const fetchExercises = async () => {
       try {
         const token =
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNDgyNiwiZXhwIjoxNzEwMDk3NjI2fQ.KHNi-Abea7UVqHuhxCFwv-WzSdzHIlPAV2dusZ9uSCc';
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I';
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,

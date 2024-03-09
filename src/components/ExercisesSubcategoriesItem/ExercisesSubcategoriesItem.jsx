@@ -13,7 +13,10 @@ const ExercisesSubcategoriesItem = ({ subcategory, onSelect }) => {
   return (
     <ExercisesItem
       onClick={() =>
-        onSelect(subcategory.filter, subcategory.name.toLowerCase())
+        onSelect(
+          subcategory.filter.toLowerCase(),
+          subcategory.name.toLowerCase()
+        )
       }
     >
       <ExerscisesItemContainer

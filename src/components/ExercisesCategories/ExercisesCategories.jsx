@@ -9,13 +9,13 @@ import {
 import ExercisesItem from '../ExercisesItem/ExercisesItem';
 
 export const Categories = {
-  'Body parts': 'bodyParts',
+  'Body parts': 'bodyPart',
   Equipment: 'equipment',
   Muscles: 'target',
 };
 
 export const CATEGORIES = {
-  'Body parts': 'bodyParts',
+  'Body parts': 'bodyPart',
   Equipment: 'equipment',
   Muscles: 'target',
 };
@@ -35,7 +35,7 @@ const ExercisesCategories = () => {
         {
           headers: {
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNDgyNiwiZXhwIjoxNzEwMDk3NjI2fQ.KHNi-Abea7UVqHuhxCFwv-WzSdzHIlPAV2dusZ9uSCc',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
           },
         }
       );
@@ -55,7 +55,7 @@ const ExercisesCategories = () => {
         {
           headers: {
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNDgyNiwiZXhwIjoxNzEwMDk3NjI2fQ.KHNi-Abea7UVqHuhxCFwv-WzSdzHIlPAV2dusZ9uSCc',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
           },
         }
       );
@@ -103,7 +103,7 @@ const ExercisesCategories = () => {
               subcategory={exercise}
               onSelect={async (key, value) => {
                 document.title = key;
-                await fetchExerciseList(key, value);
+                await fetchExerciseList(CATEGORIES[key], value);
                 setSelectedCategory([key, value]);
               }}
             />
