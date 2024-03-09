@@ -1,5 +1,3 @@
-
-
 import logoMobile404 from '/logo/404-mobile-Logo.png';
 import logoMobile4042x from '/logo/404-mobile-Logo2x.png';
 import logodesctop404 from '/logo/404-desktopLogo.png';

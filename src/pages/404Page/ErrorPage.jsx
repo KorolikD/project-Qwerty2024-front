@@ -1,7 +1,6 @@
 import 'modern-normalize/modern-normalize.css';
 import {  Title, Paragraph, InfoContainer, Button} from './ErrorPage.styled.js';
-// import {HomeButton} from './HomeButton';
-import Logo404 from './Logo.jsx';
+import Logo404 from '../../components/Logo/404Logo.jsx';
 import ResponsiveBackground from './ResponsiveBackground';
 import Container from '../../components/Container/Container.jsx';
 
@@ -34,6 +33,7 @@ const ErrorPage = () => {
       <Button to='/'>Go Home</Button>
       </InfoContainer>
       <ResponsiveBackground images={images} />
+      
     
 
     </Container>

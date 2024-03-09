@@ -39,10 +39,11 @@ export const Title = styled.h1`
 
   @media (min-width: 768px) {
     font-size: 160px;
+    margin-top: 260px;
   }
 
   @media (min-width: 1024px) {
-    // font-size: 72px;
+    margin-top: 172px;
   }
 `;
 
@@ -56,8 +57,9 @@ export const Paragraph = styled.p`
 
   @media (min-width: 768px) {
     font-size: 16px;
-    margin-top: 28px;
-    margin-bottom: 28px;
+    width: 356px;
+    height: 144px;
+    line-height: 24px;
   }
 
   @media (min-width: 1024px) {
@@ -100,32 +102,31 @@ export const Button = styled(Link)`
     width: 208px;
     height: 56px;
     padding: 16px 60px;
+    margin-top: 28px;
   }
 `;
 
 export const Background = styled.div`
   position: absolute;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right bottom;
 
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  top: 241px;
+  left: 107px;
   right: 0;
   bottom: 0;
   background-image: url(${(props) => props.image}),
-    linear-gradient(170.48deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
-    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%);
+    linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+    linear-gradient(170.48deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%);
 
   @media (min-width: 768px) {
-    /* width: 670px;
-    height: 1005px;
     top: 131px;
-    left: 331px; */
+    left: 331px;
   }
 
   @media (min-width: 1024px) {
-    /* top: -152px;
-    left: 770px; */
+    top: -152px;
+    left: 770px;
   }
 `;
