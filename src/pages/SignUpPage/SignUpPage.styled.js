@@ -77,7 +77,7 @@ export const Span = styled.span`
   font-weight: 400;
   line-height: 18px;
   letter-spacing: 0px;
-  text-align: left;
+ 
   margin-top: 12px;
   color: ${(props) => props.theme.colors.grey};
 

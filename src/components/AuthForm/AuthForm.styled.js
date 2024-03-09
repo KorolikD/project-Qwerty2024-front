@@ -26,24 +26,12 @@ export const Input = styled(AntInput)`
       letter-spacing: 0em;
       text-align: left;
     }
-
-    @media screen and (min-width: 1200px) {
-      width: 364px;
-      height: 52px;
-      padding: 14px 307px 14px 14px;
-      border-radius: 12px;
-      border: 1px;
-      gap: 10px;
-    }
   }
 
   @media screen and (max-width: 768px) {
     width: 364px;
     height: 52px;
     padding: 14px 307px 14px 14px;
-  }
-
-  @media screen and (min-width: 1200px) {
   }
 
   &:hover,
