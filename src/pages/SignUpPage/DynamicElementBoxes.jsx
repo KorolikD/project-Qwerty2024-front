@@ -1,13 +1,14 @@
-import { VideoTutorialBox, CaloriesBox } from "./DynamicElementBoxes.styled";
+import { VideoTutorialBox, CaloriesBox, VideoSpan, VideoParagraph, CalorieCountSpan, CalorieNum } from "./DynamicElementBoxes.styled";
 
-const DynamicBox = ({ type, children, position }) => {
+
+const DynamicBox = ({ type}) => {
     
     const renderBox = () => {
       switch (type) {
         case 'videoTutorial':
-          return <VideoTutorialBox></VideoTutorialBox>;
+          return <VideoTutorialBox><VideoSpan>350+<VideoParagraph>Video tutorial</VideoParagraph></VideoSpan></VideoTutorialBox>;
         case 'calories':
-          return <CaloriesBox></CaloriesBox>;
+          return <CaloriesBox><CalorieCountSpan>500<CalorieNum>cal</CalorieNum></CalorieCountSpan></CaloriesBox>;
         default:
           return null; 
       }

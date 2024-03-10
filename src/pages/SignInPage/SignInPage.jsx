@@ -16,7 +16,7 @@ const SignInPage = () => {
 <AuthForm type='SignIn'/>
  </FormContainer>
  <ResponsiveBackground/>
- <DynamicBox type='videoTutorial' ></DynamicBox>
+ <DynamicBox type='videoTutorial'></DynamicBox>
 <DynamicBox type='calories'></DynamicBox>
  </Container>
  </>

@@ -58,3 +58,68 @@ export const CaloriesBox = styled(Box)`
     left: 1228px;
   }
 `;
+
+export const VideoSpan = styled.span`
+  color: ${(props) => props.theme.colors.white};
+
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
+`;
+
+export const VideoParagraph = styled.p`
+  color: ${(props) => props.theme.colors.grey};
+  margin: 0;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
+`;
+
+export const CalorieCountSpan = styled.span`
+  color: ${(props) => props.theme.colors.white};
+
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -1px;
+  text-align: left;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
+`;
+
+export const CalorieNum = styled.span`
+  color: ${(props) => props.theme.colors.textWhite30};
+  margin-left: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
+`;
