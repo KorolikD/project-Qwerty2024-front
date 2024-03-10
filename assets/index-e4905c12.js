@@ -1,4 +1,4 @@
-import{j as e,L as l,u as t,N as p,a as n,s as d,t as x,b as g,O as m}from"./index-4e8bc0a4.js";import{C as u}from"./Container-8fe17af5.js";import{S as i}from"./SvgCustom-6e49b77a.js";import{L as h}from"./LogOutBtn-edb346db.js";import{r as j}from"./react-responsive-62141b3e.js";const b="/project-Qwerty2024-front/logo/mobile-logo.png",f="/project-Qwerty2024-front/logo/mobile-logo@2x.png",a="/project-Qwerty2024-front/logo/desktop-logo.png",y="/project-Qwerty2024-front/logo/desktop-logo@2x.png",w=()=>e.jsx(l,{to:"diary",children:e.jsxs("picture",{children:[e.jsx("source",{media:"(max-width: 768px)",srcSet:`${b} 1x,${f} 2x`}),e.jsx("source",{media:"(min-width: 768px)",srcSet:`${a} 1x,${y} 2x`}),e.jsx("img",{src:a,alt:"Logo"})]})}),$=["Diary","Products","Exercises"],L=t(p)`
+import{j as e,V as l,b as t,N as p,f as n,s as d,t as x,X as g,Y as m}from"./index-e6cb168e.js";import{C as u}from"./Container-ee20c19f.js";import{S as i}from"./SvgCustom-d555b1e1.js";import{L as h}from"./LogOutBtn-8913608b.js";import{r as j}from"./react-responsive-1674ecfe.js";const f="/project-Qwerty2024-front/logo/mobile-logo.png",b="/project-Qwerty2024-front/logo/mobile-logo@2x.png",a="/project-Qwerty2024-front/logo/desktop-logo.png",y="/project-Qwerty2024-front/logo/desktop-logo@2x.png",w=()=>e.jsx(l,{to:"diary",children:e.jsxs("picture",{children:[e.jsx("source",{media:"(max-width: 768px)",srcSet:`${f} 1x,${b} 2x`}),e.jsx("source",{media:"(min-width: 768px)",srcSet:`${a} 1x,${y} 2x`}),e.jsx("img",{src:a,alt:"Logo"})]})}),$=["Diary","Products","Exercises"],v=t(p)`
   color: ${o=>o.theme.colors.white};
   padding: 10px 27px;
   border: 1px solid rgba(239, 237, 232, 0.2);
@@ -7,10 +7,10 @@ import{j as e,L as l,u as t,N as p,a as n,s as d,t as x,b as g,O as m}from"./ind
     background-color: ${({theme:o})=>o.colors.primary};
     border: none;
   }
-`,v=t.ul`
+`,L=t.ul`
   display: flex;
   gap: 16px;
-`,k=()=>e.jsx("nav",{children:e.jsx(v,{children:$.map(o=>e.jsx("li",{children:e.jsx(L,{to:o.toLowerCase(),children:o})},o))})}),S=t.div`
+`,k=()=>e.jsx("nav",{children:e.jsx(L,{children:$.map(o=>e.jsx("li",{children:e.jsx(v,{to:o.toLowerCase(),children:o})},o))})}),S=t.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,4 +67,4 @@ import{j as e,L as l,u as t,N as p,a as n,s as d,t as x,b as g,O as m}from"./ind
   display: flex;
   gap: 32px;
   margin-left: auto;
-`,E=()=>{const{blood:o}=n(d),r=n(g),s=j.useMediaQuery({minWidth:1440});return e.jsxs(N,{$isAuth:r,children:[e.jsx(w,{}),e.jsxs(A,{children:[s&&r&&o&&e.jsx(k,{}),r&&e.jsx(B,{})]}),!s&&r&&o&&e.jsx(Q,{}),s&&r&&e.jsx(h,{})]})},M=()=>e.jsxs(e.Fragment,{children:[e.jsx(E,{}),e.jsx(u,{children:e.jsx(m,{})})]}),I=M;export{I as default};
+`,E=()=>{const{blood:o}=n(d),r=n(g),s=j.useMediaQuery({minWidth:1440});return e.jsxs(N,{$isAuth:r,children:[e.jsx(w,{}),e.jsxs(A,{children:[s&&r&&o&&e.jsx(k,{}),r&&e.jsx(B,{})]}),!s&&r&&o&&e.jsx(Q,{}),s&&r&&e.jsx(h,{})]})},M=()=>e.jsxs(e.Fragment,{children:[e.jsx(E,{}),e.jsx(u,{children:e.jsx(m,{})})]}),O=M;export{O as default};
