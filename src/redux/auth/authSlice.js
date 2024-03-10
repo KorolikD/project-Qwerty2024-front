@@ -27,6 +27,7 @@ const initialState = {
     levelActivity: null,
     bmr: null,
     dpa: null,
+    createdAt: null,
   },
 };
 
@@ -38,7 +39,7 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.token = action.payload.token;
         state.user.name = action.payload.user.name;
-        state.user.emai = action.payload.user.email;
+        state.user.email = action.payload.user.email;
         state.isAuth = true;
         state.isLoading = false;
         state.error = null;
@@ -65,9 +66,10 @@ const authSlice = createSlice({
         state.error = action.payload.message;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.isLoading = false;
         state.isRefreshing = false;
+        state.isAuth = true;
         state.error = null;
       })
       .addCase(refreshUser.pending, (state) => {
@@ -102,7 +104,7 @@ const authSlice = createSlice({
         state.error = action.payload.message;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.user = null;
+        state.user = initialState;
         state.token = null;
         state.isLoading = false;
         state.isAuth = false;

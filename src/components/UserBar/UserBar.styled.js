@@ -7,6 +7,9 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 14px;
   margin-left: auto;
+  @media screen and (min-width: 768px) {
+    gap: 16px;
+  }
 `;
 
 export const Link = styled(NavLink)`
@@ -17,18 +20,16 @@ export const Link = styled(NavLink)`
 
 export const Circle = styled.span`
   display: flex;
-  background-color: rgba(48, 48, 48, 0.3);
-  padding: 8px;
-  border-radius: 50%;
-  border: 1px solid ${(props) => props.theme.colors.primary};
-  @media screen and (min-width: 768px) {
-    padding: 11px;
-  }
-`;
-
-export const Burger = styled.button`
-  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: rgba(48, 48, 48, 0.3);
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  overflow: hidden;
+  @media screen and (min-width: 768px) {
+    width: 46px;
+    height: 46px;
+  }
 `;
