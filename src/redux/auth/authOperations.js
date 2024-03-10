@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 axios.defaults.baseURL = 'https://project-qwerty2024-back.onrender.com/api/';
 
@@ -80,7 +80,7 @@ export const updateAvatar = createAsyncThunk(
   'updateAvatarStatus',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('users/avatar', credentials, {
+      const res = await axios.patch('users/avatar', credentials, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
