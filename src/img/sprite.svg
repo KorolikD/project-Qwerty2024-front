@@ -56,5 +56,14 @@
     <symbol id="icon-pause" viewBox="0 0 32 32">
     <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.9714" d="M9.143 25.143v-18.286M22.857 25.143v-18.286"></path>
     </symbol>
+    <symbol id="icon-chevron-right" viewBox="0 0 19 32">
+<path d="M3.109 31.909l-3.017-3.017 12.358-12.358-12.358-12.358 3.017-3.017 15.375 15.375-15.375 15.375z"></path>
+</symbol>
+<symbol id="icon-chevron-left" viewBox="0 0 19 32">
+<path d="M16.091 1.158l3.017 3.017-12.358 12.358 12.358 12.358-3.017 3.017-15.375-15.375 15.375-15.375z"></path>
+</symbol>
+<symbol id="icon-exclamation-mark" viewBox="0 0 4 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="4" d="M2 30v0.020M2 22v-20"></path>
+</symbol>
   </defs>
 </svg>

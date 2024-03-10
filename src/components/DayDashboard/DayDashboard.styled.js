@@ -95,8 +95,11 @@ export const AttentionDiv = styled.div`
   gap: 8px;
 
   & > div {
+    display: flex;
+    align-items: center;
     width: 24px;
     height: 24px;
+    padding: 5px;
     background-color: ${(props) => props.theme.colors.lightSecondary};
     border-radius: 50%;
   }

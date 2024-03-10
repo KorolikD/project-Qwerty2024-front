@@ -35,6 +35,7 @@ export const SwitchWrap = styled.div`
   align-items: center;
 
   > button {
+    height: 16px;
     background: transparent;
   }
 `;

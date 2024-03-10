@@ -50,8 +50,13 @@ const DaySwitch = ({ date, setDate, minDate }) => {
       <SwitchWrap>
         <button onClick={toPrevDay} disabled={toDisablePrevBtn}>
           <SvgCustom
-            icon="icon-back"
-            size="16"
+            icon="icon-chevron-left"
+            size="14"
+            stroke={
+              !toDisablePrevBtn
+                ? theme.colors.white
+                : 'rgba(239, 237, 232, 0.2)'
+            }
             color={
               !toDisablePrevBtn
                 ? theme.colors.white
@@ -60,7 +65,12 @@ const DaySwitch = ({ date, setDate, minDate }) => {
           />
         </button>
         <button onClick={toNextDay}>
-          <SvgCustom icon="icon-next" size="16" color={theme.colors.white} />
+          <SvgCustom
+            icon="icon-chevron-right"
+            size="14"
+            stroke={theme.colors.white}
+            color={theme.colors.white}
+          />
         </button>
 
         <Calendar
