@@ -15,6 +15,7 @@ export const DashboardList = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   row-gap: 20px;
   column-gap: 13px;
+  margin-top: 0;
   margin-bottom: 20px;
 
   font-size: 12px;
@@ -42,20 +43,25 @@ export const DashboardItem = styled.li`
   justify-content: space-between;
   height: 96px;
   padding: 14px;
-  border: 1px solid rgba(239, 237, 232, 0.4);
+
+  border: ${(props) => {
+    if (props.$border === 'green') return '1px solid #3CBF61';
+    if (props.$border === 'red') return '1px solid #E9101D';
+    return '1px solid rgba(239, 237, 232, 0.2)';
+  }};
   border-radius: 12px;
   background: rgba(239, 237, 232, 0.05);
+
+  &:nth-child(-n + 2) {
+    background: ${(props) => props.theme.colors.primary};
+    div {
+      color: rgba(239, 237, 232, 0.8);
+    }
+  }
 
   &:nth-last-child(-n + 2) {
     @media screen and (max-width: 767px) {
       height: 108px;
-    }
-  }
-
-  &:hover {
-    background: ${(props) => props.theme.colors.primary};
-    div {
-      color: rgba(239, 237, 232, 0.8);
     }
   }
 
@@ -88,8 +94,11 @@ export const AttentionDiv = styled.div`
   gap: 8px;
 
   & > div {
+    display: flex;
+    align-items: center;
     width: 24px;
     height: 24px;
+    padding: 5px;
     background-color: ${(props) => props.theme.colors.lightSecondary};
     border-radius: 50%;
   }
@@ -105,5 +114,3 @@ export const AttentionDiv = styled.div`
     }
   }
 `;
-
-

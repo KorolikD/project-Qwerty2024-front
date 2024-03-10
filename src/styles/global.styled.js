@@ -40,6 +40,7 @@ export const GlobalStyle = createGlobalStyle`
   ul {
     list-style: none;
     padding: 0;
+    margin-left: 0;
   }
 
   button {
