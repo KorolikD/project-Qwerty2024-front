@@ -5,8 +5,13 @@ import {
   CategoryLists,
   CategoryExercisesStyle,
   ExerciseCards,
+  BackButton,
+  SvgBack,
+  ExerciseCardsItem,
+  ExercisesSkroll,
 } from './ExercisesCategories.styled';
 import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
+import icons from '../../img/sprite.svg';
 
 export const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -29,7 +34,7 @@ const ExercisesCategories = () => {
         {
           headers: {
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDEwMTIzNywiZXhwIjoxNzEwMTg0MDM3fQ.VLn1ggYEnS2796174dZziQlsxSEIZr57Kra6mgficeE',
           },
         }
       );
@@ -49,7 +54,7 @@ const ExercisesCategories = () => {
         {
           headers: {
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDEwMTIzNywiZXhwIjoxNzEwMTg0MDM3fQ.VLn1ggYEnS2796174dZziQlsxSEIZr57Kra6mgficeE',
           },
         }
       );
@@ -68,24 +73,31 @@ const ExercisesCategories = () => {
     if (isCategorySelected) {
       return (
         <div>
-          <button
+          <BackButton
+            type="button"
             onClick={() => {
               document.title = 'React App';
               setSelectedCategory(null);
             }}
           >
-            back
-          </button>
-          <ExerciseCards>
-            {exercisesList.length > 0
-              ? exercisesList.map((exercise) => (
-                  <CustomExercisesItem
-                    key={exercise._id}
-                    subcategory={exercise}
-                  />
-                ))
-              : 'Empty'}
-          </ExerciseCards>
+            <SvgBack width="16" height="16">
+              <use href={icons + '#icon-next'} />
+            </SvgBack>
+            BACK
+          </BackButton>
+
+          <ExercisesSkroll style={{ height: '500px' }}>
+            <ExerciseCards>
+              {exercisesList.length > 0
+                ? exercisesList.map((exercise) => (
+                    <CustomExercisesItem
+                      key={exercise._id}
+                      subcategory={exercise}
+                    />
+                  ))
+                : 'Empty'}
+            </ExerciseCards>
+          </ExercisesSkroll>
         </div>
       );
     }
@@ -93,7 +105,7 @@ const ExercisesCategories = () => {
     return (
       exercises &&
       exercises.length > 0 && (
-        <ExerciseCards>
+        <ExerciseCardsItem>
           {exercises.map((exercise) => (
             <ExercisesSubcategoriesItem
               key={exercise._id}
@@ -105,7 +117,7 @@ const ExercisesCategories = () => {
               }}
             />
           ))}
-        </ExerciseCards>
+        </ExerciseCardsItem>
       )
     );
   };

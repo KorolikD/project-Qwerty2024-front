@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ConteinerForIt = styled.div`
   width: 335px;
-  height: 100%;
+
   padding: 16px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
@@ -78,4 +78,22 @@ export const ExItem = styled.li`
 export const SpanItem = styled.span`
   color: white;
   text-transform: capitalize;
+`;
+
+export const SvgStart = styled.svg`
+  stroke: orange;
+`;
+
+export const SpanRun = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: orange;
+`;
+
+export const SvgRun = styled.svg`
+  fill: white;
 `;
