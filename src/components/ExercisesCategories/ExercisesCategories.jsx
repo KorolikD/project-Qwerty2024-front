@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
-  CategoryLists,
   CategoryExercisesStyle,
+  CategoryLists,
   ExerciseCards,
 } from './ExercisesCategories.styled';
-import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 
 export const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -24,15 +24,7 @@ const ExercisesCategories = () => {
   const fetchExercises = async (category) => {
     setSelectedCategory(null);
     try {
-      const response = await axios.get(
-        `https://project-qwerty2024-back.onrender.com/api/exercises?filter=${category}`,
-        {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
-          },
-        }
-      );
+      const response = await axios.get(`/exercises?filter=${category}`);
 
       console.log(response, 'response');
       setExercises(response.data[category]);
@@ -45,13 +37,7 @@ const ExercisesCategories = () => {
   const fetchExerciseList = async (key, value) => {
     try {
       const response = await axios.get(
-        `https://project-qwerty2024-back.onrender.com/api/exercises/params?key=${key}&value=${value}`,
-        {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
-          },
-        }
+        `/exercises/params?key=${key}&value=${value}`
       );
 
       setExercisesList(response.data.exercises);
