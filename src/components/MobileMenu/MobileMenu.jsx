@@ -3,28 +3,19 @@ import theme from '../../styles/theme.js';
 import { push as Menu } from 'react-burger-menu';
 import { Link } from './MobileMenu.styled.js';
 import './menu.css';
-import { combinedStyles as styles } from './menuStyle.js';
+
 import MobileLogOutBtn from './MoileLogOutBtn/index.js';
 import { useMediaQuery } from 'react-responsive';
 const MobileMenu = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Menu
+      customBurgerIcon={false}
+      customCrossIcon={false}
       width={isMobile ? 200 : 350}
       right
       pageWrapId={'page-wrap'}
       outerContainerId={'outer-container'}
-      customBurgerIcon={
-        <SvgCustom
-          icon="icon-menu"
-          size="24"
-          color={theme.colors.primary}
-          tabSize="32"
-        />
-      }
-      customCrossIcon={
-        <SvgCustom icon="icon-cross" size="24" color="#ffffff" tabSize="32" />
-      }
     >
       <Link to="diary">Diary</Link>
       <Link to="products">Products</Link>
