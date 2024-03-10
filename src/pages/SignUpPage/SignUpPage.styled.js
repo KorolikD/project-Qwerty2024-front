@@ -24,12 +24,12 @@ export const FormContainer = styled.div`
   position: absolute;
   z-index: 2;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 496px;
     height: 336px;
     top: 189px;
     left: 32px;
-    gap: 32px;
+    margin-top: 0px;
   }
 
   @media screen and (min-width: 1200px) {
@@ -43,7 +43,7 @@ export const Title = styled.h1`
   font-weight: 700px;
   font-size: 24px;
 
-  @media screen and (min-width: 576px) {
+  @media screen and (min-width: 768px) {
     font-size: 32px;
     font-weight: 700;
     line-height: 44px;
@@ -63,49 +63,11 @@ export const Paragraph = styled.p`
   margin-top: 14px;
   margin-bottom: 10px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0px;
     text-align: left;
-  }
-`;
-
-export const Span = styled.span`
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0px;
- 
-  margin-top: 12px;
-  color: ${(props) => props.theme.colors.grey};
-
-  @media screen and (min-width: 768px) {
-    width: 176px
-height: 18px
-
-
-  }
-
-
-`;
-
-export const Link = styled.a`
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 18px;
-  letter-spacing: 0px;
-  text-align: left;
-  margin-top: 12px;
-  color: ${(props) => props.theme.colors.white};
-  text-decoration: underline;
-
-  @media screen and (min-width: 576px) {
-    font-size: 10px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    font-size: 12px;
   }
 `;

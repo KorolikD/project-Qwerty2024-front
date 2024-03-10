@@ -4,7 +4,7 @@ import { Input as AntInput, Button as AntButton } from 'antd';
 export const Input = styled(AntInput)`
   width: 335px;
   height: 46px;
-  padding: 14px 283px 14px 14px;
+
   margin: 18px 0 0 0;
 
   border-radius: 12px;
@@ -28,7 +28,7 @@ export const Input = styled(AntInput)`
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 364px;
     height: 52px;
     padding: 14px 307px 14px 14px;
@@ -83,5 +83,41 @@ export const Button = styled(AntButton)`
     padding: 16px 60px;
     border-radius: 12px;
     gap: 10px;
+  }
+`;
+
+export const Link = styled.a`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-top: 12px;
+  color: ${(props) => props.theme.colors.white};
+  text-decoration: underline;
+
+  @media screen and (min-width: 576px) {
+    font-size: 10px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 12px;
+  }
+`;
+
+export const Paragraph = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0px;
+
+  margin-top: 12px;
+  color: ${(props) => props.theme.colors.grey};
+
+  @media screen and (min-width: 768px) {
+    width: 190px;
+    height: 18px;
+
+    text-align: center;
   }
 `;

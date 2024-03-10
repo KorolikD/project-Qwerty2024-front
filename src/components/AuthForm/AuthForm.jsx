@@ -1,10 +1,12 @@
 
+
 import { useFormik } from 'formik';
 
 import { useDispatch } from 'react-redux';
+
 import { register } from '../../redux/auth/authOperations';
 
-import { Input, Button } from './AuthForm.styled';
+import { Input, Button, Link, Paragraph} from './AuthForm.styled';
 
 
 
@@ -54,6 +56,7 @@ const SignUpForm = ({ onSubmit }) => {
       <Button type="primary" htmlType="submit">
         Sign Up
       </Button>
+      <Paragraph>Already have an account?&nbsp;<Link to="/signin">Sign In</Link></Paragraph>
     </form>
   );
 };
@@ -98,6 +101,7 @@ const SignInForm = ({ onSubmit }) => {
       <Button type="primary" htmlType="submit">
         Sign In
       </Button>
+      <Paragraph>Don't have an account?&nbsp;<Link to="/signup">Sign Up</Link></Paragraph>
     </form>
   );
 };
