@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './auth/authSlice';
+import { diaryReducer } from './diary/slice';
 
 import {
   FLUSH,
@@ -24,6 +25,7 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
+    diary: diaryReducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({

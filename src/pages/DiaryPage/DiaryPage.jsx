@@ -1,69 +1,66 @@
-// import { useEffect, useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import dayjs from 'dayjs';
-// import { selectUser } from '../../redux/auth/authSelectors.js';
-// import { getDayInfo } from '../../services/api/diary.js';
-import DaySwitch from '../../components/DaySwitch/index.js';
-import DayDashboard from '../../components/DayDashboard/index.js';
-import { DiaryContainer, DiaryWrapper } from './DiaryPage.styled.js';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import dayjs from 'dayjs';
+import { selectUser } from '../../redux/auth/authSelectors.js';
+import { getDayInfo } from '../../redux/diary/operations.js';
+import {
+  selectDiaryExercises,
+  selectDiaryProducts,
+} from '../../redux/diary/selectors.js';
+import TitlePage from '../../components/TitlePage'
+import DaySwitch from '../../components/DaySwitch';
+import DayDashboard from '../../components/DayDashboard';
+import DiaryTableForWhat from '../../components/DiaryTableForWhat';
+// import Container from '../../components/Container';
+import {
+  DiaryContainer,
+  DiarySwitchWrap,
+  DiaryTablesContainer,
+  DiaryWrapper,
+} from './DiaryPage.styled.js';
 
-// const DATE_FORMAT = 'DD/MM/YYYY';
+const DATE_FORMAT = 'DD/MM/YYYY';
 
 const DiaryPage = () => {
-  // const [date, setDate] = useState(dayjs().format(DATE_FORMAT));
-  // const [exercisesList, setExercisesList] = useState(null); // 1. burnedCalories (спалені під час тренування); 2. totalTime (час в хв витрачений на тренування)
+  const [date, setDate] = useState(dayjs().format(DATE_FORMAT));
 
-  // const [productsList, setProductsList] = useState(null); // 1. totalCalories (кількість спожитих за день)
+  const productsList = useSelector(selectDiaryProducts);
+  const exercisesList = useSelector(selectDiaryExercises);
+  const { createdAt } = useSelector(selectUser);
 
-  // const user = useSelector(selectUser); // 1.bmr - норма калорій (за день); 2. dpa (денна норма часу тренування хв); 3.blood; 4. createdAt - дата реєстрації const {createdAt, blood, bmr, dpa} = useSelector(selectUser);
+  const dispatch = useDispatch();
 
-  // const restOfCalories = bmr - productsList.totalCalories;
-  // const restOfSports = dpa - exercisesList.totslTime;
-
-  // useEffect(() => {
-  //   if (date === null) {
-  //     return;
-  //   }
-  //   const fetchDayInfo = async () => {
-  //     try {
-  //       const resp = await getDayInfo(date);
-  //       if (!resp) {
-  //         return;
-  //       }
-  //       setExercisesList(resp.userExercisesDiary);
-  //       setProductsList(resp.userProducts.Diary);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //     }
-  //   };
-  //   fetchDayInfo();
-  // }, [date]);
-
-  // const onChangeDate = (newDate) => {
-  //   setDate(newDate);
-  // };
+  useEffect(() => {
+    if (!date) {
+      return;
+    }
+    dispatch(getDayInfo(date));
+  }, [date, dispatch]);
 
   return (
-      <DiaryWrapper>
-        <div>
-          <div>
-            Title + <DaySwitch />
-          </div>
-        </div>
-        <DiaryContainer>
-          <DayDashboard
-          //bmr={bmr}
-          //dpa={dpa}
-          //caloriesConsumed={productList.totalCalories}
-          //caloriesBurned={exercisesList.burnedCalories}
-          //restOfCalories={restOfCalories}
-          //restOfSports={restOfSports}
+    <DiaryWrapper>
+      <DiarySwitchWrap>
+        <TitlePage title='Diary'/>
+        <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
+      </DiarySwitchWrap>
+      <DiaryContainer>
+        <DayDashboard />
+        <DiaryTablesContainer>
+          <DiaryTableForWhat
+            list={productsList}
+            date={date}
+            to="/products"
+            forProductsTable
+          />{' '}
+          <DiaryTableForWhat
+            list={exercisesList}
+            date={date}
+            to="/exercises"
+            forExercisesTable
           />
-          <div>
-            <span>ProductsTable</span> <span>ExercisesTable</span>
-          </div>
-        </DiaryContainer>
-      </DiaryWrapper>
+        </DiaryTablesContainer>
+      </DiaryContainer>
+    </DiaryWrapper>
   );
 };
 
