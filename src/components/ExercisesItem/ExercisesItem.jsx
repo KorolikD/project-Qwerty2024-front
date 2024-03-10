@@ -1,25 +1,37 @@
 import {
-  ExerscisesItemContainer,
-  BodyPart,
-  BodyPartCategory,
-  ExercisesItemWrappoer,
+  ConteinerForIt,
+  ExercisesItemWorkout,
+  Workout,
+  Button,
+  NameContainer,
+  NameFor,
+  ExList,
+  ExItem,
+  SpanItem,
 } from './ExercisesSubcategoriesItem.styled';
 
 const CustomExercisesItem = ({ subcategory }) => {
   return (
-    <ExercisesItemWrappoer>
-      <ExerscisesItemContainer
-        style={{
-          backgroundColor: 'blue',
-          backgroundImage: `linear-gradient(rgba(4, 4, 4, 0.5), rgba(4, 4, 4, 0.5))`,
-        }}
-      >
-        <BodyPart>{subcategory.name}</BodyPart>
-        <BodyPartCategory>{subcategory.bodyPart}</BodyPartCategory>
-        <BodyPartCategory>{subcategory.target}</BodyPartCategory>
-        <BodyPartCategory>{subcategory.burnedCalories}</BodyPartCategory>
-      </ExerscisesItemContainer>
-    </ExercisesItemWrappoer>
+    <ConteinerForIt>
+      <ExercisesItemWorkout>
+        <Workout>WORKOUT</Workout>
+        <Button>Start</Button>
+      </ExercisesItemWorkout>
+      <NameContainer>
+        <NameFor>{subcategory.name}</NameFor>
+      </NameContainer>
+      <ExList>
+        <ExItem>
+          Burned calories: <SpanItem>{subcategory.burnedCalories}</SpanItem>
+        </ExItem>
+        <ExItem>
+          Body part: <SpanItem>{subcategory.bodyPart}</SpanItem>
+        </ExItem>
+        <ExItem>
+          Target: <SpanItem>{subcategory.target}</SpanItem>
+        </ExItem>
+      </ExList>
+    </ConteinerForIt>
   );
 };
 

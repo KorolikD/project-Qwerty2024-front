@@ -1,55 +1,81 @@
 import styled from 'styled-components';
 
-export const ExercisesItemWrappoer = styled.li`
-  display: block;
-  padding-bottom: 20px;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 32px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding-bottom: 32px;
-  }
-
-  /* @media screen and (min-width: 768px) {
-    width: calc((100% - 16px) / 3);
-  } */
-`;
-
-export const ExerscisesItemContainer = styled.div`
+export const ConteinerForIt = styled.div`
   width: 335px;
-  height: 206px;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  background-color: #040404;
+  height: 100%;
+  padding: 16px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
-
-  @media screen and (min-width: 768px) {
-    width: 224px;
-  }
+  background: rgba(239, 237, 232, 0.05);
 
   @media screen and (min-width: 1440px) {
-    width: 237px;
+    width: 405px;
   }
 `;
 
-export const BodyPart = styled.p`
+export const ExercisesItemWorkout = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 33px;
+`;
+
+export const Workout = styled.p`
+  font-weight: 700;
+  font-size: 12px;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 4px;
+  width: 73px;
+  height: 24px;
+  background-color: rgba(239, 237, 232, 0.05);
+`;
+
+export const Button = styled.button`
+  display: flex;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+  color: orange;
+  background-color: transparent;
+  border: none;
+`;
+
+export const NameContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+`;
+
+export const NameFor = styled.p`
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
   color: white;
-
-  margin-top: 81px;
-  margin-bottom: 0;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
-export const BodyPartCategory = styled.p`
+export const ExList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+`;
+
+export const ExItem = styled.li`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
-  color: grey;
-  margin-top: 2px;
+  color: rgba(239, 237, 232, 0.4);
+`;
+
+export const SpanItem = styled.span`
+  color: white;
+  text-transform: capitalize;
 `;
