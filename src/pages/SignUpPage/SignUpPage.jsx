@@ -2,7 +2,7 @@ import Container from '../../components/Container/Container.jsx';
 import {  FormContainer, Title , Paragraph} from './SignUpPage.styled.js';
 import AuthForm from '../../components/AuthForm/AuthForm.jsx';
 import ResponsiveBackground from '../../components/ResponsiveBackground.jsx';
-import DynamicBox from './DynamicElementBoxes.jsx';
+import DynamicBox from '../../components/FloatingBoxes/DynamicElementBoxes.jsx';
 
 const SignUpPage = () => {
 

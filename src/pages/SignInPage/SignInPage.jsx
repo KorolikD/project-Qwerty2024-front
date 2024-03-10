@@ -2,7 +2,7 @@ import Container from '../../components/Container/Container';
 import {  FormContainer, Title , Paragraph } from './SignInPage.styled';
 import AuthForm from '../../components/AuthForm/AuthForm.jsx';
 import ResponsiveBackground from '../../components/ResponsiveBackground.jsx';
-import DynamicBox from '../SignUpPage/DynamicElementBoxes';
+import DynamicBox from '../../components/FloatingBoxes/DynamicElementBoxes';
 
 const SignInPage = () => {
 
@@ -12,7 +12,7 @@ const SignInPage = () => {
   
 <FormContainer>
 <Title>Sign In</Title>
-<Paragraph>Thank you for your interest in our platform. To complete the registration process, please provide us with the following information.</Paragraph>
+<Paragraph>Welcome! Please enter your credentials to login to the platform:</Paragraph>
 <AuthForm type='SignIn'/>
  </FormContainer>
  <ResponsiveBackground/>
