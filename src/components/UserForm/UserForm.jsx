@@ -1,58 +1,55 @@
 import { useFormik } from 'formik';
-import { Input, Radio } from 'antd'; 
+import { Input, message, Form } from 'antd';
 import validationSchema from './validationSchema';
 import { StyledButton } from '../Button/Button.styled';
-import Calendar from '../Calendar/Calendar'; 
-import { StyledForm, Label, Span, Wrapper } from './UserForm.styled';
+import Calendar from '../Calendar/Calendar';
+import { StyledForm, Label, Radio, Wrapper } from './UserForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../redux/auth/authOperations';
 import { selectUser } from '../../redux/auth/authSelectors';
+import { useState } from 'react';
+import theme from '../../styles/theme.js';
+import dayjs from 'dayjs';
+import SvgCustom from '../SvgCustom/SvgCustom';
+
+const radioGroups = [
+  {
+    label: 'Blood',
+    name: 'blood',
+    options: [1, 2, 3, 4],
+  },
+  {
+    name: 'sex',
+    options: ['male', 'female'],
+  },
+  {
+    name: 'levelActivity',
+    options: [
+      'Sedentary lifestyle (little or no physical activity)',
+      'Light activity (light exercises/sports 1-3 days per week)',
+      'Moderately active (moderate exercises/sports 3-5 days per week)',
+      'Very active (intense exercises/sports 6-7 days per week)',
+      'Extremely active (very strenuous exercises/sports and physical work)',
+    ],
+  },
+];
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  const [isOpenCalendar, setIsOpenCalendar] = useState(false);
+  const [date, setDate] = useState(dayjs().format('DD/MM/YYYY'));
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    console.log('Submitting form with values:', values); 
-    setSubmitting(true);
 
-    return validationSchema
-      .validate(values, { abortEarly: false })
-      .then(() => dispatch(updateUser(values)))
-      .then(() => {
-        formik.setFieldValue('isSubmitSuccessful', true);
-        formik.setFieldValue('submitError', null);
-      })
-      .catch(error => {
-        formik.setFieldValue('isSubmitSuccessful', false);
-        formik.setFieldValue('submitError', error.message || 'Failed to update user data');
-      })
-      .finally(() => {
-        setSubmitting(false); 
-      });
+  const handleSubmit = (values) => {
+    console.log(values);
+    message.success('Class');
+    dispatch(updateUser(values));
   };
 
-  const radioGroups = [
-    {
-      label: 'Blood',
-      name: 'blood',
-      options: [1, 2, 3, 4],
-    },
-    {
-      name: 'sex',
-      options: ['male', 'female'],
-    },
-    {
-      name: 'levelActivity',
-      options: [
-        'Sedentary lifestyle (little or no physical activity)',
-        'Light activity (light exercises/sports 1-3 days per week)',
-        'Moderately active (moderate exercises/sports 3-5 days per week)',
-        'Very active (intense exercises/sports 6-7 days per week)',
-        'Extremely active (very strenuous exercises/sports and physical work)'
-      ],
-    },
-  ];
+  const onOpenCalendar = () => {
+    setIsOpenCalendar(prev => !prev);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -65,16 +62,22 @@ const UserForm = () => {
       blood: user.blood || '',
       sex: user.sex || '',
       levelActivity: user.levelActivity || '',
-      isSubmitSuccessful: false,
-      submitError: null,
     },
+
     validationSchema: validationSchema,
     onSubmit: handleSubmit,
   });
 
   return (
-    <StyledForm onSubmit={formik.handleSubmit}>
-      <div>
+    <StyledForm
+      onFinishFailed={() => message.error('Bly')}
+      onFinish={formik.handleSubmit}
+    >
+      <Form.Item
+        help={formik.errors.name}
+        validateStatus={formik.errors.name ? 'error' : ''}
+        hasFeedback
+      >
         <Label htmlFor="name">Name</Label>
         <Input
           type="text"
@@ -84,7 +87,7 @@ const UserForm = () => {
           value={formik.values.name}
           onChange={formik.handleChange}
         />
-      </div>
+      </Form.Item>
       <div>
         <Label htmlFor="email">Email</Label>
         <Input
@@ -93,7 +96,7 @@ const UserForm = () => {
           id="email"
           value={formik.values.email}
           onChange={formik.handleChange}
-          style={{ color: 'rgba(239, 237, 232, 0.60)' }}
+          style={{ color: theme.colors.textWhite50 }}
           readOnly
           disabled
         />
@@ -101,41 +104,133 @@ const UserForm = () => {
       <Wrapper>
         <div>
           <Label htmlFor="height">Height</Label>
-          <Input type="number" name="height" id="height" value={formik.values.height} onChange={formik.handleChange} />
+          <Input
+            type="number"
+            name="height"
+            id="height"
+            value={formik.values.height}
+            onChange={formik.handleChange}
+          />
         </div>
         <div>
           <Label htmlFor="currentWeight">Current Weight</Label>
-          <Input type="number" name="currentWeight" id="currentWeight" value={formik.values.currentWeight} onChange={formik.handleChange} />
+          <Input
+            type="number"
+            name="currentWeight"
+            id="currentWeight"
+            value={formik.values.currentWeight}
+            onChange={formik.handleChange}
+          />
         </div>
       </Wrapper>
-      <Wrapper>  
+      <Wrapper>
         <div>
           <Label htmlFor="desiredWeight">Desired Weight</Label>
-          <Input type="number" name="desiredWeight" id="desiredWeight" value={formik.values.desiredWeight} onChange={formik.handleChange} />
+          <Input
+            type="number"
+            name="desiredWeight"
+            id="desiredWeight"
+            value={formik.values.desiredWeight}
+            onChange={formik.handleChange}
+          />
         </div>
-        <div>
-          <Label htmlFor="birthday">Date of birth</Label>
-          <Calendar id="birthday" value={formik.values.birthday} onChange={date => formik.setFieldValue('birthday', date)} />
-          {/* <DatePicker id="birthday" onChange={date => formik.setFieldValue('birthday', date)}/> */}
-        </div>
+        <div style={{ position: 'relative' }}>
+          <Label htmlFor="birthday">Date of Birth</Label>
+            <Input
+              type="text"
+              name="birthday"
+              id="birthday"
+              value={date}
+              onClick={onOpenCalendar}
+              onChange={(e) => {
+                setDate(e.target.value);
+                formik.setFieldValue('birthday', e.target.value);
+                }}
+              style={{ cursor: 'pointer', paddingRight: '30px' }}
+            />
+            <button
+             onClick={onOpenCalendar}
+             style={{
+               position: 'absolute',
+               right: '10px',
+               top: '50%',
+               transform: 'translateY(-50%)',
+               background: 'none',
+               border: 'none',
+               cursor: 'pointer',
+             }}
+            >
+              <SvgCustom
+                icon="icon-calendar"
+                size="20"
+                stroke={theme.colors.secondary}
+              />
+            </button>
+            {isOpenCalendar && (
+              <Calendar
+                id="birthday-calendar"
+                value={date ? dayjs(date, 'DD/MM/YYYY') : undefined}
+                onChange={(date) => {
+                  handleDateChange(date.format('DD/MM/YYYY'));
+                  formik.setFieldValue('birthday', date.format('DD/MM/YYYY'));
+                }}
+                date={date}
+                isOpen={isOpenCalendar}
+                minDate={dayjs('01/01/1900', 'DD/MM/YYYY')}
+              />
+            )}
+          </div> 
       </Wrapper>
-      {radioGroups.map((group, index) => (
-        <Radio.Group key={index} name={group.name} value={formik.values[group.name]} onChange={formik.handleChange}>
-          <Label>{group.label}</Label>
-          {group.options.map((option, idx) => (
-            <Radio key={idx} value={option}>
-              <Span>{option}</Span>
+
+      <Radio.Group
+        onChange={formik.handleChange}
+        value={formik.values.blood}
+        name={radioGroups[0].name}
+      >
+        {radioGroups[0].options.map((item, index) => {
+          return (
+            <Radio key={index} value={item}>
+              {item}
             </Radio>
-          ))}
-        </Radio.Group>
-      ))}
+          );
+        })}
+      </Radio.Group>
+
+      <Radio.Group
+        onChange={formik.handleChange}
+        value={formik.values.sex}
+        name={radioGroups[1].name}
+      >
+        {radioGroups[1].options.map((item, index) => {
+          return (
+            <Radio key={index} value={item}>
+              {item}
+            </Radio>
+          );
+        })}
+      </Radio.Group>
+
+      <Radio.Group
+        onChange={formik.handleChange}
+        value={formik.values.levelActivity}
+        name={radioGroups[2].name}
+      >
+        {radioGroups[2].options.map((item, index) => {
+          return (
+            <Radio key={index} value={index + 1}>
+              {item}
+            </Radio>
+          );
+        })}
+      </Radio.Group>
+
       {formik.values.isSubmitSuccessful && (
         <div style={{ color: 'green' }}>Form submitted successfully!</div>
       )}
       {formik.values.submitError && (
         <div style={{ color: 'red' }}>{formik.values.submitError}</div>
       )}
-      <StyledButton type="submit" $type="filled" >
+      <StyledButton type="submit" $type="filled">
         Save
       </StyledButton>
     </StyledForm>
