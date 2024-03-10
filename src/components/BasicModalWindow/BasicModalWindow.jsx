@@ -8,8 +8,8 @@ const BasicModalWindow = ({ children }) => {
   return (
     <ModalBackdrop>
       <ModalWindow>
-        <CloseModalBtn>
-        </CloseModalBtn>
+        <CloseModalBtn></CloseModalBtn>
+        {children}
       </ModalWindow>
     </ModalBackdrop>
   );

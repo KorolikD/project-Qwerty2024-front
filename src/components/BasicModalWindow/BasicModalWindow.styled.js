@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { globalColor } from '../../styles/root';
 
 const ModalBackdrop = styled.div`
   position: fixed;
@@ -55,7 +54,6 @@ const CloseModalBtn = styled.svg`
     width: 26px;
     height: 26px;
   }
-
 `;
 
 export { ModalBackdrop, ModalWindow, CloseModalBtn };
