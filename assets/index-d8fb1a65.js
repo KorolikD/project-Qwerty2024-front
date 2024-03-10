@@ -1,4 +1,4 @@
-import{b as t,j as e,a,e as m}from"./index-e6cb168e.js";import{E as b}from"./ExercisesSubcategoriesList-dc2449b4.js";const y=t.div`
+import{b as t,j as e,a,e as m}from"./index-53fbda63.js";import{E as b}from"./ExercisesSubcategoriesList-d29276cd.js";const y=t.div`
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
