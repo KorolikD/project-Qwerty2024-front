@@ -20,7 +20,7 @@ const DiaryMobileTable = ({
   return (
     <>
       {forExercisesTable && (
-        <DiaryTableList>
+        <DiaryTableList height="992">
           {list.map((exercise) => (
             <DiaryTableItem key={exercise._id}>
               <div>
@@ -64,7 +64,7 @@ const DiaryMobileTable = ({
       )}
 
       {forProductsTable && (
-        <DiaryTableList>
+        <DiaryTableList height="725">
           {list.map((product) => (
             <DiaryTableItem key={product._id}>
               <div>

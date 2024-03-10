@@ -4,9 +4,22 @@ export const DiaryTable = styled.table`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow: auto;
+  height: ${(props) => props.height}px;
+  padding-right: 18px;
   font-size: 16px;
   line-height: 1.5;
   color: ${(props) => props.theme.colors.white};
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 90px;
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
 `;
 
 export const TableCell = styled.td`

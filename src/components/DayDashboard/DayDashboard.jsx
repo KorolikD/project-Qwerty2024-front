@@ -106,7 +106,11 @@ const DayDashboard = () => {
       </DashboardList>
       <AttentionDiv>
         <div>
-          <SvgCustom icon="icon-next" size="24" color={theme.colors.white} />
+          <SvgCustom
+            icon="icon-exclamation-mark"
+            size="14"
+            stroke={theme.colors.white}
+          />
         </div>
         <p>
           Record all your meals in the calorie diary every day. This will help

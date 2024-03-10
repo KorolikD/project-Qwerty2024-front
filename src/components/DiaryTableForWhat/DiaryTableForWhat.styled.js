@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const DiaryTablesWrap = styled.div`
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   margin: 0 auto;
   padding: 16px 8px 16px 16px;
   height: ${(props) => (props.list === 'no' ? '335px' : 'auto')};
@@ -13,7 +13,7 @@ export const DiaryTablesWrap = styled.div`
   border-radius: 12px;
 
   @media screen and (min-width: 768px) {
-    height: ${(props) => (props.list === 'no' ? '234px' : 'auto')};
+    height: 234px;
     width: 704px;
   }
 

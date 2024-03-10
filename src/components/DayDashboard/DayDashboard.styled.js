@@ -15,6 +15,7 @@ export const DashboardList = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   row-gap: 20px;
   column-gap: 13px;
+  margin-top: 0;
   margin-bottom: 20px;
 
   font-size: 12px;
@@ -94,8 +95,11 @@ export const AttentionDiv = styled.div`
   gap: 8px;
 
   & > div {
+    display: flex;
+    align-items: center;
     width: 24px;
     height: 24px;
+    padding: 5px;
     background-color: ${(props) => props.theme.colors.lightSecondary};
     border-radius: 50%;
   }
