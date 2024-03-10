@@ -7,6 +7,7 @@ import {
   selectDiaryExercises,
   selectDiaryProducts,
 } from '../../redux/diary/selectors.js';
+import TitlePage from '../../components/TitlePage'
 import DaySwitch from '../../components/DaySwitch';
 import DayDashboard from '../../components/DayDashboard';
 import DiaryTableForWhat from '../../components/DiaryTableForWhat';
@@ -39,7 +40,7 @@ const DiaryPage = () => {
   return (
     <DiaryWrapper>
       <DiarySwitchWrap>
-        <span>Title +</span>
+        <TitlePage title='Diary'/>
         <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
       </DiarySwitchWrap>
       <DiaryContainer>
