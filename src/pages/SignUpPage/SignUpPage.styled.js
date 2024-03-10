@@ -1,27 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 500px;
-
-  @media screen and (max-width: 768px) {
-    padding-top: 200px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    padding-top: 700px;
-  }
-`;
-
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
+
   margin-top: 90px;
   width: 335px;
   height: 368px;
   position: absolute;
+  left: 20px;
   z-index: 2;
 
   @media screen and (min-width: 768px) {
@@ -30,11 +17,13 @@ export const FormContainer = styled.div`
     top: 189px;
     left: 32px;
     margin-top: 0px;
+    left: 32px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 496px;
     height: 336px;
+    left: 96px;
   }
 `;
 

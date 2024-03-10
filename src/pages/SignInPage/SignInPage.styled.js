@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
   width: 335px;
   height: 368px;
   position: absolute;
-
+  left: 20px;
   z-index: 2;
 
   @media screen and (min-width: 768px) {
@@ -15,13 +15,14 @@ export const FormContainer = styled.div`
     height: 336px;
     top: 189px;
     left: 32px;
-
+    left: 32px;
     margin: 0px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 496px;
     height: 336px;
+    left: 96px;
   }
 `;
 

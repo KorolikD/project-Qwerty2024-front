@@ -70,10 +70,11 @@ const SignInForm = ({ onSubmit }) => {
       password: '',
     },
     
-      onSubmit: (values, action) => {
-        dispatch(register(values));
-        action.resetForm();
-      },
+    onSubmit: async (values, action) => {
+      await dispatch(register(values));
+     
+      formik.resetForm();
+    },
    
     
   });
