@@ -1,14 +1,7 @@
-
-
 import { useFormik } from 'formik';
-
 import { useDispatch } from 'react-redux';
-
 import { register } from '../../redux/auth/authOperations';
-
-import { Input, Button, Link, Paragraph} from './AuthForm.styled';
-
-
+import { Input, Button, Link, Paragraph } from './AuthForm.styled';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -28,31 +21,34 @@ const SignUpForm = () => {
     <form onSubmit={formik.handleSubmit}>
       <div>
         <Input
-          id="name"
-          name="name" 
           type="text"
+          name="name" // Add name attribute
           placeholder="Name"
-          {...formik.getFieldProps('name')}
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          required
         />
       </div>
 
       <div>
         <Input
-          id="email"
-          type="email"
-          email="email"
+          type="email" // Corrected type
+          name="email" // Add name attribute
           placeholder="Email"
-          {...formik.getFieldProps('email')}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          required
         />
       </div>
 
       <div>
         <Input
-          id="password"
-          type="password"
-          password = "password"
+          type="password" // Corrected type
+          name="password" // Add name attribute
           placeholder="Password"
-          {...formik.getFieldProps('password')}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          required
         />
       </div>
 
@@ -64,7 +60,6 @@ const SignUpForm = () => {
   );
 };
 
-
 const SignInForm = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -72,32 +67,33 @@ const SignInForm = () => {
       email: '',
       password: '',
     },
-    
     onSubmit: (values) => {
       dispatch(register(values)); 
       formik.resetForm(); 
     },
-   
-    
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
         <Input
-          id="email"
-          type="email"
+          type="email" // Corrected type
+          name="email" // Add name attribute
           placeholder="Email"
-          {...formik.getFieldProps('email')}
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          required
         />
       </div>
 
       <div>
         <Input
-          id="password"
-          type="password"
+          type="password" // Corrected type
+          name="password" // Add name attribute
           placeholder="Password"
-          {...formik.getFieldProps('password')}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          required
         />
       </div>
 
@@ -109,10 +105,8 @@ const SignInForm = () => {
   );
 };
 
-
 const AuthForm = ({ type }) => {
   return type === 'SignUp' ? <SignUpForm /> : <SignInForm />;
 };
 
 export default AuthForm;
-
