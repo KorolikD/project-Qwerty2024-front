@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authOperations';
 import { Input, Button, Link, Paragraph } from './AuthForm.styled';
 
+
+
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
