@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 export const Input = styled(AntInput)`
   width: 335px;
   height: 46px;
-
+  padding: 14px;
   margin: 18px 0 0 0;
 
   border-radius: 12px;
@@ -16,7 +16,7 @@ export const Input = styled(AntInput)`
   &::placeholder {
     font-weight: 400px;
     font-size: 14px;
-    width: 100%;
+    width: 100px;
     line-height: 18px;
     color: ${(props) => props.theme.colors.grey};
 
@@ -26,13 +26,14 @@ export const Input = styled(AntInput)`
       line-height: 24px;
       letter-spacing: 0em;
       text-align: left;
+      width: 100px;
     }
   }
 
   @media screen and (min-width: 768px) {
     width: 364px;
     height: 52px;
-    padding: 14px 307px 14px 14px;
+    padding: 14px;
   }
 
   &:hover,
