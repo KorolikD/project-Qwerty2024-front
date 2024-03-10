@@ -18,9 +18,9 @@ const SignUpForm = () => {
       email: '',
       password: '',
     },
-    onSubmit: (values, action) => {
-      dispatch(register(values));
-      action.resetForm();
+    onSubmit: (values) => {
+      dispatch(register(values)); 
+      formik.resetForm(); 
     },
   });
 
@@ -73,10 +73,9 @@ const SignInForm = () => {
       password: '',
     },
     
-    onSubmit: async (values) => {
-      await dispatch(register(values));
-     
-      formik.resetForm();
+    onSubmit: (values) => {
+      dispatch(register(values)); 
+      formik.resetForm(); 
     },
    
     
