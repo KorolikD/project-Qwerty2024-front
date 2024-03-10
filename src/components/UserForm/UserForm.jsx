@@ -50,6 +50,11 @@ const UserForm = () => {
   const onOpenCalendar = () => {
     setIsOpenCalendar(prev => !prev);
   };
+  
+  const handleDateChange = (selectedDate) => {
+    setDate(selectedDate);
+    setIsOpenCalendar(false);
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -177,6 +182,7 @@ const UserForm = () => {
                 date={date}
                 isOpen={isOpenCalendar}
                 minDate={dayjs('01/01/1900', 'DD/MM/YYYY')}
+                setDate={setDate}
               />
             )}
           </div> 
