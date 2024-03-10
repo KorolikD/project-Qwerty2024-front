@@ -3,18 +3,24 @@ import styled from 'styled-components';
 export const DiaryTableList = styled.ul`
   display: flex;
   flex-direction: column;
+  overflow: auto;
   gap: 40px;
+  padding-right: 8px;
+  margin: 0;
   font-size: 12px;
   line-height: 1.5;
   color: ${(props) => props.theme.colors.secondary};
-  height: 350px;
-  margin: 0;
-  /* ::-webkit-scrollbar {
-    
+  height: ${(props) => props.height}px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 203px;
+    border-radius: 12px;
   }
-  ::-webkit-scrollbar-thumb {
-    
-  } */
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
 `;
 
 export const DiaryTableItem = styled.li`

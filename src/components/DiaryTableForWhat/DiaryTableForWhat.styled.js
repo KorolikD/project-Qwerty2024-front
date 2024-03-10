@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const DiaryTablesWrap = styled.div`
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   margin: 0 auto;
   padding: 16px 8px 16px 16px;
   height: ${(props) => (props.list === 'no' ? '335px' : 'auto')};
@@ -12,19 +12,8 @@ export const DiaryTablesWrap = styled.div`
   background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
 
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 90px;
-    border-radius: 12px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(239, 237, 232, 0.1);
-    border-radius: 12px;
-  }
-
   @media screen and (min-width: 768px) {
     height: 234px;
-    /* height: ${(props) => (props.list === 'no' ? '234px' : 'auto')}; */
     width: 704px;
   }
 

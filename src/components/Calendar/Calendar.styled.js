@@ -8,6 +8,12 @@ export const CalendarGlobalStyle = createGlobalStyle`
     padding: 0;
 }
 
+:where(.css-3jrg4y).ant-picker-outlined{
+    visibility: hidden;
+    width: 1px;
+    padding: 0;
+}
+
 /* :where(.css-dev-only-do-not-override-3jrg4y).ant-picker-outlined:hover {
     border-color: #EFEDE8;
 } */

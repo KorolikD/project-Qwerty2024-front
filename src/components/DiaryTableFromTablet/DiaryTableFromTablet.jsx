@@ -24,7 +24,7 @@ const DiaryTableFromTablet = ({
   return (
     <>
       {forExercisesTable && (
-        <DiaryTable>
+        <DiaryTable height="162">
           <TableExersicesHead>
             <tr>
               <th>Body Part</th>
@@ -49,7 +49,7 @@ const DiaryTableFromTablet = ({
                 <td>
                   <DiaryBtn
                     onClick={() => {
-                      onDelete({ id: exercise._id});
+                      onDelete({ id: exercise._id });
                     }}
                   >
                     <SvgCustom
@@ -65,7 +65,7 @@ const DiaryTableFromTablet = ({
         </DiaryTable>
       )}
       {forProductsTable && (
-        <DiaryTable>
+        <DiaryTable height="162">
           <TableProductsHead>
             <tr>
               <th>Title</th>
@@ -93,7 +93,7 @@ const DiaryTableFromTablet = ({
                 <td>
                   <DiaryBtn
                     onClick={() => {
-                      onDelete({ id: product._id});
+                      onDelete({ id: product._id });
                     }}
                   >
                     <SvgCustom
