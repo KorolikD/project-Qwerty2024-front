@@ -3,6 +3,8 @@ import { updateAvatar } from '../../redux/auth/authOperations.js';
 import { selectUser } from '../../redux/auth/authSelectors';
 import { Container, AvatarContainer, Avatar, UserSvg, Label, UserName, SubTitle, AddBtn, AddSvg  } from './UserCard.styled.js';
 import sprite from '../../img/sprite.svg';
+import LogOutBtn from '../../components/LogOutBtn/LogOutBtn';
+// import StatisticsInfo from '../../components/StatisticsInfo/StatisticsInfo';
 
 const UserCard = () => {
   const dispatch = useDispatch();
@@ -30,7 +32,7 @@ const UserCard = () => {
       </AvatarContainer>
       <AddBtn>
         <Label htmlFor="fileInput" onClick={openFileInput}>
-          <AddSvg className="upload-icon">
+          <AddSvg>
             <use href={`${sprite}#icon-add-avatar`} aria-label="Upload Avatar"></use>
           </AddSvg>
         </Label>
@@ -45,6 +47,8 @@ const UserCard = () => {
       </AddBtn>
       <UserName>{user.name}</UserName>
       <SubTitle>User</SubTitle>
+      {/* <StatisticsInfo/> */}
+      <LogOutBtn />
     </Container>
   );
 };

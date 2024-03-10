@@ -51,6 +51,7 @@ export const AddSvg = styled.svg`
 export const UserSvg = styled.svg`
     width: 61px;
     height: 62px;
+    fill: ${({ theme }) => theme.colors.formBorder};
   @media screen and (min-width: 768px) {
     width: 102px;
     height: 102px;
