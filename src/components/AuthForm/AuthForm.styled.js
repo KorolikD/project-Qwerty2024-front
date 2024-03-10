@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Input as AntInput, Button as AntButton } from 'antd';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Input = styled(AntInput)`
   width: 335px;
@@ -15,7 +16,7 @@ export const Input = styled(AntInput)`
   &::placeholder {
     font-weight: 400px;
     font-size: 14px;
-    width: 100px;
+    width: 100%;
     line-height: 18px;
     color: ${(props) => props.theme.colors.grey};
 
@@ -86,7 +87,7 @@ export const Button = styled(AntButton)`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled(RouterLink)`
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;

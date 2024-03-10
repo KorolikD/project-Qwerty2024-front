@@ -10,7 +10,7 @@ import { Input, Button, Link, Paragraph} from './AuthForm.styled';
 
 
 
-const SignUpForm = ({ onSubmit }) => {
+const SignUpForm = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -29,6 +29,7 @@ const SignUpForm = ({ onSubmit }) => {
       <div>
         <Input
           id="name"
+          name="name" 
           type="text"
           placeholder="Name"
           {...formik.getFieldProps('name')}
@@ -39,6 +40,7 @@ const SignUpForm = ({ onSubmit }) => {
         <Input
           id="email"
           type="email"
+          email="email"
           placeholder="Email"
           {...formik.getFieldProps('email')}
         />
@@ -48,6 +50,7 @@ const SignUpForm = ({ onSubmit }) => {
         <Input
           id="password"
           type="password"
+          password = "password"
           placeholder="Password"
           {...formik.getFieldProps('password')}
         />
@@ -62,7 +65,7 @@ const SignUpForm = ({ onSubmit }) => {
 };
 
 
-const SignInForm = ({ onSubmit }) => {
+const SignInForm = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -70,7 +73,7 @@ const SignInForm = ({ onSubmit }) => {
       password: '',
     },
     
-    onSubmit: async (values, action) => {
+    onSubmit: async (values) => {
       await dispatch(register(values));
      
       formik.resetForm();
