@@ -11,7 +11,7 @@ export const Topper = styled.header`
   border-bottom: ${({ $isAuth }) =>
     $isAuth ? '1px solid rgba(239, 237, 232, 0.2)' : 'none'};
   @media screen and (min-width: 768px) {
-    padding: 19px 32px;
+    padding: 19px 80px 19px 32px;
   }
   @media screen and (min-width: 1440px) {
     position: ${({ $isAuth }) => ($isAuth ? 'static' : 'absolute')};

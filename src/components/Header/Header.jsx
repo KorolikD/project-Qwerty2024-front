@@ -1,7 +1,6 @@
 import Logo from '../Logo/index.js';
 import Nav from '../Nav/index.js';
 import UserBar from '../UserBar/index.js';
-import BurgerBtn from '../BurgerBtn/index.js';
 import LogOutBtn from '../LogOutBtn/index.js';
 import { Topper, Wrapper } from './Header.styled.js';
 import { useMediaQuery } from 'react-responsive';
@@ -19,7 +18,6 @@ const Header = () => {
         {isDesktop && isAuth && blood && <Nav />}
         {isAuth && <UserBar />}
       </Wrapper>
-      {/*{!isDesktop && isAuth && blood && <BurgerBtn />}*/}
       {isDesktop && isAuth && <LogOutBtn />}
     </Topper>
   );

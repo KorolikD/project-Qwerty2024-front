@@ -2,10 +2,16 @@ import { Outlet } from 'react-router-dom';
 import Container from '../Container/Container';
 import Header from '../Header/index.js';
 import MobileMenu from '../MobileMenu/index.js';
+import { useMediaQuery } from 'react-responsive';
+import { useSelector } from 'react-redux';
+import { selectIsAuth } from '../../redux/auth/authSelectors.js';
+
 const SharedLayout = () => {
+  const isAuth = useSelector(selectIsAuth);
+  const isDesktop = useMediaQuery({ minWidth: 1440 });
   return (
     <div id="outer-container">
-      <MobileMenu />
+      {!isDesktop && isAuth && <MobileMenu />}
       <div id="page-wrap">
         <Header />
         <main>

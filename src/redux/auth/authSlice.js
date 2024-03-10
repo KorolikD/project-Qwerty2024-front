@@ -82,7 +82,7 @@ const authSlice = createSlice({
         state.error = action.payload.message;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.user = action.payload;
         state.isLoading = false;
         state.error = null;
       })

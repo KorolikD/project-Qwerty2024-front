@@ -1,14 +1,16 @@
 import SvgCustom from '../SvgCustom/index.js';
 import theme from '../../styles/theme.js';
 import { push as Menu } from 'react-burger-menu';
-import { NavLink } from 'react-router-dom';
-import styles from './menuStyle.js';
-
+import { Link } from './MobileMenu.styled.js';
+import './menu.css';
+import { combinedStyles as styles } from './menuStyle.js';
+import MobileLogOutBtn from './MoileLogOutBtn/index.js';
+import { useMediaQuery } from 'react-responsive';
 const MobileMenu = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Menu
-      width={200}
-      styles={styles}
+      width={isMobile ? 200 : 350}
       right
       pageWrapId={'page-wrap'}
       outerContainerId={'outer-container'}
@@ -24,9 +26,10 @@ const MobileMenu = () => {
         <SvgCustom icon="icon-cross" size="24" color="#ffffff" tabSize="32" />
       }
     >
-      <NavLink to="diary">Diary</NavLink>
-      <NavLink to="products">Products</NavLink>
-      <NavLink to="exercises">Exercises</NavLink>
+      <Link to="diary">Diary</Link>
+      <Link to="products">Products</Link>
+      <Link to="exercises">Exercises</Link>
+      <MobileLogOutBtn />
     </Menu>
   );
 };
