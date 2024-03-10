@@ -10,7 +10,7 @@ export const Input = styled(AntInput)`
 
   border-radius: 12px;
   color: ${(props) => props.theme.colors.white};
-  background: ${(props) => props.theme.colors.black};
+  background: transparent;
   border: 1px solid ${(props) => props.theme.colors.formBorder};
 
   &::placeholder {

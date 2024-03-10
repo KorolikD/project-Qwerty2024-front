@@ -24,7 +24,7 @@ const SignUpForm = () => {
       <div>
         <Input
           type="text"
-          name="name" // Add name attribute
+          name="name"
           placeholder="Name"
           value={formik.values.name}
           onChange={formik.handleChange}
@@ -34,8 +34,8 @@ const SignUpForm = () => {
 
       <div>
         <Input
-          type="email" // Corrected type
-          name="email" // Add name attribute
+          type="email" 
+          name="email" 
           placeholder="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -45,8 +45,8 @@ const SignUpForm = () => {
 
       <div>
         <Input
-          type="password" // Corrected type
-          name="password" // Add name attribute
+          type="password" 
+          name="password" 
           placeholder="Password"
           value={formik.values.password}
           onChange={formik.handleChange}
