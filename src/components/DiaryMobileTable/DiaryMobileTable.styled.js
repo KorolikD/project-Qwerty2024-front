@@ -64,7 +64,7 @@ export const GroupTableItemWrap = styled.div`
 export const DiaryItemInfo = styled.p`
   margin-top: 8px;
   padding: 10px 14px;
-  border: 1px solid ${(props) => props.theme.colors.formBorder};
+  border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   color: ${(props) => props.theme.colors.white};
   font-size: 14px;
