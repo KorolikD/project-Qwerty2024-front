@@ -12,8 +12,19 @@ export const DiaryTablesWrap = styled.div`
   background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
 
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 90px;
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
+
   @media screen and (min-width: 768px) {
-    height: ${(props) => (props.list === 'no' ? '234px' : 'auto')};
+    height: 234px;
+    /* height: ${(props) => (props.list === 'no' ? '234px' : 'auto')}; */
     width: 704px;
   }
 

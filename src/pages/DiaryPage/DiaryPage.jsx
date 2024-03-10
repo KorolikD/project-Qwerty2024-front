@@ -3,14 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { selectUser } from '../../redux/auth/authSelectors.js';
 import { getDayInfo } from '../../redux/diary/operations.js';
-import DaySwitch from '../../components/DaySwitch/index.js';
-import DayDashboard from '../../components/DayDashboard/index.js';
-import DiaryTableForWhat from '../../components/DiaryTableForWhat/DiaryTableForWhat.jsx';
-import { DiaryContainer, DiaryTablesContainer, DiaryWrapper } from './DiaryPage.styled.js';
 import {
   selectDiaryExercises,
   selectDiaryProducts,
 } from '../../redux/diary/selectors.js';
+import DaySwitch from '../../components/DaySwitch';
+import DayDashboard from '../../components/DayDashboard';
+import DiaryTableForWhat from '../../components/DiaryTableForWhat';
+// import Container from '../../components/Container';
+import {
+  DiaryContainer,
+  DiarySwitchWrap,
+  DiaryTablesContainer,
+  DiaryWrapper,
+} from './DiaryPage.styled.js';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -32,12 +38,10 @@ const DiaryPage = () => {
 
   return (
     <DiaryWrapper>
-      <div>
-        <div>
-          Title +{' '}
-          <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
-        </div>
-      </div>
+      <DiarySwitchWrap>
+        <span>Title +</span>
+        <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
+      </DiarySwitchWrap>
       <DiaryContainer>
         <DayDashboard />
         <DiaryTablesContainer>

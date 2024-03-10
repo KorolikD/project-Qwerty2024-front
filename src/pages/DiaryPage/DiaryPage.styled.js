@@ -8,14 +8,31 @@ export const DiaryWrapper = styled.div`
   padding-bottom: 80px;
   margin: 0 auto;
 
+  @media screen and (max-width: 374px) {
+    width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
   @media screen and (min-width: 768px) {
     gap: 32px;
-    padding-top: 52px;
+    /* padding-top: 52px; */
+    padding-top: 72px;
     padding-bottom: 64px;
   }
 
   @media screen and (min-width: 1440px) {
     padding-bottom: 68px;
+  }
+`;
+
+export const DiarySwitchWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 768px) {
+    position: relative;
   }
 `;
 

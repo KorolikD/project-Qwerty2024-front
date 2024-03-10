@@ -8,6 +8,7 @@ export const DiaryTableList = styled.ul`
   line-height: 1.5;
   color: ${(props) => props.theme.colors.secondary};
   height: 350px;
+  margin: 0;
   /* ::-webkit-scrollbar {
     
   }

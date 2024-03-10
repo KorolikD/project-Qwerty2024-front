@@ -15,6 +15,7 @@ export const DashboardList = styled.ul`
   grid-template-columns: repeat(2, 1fr);
   row-gap: 20px;
   column-gap: 13px;
+  margin-top: 0;
   margin-bottom: 20px;
 
   font-size: 12px;
