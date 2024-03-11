@@ -55,7 +55,7 @@ const UserCard = () => {
           </Label>
           <input
             type="file"
-            accept=".jpg, .jpeg"
+            accept="image/*, .jpg, .jpeg, .png"
             id="fileInput"
             name="avatar"
             style={{ display: 'none' }}
