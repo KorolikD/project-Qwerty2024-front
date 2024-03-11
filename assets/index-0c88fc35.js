@@ -1,4 +1,4 @@
-import{b as o,X as x,j as t,a}from"./index-4618a020.js";import{C as c}from"./Container-f48c6830.js";const g=o.div`
+import{b as o,X as x,j as t,a}from"./index-4df00f16.js";import{C as c}from"./Container-ae11e3f4.js";const g=o.div`
   width: 240px;
   height: 100%;
   background-color: ${e=>e.theme.colors.primary};

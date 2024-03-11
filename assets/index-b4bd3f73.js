@@ -1,4 +1,4 @@
-import{b as t,a as k,j as e,t as o,h as p,s as D,i as E,N as P,u as W,k as N,m as A,n as O}from"./index-4618a020.js";import{d as v,C as M,T as Y}from"./Calendar-62bc5e1e.js";import{S as d}from"./SvgCustom-aca45287.js";import{M as C}from"./react-responsive-d2601b64.js";const _=i=>i.diary.productsList,F=i=>i.diary.exercisesList,L=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=t.div`
+import{b as t,a as k,j as e,t as o,h as p,s as D,i as E,N as P,u as W,k as N,m as A,n as O}from"./index-4df00f16.js";import{d as v,C as M,T as Y}from"./Calendar-f5c928fa.js";import{S as d}from"./SvgCustom-164d7126.js";import{M as C}from"./react-responsive-9b186824.js";import"./sprite-950c02f7.js";const _=i=>i.diary.productsList,F=i=>i.diary.exercisesList,L=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=t.div`
   display: flex;
   gap: 20px;
   align-items: center;
@@ -443,4 +443,4 @@ import{b as t,a as k,j as e,t as o,h as p,s as D,i as E,N as P,u as W,k as N,m a
   display: flex;
   flex-direction: column;
   gap: 40px;
-`,he="DD/MM/YYYY",me=()=>{const[i,s]=k.useState(v().format(he)),a=p(_),n=p(F),{createdAt:l}=p(D),r=W();return k.useEffect(()=>{i&&r(O(i))},[i,r]),e.jsxs(ae,{children:[e.jsxs(ce,{children:[e.jsx(Y,{title:"Diary"}),e.jsx(Q,{date:i,setDate:s,minDate:l})]}),e.jsxs(xe,{children:[e.jsx(V,{}),e.jsxs(pe,{children:[e.jsx(B,{list:a,date:i,to:"/products",forProductsTable:!0})," ",e.jsx(B,{list:n,date:i,to:"/exercises",forExercisesTable:!0})]})]})]})},ye=me;export{ye as default};
+`,he="DD/MM/YYYY",me=()=>{const[i,s]=k.useState(v().format(he)),a=p(_),n=p(F),{createdAt:l}=p(D),r=W();return k.useEffect(()=>{i&&r(O(i))},[i,r]),e.jsxs(ae,{children:[e.jsxs(ce,{children:[e.jsx(Y,{title:"Diary"}),e.jsx(Q,{date:i,setDate:s,minDate:l})]}),e.jsxs(xe,{children:[e.jsx(V,{}),e.jsxs(pe,{children:[e.jsx(B,{list:a,date:i,to:"/products",forProductsTable:!0})," ",e.jsx(B,{list:n,date:i,to:"/exercises",forExercisesTable:!0})]})]})]})},fe=me;export{fe as default};
