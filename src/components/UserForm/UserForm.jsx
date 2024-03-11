@@ -181,7 +181,7 @@ const UserForm = () => {
                 }}
                 date={date}
                 isOpen={isOpenCalendar}
-                minDate={dayjs('01/01/1900', 'DD/MM/YYYY')}
+                minDate='1900-01-01T15:58:07.547Z'
                 setDate={setDate}
               />
             )}
