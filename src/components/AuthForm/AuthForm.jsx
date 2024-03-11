@@ -1,7 +1,8 @@
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/authOperations';
+import { register, logIn } from '../../redux/auth/authOperations';
 import { Input, Button, Link, Paragraph } from './AuthForm.styled';
+const { signUpValidation, signInValidation } = require('./validation');
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,11 @@ const SignUpForm = () => {
     onSubmit: (values) => {
       dispatch(register(values));
       formik.resetForm();
+    },
+    validationSchema: signUpValidation,
+    onSubmit: (values, { resetForm }) => {
+      dispatch(register(values));
+      resetForm();
     },
   });
 
@@ -70,8 +76,13 @@ const SignInForm = () => {
       password: '',
     },
     onSubmit: (values) => {
-      dispatch(register(values));
+      dispatch(logIn(values));
       formik.resetForm();
+    },
+    validationSchema: signInValidation,
+    onSubmit: (values, { resetForm }) => {
+      dispatch(register(values));
+      resetForm();
     },
   });
 
