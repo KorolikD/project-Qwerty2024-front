@@ -6,9 +6,14 @@ import {
   CategoryExercisesStyle,
   CategoryLists,
   ExerciseCards,
+  BackButton,
+  SvgBack,
+  ExerciseCardsItem,
+  ExercisesSkroll,
 } from './ExercisesCategories.styled';
+import icons from '../../img/sprite.svg';
 
-export const CATEGORIES = {
+const CATEGORIES = {
   'Body parts': 'bodyPart',
   Equipment: 'equipment',
   Muscles: 'target',
@@ -54,24 +59,31 @@ const ExercisesCategories = () => {
     if (isCategorySelected) {
       return (
         <div>
-          <button
+          <BackButton
+            type="button"
             onClick={() => {
               document.title = 'React App';
               setSelectedCategory(null);
             }}
           >
-            back
-          </button>
-          <ExerciseCards>
-            {exercisesList.length > 0
-              ? exercisesList.map((exercise) => (
-                  <CustomExercisesItem
-                    key={exercise._id}
-                    subcategory={exercise}
-                  />
-                ))
-              : 'Empty'}
-          </ExerciseCards>
+            <SvgBack width="16" height="16">
+              <use href={icons + '#icon-next'} />
+            </SvgBack>
+            BACK
+          </BackButton>
+
+          <ExercisesSkroll style={{ height: '500px' }}>
+            <ExerciseCards>
+              {exercisesList.length > 0
+                ? exercisesList.map((exercise) => (
+                    <CustomExercisesItem
+                      key={exercise._id}
+                      subcategory={exercise}
+                    />
+                  ))
+                : 'Empty'}
+            </ExerciseCards>
+          </ExercisesSkroll>
         </div>
       );
     }
@@ -79,7 +91,7 @@ const ExercisesCategories = () => {
     return (
       exercises &&
       exercises.length > 0 && (
-        <ExerciseCards>
+        <ExerciseCardsItem>
           {exercises.map((exercise) => (
             <ExercisesSubcategoriesItem
               key={exercise._id}
@@ -91,7 +103,7 @@ const ExercisesCategories = () => {
               }}
             />
           ))}
-        </ExerciseCards>
+        </ExerciseCardsItem>
       )
     );
   };
