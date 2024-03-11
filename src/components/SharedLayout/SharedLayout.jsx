@@ -20,7 +20,7 @@ const SharedLayout = () => {
   };
 
   return (
-    <div id="outer-container">
+    <div style={{ height: '100%' }} id="outer-container">
       {!isDesktop && isAuth && (
         <MobileMenu
           isOpen={isOpen}
@@ -28,7 +28,7 @@ const SharedLayout = () => {
           toggleMenu={toggleMenu}
         />
       )}
-      <div id="page-wrap">
+      <div style={{ height: '100%' }} id="page-wrap">
         <Header toggleMenu={toggleMenu} />
         <main>
           <Container>
