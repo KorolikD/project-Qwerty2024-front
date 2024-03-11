@@ -1,4 +1,9 @@
-import { Title, MainContainer, ButtonContainer } from './WelcomePage.styled.js';
+import {
+  Title,
+  MainContainer,
+  ButtonContainer,
+  FloatingCircle,
+} from './WelcomePage.styled.js';
 import AuthButton from '../../components/AuthButton/AuthButton';
 
 import ResponsiveBackground from '../../components/ResponsiveBackground/ResponsiveBackground.jsx';
@@ -7,9 +12,12 @@ const WelcomePage = () => {
   return (
     <>
       <MainContainer>
+        <FloatingCircle>
+          <use href="src/img/sprite.svg#icon-circle"></use>
+        </FloatingCircle>
         <Title>Transforming your body shape with Power Pulse</Title>
         <ButtonContainer>
-          <AuthButton size="signup" variant="filled">
+          <AuthButton size="signup" variant="signup">
             Sign Up
           </AuthButton>
           <AuthButton size="signin" variant="">

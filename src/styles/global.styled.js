@@ -25,6 +25,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
+  .ant-form-item-explain-success {
+  color: green;
+}
+
+
   body {
     font-family: ${({ theme }) => theme.fonts.mainFont};
     background-color: ${({ theme }) => theme.colors.black};
