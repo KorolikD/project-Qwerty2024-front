@@ -30,15 +30,9 @@ const UserCard = () => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      console.log(file);
       dispatch(updateAvatar({ avatar: file }));
     }
   };
-
-  // const openFileInput = () => {
-  //   const fileInput = document.getElementById('fileInput');
-  //   fileInput.click();
-  // };
 
   return (
     <Container>
@@ -55,7 +49,7 @@ const UserCard = () => {
           </Label>
           <input
             type="file"
-            accept=".jpg, .jpeg"
+            accept="image/*, .jpg, .jpeg, .png"
             id="fileInput"
             name="avatar"
             style={{ display: 'none' }}
