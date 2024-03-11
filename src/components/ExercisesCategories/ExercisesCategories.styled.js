@@ -6,9 +6,37 @@ export const CategoryLists = styled.ul`
   gap: 20px;
   margin-bottom: 40px;
   padding-top: 20px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
     padding-top: 0;
+  }
+
+  li {
+    position: relative;
+    cursor: pointer;
+    transition:
+      color 0.3s ease,
+      border-bottom-color 0.3s ease;
+    &:hover,
+    &:focus {
+      color: orange;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 3px;
+      border-radius: 3px;
+      border-bottom: 3px solid transparent;
+      transition: border-bottom-color 0.3s ease;
+    }
+    &:hover::before,
+    &:focus::before {
+      border-bottom-color: orange;
+    }
   }
 `;
 
@@ -20,6 +48,17 @@ export const CategoryExercisesStyle = styled.a`
   cursor: pointer;
   &:hover {
     color: orange;
+  }
+`;
+
+export const NavTitle = styled.div`
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 64px;
+  margin-top: 64px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `;
 
@@ -36,8 +75,8 @@ export const ExerciseCards = styled.div`
 export const ExerciseCardsItem = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 23px;
+  gap: 15px;
+  margin-top: 20px;
 `;
 
 export const BackButton = styled.button`
@@ -52,6 +91,16 @@ export const BackButton = styled.button`
   &:hover {
     color: orange;
   }
+`;
+
+export const PageTitle = styled.h1`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.17;
+  color: white;
+  margin: 0;
+  text-transform: capitalize;
+  margin-right: 20px;
 `;
 
 export const SvgBack = styled.svg`
@@ -84,9 +133,8 @@ export const ExercisesSkroll = styled.div`
     border-radius: 12px;
   }
 
-  overflow-y: auto;
-
   @media (min-width: 768px) {
+    overflow-y: auto;
     height: 507px;
     gap: 32px 16px;
   }
