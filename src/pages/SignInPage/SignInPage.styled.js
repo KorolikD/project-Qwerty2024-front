@@ -3,20 +3,20 @@ import styled from 'styled-components';
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 58px;
+  paddin-top: 58px;
   width: 335px;
   height: 368px;
 
   @media screen and (min-width: 768px) {
     width: 496px;
     height: 336px;
-    margin-top: 108px;
+    padding-top: 108px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 496px;
     height: 336px;
-    margin-top: 119px;
+    padding-top: 119px;
   }
 `;
 
