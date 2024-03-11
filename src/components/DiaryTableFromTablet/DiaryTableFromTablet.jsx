@@ -24,7 +24,7 @@ const DiaryTableFromTablet = ({
   return (
     <>
       {forExercisesTable && (
-        <DiaryTable height="162">
+        <DiaryTable height="154">
           <TableExersicesHead>
             <tr>
               <th>Body Part</th>
@@ -65,7 +65,7 @@ const DiaryTableFromTablet = ({
         </DiaryTable>
       )}
       {forProductsTable && (
-        <DiaryTable height="162">
+        <DiaryTable height="154">
           <TableProductsHead>
             <tr>
               <th>Title</th>

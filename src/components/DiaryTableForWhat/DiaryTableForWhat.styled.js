@@ -8,7 +8,7 @@ export const DiaryTablesWrap = styled.div`
   padding: 16px 8px 16px 16px;
   height: ${(props) => (props.list === 'no' ? '335px' : 'auto')};
   width: 335px;
-  border: 1px solid ${(props) => props.theme.colors.textWhite40};
+  border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
 
