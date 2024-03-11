@@ -2,7 +2,10 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register, logIn } from '../../redux/auth/authOperations';
 import { Input, Button, Link, Paragraph } from './AuthForm.styled';
-import { signUpValidation, signInValidation } from './AuthValidation';
+import {
+  signUpValidationSchema,
+  signInValidationSchema,
+} from './AuthValidation';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -12,15 +15,11 @@ const SignUpForm = () => {
       email: '',
       password: '',
     },
-    onSubmit: (values) => {
-      dispatch(register(values));
-      formik.resetForm();
-    },
-    validationSchema: signUpValidation,
     onSubmit: (values, { resetForm }) => {
       dispatch(register(values));
       resetForm();
     },
+    validationSchema: signUpValidationSchema,
   });
 
   return (
@@ -75,23 +74,19 @@ const SignInForm = () => {
       email: '',
       password: '',
     },
-    onSubmit: (values) => {
-      dispatch(logIn(values));
-      formik.resetForm();
-    },
-    validationSchema: signInValidation,
     onSubmit: (values, { resetForm }) => {
-      dispatch(register(values));
+      dispatch(logIn(values));
       resetForm();
     },
+    validationSchema: signInValidationSchema,
   });
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <div>
         <Input
-          type="email" // Corrected type
-          name="email" // Add name attribute
+          type="email"
+          name="email"
           placeholder="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -114,7 +109,7 @@ const SignInForm = () => {
         Sign In
       </Button>
       <Paragraph>
-        Don\'t have an account?&nbsp;<Link to="/signup">Sign Up</Link>
+        Don't have an account?&nbsp;<Link to="/signup">Sign Up</Link>
       </Paragraph>
     </form>
   );
