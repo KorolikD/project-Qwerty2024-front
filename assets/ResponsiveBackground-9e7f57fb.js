@@ -1,4 +1,4 @@
-import{u as i,L as x,r as a,j as s}from"./index-62398ab0.js";const f=i.div`
+import{u as i,L as x,r as a,j as s}from"./index-6dfef983.js";const f=i.div`
   width: 240px;
   height: 100%;
   background-color: ${e=>e.theme.colors.primary};
