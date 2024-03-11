@@ -1,17 +1,29 @@
 import { useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
+
 import dayjs from 'dayjs';
+
 import { selectUser } from '../../redux/auth/authSelectors.js';
+
 import { getDayInfo } from '../../redux/diary/operations.js';
+
 import {
   selectDiaryExercises,
   selectDiaryProducts,
+  selectIsLoading,
 } from '../../redux/diary/selectors.js';
-import TitlePage from '../../components/TitlePage'
+
+import TitlePage from '../../components/TitlePage';
+
 import DaySwitch from '../../components/DaySwitch';
+
 import DayDashboard from '../../components/DayDashboard';
+
 import DiaryTableForWhat from '../../components/DiaryTableForWhat';
-// import Container from '../../components/Container';
+
+import { Loader } from '../../components/Loader/Loader.jsx';
+
 import {
   DiaryContainer,
   DiarySwitchWrap,
@@ -25,7 +37,11 @@ const DiaryPage = () => {
   const [date, setDate] = useState(dayjs().format(DATE_FORMAT));
 
   const productsList = useSelector(selectDiaryProducts);
+
   const exercisesList = useSelector(selectDiaryExercises);
+
+  const isLoading = useSelector(selectIsLoading);
+
   const { createdAt } = useSelector(selectUser);
 
   const dispatch = useDispatch();
@@ -34,33 +50,43 @@ const DiaryPage = () => {
     if (!date) {
       return;
     }
+
     dispatch(getDayInfo(date));
   }, [date, dispatch]);
 
   return (
-    <DiaryWrapper>
-      <DiarySwitchWrap>
-        <TitlePage title='Diary'/>
-        <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
-      </DiarySwitchWrap>
-      <DiaryContainer>
-        <DayDashboard />
-        <DiaryTablesContainer>
-          <DiaryTableForWhat
-            list={productsList}
-            date={date}
-            to="/products"
-            forProductsTable
-          />{' '}
-          <DiaryTableForWhat
-            list={exercisesList}
-            date={date}
-            to="/exercises"
-            forExercisesTable
-          />
-        </DiaryTablesContainer>
-      </DiaryContainer>
-    </DiaryWrapper>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <DiaryWrapper>
+          <DiarySwitchWrap>
+            <TitlePage title="Diary" />
+
+            <DaySwitch date={date} setDate={setDate} minDate={createdAt} />
+          </DiarySwitchWrap>
+
+          <DiaryContainer>
+            <DayDashboard />
+
+            <DiaryTablesContainer>
+              <DiaryTableForWhat
+                list={productsList}
+                date={date}
+                to="/products"
+                forProductsTable
+              />{' '}
+              <DiaryTableForWhat
+                list={exercisesList}
+                date={date}
+                to="/exercises"
+                forExercisesTable
+              />
+            </DiaryTablesContainer>
+          </DiaryContainer>
+        </DiaryWrapper>
+      )}
+    </>
   );
 };
 

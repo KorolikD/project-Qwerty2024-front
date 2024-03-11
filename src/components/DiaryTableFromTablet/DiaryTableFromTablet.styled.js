@@ -1,31 +1,19 @@
-import { createGlobalStyle, styled } from 'styled-components';
+import { styled } from 'styled-components';
 
 export const DiaryTable = styled.table`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  overflow: auto;
-  height: ${(props) => props.height}px;
-  padding-right: 18px;
+  gap: 6px;
   font-size: 16px;
   line-height: 1.5;
   color: ${(props) => props.theme.colors.white};
-
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 90px;
-    border-radius: 12px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(239, 237, 232, 0.1);
-    border-radius: 12px;
-  }
 `;
 
 export const TableCell = styled.td`
   padding: 8px 14px;
-  border: 1px solid rgba(239, 237, 232, 0.2);;
+  border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -37,13 +25,13 @@ export const TableCell = styled.td`
   &::before {
     ${(props) =>
       props.$recommend &&
-      `
-      content: '';
-      display: inline-block;
-      margin-right: 8px;
-      width: 14px;
-      height: 14px;
-      border-radius: 10px;
+      ` 
+      content: ''; 
+      display: inline-block; 
+      margin-right: 8px; 
+      width: 14px; 
+      height: 14px; 
+      border-radius: 10px; 
       background: ${props.$color ? '#419B09' : '#E9101D'};
     `}
   }
@@ -87,6 +75,21 @@ export const TableProductsBody = styled.tbody`
   flex-direction: column;
   gap: 8px;
 
+  overflow: auto;
+  overflow-x: hidden;
+  height: 142px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 90px;
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
+
   & > tr {
     display: grid;
     grid-template-columns: 204px 128px 90px 90px 80px 20px;
@@ -114,6 +117,7 @@ export const TableExersicesHead = styled.thead`
     @media screen and (min-width: 1440px) {
       grid-template-columns: 115px 157px 131px 106px 91px 82px 20px;
     }
+
     & > th {
       font-weight: 400;
       padding: 0;
@@ -129,6 +133,21 @@ export const TableExercisesBody = styled.tbody`
   flex-direction: column;
   gap: 8px;
 
+  overflow: auto;
+  overflow-x: hidden;
+  height: 142px;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 90px;
+    border-radius: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 12px;
+  }
+
   & > tr {
     display: grid;
     grid-template-columns: 90px 132px 128px 84px 78px 72px 20px;
@@ -140,12 +159,4 @@ export const TableExercisesBody = styled.tbody`
       grid-template-columns: 115px 157px 131px 106px 91px 82px 20px;
     }
   }
-`;
-
-export const DiaryTablesStyles = createGlobalStyle`
-/* th, td {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-} */
 `;

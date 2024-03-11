@@ -1,7 +1,11 @@
 import { useSelector } from 'react-redux';
+
 import { selectUser } from '../../redux/auth/authSelectors.js';
+
 import SvgCustom from '../SvgCustom/SvgCustom.jsx';
+
 import theme from '../../styles/theme.js';
+
 import {
   DiaryBtn,
   DiaryTable,
@@ -10,7 +14,6 @@ import {
   TableProductsBody,
   TableExersicesHead,
   TableExercisesBody,
-  DiaryTablesStyles,
 } from './DiaryTableFromTablet.styled.js';
 
 const DiaryTableFromTablet = ({
@@ -24,7 +27,7 @@ const DiaryTableFromTablet = ({
   return (
     <>
       {forExercisesTable && (
-        <DiaryTable height="154">
+        <DiaryTable>
           <TableExersicesHead>
             <tr>
               <th>Body Part</th>
@@ -64,8 +67,9 @@ const DiaryTableFromTablet = ({
           </TableExercisesBody>
         </DiaryTable>
       )}
+
       {forProductsTable && (
-        <DiaryTable height="154">
+        <DiaryTable>
           <TableProductsHead>
             <tr>
               <th>Title</th>
@@ -108,7 +112,6 @@ const DiaryTableFromTablet = ({
           </TableProductsBody>
         </DiaryTable>
       )}
-      <DiaryTablesStyles />
     </>
   );
 };
