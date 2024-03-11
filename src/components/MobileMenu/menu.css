@@ -1,0 +1,39 @@
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: #373a47;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+    display: flex;
+    justify-content: center;
+    padding-top: 245px;
+    background: #E6533C;
+    @media screen and (min-width: 768px) {
+        padding-top: 280px;
+    }
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Individual item */
+
+/* Styling of overlay */
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}

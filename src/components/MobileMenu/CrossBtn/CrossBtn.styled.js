@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 
-export const Burger = styled.button`
+export const Btn = styled.button`
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 19px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
   background-color: transparent;
-  margin-left: 14px;
   @media screen and (min-width: 768px) {
-    margin-left: 16px;
+    top: 26px;
+    right: 32px;
+    width: 32px;
+    height: 32px;
   }
 `;
