@@ -8,14 +8,28 @@ import { selectIsAuth } from '../../redux/auth/authSelectors.js';
 import { useState } from 'react';
 
 const SharedLayout = () => {
-  const [isOpen, setIsopen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const isAuth = useSelector(selectIsAuth);
   const isDesktop = useMediaQuery({ minWidth: 1440 });
+
+  const handleStateChange = (state) => {
+    setIsOpen(state);
+  };
+  const toggleMenu = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <div id="outer-container">
-      {!isDesktop && isAuth && <MobileMenu />}
+      {!isDesktop && isAuth && (
+        <MobileMenu
+          isOpen={isOpen}
+          change={handleStateChange}
+          toggleMenu={toggleMenu}
+        />
+      )}
       <div id="page-wrap">
-        <Header />
+        <Header toggleMenu={toggleMenu} />
         <main>
           <Container>
             <Outlet />

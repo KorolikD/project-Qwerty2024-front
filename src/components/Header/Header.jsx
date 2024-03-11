@@ -6,19 +6,23 @@ import { Topper, Wrapper } from './Header.styled.js';
 import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { selectUser, selectIsAuth } from '../../redux/auth/authSelectors.js';
+import BurgerBtn from '../BurgerBtn/index.js';
 
-const Header = () => {
+const Header = ({ toggleMenu }) => {
   const { blood } = useSelector(selectUser);
   const isAuth = useSelector(selectIsAuth);
   const isDesktop = useMediaQuery({ minWidth: 1440 });
   return (
     <Topper $isAuth={isAuth}>
       <Logo />
-      <Wrapper>
-        {isDesktop && isAuth && blood && <Nav />}
-        {isAuth && <UserBar />}
-      </Wrapper>
+      {isAuth && (
+        <Wrapper>
+          {isDesktop && blood && <Nav />}
+          <UserBar />
+        </Wrapper>
+      )}
       {isDesktop && isAuth && <LogOutBtn />}
+      {!isDesktop && isAuth && <BurgerBtn isOpen={toggleMenu} />}
     </Topper>
   );
 };

@@ -1,39 +1,6 @@
-/* Position and sizing of burger button */
-.bm-burger-button {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    right: 20px;
-    top: 19px;
-    @media screen and (min-width: 768px) {
-        width: 32px;
-        height: 32px;
-        right: 32px;
-        top: 26px;
-    }
-}
-
-
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
     background: #373a47;
-}
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-    background: #a90000;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-    height: 44px;
-    width: 44px;
-
-
-}
-/* Color/shape of close button cross */
-.bm-cross {
-    background: #bdc3c7;
 }
 
 /*
@@ -56,11 +23,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
 }
 
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-    fill: #373a47;
-}
-
 /* Wrapper for item list */
 .bm-item-list {
     display: flex;
@@ -70,26 +32,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Individual item */
-.bm-item {
-    align-items: center;
-    justify-content: center;
-    width: 111px;
-    height: 38px;
-    color: #EFEDE8;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.3;
-    border: 1px solid rgba(239, 237, 232, 0.2);
-    border-radius: 12px;
-    padding: 10px 27px;
 
-    @media screen and (min-width: 768px) {
-        width: 119px;
-        height: 44px;
-        font-size: 16px;
-        line-height: 1.5;
-    }
-}
 /* Styling of overlay */
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);

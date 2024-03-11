@@ -1,15 +1,16 @@
-import SvgCustom from '../SvgCustom/index.js';
-import theme from '../../styles/theme.js';
 import { push as Menu } from 'react-burger-menu';
-import { Link } from './MobileMenu.styled.js';
+import CrossBtn from './CrossBtn/index.js';
+import MobileLogOutBtn from './MoileLogOutBtn/index.js';
+import NavList from './NavList/index.js';
+import { useMediaQuery } from 'react-responsive';
 import './menu.css';
 
-import MobileLogOutBtn from './MoileLogOutBtn/index.js';
-import { useMediaQuery } from 'react-responsive';
-const MobileMenu = () => {
+const MobileMenu = ({ isOpen, change, toggleMenu }) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Menu
+      isOpen={isOpen}
+      onStateChange={(state) => change(state.isOpen)}
       customBurgerIcon={false}
       customCrossIcon={false}
       width={isMobile ? 200 : 350}
@@ -17,10 +18,9 @@ const MobileMenu = () => {
       pageWrapId={'page-wrap'}
       outerContainerId={'outer-container'}
     >
-      <Link to="diary">Diary</Link>
-      <Link to="products">Products</Link>
-      <Link to="exercises">Exercises</Link>
-      <MobileLogOutBtn />
+      <NavList toggleMenu={toggleMenu} />
+      <MobileLogOutBtn toggleMenu={toggleMenu} />
+      <CrossBtn toggleMenu={toggleMenu} />
     </Menu>
   );
 };
