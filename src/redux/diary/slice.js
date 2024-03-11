@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDayInfo, deleteProduct, deleteExercise } from './operations';
+import {
+  getDayInfo,
+  deleteProduct,
+  deleteExercise,
+  addProduct,
+} from './operations';
 
 const diaryInitialstate = {
   productsList: null,
@@ -59,6 +64,12 @@ const handleGetDayInfoSuccess = (state, { payload }) => {
   }
 };
 
+const handleAddProductSuccess = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = null;
+  state.productsList = payload.products;
+  state.totalCalories = payload.totalCalories;
+};
 const handleDeleteProductSuccess = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
@@ -79,14 +90,17 @@ const diary = createSlice({
   initialState: diaryInitialstate,
   extraReducers: (builder) => {
     builder.addCase(getDayInfo.pending, handlePending);
+    builder.addCase(addProduct.pending, handlePending);
     builder.addCase(deleteProduct.pending, handlePending);
     builder.addCase(deleteExercise.pending, handlePending);
 
     builder.addCase(getDayInfo.rejected, handleGetDayInfoRejected);
+    builder.addCase(addProduct.rejected, handleRejected);
     builder.addCase(deleteProduct.rejected, handleRejected);
     builder.addCase(deleteExercise.rejected, handleRejected);
 
     builder.addCase(getDayInfo.fulfilled, handleGetDayInfoSuccess);
+    builder.addCase(addProduct.fulfilled, handleAddProductSuccess);
     builder.addCase(deleteProduct.fulfilled, handleDeleteProductSuccess);
     builder.addCase(deleteExercise.fulfilled, handleDeleteExerciseSuccess);
   },
