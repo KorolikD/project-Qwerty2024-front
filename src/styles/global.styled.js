@@ -23,12 +23,30 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 700;
     src: url('./fonts/roboto-v30-latin-700.woff2') format('woff2'); 
   }
+  .ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+	    background: transparent;
+	    border-width: 1px;	  
+        border-style: solid;
+	   border-color: #ff4d4f;
+
+     
+}
 
 
-  .ant-form-item-explain-success {
+.ant-input-affix-wrapper >input.ant-input {
+  &::placeholder{
+color: ${(props) => props.theme.colors.grey} !important;
+}
+}
+
+.ant-form-item-explain-success {
   color: green;
 }
 
+.ant-input-affix-wrapper .anticon.ant-input-password-icon {
+    color: ${(props) => props.theme.colors.grey} !important ;
+    
+}
 .ant-input-status-success {
  border-color: green !important;
 }
