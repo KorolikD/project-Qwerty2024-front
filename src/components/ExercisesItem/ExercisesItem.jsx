@@ -1,3 +1,4 @@
+import icons from '../../img/sprite.svg';
 import {
   ConteinerForIt,
   ExercisesItemWorkout,
@@ -8,6 +9,9 @@ import {
   ExList,
   ExItem,
   SpanItem,
+  SvgStart,
+  SpanRun,
+  SvgRun,
 } from './ExercisesSubcategoriesItem.styled';
 
 const CustomExercisesItem = ({ subcategory }) => {
@@ -15,9 +19,19 @@ const CustomExercisesItem = ({ subcategory }) => {
     <ConteinerForIt>
       <ExercisesItemWorkout>
         <Workout>WORKOUT</Workout>
-        <Button>Start</Button>
+        <Button>
+          Start
+          <SvgStart width="16" height="16">
+            <use href={icons + '#icon-next'} />
+          </SvgStart>
+        </Button>
       </ExercisesItemWorkout>
       <NameContainer>
+        <SpanRun>
+          <SvgRun width="14" height="16">
+            <use href={icons + '#icon-running'} />
+          </SvgRun>
+        </SpanRun>
         <NameFor>{subcategory.name}</NameFor>
       </NameContainer>
       <ExList>
