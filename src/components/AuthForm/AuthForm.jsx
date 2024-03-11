@@ -1,7 +1,15 @@
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register, logIn } from '../../redux/auth/authOperations';
-import { Input, Button, Link, Paragraph } from './AuthForm.styled';
+import { Form } from 'antd';
+
+import {
+  Input,
+  Button,
+  Link,
+  Paragraph,
+  InputPassword,
+} from './AuthForm.styled';
 import {
   signUpValidationSchema,
   signInValidationSchema,
@@ -22,18 +30,32 @@ const SignUpForm = () => {
     validationSchema: signUpValidationSchema,
   });
 
+  const checkStatus = (item) => {
+    if (formik.touched[item] && formik.errors[item]) {
+      return 'error';
+    } else if (formik.touched[item] && !formik.errors[item]) {
+      return 'success';
+    }
+    return '';
+  };
+
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div>
+      <Form.Item
+        help={formik.errors.name || 'hi'}
+        hasFeedback
+        validateStatus={checkStatus('name')}
+      >
         <Input
           type="text"
           name="name"
           placeholder="Name"
           value={formik.values.name}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           required
         />
-      </div>
+      </Form.Item>
 
       <div>
         <Input
@@ -47,7 +69,7 @@ const SignUpForm = () => {
       </div>
 
       <div>
-        <Input
+        <InputPassword
           type="password"
           name="password"
           placeholder="Password"
