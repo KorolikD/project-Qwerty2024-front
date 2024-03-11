@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Background } from "./ErrorPage.styled";
+import { Background } from "../pages/404Page/ErrorPage.styled";
 
-const ResponsiveBackground = ({ images }) => {
+
+import backgroundImageHero1x from '../img/hero-1x.jpg';
+import backgroundImageHero2x from '../img/hero-2x.jpg';
+import backgroundImageHeroMob2x from '../img/hero-mob-2x.jpg';
+import backgroundImageHeroMob1x from '../img/hero-mob-1x.jpg';
+import backgroundImageHeroTab2x from '../img/hero-tab-2x.jpg';
+import backgroundImageHeroTab1x from '../img/hero-tab-1x.jpg';
+
+const ResponsiveBackground = () => {
   const [imageSrc, setImageSrc] = useState("");
+
+  const images = {
+    desktop: backgroundImageHero1x,
+    desktop2x: backgroundImageHero2x,
+    tablet: backgroundImageHeroTab1x,
+    tablet2x: backgroundImageHeroTab2x,
+    mobile: backgroundImageHeroMob1x,
+    mobile2x: backgroundImageHeroMob2x,
+  };
 
   useEffect(() => {
     const handleResize = () => {

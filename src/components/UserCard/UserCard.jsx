@@ -30,37 +30,34 @@ const UserCard = () => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      console.log(file);
       dispatch(updateAvatar({ avatar: file }));
     }
   };
 
-  const openFileInput = () => {
-    const fileInput = document.getElementById('fileInput');
-    fileInput.click();
-  };
-
   return (
     <Container>
-      <AvatarContainer>{avatarShown}</AvatarContainer>
-      <AddBtn>
-        <Label htmlFor="fileInput" onClick={openFileInput}>
-          <AddSvg>
-            <use
-              href={`${sprite}#icon-add-avatar`}
-              aria-label="Upload Avatar"
-            ></use>
-          </AddSvg>
-        </Label>
-        <input
-          type="file"
-          accept=".jpg, .jpeg"
-          id="fileInput"
-          name="avatar"
-          style={{ display: 'none' }}
-          onChange={handleAvatarChange}
-        />
-      </AddBtn>
+      <AvatarContainer>
+        {avatarShown}
+        <AddBtn>
+          <Label htmlFor="fileInput">
+            <AddSvg>
+              <use
+                href={`${sprite}#icon-add-avatar`}
+                aria-label="Upload Avatar"
+              ></use>
+            </AddSvg>
+          </Label>
+          <input
+            type="file"
+            accept="image/*, .jpg, .jpeg, .png"
+            id="fileInput"
+            name="avatar"
+            style={{ display: 'none' }}
+            onChange={handleAvatarChange}
+          />
+        </AddBtn>
+      </AvatarContainer>
+
       <UserName>{user.name}</UserName>
       <SubTitle>User</SubTitle>
       {/* <StatisticsInfo/> */}
