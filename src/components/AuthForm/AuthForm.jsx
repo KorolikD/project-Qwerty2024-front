@@ -2,7 +2,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register, logIn } from '../../redux/auth/authOperations';
 import { Input, Button, Link, Paragraph } from './AuthForm.styled';
-const { signUpValidation, signInValidation } = require('./validation');
+import { signUpValidation, signInValidation } from './AuthValidation';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -101,8 +101,8 @@ const SignInForm = () => {
 
       <div>
         <Input
-          type="password" // Corrected type
-          name="password" // Add name attribute
+          type="password"
+          name="password"
           placeholder="Password"
           value={formik.values.password}
           onChange={formik.handleChange}
@@ -114,7 +114,7 @@ const SignInForm = () => {
         Sign In
       </Button>
       <Paragraph>
-        Don't have an account?&nbsp;<Link to="/signup">Sign Up</Link>
+        Don\'t have an account?&nbsp;<Link to="/signup">Sign Up</Link>
       </Paragraph>
     </form>
   );
