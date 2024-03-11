@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import icons from '../../img/sprite.svg';
 import {
   ConteinerForIt,
@@ -13,13 +14,30 @@ import {
   SpanRun,
   SvgRun,
 } from './ExercisesSubcategoriesItem.styled';
+import { BasicModalWindow } from '../BasicModalWindow/BasicModalWindow';
 
 const CustomExercisesItem = ({ subcategory }) => {
+  console.log('🤬>>>  subcategory:\n', subcategory);
+  const [modalIsOpen, setIsModalOpen] = useState(false);
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
   return (
     <ConteinerForIt>
+      <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
+        {/* Контент */}
+        <div style={{ height: 400, width: 400 }}></div>
+      </BasicModalWindow>
+
       <ExercisesItemWorkout>
         <Workout>WORKOUT</Workout>
-        <Button>
+        <Button onClick={openModal}>
           Start
           <SvgStart width="16" height="16">
             <use href={icons + '#icon-next'} />
