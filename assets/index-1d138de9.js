@@ -1,4 +1,4 @@
-import{b as t,a as k,j as e,t as o,h as p,s as D,i as E,N as P,u as W,k as N,m as A,n as O}from"./index-1c3e0c7d.js";import{d as v,C as M,T as Y}from"./Calendar-02ef49e4.js";import{S as d}from"./SvgCustom-18e2cc88.js";import{M as C}from"./react-responsive-1cc0d6f6.js";const _=i=>i.diary.productsList,F=i=>i.diary.exercisesList,L=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=t.div`
+import{b as t,a as k,j as e,t as o,h as p,s as D,i as E,N as P,u as W,k as N,m as A,n as O}from"./index-4618a020.js";import{d as v,C as M,T as Y}from"./Calendar-62bc5e1e.js";import{S as d}from"./SvgCustom-aca45287.js";import{M as C}from"./react-responsive-d2601b64.js";const _=i=>i.diary.productsList,F=i=>i.diary.exercisesList,L=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=t.div`
   display: flex;
   gap: 20px;
   align-items: center;

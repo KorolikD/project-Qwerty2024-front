@@ -1,0 +1,1 @@
+.bm-burger-bars{background:#373a47}.bm-menu-wrap{position:fixed;height:100%}.bm-menu{display:flex;justify-content:center;padding-top:245px;background:#E6533C}@media screen and (min-width: 768px){.bm-menu{padding-top:280px}}.bm-item-list{display:flex;flex-direction:column;align-items:center;gap:16px}.bm-overlay{background:rgba(0,0,0,.3)}
