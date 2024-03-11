@@ -1,4 +1,4 @@
-import{b as s,u as n,j as o,d as e,t as r}from"./index-923bf442.js";import{S as i}from"./SvgCustom-70e273dd.js";const c=s.button`
+import{b as s,u as n,j as o,d as e,t as r}from"./index-1c3e0c7d.js";import{S as i}from"./SvgCustom-18e2cc88.js";const c=s.button`
   display: flex;
   justify-content: center;
   align-items: center;
