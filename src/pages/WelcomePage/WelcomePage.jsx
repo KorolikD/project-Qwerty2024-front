@@ -9,7 +9,7 @@ const WelcomePage = () => {
       <MainContainer>
         <Title>Transforming your body shape with Power Pulse</Title>
         <ButtonContainer>
-          <AuthButton size="signup" variant="filled">
+          <AuthButton size="signup" variant="signup">
             Sign Up
           </AuthButton>
           <AuthButton size="signin" variant="">
