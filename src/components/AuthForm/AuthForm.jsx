@@ -83,7 +83,7 @@ const SignUpForm = () => {
         Sign Up
       </Button>
       <Paragraph>
-        Already have an account?&nbsp;<Link to="/signin">Sign In</Link>
+        Already have an account?<Link to="/signin">Sign In</Link>
       </Paragraph>
     </form>
   );
@@ -131,7 +131,7 @@ const SignInForm = () => {
         Sign In
       </Button>
       <Paragraph>
-        Don't have an account?&nbsp;<Link to="/signup">Sign Up</Link>
+        Don't have an account?<Link to="/signup">Sign Up</Link>
       </Paragraph>
     </form>
   );
