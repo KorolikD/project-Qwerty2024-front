@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import LogOutBtn from '../../components/LogOutBtn/LogOutBtn';
 import sprite from '../../img/sprite.svg';
 import { updateAvatar } from '../../redux/auth/authOperations.js';
 import { selectUser } from '../../redux/auth/authSelectors';
+import LogOutBtn from '../../components/LogOutBtn/LogOutBtn';
+import SvgCustom from '../SvgCustom/SvgCustom.jsx';
+import theme from '../../styles/theme.js';
 import {
   AddBtn,
   AddSvg,
@@ -10,22 +12,31 @@ import {
   AvatarContainer,
   Container,
   Label,
+  ProfileInfoItem,
+  ProfileInfoList,
+  ProfileLogOut,
   SubTitle,
   UserName,
+  UserNameWrap,
   UserSvg,
 } from './UserCard.styled.js';
-// import StatisticsInfo from '../../components/StatisticsInfo/StatisticsInfo';
+import {
+  AttentionDiv,
+  DashboardText,
+  SvgTextWrap,
+} from '../DayDashboard/DayDashboard.styled.js';
 
 const UserCard = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const { name, avatarURL, bmr, dpa } = useSelector(selectUser);
+
   const avatarDef = (
     <UserSvg>
       <use href={`${sprite}#icon-user`}></use>
     </UserSvg>
   );
-  const avatarImg = <Avatar src={user.avatarURL} alt="Avatar" />;
-  const avatarShown = user.avatarURL ? avatarImg : avatarDef;
+  const avatarImg = <Avatar src={avatarURL} alt="Avatar" />;
+  const avatarShown = avatarURL ? avatarImg : avatarDef;
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -58,10 +69,52 @@ const UserCard = () => {
         </AddBtn>
       </AvatarContainer>
 
-      <UserName>{user.name}</UserName>
-      <SubTitle>User</SubTitle>
-      {/* <StatisticsInfo/> */}
-      <LogOutBtn />
+      <UserNameWrap>
+        <UserName>{name}</UserName>
+        <SubTitle>User</SubTitle>
+      </UserNameWrap>
+
+      <ProfileInfoList>
+        <ProfileInfoItem>
+          <SvgTextWrap>
+            <SvgCustom
+              icon="icon-food"
+              size="20"
+              color={theme.colors.secondary}
+            />
+            <p>Daily calorie intake</p>
+          </SvgTextWrap>
+          <DashboardText>{bmr}</DashboardText>
+        </ProfileInfoItem>
+        <ProfileInfoItem>
+          <SvgTextWrap>
+            <SvgCustom
+              icon="icon-dumbbell"
+              size="20"
+              color={theme.colors.secondary}
+            />
+            <p>Daily physical activity</p>
+          </SvgTextWrap>
+          <DashboardText>{dpa} min</DashboardText>
+        </ProfileInfoItem>
+      </ProfileInfoList>
+
+      <AttentionDiv>
+        <div>
+          <SvgCustom
+            icon="icon-exclamation-mark"
+            size="14"
+            stroke={theme.colors.white}
+          />
+        </div>
+        <p>
+          We understand that each individual is unique, so the entire approach
+          to diet is relative and tailored to your unique body and goals.
+        </p>
+      </AttentionDiv>
+      <ProfileLogOut>
+        <LogOutBtn />
+      </ProfileLogOut>
     </Container>
   );
 };
