@@ -29,6 +29,32 @@ export const DashboardList = styled.ul`
     line-height: 1.5;
   }
 
+  @media screen and (max-width: 1439px) and (min-width: 768px) {
+    li:nth-child(1) {
+      order: 1;
+    }
+
+    li:nth-child(2) {
+      order: 4;
+    }
+
+    li:nth-child(3) {
+      order: 2;
+    }
+
+    li:nth-child(4) {
+      order: 5;
+    }
+
+    li:nth-child(5) {
+      order: 3;
+    }
+
+    li:nth-child(6) {
+      order: 6;
+    }
+  }
+
   @media screen and (min-width: 1440px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
