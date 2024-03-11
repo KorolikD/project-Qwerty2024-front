@@ -4,26 +4,21 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-top: 90px;
+  margin-top: 58px;
   width: 335px;
   height: 368px;
-  position: absolute;
-  left: 20px;
-  z-index: 2;
 
   @media screen and (min-width: 768px) {
     width: 496px;
     height: 336px;
-    top: 189px;
-    left: 32px;
-    margin-top: 0px;
-    left: 32px;
+
+    margin-top: 108px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 496px;
     height: 336px;
-    left: 96px;
+    margin-top: 119px;
   }
 `;
 
