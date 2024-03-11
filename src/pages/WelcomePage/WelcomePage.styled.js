@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const MainContainer = styled.div`
   text-align: left;
+  position: relative;
 
   margin-top: 66px;
 
@@ -43,6 +44,21 @@ export const ButtonContainer = styled.div`
   @media screen and (min-width: 768px) {
     gap: 20px;
   }
-  @media screen and (min-width: 1024px;) {
+`;
+
+export const FloatingCircle = styled.svg`
+  fill: transparent;
+  position: absolute;
+  z-index: -1;
+  width: 98px;
+  height: 35px;
+  top: 43px;
+  left: -9px;
+  @media screen and (min-width: 768px) {
+    width: 185px;
+    height: 67px;
+    top: 84px;
+    left: -16px;
+    border: 2px;
   }
 `;
