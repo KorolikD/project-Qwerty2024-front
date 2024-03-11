@@ -11,6 +11,7 @@ const theme = {
     formBorder: 'rgba(239, 237, 232, 0.3)',
     overlay: 'rgba(4, 4, 4, 0.4)',
     grey: '#636366',
+    graphite: '#262625',
   },
   fonts: {
     mainFont: 'Roboto, sans-serif',
