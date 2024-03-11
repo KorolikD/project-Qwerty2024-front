@@ -4,7 +4,7 @@ export const DiaryTableList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow: auto;
-  gap: 40px;
+  gap: 36px;
   padding-right: 8px;
   margin: 0;
   font-size: 12px;
@@ -26,7 +26,7 @@ export const DiaryTableList = styled.ul`
 export const DiaryTableItem = styled.li`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 `;
 
 export const GroupTableItemWrap = styled.div`
@@ -64,7 +64,7 @@ export const GroupTableItemWrap = styled.div`
 export const DiaryItemInfo = styled.p`
   margin-top: 8px;
   padding: 10px 14px;
-  border: 1px solid ${(props) => props.theme.colors.formBorder};
+  border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   color: ${(props) => props.theme.colors.white};
   font-size: 14px;

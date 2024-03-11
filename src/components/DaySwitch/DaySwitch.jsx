@@ -23,14 +23,6 @@ const DaySwitch = ({ date, setDate, minDate }) => {
       .subtract(1, 'day')
       .format(DATE_FORMAT);
     setDate(prevDay);
-    // const formattedLimidDate = dayjs(minDate).format(DATE_FORMAT);
-    // const prevDay = dayjs(date, DATE_FORMAT)
-    //   .subtract(1, 'day')
-    //   .format(DATE_FORMAT);
-    // if (prevDay === formattedLimidDate) {
-    //   return;
-    // }
-    // setDate(prevDay);
   };
 
   const onOpenCalendar = () => {
@@ -78,6 +70,7 @@ const DaySwitch = ({ date, setDate, minDate }) => {
           setDate={setDate}
           minDate={minDate}
           isOpen={isOpenCalendar}
+          setIsOpen={setIsOpenCalendar}
         />
       </SwitchWrap>
     </DaySwitchWrap>

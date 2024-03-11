@@ -29,6 +29,32 @@ export const DashboardList = styled.ul`
     line-height: 1.5;
   }
 
+  @media screen and (max-width: 1439px) and (min-width: 768px) {
+    li:nth-child(1) {
+      order: 1;
+    }
+
+    li:nth-child(2) {
+      order: 4;
+    }
+
+    li:nth-child(3) {
+      order: 2;
+    }
+
+    li:nth-child(4) {
+      order: 5;
+    }
+
+    li:nth-child(5) {
+      order: 3;
+    }
+
+    li:nth-child(6) {
+      order: 6;
+    }
+  }
+
   @media screen and (min-width: 1440px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
@@ -47,22 +73,21 @@ export const DashboardItem = styled.li`
   border: ${(props) => {
     if (props.$border === 'green') return '1px solid #3CBF61';
     if (props.$border === 'red') return '1px solid #E9101D';
-    return `1px solid ${props.theme.colors.textWhite40}`;
+    return '1px solid rgba(239, 237, 232, 0.2)';
   }};
   border-radius: 12px;
   background: rgba(239, 237, 232, 0.05);
 
-  &:nth-last-child(-n + 2) {
-    @media screen and (max-width: 767px) {
-      height: 108px;
+  &:nth-child(-n + 2) {
+    background: ${(props) => props.theme.colors.primary};
+    div {
+      color: rgba(239, 237, 232, 0.8);
     }
   }
 
-  &:hover {
-    background: ${(props) => props.theme.colors.primary};
-    border-color: ${(props) => props.theme.colors.textWhite40};
-    div {
-      color: rgba(239, 237, 232, 0.8);
+  &:nth-last-child(-n + 2) {
+    @media screen and (max-width: 767px) {
+      height: 108px;
     }
   }
 

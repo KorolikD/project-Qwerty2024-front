@@ -1,14 +1,19 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
-  CategoryLists,
   CategoryExercisesStyle,
+  CategoryLists,
   ExerciseCards,
+  BackButton,
+  SvgBack,
+  ExerciseCardsItem,
+  ExercisesSkroll,
 } from './ExercisesCategories.styled';
-import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
+import icons from '../../img/sprite.svg';
 
-export const CATEGORIES = {
+const CATEGORIES = {
   'Body parts': 'bodyPart',
   Equipment: 'equipment',
   Muscles: 'target',
@@ -24,15 +29,7 @@ const ExercisesCategories = () => {
   const fetchExercises = async (category) => {
     setSelectedCategory(null);
     try {
-      const response = await axios.get(
-        `https://project-qwerty2024-back.onrender.com/api/exercises?filter=${category}`,
-        {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
-          },
-        }
-      );
+      const response = await axios.get(`/exercises?filter=${category}`);
 
       console.log(response, 'response');
       setExercises(response.data[category]);
@@ -45,13 +42,7 @@ const ExercisesCategories = () => {
   const fetchExerciseList = async (key, value) => {
     try {
       const response = await axios.get(
-        `https://project-qwerty2024-back.onrender.com/api/exercises/params?key=${key}&value=${value}`,
-        {
-          headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTdmNWMxMzVkMDMzNGExMWJmZDUwZiIsImlhdCI6MTcxMDAxNjI3NywiZXhwIjoxNzEwMDk5MDc3fQ.aI3kmFl8HoTdpl6oJkojjqSxgx-uU4I0B7EMuVQ9a8I',
-          },
-        }
+        `/exercises/params?key=${key}&value=${value}`
       );
 
       setExercisesList(response.data.exercises);
@@ -68,24 +59,31 @@ const ExercisesCategories = () => {
     if (isCategorySelected) {
       return (
         <div>
-          <button
+          <BackButton
+            type="button"
             onClick={() => {
               document.title = 'React App';
               setSelectedCategory(null);
             }}
           >
-            back
-          </button>
-          <ExerciseCards>
-            {exercisesList.length > 0
-              ? exercisesList.map((exercise) => (
-                  <CustomExercisesItem
-                    key={exercise._id}
-                    subcategory={exercise}
-                  />
-                ))
-              : 'Empty'}
-          </ExerciseCards>
+            <SvgBack width="16" height="16">
+              <use href={icons + '#icon-next'} />
+            </SvgBack>
+            BACK
+          </BackButton>
+
+          <ExercisesSkroll style={{ height: '500px' }}>
+            <ExerciseCards>
+              {exercisesList.length > 0
+                ? exercisesList.map((exercise) => (
+                    <CustomExercisesItem
+                      key={exercise._id}
+                      subcategory={exercise}
+                    />
+                  ))
+                : 'Empty'}
+            </ExerciseCards>
+          </ExercisesSkroll>
         </div>
       );
     }
@@ -93,7 +91,7 @@ const ExercisesCategories = () => {
     return (
       exercises &&
       exercises.length > 0 && (
-        <ExerciseCards>
+        <ExerciseCardsItem>
           {exercises.map((exercise) => (
             <ExercisesSubcategoriesItem
               key={exercise._id}
@@ -105,7 +103,7 @@ const ExercisesCategories = () => {
               }}
             />
           ))}
-        </ExerciseCards>
+        </ExerciseCardsItem>
       )
     );
   };
