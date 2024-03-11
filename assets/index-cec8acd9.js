@@ -1,4 +1,4 @@
-import{u as s,r as k,j as e,t as o,h,s as D,N as W,a as P,i as E,k as N,m as A,n as L}from"./index-d10283e4.js";import{d as v,C as O,D as M,a as Y,b as j,S as u,c as b,A as _,T as F}from"./DayDashboard.styled-5ddd3a68.js";import{S as l}from"./SvgCustom-762475dc.js";import{M as C}from"./react-responsive-0c28d276.js";import"./index-39490bef.js";const R=i=>i.diary.productsList,q=i=>i.diary.exercisesList,H=i=>i.diary.totalCalories,G=i=>i.diary.burnedCalories,Q=i=>i.diary.timeSpentOnExercises,U=i=>i.diary.isLoading,J=s.div`
+import{u as s,r as k,j as e,t as o,h,s as D,N as W,a as P,i as E,k as N,m as A,n as L}from"./index-94929a97.js";import{d as v,C as O,D as M,a as Y,b as j,S as u,c as b,A as _,T as F}from"./DayDashboard.styled-62ee440b.js";import{S as l}from"./SvgCustom-e82032a2.js";import{M as C}from"./react-responsive-a3d7a24d.js";import"./index-bea1e3e2.js";const R=i=>i.diary.productsList,q=i=>i.diary.exercisesList,H=i=>i.diary.totalCalories,G=i=>i.diary.burnedCalories,Q=i=>i.diary.timeSpentOnExercises,U=i=>i.diary.isLoading,J=s.div`
   display: flex;
   gap: 20px;
   align-items: center;
