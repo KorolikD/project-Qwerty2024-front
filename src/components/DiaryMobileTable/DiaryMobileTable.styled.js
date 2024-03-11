@@ -4,7 +4,7 @@ export const DiaryTableList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow: auto;
-  gap: 40px;
+  gap: 36px;
   padding-right: 8px;
   margin: 0;
   font-size: 12px;
@@ -26,7 +26,7 @@ export const DiaryTableList = styled.ul`
 export const DiaryTableItem = styled.li`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 `;
 
 export const GroupTableItemWrap = styled.div`

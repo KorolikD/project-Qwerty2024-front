@@ -62,17 +62,16 @@ const handleGetDayInfoSuccess = (state, { payload }) => {
 const handleDeleteProductSuccess = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.productsList = state.productsList.filter(
-    (product) => product._id !== payload
-  );
+  state.productsList = payload.products;
+  state.totalCalories = payload.totalCalories;
 };
 
 const handleDeleteExerciseSuccess = (state, { payload }) => {
   state.isLoading = false;
   state.error = null;
-  state.exercisesList = state.exercisesList.filter(
-    (exercise) => exercise._id !== payload
-  );
+  state.exercisesList = payload.exercises;
+  state.burnedCalories = payload.burnedCalories;
+  state.timeSpentOnExercises = payload.totalTime;
 };
 
 const diary = createSlice({
