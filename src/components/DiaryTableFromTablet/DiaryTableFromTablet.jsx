@@ -1,11 +1,7 @@
 import { useSelector } from 'react-redux';
-
 import { selectUser } from '../../redux/auth/authSelectors.js';
-
 import SvgCustom from '../SvgCustom/SvgCustom.jsx';
-
 import theme from '../../styles/theme.js';
-
 import {
   DiaryBtn,
   DiaryTable,

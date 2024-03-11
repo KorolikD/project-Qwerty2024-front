@@ -1,29 +1,18 @@
 import { useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import dayjs from 'dayjs';
-
 import { selectUser } from '../../redux/auth/authSelectors.js';
-
 import { getDayInfo } from '../../redux/diary/operations.js';
-
 import {
   selectDiaryExercises,
   selectDiaryProducts,
   selectIsLoading,
 } from '../../redux/diary/selectors.js';
-
 import TitlePage from '../../components/TitlePage';
-
 import DaySwitch from '../../components/DaySwitch';
-
 import DayDashboard from '../../components/DayDashboard';
-
 import DiaryTableForWhat from '../../components/DiaryTableForWhat';
-
 import { Loader } from '../../components/Loader/Loader.jsx';
-
 import {
   DiaryContainer,
   DiarySwitchWrap,

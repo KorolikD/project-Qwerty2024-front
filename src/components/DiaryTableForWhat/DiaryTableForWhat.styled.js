@@ -18,7 +18,7 @@ export const DiaryTablesWrap = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 826px;
+    width: 828px;
   }
 `;
 

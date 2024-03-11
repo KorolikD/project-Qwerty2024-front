@@ -77,7 +77,7 @@ export const TableProductsBody = styled.tbody`
 
   overflow: auto;
   overflow-x: hidden;
-  height: 142px;
+  height: 144px;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -135,7 +135,7 @@ export const TableExercisesBody = styled.tbody`
 
   overflow: auto;
   overflow-x: hidden;
-  height: 142px;
+  height: 144px;
 
   &::-webkit-scrollbar {
     width: 6px;
