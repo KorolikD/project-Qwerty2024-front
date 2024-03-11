@@ -24,7 +24,7 @@ export const DiaryTable = styled.table`
 
 export const TableCell = styled.td`
   padding: 8px 14px;
-  border: 1px solid ${(props) => props.theme.colors.formBorder};
+  border: 1px solid rgba(239, 237, 232, 0.2);;
   border-radius: 12px;
   white-space: nowrap;
   overflow: hidden;
