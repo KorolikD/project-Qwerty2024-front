@@ -30,15 +30,9 @@ const UserCard = () => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      console.log(file);
       dispatch(updateAvatar({ avatar: file }));
     }
   };
-
-  // const openFileInput = () => {
-  //   const fileInput = document.getElementById('fileInput');
-  //   fileInput.click();
-  // };
 
   return (
     <Container>
