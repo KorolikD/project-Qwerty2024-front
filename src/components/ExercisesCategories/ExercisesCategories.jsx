@@ -13,7 +13,7 @@ import {
 } from './ExercisesCategories.styled';
 import icons from '../../img/sprite.svg';
 
-export const CATEGORIES = {
+const CATEGORIES = {
   'Body parts': 'bodyPart',
   Equipment: 'equipment',
   Muscles: 'target',
