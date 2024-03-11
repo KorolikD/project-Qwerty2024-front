@@ -1,4 +1,4 @@
-import{u as g,r as D,Y as Ge,Z as Ze,g as Je,j as i,t as ue,b as Oe}from"./index-db495528.js";import{E as Qe}from"./ExercisesSubcategoriesList-5f530894.js";import{S as Xe,s as pe}from"./SvgCustom-aafda459.js";import{p as Pe}from"./index-387d7a00.js";const et=g.div`
+import{u as g,r as D,Y as Ge,Z as Ze,g as Je,j as i,t as ue,b as Oe}from"./index-d10283e4.js";import{E as Qe}from"./ExercisesSubcategoriesList-1d46a685.js";import{S as Xe,s as pe}from"./SvgCustom-762475dc.js";import{p as Pe}from"./index-387d7a00.js";const et=g.div`
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
