@@ -112,6 +112,14 @@ const SignInForm = () => {
     },
     validationSchema: signInValidationSchema,
   });
+  const checkStatus = (item) => {
+    if (formik.touched[item] && formik.errors[item]) {
+      return 'error';
+    } else if (formik.touched[item] && !formik.errors[item]) {
+      return 'success';
+    }
+    return '';
+  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -136,7 +144,7 @@ const SignInForm = () => {
         hasFeedback
         validateStatus={checkStatus('password')}
       >
-        <Input
+        <InputPassword
           type="password"
           name="password"
           placeholder="Password"

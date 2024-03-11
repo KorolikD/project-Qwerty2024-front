@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  paddin-top: 58px;
+  padding-top: 58px;
   width: 335px;
   height: 368px;
 
@@ -42,7 +42,7 @@ export const Paragraph = styled.p`
   font-weight: 400px;
   line-height: 18px;
   margin-top: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
