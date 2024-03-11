@@ -69,16 +69,15 @@ const App = () => {
           <Route
             path="products"
             element={
-              <ProductsPage />
-              // <PrivateRoute
-              //   component={
-              //     <ProtectedRoute
-              //       component={ProductsPage}
-              //       redirectTo="/profile"
-              //     />
-              //   }
-              //   redirectTo="/"
-              // />
+              <PrivateRoute
+                component={
+                  <ProtectedRoute
+                    component={ProductsPage}
+                    redirectTo="/profile"
+                  />
+                }
+                redirectTo="/"
+              />
             }
           />
           <Route
