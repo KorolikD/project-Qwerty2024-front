@@ -110,7 +110,6 @@ export const Button = styled(AntButton)`
     padding: 16px 60px 16px 60px;
     border-radius: 12px;
     gap: 10px;
-    margin-top: 64px;
 
     font-size: 20px;
 
