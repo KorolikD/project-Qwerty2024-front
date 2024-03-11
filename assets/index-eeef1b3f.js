@@ -1,4 +1,4 @@
-import{u as n,r as k,j as e,t as s,h,s as D,N as E,a as W,i as P,k as N,m as L,n as O}from"./index-c48ae59c.js";import{d as v,C as A,T as F}from"./Calendar-eada70f9.js";import{S as l}from"./SvgCustom-fda7c918.js";import{M as C}from"./react-responsive-3caa3db2.js";import"./index-18e5d54d.js";import"./sprite-e0834078.js";const M=i=>i.diary.productsList,Y=i=>i.diary.exercisesList,_=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=i=>i.diary.isLoading,G=n.div`
+import{u as n,r as k,j as e,t as s,h,s as D,N as E,a as W,i as P,k as N,m as L,n as O}from"./index-279a04c8.js";import{d as v,C as A,T as F}from"./Calendar-54237c43.js";import{S as l}from"./SvgCustom-bff56937.js";import{M as C}from"./react-responsive-5c0e16d8.js";import"./index-2a7988da.js";import"./sprite-d6b80375.js";const M=i=>i.diary.productsList,Y=i=>i.diary.exercisesList,_=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=i=>i.diary.isLoading,G=n.div`
   display: flex;
   gap: 20px;
   align-items: center;
