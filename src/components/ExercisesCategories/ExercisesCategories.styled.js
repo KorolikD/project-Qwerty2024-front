@@ -62,6 +62,13 @@ export const NavTitle = styled.div`
   }
 `;
 
+export const PictureCards = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 export const ExerciseCards = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -140,5 +147,27 @@ export const ExercisesSkroll = styled.div`
   }
   @media (min-width: 1440px) {
     width: 850px;
+  }
+`;
+
+import backgroundImage1x from '../../img/exercises-side-1x.jpg';
+import backgroundImage2x from '../../img/exercises-side-2x.jpg';
+
+export const ExercisesPictures = styled.div`
+  @media screen and (min-width: 1440px) {
+    background-image: url(${backgroundImage1x});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+
+    max-width: 1440px;
+    height: 716px;
+    margin-right: -96px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${backgroundImage2x});
+    }
   }
 `;

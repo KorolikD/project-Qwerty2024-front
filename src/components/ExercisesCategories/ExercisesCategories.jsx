@@ -12,6 +12,7 @@ import {
   ExercisesSkroll,
   PageTitle,
   NavTitle,
+  ExercisesPictures,
 } from './ExercisesCategories.styled';
 import icons from '../../img/sprite.svg';
 
@@ -73,19 +74,20 @@ const ExercisesCategories = () => {
             </SvgBack>
             BACK
           </BackButton>
-
-          <ExercisesSkroll style={{ height: '500px' }}>
-            <ExerciseCards>
-              {exercisesList.length > 0
-                ? exercisesList.map((exercise) => (
-                    <CustomExercisesItem
-                      key={exercise._id}
-                      subcategory={exercise}
-                    />
-                  ))
-                : 'Empty'}
-            </ExerciseCards>
-          </ExercisesSkroll>
+          <ExercisesPictures>
+            <ExercisesSkroll style={{ height: '525px' }}>
+              <ExerciseCards>
+                {exercisesList.length > 0
+                  ? exercisesList.map((exercise) => (
+                      <CustomExercisesItem
+                        key={exercise._id}
+                        subcategory={exercise}
+                      />
+                    ))
+                  : 'Empty'}
+              </ExerciseCards>
+            </ExercisesSkroll>
+          </ExercisesPictures>
         </div>
       );
     }
