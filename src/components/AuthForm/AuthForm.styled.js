@@ -6,7 +6,6 @@ export const Input = styled(AntInput)`
   width: 335px;
   height: 46px;
   padding: 14px;
-  margin: 18px 0 0 0;
 
   border-radius: 12px;
   color: ${(props) => props.theme.colors.white};
@@ -14,7 +13,7 @@ export const Input = styled(AntInput)`
   border: 1px solid ${(props) => props.theme.colors.formBorder};
 
   &::placeholder {
-    font-weight: 400px;
+    font-weight: 400;
     font-size: 14px;
     width: 100px;
     line-height: 18px;
@@ -48,7 +47,6 @@ export const InputPassword = styled(AntInput.Password)`
   width: 335px;
   height: 46px;
   padding: 14px;
-  margin: 18px 0 0 0;
 
   border-radius: 12px;
   color: ${(props) => props.theme.colors.white};

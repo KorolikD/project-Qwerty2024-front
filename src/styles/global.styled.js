@@ -29,6 +29,10 @@ export const GlobalStyle = createGlobalStyle`
   color: green;
 }
 
+.ant-input-status-success {
+ border-color: green !important;
+}
+
 
   body {
     font-family: ${({ theme }) => theme.fonts.mainFont};

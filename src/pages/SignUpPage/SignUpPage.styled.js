@@ -45,7 +45,7 @@ export const Paragraph = styled.p`
   font-weight: 400px;
   line-height: 18px;
   margin-top: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

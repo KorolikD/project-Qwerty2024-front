@@ -42,7 +42,7 @@ const SignUpForm = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <Form.Item
-        help={formik.errors.name || 'hi'}
+        help={formik.errors.name || 'correct'}
         hasFeedback
         validateStatus={checkStatus('name')}
       >
@@ -57,27 +57,37 @@ const SignUpForm = () => {
         />
       </Form.Item>
 
-      <div>
+      <Form.Item
+        help={formik.errors.email || 'correct'}
+        hasFeedback
+        validateStatus={checkStatus('email')}
+      >
         <Input
           type="email"
           name="email"
           placeholder="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           required
         />
-      </div>
+      </Form.Item>
 
-      <div>
+      <Form.Item
+        help={formik.errors.password || 'correct'}
+        hasFeedback
+        validateStatus={checkStatus('password')}
+      >
         <InputPassword
           type="password"
           name="password"
           placeholder="Password"
           value={formik.values.password}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           required
         />
-      </div>
+      </Form.Item>
 
       <Button type="primary" htmlType="submit">
         Sign Up
@@ -105,27 +115,37 @@ const SignInForm = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div>
+      <Form.Item
+        help={formik.errors.email || 'correct'}
+        hasFeedback
+        validateStatus={checkStatus('email')}
+      >
         <Input
           type="email"
           name="email"
           placeholder="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           required
         />
-      </div>
+      </Form.Item>
 
-      <div>
+      <Form.Item
+        help={formik.errors.password || 'correct'}
+        hasFeedback
+        validateStatus={checkStatus('password')}
+      >
         <Input
           type="password"
           name="password"
           placeholder="Password"
           value={formik.values.password}
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           required
         />
-      </div>
+      </Form.Item>
 
       <Button type="primary" htmlType="submit">
         Sign In
