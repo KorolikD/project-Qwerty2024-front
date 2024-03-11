@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authOperations';
 import { Input, Button, Link, Paragraph } from './AuthForm.styled';
 
-
-
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -14,8 +12,8 @@ const SignUpForm = () => {
       password: '',
     },
     onSubmit: (values) => {
-      dispatch(register(values)); 
-      formik.resetForm(); 
+      dispatch(register(values));
+      formik.resetForm();
     },
   });
 
@@ -34,8 +32,8 @@ const SignUpForm = () => {
 
       <div>
         <Input
-          type="email" 
-          name="email" 
+          type="email"
+          name="email"
           placeholder="Email"
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -45,8 +43,8 @@ const SignUpForm = () => {
 
       <div>
         <Input
-          type="password" 
-          name="password" 
+          type="password"
+          name="password"
           placeholder="Password"
           value={formik.values.password}
           onChange={formik.handleChange}
@@ -57,7 +55,9 @@ const SignUpForm = () => {
       <Button type="primary" htmlType="submit">
         Sign Up
       </Button>
-      <Paragraph>Already have an account?&nbsp;<Link to="/signin">Sign In</Link></Paragraph>
+      <Paragraph>
+        Already have an account?&nbsp;<Link to="/signin">Sign In</Link>
+      </Paragraph>
     </form>
   );
 };
@@ -70,8 +70,8 @@ const SignInForm = () => {
       password: '',
     },
     onSubmit: (values) => {
-      dispatch(register(values)); 
-      formik.resetForm(); 
+      dispatch(register(values));
+      formik.resetForm();
     },
   });
 
@@ -102,7 +102,9 @@ const SignInForm = () => {
       <Button type="primary" htmlType="submit">
         Sign In
       </Button>
-      <Paragraph>Don't have an account?&nbsp;<Link to="/signup">Sign Up</Link></Paragraph>
+      <Paragraph>
+        Don't have an account?&nbsp;<Link to="/signup">Sign Up</Link>
+      </Paragraph>
     </form>
   );
 };
