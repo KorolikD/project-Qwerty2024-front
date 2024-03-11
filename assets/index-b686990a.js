@@ -1,4 +1,4 @@
-import{u as n,r as k,j as e,t as s,h,s as D,N as E,a as W,i as P,k as N,m as L,n as O}from"./index-9ce9cf9e.js";import{d as v,C as A,T as F}from"./Calendar-37639a97.js";import{S as l}from"./SvgCustom-178ab455.js";import{M as C}from"./react-responsive-9c52dae3.js";import"./index-d5be3308.js";import"./sprite-d58cb6ca.js";const M=i=>i.diary.productsList,Y=i=>i.diary.exercisesList,_=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=i=>i.diary.isLoading,G=n.div`
+import{u as n,r as k,j as e,t as s,h,s as D,N as E,a as W,i as P,k as N,m as L,n as O}from"./index-db495528.js";import{d as v,C as A,T as F}from"./Calendar-cc942974.js";import{S as l}from"./SvgCustom-aafda459.js";import{M as C}from"./react-responsive-9b833a6e.js";import"./index-2c993ef7.js";const M=i=>i.diary.productsList,Y=i=>i.diary.exercisesList,_=i=>i.diary.totalCalories,R=i=>i.diary.burnedCalories,q=i=>i.diary.timeSpentOnExercises,H=i=>i.diary.isLoading,G=n.div`
   display: flex;
   gap: 20px;
   align-items: center;
@@ -486,4 +486,4 @@ import{u as n,r as k,j as e,t as s,h,s as D,N as E,a as W,i as P,k as N,m as L,n
   display: flex;
   flex-direction: column;
   gap: 40px;
-`,he="DD/MM/YYYY",me=()=>{const[i,o]=k.useState(v().format(he)),a=h(M),t=h(Y),d=h(H),{createdAt:r}=h(D),c=W();return k.useEffect(()=>{i&&c(L(i))},[i,c]),e.jsx(e.Fragment,{children:d?e.jsx(O,{}):e.jsxs(ae,{children:[e.jsxs(ce,{children:[e.jsx(F,{title:"Diary"}),e.jsx(U,{date:i,setDate:o,minDate:r})]}),e.jsxs(xe,{children:[e.jsx(X,{}),e.jsxs(pe,{children:[e.jsx(B,{list:a,date:i,to:"/products",forProductsTable:!0})," ",e.jsx(B,{list:t,date:i,to:"/exercises",forExercisesTable:!0})]})]})]})})},we=me;export{we as default};
+`,he="DD/MM/YYYY",me=()=>{const[i,o]=k.useState(v().format(he)),a=h(M),t=h(Y),d=h(H),{createdAt:r}=h(D),c=W();return k.useEffect(()=>{i&&c(L(i))},[i,c]),e.jsx(e.Fragment,{children:d?e.jsx(O,{}):e.jsxs(ae,{children:[e.jsxs(ce,{children:[e.jsx(F,{title:"Diary"}),e.jsx(U,{date:i,setDate:o,minDate:r})]}),e.jsxs(xe,{children:[e.jsx(X,{}),e.jsxs(pe,{children:[e.jsx(B,{list:a,date:i,to:"/products",forProductsTable:!0})," ",e.jsx(B,{list:t,date:i,to:"/exercises",forExercisesTable:!0})]})]})]})})},ye=me;export{ye as default};
