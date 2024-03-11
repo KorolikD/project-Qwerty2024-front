@@ -103,7 +103,7 @@ const UserCard = () => {
         <div>
           <SvgCustom
             icon="icon-exclamation-mark"
-            size="14"
+            size="16"
             stroke={theme.colors.white}
           />
         </div>

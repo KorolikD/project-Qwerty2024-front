@@ -104,7 +104,7 @@ export const SubTitle = styled.p`
 
 export const ProfileInfoList = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   /* margin-top: 40px;
   margin-bottom: 40px; */
@@ -124,6 +124,15 @@ export const ProfileInfoItem = styled.li`
   border: 1px solid rgba(239, 237, 232, 0.2);
   border-radius: 12px;
   background-color: ${(props) => props.theme.colors.primary};
+
+  @media screen and (max-width: 767px) {
+    max-width: 157px;
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 108px;
+    width: 209px;
+  }
 `;
 
 export const ProfileLogOut = styled.div`
