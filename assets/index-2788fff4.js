@@ -1,4 +1,4 @@
-import{u,t as g,x as N,r as p,j as o,L as xe,e as Y}from"./index-d26f62b3.js";import{E as fe}from"./ExercisesSubcategoriesList-529f3c6b.js";import{S as D,s as H}from"./SvgCustom-153ad27a.js";import{B as ee}from"./BasicModalWindow-dde8acc9.js";import{d as ge}from"./dayjs.min-b675ad4b.js";import"./motion-12812518.js";import"./zoom-2f7cd590.js";const ye=u.div`
+import{u,t as g,x as N,r as p,j as o,L as xe,e as Y}from"./index-bdf392bc.js";import{E as fe}from"./ExercisesSubcategoriesList-f590c279.js";import{S as D,s as H}from"./SvgCustom-3cad93c7.js";import{B as ee}from"./BasicModalWindow-54455549.js";import{d as ge}from"./dayjs.min-4ef56250.js";import"./motion-38dcddb2.js";import"./zoom-401a75c6.js";const ye=u.div`
   margin: 0 auto;
 
   @media screen and (max-width: 767px) {
