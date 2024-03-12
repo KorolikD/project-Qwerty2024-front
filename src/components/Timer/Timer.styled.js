@@ -8,7 +8,7 @@ export const TimerWrapper = styled.div`
 `;
 
 export const TimerTitle = styled.p`
-  color: ${theme.colors.white};
+  color: ${theme.colors.textWhite40};
   font-size: 10px;
   line-height: 14px;
   margin-bottom: 4px;
