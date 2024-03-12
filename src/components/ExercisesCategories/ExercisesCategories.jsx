@@ -15,6 +15,8 @@ import {
   ExercisesPictures,
 } from './ExercisesCategories.styled';
 import icons from '../../img/sprite.svg';
+import Slider from 'react-slick';
+import { slider } from '../../helpers/slider/slider';
 
 const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -95,19 +97,20 @@ const ExercisesCategories = () => {
     return (
       exercises &&
       exercises.length > 0 && (
-        <ExerciseCardsItem>
+        <Slider {...slider}>
           {exercises.map((exercise) => (
-            <ExercisesSubcategoriesItem
-              key={exercise._id}
-              subcategory={exercise}
-              onSelect={async (key, value) => {
-                document.title = key;
-                await fetchExerciseList(CATEGORIES[key], value);
-                setSelectedCategory([key, value]);
-              }}
-            />
+            <ExerciseCardsItem key={exercise._id}>
+              <ExercisesSubcategoriesItem
+                subcategory={exercise}
+                onSelect={async (key, value) => {
+                  document.title = key;
+                  await fetchExerciseList(CATEGORIES[key], value);
+                  setSelectedCategory([key, value]);
+                }}
+              />
+            </ExerciseCardsItem>
           ))}
-        </ExerciseCardsItem>
+        </Slider>
       )
     );
   };

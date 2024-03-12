@@ -80,10 +80,16 @@ export const ExerciseCards = styled.div`
 `;
 
 export const ExerciseCardsItem = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   gap: 15px;
   margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
 `;
 
 export const BackButton = styled.button`

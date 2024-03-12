@@ -10,8 +10,8 @@ export const slider = {
   appendDots: (dots) => (
     <div
       style={{
-        borderRadius: '10px',
-        padding: '10px',
+        borderRadius: '15px',
+        padding: '15px',
       }}
     >
       <ul style={{ margin: '0px' }}> {dots} </ul>
@@ -40,7 +40,7 @@ export const slider = {
     {
       breakpoint: 1440,
       settings: {
-        slidesToShow: 10,
+        slidesToShow: 5,
         slidesToScroll: 10,
         infinite: false,
         dots: true,
