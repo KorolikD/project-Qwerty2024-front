@@ -1,7 +1,6 @@
 import { Formik, Form, Field } from 'formik';
 import dayjs from 'dayjs';
-import { useDispatch } from 'react-redux';
-import { addProduct } from '../../redux/diary/operations';
+import axios from 'axios';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -12,21 +11,22 @@ export const AddProductForm = ({
   onClose,
   onSuccessOpen,
 }) => {
-  const dispatch = useDispatch();
+  const postProductToDiary = async (requestBody) => {
+    try {
+      await axios.post(`/diary/product`, requestBody);
+    } catch (error) {
+      console.error('Error fetching product:', error);
+    }
+  };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const { weight, calories } = values;
     const formattedDate = dayjs(Date.now()).format(DATE_FORMAT);
     const formData = { productId, date: formattedDate, weight, calories };
-    alert(JSON.stringify(formData, null, 2));
-    dispatch(addProduct(formData))
-      .unwrap()
-      .then((data) => {
-        // alert(JSON.stringify(data, null, 2));
-        onClose();
-        onSuccessOpen();
-      })
-      .catch((error) => alert(JSON.stringify(error, null, 2)));
+
+    await postProductToDiary(formData);
+    onClose();
+    onSuccessOpen();
   };
   return (
     <>
