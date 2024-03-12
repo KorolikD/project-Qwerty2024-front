@@ -36,7 +36,7 @@ export const Button = styled.button`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
-  color: orange;
+  color: #e6533c;
   background-color: transparent;
   border: none;
 `;
@@ -81,7 +81,7 @@ export const SpanItem = styled.span`
 `;
 
 export const SvgStart = styled.svg`
-  stroke: orange;
+  stroke: #e6533c;
 `;
 
 export const SpanRun = styled.span`
@@ -91,9 +91,9 @@ export const SpanRun = styled.span`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: orange;
+  background-color: #efa082;
 `;
 
 export const SvgRun = styled.svg`
-  fill: white;
+  fill: #efede8;
 `;

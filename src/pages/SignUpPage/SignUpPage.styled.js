@@ -1,46 +1,57 @@
-import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
-export const Container = styled.div`
+export const FormContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 500px;
-`;
-export const Block = styled.div`
-  text-align: center;
-`;
-export const Title = styled.h1`
-  color: #ffffff;
-  text-shadow:
-    0 0 5px #00baff,
-    0 0 10px #00baff,
-    0 0 20px #00baff,
-    0 0 40px #00baff,
-    0 0 80px #00baff;
+  flex-direction: column;
+
+  padding-top: 58px;
+  width: 335px;
+  height: 368px;
+
+  @media screen and (min-width: 768px) {
+    width: 496px;
+    height: 336px;
+
+    padding-top: 108px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 496px;
+    height: 336px;
+    padding-top: 119px;
+  }
 `;
 
-export const StyledLink = styled(Link)`
-  padding: 8px 16px;
-  color: #ffffff; /* White text color */
-  text-shadow:
-    0 0 5px #00baff,
-    0 0 10px #00baff,
-    0 0 20px #00baff,
-    0 0 40px #00baff,
-    0 0 80px #00baff;
-  transition:
-    color 0.3s,
-    text-shadow 0.3s;
-  display: block;
-  &:hover,
-  &:focus {
-    color: #00baff; /* Blue text color on hover/focus */
-    text-shadow:
-      0 0 5px #00baff,
-      0 0 10px #00baff,
-      0 0 20px #00baff,
-      0 0 40px #00baff,
-      0 0 80px #00baff;
+export const Title = styled.h1`
+  color: ${(props) => props.theme.colors.white};
+  font-weight: 700px;
+  font-size: 24px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
+`;
+
+export const Paragraph = styled.p`
+  color: ${(props) => props.theme.colors.formBorder};
+  font-size: 14px;
+  font-weight: 400px;
+  line-height: 18px;
+  margin-top: 14px;
+  margin-bottom: 28px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
   }
 `;

@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-const ModalBackdrop = styled.div`
+export const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  /* padding: 0 20px; */
+  padding: 0 20px;
 
   width: 100vw;
   height: 100vh;
 
-  /* background-color: #10100f; */
+  background-color: #10100f;
 `;
 
-const ModalWindow = styled.div`
+export const ModalWindow = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,31 +22,37 @@ const ModalWindow = styled.div`
   border-radius: 12px;
   background-color: #10100f;
 
-  /* padding: 48px 24px; */
+  padding: 48px 24px;
 
-  /* @media screen and (max-width: 374px) {
+  @media screen and (max-width: 374px) {
     min-width: 300px;
     min-height: 362px;
-  } */
+  }
 
-  /* @media screen and (min-width: 375px) {
+  @media screen and (min-width: 375px) {
     min-width: 335px;
     min-height: 362px;
-  } */
+  }
 
-  /* @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     min-width: 430px;
     min-height: 428px;
     padding: 64px 24px;
-  } */
+  }
 `;
 
-const CloseModalBtn = styled.svg`
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+export const CloseModalBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 14px;
   right: 14px;
   width: 22px;
   height: 22px;
+  background: transparent;
 
   @media (min-width: 768px) {
     top: 16px;
@@ -55,5 +61,3 @@ const CloseModalBtn = styled.svg`
     height: 26px;
   }
 `;
-
-export { ModalBackdrop, ModalWindow, CloseModalBtn };

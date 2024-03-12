@@ -64,7 +64,7 @@ const DiaryMobileTable = ({
       )}
 
       {forProductsTable && (
-        <DiaryTableList height="725">
+        <DiaryTableList height="752">
           {list.map((product) => (
             <DiaryTableItem key={product._id}>
               <div>
