@@ -42,9 +42,8 @@ const Calendar = ({ date, setDate, minDate, maxDate, isOpen, setIsOpen }) => {
               maxDate: dayjs(formattedMaxDate, DATE_FORMAT),
             })}
             {...(formattedMinDate && {
-              minData: dayjs(formattedMinDate, DATE_FORMAT),
+              minDate: dayjs(formattedMinDate, DATE_FORMAT),
             })}
-            // minDate={dayjs(formattedMinDate, DATE_FORMAT)}
             onChange={onChangeDate}
             open={isOpen}
           />
