@@ -8,16 +8,20 @@ import { updateUser } from '../../redux/auth/authOperations';
 import radioGroups from './radioBtnConfig.js';
 import { selectUser } from '../../redux/auth/authSelectors';
 import SvgCustom from '../SvgCustom/index.js';
-import { useEffect } from 'react';
+import theme from '../../styles/theme.js';
+import dayjs from 'dayjs';
 
-const UserForm = ({ date, setDate, setIsOpenCalendar }) => {
+const UserForm = ({ date, setIsOpenCalendar }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   const handleSubmit = (values) => {
-    console.log(values);
-    message.success('Class');
-    dispatch(updateUser(values));
+    const userInfo = {
+      ...values,
+      birthday: date,
+    };
+    console.log(userInfo);
+    dispatch(updateUser(userInfo));
   };
   const checkStatus = (value) => {
     if (formik.touched[value] && !formik.errors[value]) {
@@ -35,7 +39,7 @@ const UserForm = ({ date, setDate, setIsOpenCalendar }) => {
       height: user.height || '0',
       currentWeight: user.currentWeight || '0',
       desiredWeight: user.desiredWeight || '0',
-      birthday: user.birthday || '00.00.0000',
+      birthday: user.birthday || '00/00/0000',
       blood: user.blood || '',
       sex: user.sex || '',
       levelActivity: user.levelActivity || '',
@@ -44,16 +48,8 @@ const UserForm = ({ date, setDate, setIsOpenCalendar }) => {
     onSubmit: handleSubmit,
   });
 
-  // useEffect(() => {
-  //   console.log('rabotay');
-  //   formik.setFieldValue('birthday', date);
-  // }, [date, formik]);
-
   return (
-    <StyledForm
-      onFinishFailed={() => message.error('Bly')}
-      onFinish={formik.handleSubmit}
-    >
+    <StyledForm onFinish={formik.handleSubmit}>
       <Form.Item
         help={formik.errors.name}
         validateStatus={checkStatus('name')}
@@ -126,18 +122,33 @@ const UserForm = ({ date, setDate, setIsOpenCalendar }) => {
           onBlur={formik.handleBlur}
         />
       </Form.Item>
-      <Form.Item label="Date of birth">
-        <button type="button">
-          <input
-            type="text"
-            name="birthday"
-            value={formik.values.birthday}
-            required
-            onBlur={formik.handleBlur}
-            readOnly
-          />
-          {/*<SvgCustom />*/}
-        </button>
+      {/*<div>*/}
+      {/*  <p>Date of birth</p>*/}
+      {/*  <button type="button" onClick={() => setIsOpenCalendar(true)}>*/}
+      {/*    <span>{date.split('/').join('.')}</span>*/}
+      {/*    <SvgCustom*/}
+      {/*      icon="icon-calendar"*/}
+      {/*      size="18"*/}
+      {/*      stroke={theme.colors.white}*/}
+      {/*    />*/}
+      {/*  </button>*/}
+      {/*</div>*/}
+
+      <Form.Item
+        label="Date of birth"
+        help={formik.errors.birthday}
+        validateStatus={checkStatus('birthday')}
+        hasFeedback
+      >
+        <Input
+          type="text"
+          onClick={() => setIsOpenCalendar(true)}
+          name="birthday"
+          value={date}
+          required
+          onBlur={formik.handleBlur}
+          readOnly
+        />
       </Form.Item>
       <Form.Item
         label="Blood"
@@ -159,7 +170,6 @@ const UserForm = ({ date, setDate, setIsOpenCalendar }) => {
           })}
         </Radio.Group>
       </Form.Item>
-
       <Radio.Group
         onChange={formik.handleChange}
         value={formik.values.sex}
@@ -187,8 +197,7 @@ const UserForm = ({ date, setDate, setIsOpenCalendar }) => {
           );
         })}
       </Radio.Group>
-
-      <StyledButton type="submit" $type="filled">
+      <StyledButton disabled={!formik.isValid} type="submit" $type="filled">
         Save
       </StyledButton>
     </StyledForm>

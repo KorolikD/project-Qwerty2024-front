@@ -4,7 +4,7 @@ const validationSchema = Yup.object().shape({
   name: Yup.string()
     .matches(/^[A-Za-z\s'-]+$/, 'Incorrect name format')
     .required('Required')
-    .min(3, 'hhhhhhhh'),
+    .min(3, 'Minimum number of characters is 3'),
   email: Yup.string()
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Invalid email')
     .required('Required'),
@@ -15,9 +15,9 @@ const validationSchema = Yup.object().shape({
   desiredWeight: Yup.number()
     .min(35, 'Minimum weight is 35')
     .required('Required'),
-  birthday: Yup.date()
+  birthday: Yup.string()
     .required('Required')
-    .max(new Date(), 'Birthday must be in the past'),
+    .matches(/^\d{2}\/\d{2}\/\d{4}$/, 'Invalid date format'),
   blood: Yup.number()
     .required('Required')
     .oneOf([1, 2, 3, 4], 'Invalid blood type'),

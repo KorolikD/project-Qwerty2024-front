@@ -12,6 +12,7 @@ const Calendar = ({ date, setDate, minDate, maxDate, isOpen, setIsOpen }) => {
   const onChangeDate = (newDate) => {
     const formattedDate = newDate.format(DATE_FORMAT);
     setDate(formattedDate);
+    setIsOpen(false);
   };
 
   useEffect(() => {

@@ -2,10 +2,9 @@ import TitlePage from '../../components/TitlePage';
 import UserForm from '../../components/UserForm';
 import UserCard from '../../components/UserCard';
 import { useState } from 'react';
-import dayjs from 'dayjs';
+import { selectUser } from '../../redux/auth/authSelectors.js';
+import { useSelector } from 'react-redux';
 import Calendar from '../../components/Calendar/index.js';
-
-const DATE_FORMAT = 'DD/MM/YYYY';
 
 const getMaxDate = () => {
   const currentDate = new Date();
@@ -13,24 +12,23 @@ const getMaxDate = () => {
   return currentDate;
 };
 const ProfilePage = () => {
-  const [date, setDate] = useState(dayjs().format(DATE_FORMAT));
-  const [isOpenCalendar, setIsOpenCalendar] = useState(true);
-  console.log(date);
+  const user = useSelector(selectUser);
+  const [date, setDate] = useState(
+    user.birthday ? user.birthday : '00.00.0000'
+  );
+  const [isOpenCalendar, setIsOpenCalendar] = useState(false);
+
   return (
     <>
       <TitlePage title="Profile Settings" />
       <UserCard />
-      <UserForm
-        date={date}
-        setDate={setDate}
-        setIsOpenCalendar={setIsOpenCalendar}
-      />
+      <UserForm date={date} setIsOpenCalendar={setIsOpenCalendar} />
       <Calendar
         date={date}
         setDate={setDate}
+        maxDate={getMaxDate()}
         isOpen={isOpenCalendar}
         setIsOpen={setIsOpenCalendar}
-        maxDate={getMaxDate()}
       />
     </>
   );
