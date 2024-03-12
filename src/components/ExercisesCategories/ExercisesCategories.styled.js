@@ -72,7 +72,7 @@ export const PictureCards = styled.div`
 export const ExerciseCards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 20px;
   margin-top: 23px;
   @media screen and (min-width: 1440px) {
     width: 842px;
@@ -80,23 +80,20 @@ export const ExerciseCards = styled.div`
 `;
 
 export const ExerciseCardsItem = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
   gap: 15px;
   margin-top: 20px;
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (min-width: 1440px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  /*@media screen and (min-width: 1440px) {
+    margin-left: 500px;
+  }*/
 `;
 
 export const BackButton = styled.button`
   display: flex;
   gap: 8px;
+  margin-bottom: 15px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.29;
   color: rgba(239, 237, 232, 0.4);
   background: transparent;

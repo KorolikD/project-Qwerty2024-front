@@ -38,11 +38,11 @@ export const slider = {
 
   responsive: [
     {
-      breakpoint: 1440,
+      breakpoint: 2000,
       settings: {
         slidesToShow: 5,
-        slidesToScroll: 10,
-        infinite: false,
+        slidesToScroll: 5,
+        rows: 2,
         dots: true,
       },
     },
@@ -55,6 +55,7 @@ export const slider = {
         dots: true,
       },
     },
+
     {
       breakpoint: 767,
       settings: {

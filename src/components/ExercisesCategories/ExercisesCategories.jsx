@@ -77,7 +77,7 @@ const ExercisesCategories = () => {
             BACK
           </BackButton>
           <ExercisesPictures>
-            <ExercisesSkroll style={{ height: '525px' }}>
+            <ExercisesSkroll style={{ height: '500px' }}>
               <ExerciseCards>
                 {exercisesList.length > 0
                   ? exercisesList.map((exercise) => (
