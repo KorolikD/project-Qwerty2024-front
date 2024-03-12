@@ -42,9 +42,21 @@ export const AddProductForm = ({
               name="weight"
               onChange={(e) => {
                 const weight = e.target.value;
-                const calcCalories = (weight * calories) / 100;
-                setFieldValue('calories', calcCalories);
-                setFieldValue('weight', weight);
+                const parsedWeight = parseFloat(weight);
+                if (!isNaN(parsedWeight) || weight === '') {
+                  const calcCalories =
+                    weight === ''
+                      ? ''
+                      : Math.round((parsedWeight * calories) / 100);
+                  setFieldValue(
+                    'calories',
+                    isNaN(calcCalories) ? '' : calcCalories
+                  );
+                  setFieldValue(
+                    'weight',
+                    isNaN(parsedWeight) ? '' : parsedWeight
+                  );
+                }
               }}
             />
             <Field type="text" name="calories" disabled />
