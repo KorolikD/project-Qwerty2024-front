@@ -97,7 +97,7 @@ export const VideoParagraph = styled.p`
 
   @media screen and (min-width: 768px) {
     font-size: 16px;
-
+    margin-top: 8px;
     line-height: 24px;
   }
 

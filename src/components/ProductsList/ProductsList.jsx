@@ -1,8 +1,9 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
+import {List} from './ProductsList.styled';
 
 export const ProductsList = ({ products, isRecommend, blood }) => {
   return (
-    <ul className="movies-list">
+    <List className="movies-list">
       {products.map(product => (
         <li key={product._id}>
           <ProductsItem
@@ -12,6 +13,6 @@ export const ProductsList = ({ products, isRecommend, blood }) => {
           />
         </li>
       ))}
-    </ul>
+    </List>
   );
 };

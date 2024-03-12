@@ -64,7 +64,7 @@ const DiaryPage = () => {
                 date={date}
                 to="/products"
                 forProductsTable
-              />{' '}
+              />
               <DiaryTableForWhat
                 list={exercisesList}
                 date={date}
