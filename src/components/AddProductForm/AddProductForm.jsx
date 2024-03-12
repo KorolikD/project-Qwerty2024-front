@@ -8,6 +8,7 @@ export const AddProductForm = ({
   productId,
   product,
   calories,
+  onСonsumeСalories,
   onClose,
   onSuccessOpen,
 }) => {
@@ -25,6 +26,7 @@ export const AddProductForm = ({
     const formData = { productId, date: formattedDate, weight, calories };
 
     await postProductToDiary(formData);
+    onСonsumeСalories(calories);
     onClose();
     onSuccessOpen();
   };

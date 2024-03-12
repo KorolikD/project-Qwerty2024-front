@@ -28,6 +28,7 @@ export const ProductsItem = ({
 }) => {
   const [modalIsOpen, setIsModalOpen] = useState(false);
   const [successModalIsOpen, setIsSuccessModalOpen] = useState(false);
+  const [consumedСalories, setСonsumedСalories] = useState(0);
 
   function openModal() {
     setIsModalOpen(true);
@@ -83,6 +84,7 @@ export const ProductsItem = ({
             product={title}
             calories={calories}
             productId={_id}
+            onСonsumeСalories={setСonsumedСalories}
             onClose={closeModal}
             onSuccessOpen={openSuccessModal}
           />
@@ -93,7 +95,10 @@ export const ProductsItem = ({
           isOpen={successModalIsOpen}
           onRequestClose={closeSuccessModal}
         >
-          <AddProductSuccess />
+          <AddProductSuccess
+            onClose={closeSuccessModal}
+            calories={consumedСalories}
+          />
         </BasicModalWindow>
       )}
     </Wrapper>
