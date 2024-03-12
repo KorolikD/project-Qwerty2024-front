@@ -1,3 +1,8 @@
+import { useState } from 'react';
+
+import { BasicModalWindow } from '../BasicModalWindow/BasicModalWindow';
+import { AddProductForm } from '../AddProductForm/AddProductForm';
+import { AddProductSuccess } from '../AddProductSuccess/AddProductSuccess';
 import icons from '../../img/sprite.svg';
 import {
   Diet,
@@ -17,10 +22,27 @@ import {
 } from './ProductsItem.styled';
 
 export const ProductsItem = ({
-  product: { title, calories, category, weight, groupBloodNotAllowed },
+  product: { _id, title, calories, category, weight, groupBloodNotAllowed },
   blood,
   isRecommend,
 }) => {
+  const [modalIsOpen, setIsModalOpen] = useState(false);
+  const [successModalIsOpen, setIsSuccessModalOpen] = useState(false);
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+  function openSuccessModal() {
+    setIsSuccessModalOpen(true);
+  }
+
+  function closeSuccessModal() {
+    setIsSuccessModalOpen(false);
+  }
   const recommendation = isRecommend(blood, groupBloodNotAllowed);
   return (
     <Wrapper>
@@ -28,7 +50,7 @@ export const ProductsItem = ({
         <Diet>DIET</Diet>
         <WrapperRecommend>
           <Recommendation>{recommendation}</Recommendation>
-          <Button>
+          <Button onClick={openModal}>
             Add
             <SvgAdd width="16" height="16">
               <use href={icons + '#icon-next'} />
@@ -55,6 +77,25 @@ export const ProductsItem = ({
           weight: <SpanItem>{weight}</SpanItem>
         </ProductItem>
       </ProductList>
+      {modalIsOpen && (
+        <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <AddProductForm
+            product={title}
+            calories={calories}
+            productId={_id}
+            onClose={closeModal}
+            onSuccessOpen={openSuccessModal}
+          />
+        </BasicModalWindow>
+      )}
+      {successModalIsOpen && (
+        <BasicModalWindow
+          isOpen={successModalIsOpen}
+          onRequestClose={closeSuccessModal}
+        >
+          <AddProductSuccess />
+        </BasicModalWindow>
+      )}
     </Wrapper>
   );
 };
