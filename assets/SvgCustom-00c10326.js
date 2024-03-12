@@ -1,4 +1,4 @@
-import{u as n,j as $}from"./index-1e9fb2d9.js";import{s as a}from"./sprite-3811d627.js";const h=n.svg`
+import{u as n,j as $}from"./index-7363c836.js";import{s as a}from"./sprite-efd84377.js";const h=n.svg`
   stroke: ${e=>e.$color||e.$stroke?e.$color||e.$stroke:e.theme.colors.secondary};
   fill: ${e=>e.$color?e.$color:"none"};
   width: ${e=>`${e.$size}px`};
