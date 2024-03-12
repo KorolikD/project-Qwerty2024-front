@@ -101,7 +101,6 @@ const CustomExercisesItem = ({ subcategory }) => {
       return;
     }
 
-    alert(JSON.stringify(requestBody, null, 2));
     await postExerciseToDiary(requestBody);
     closeModal();
     openSuccessModal();
