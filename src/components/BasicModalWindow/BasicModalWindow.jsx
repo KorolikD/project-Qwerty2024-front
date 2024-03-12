@@ -19,43 +19,6 @@
 // ! _____________________ Кнопка відкриття модального вікна
 //  <Button onClick={openModal}></Button>
 
-// const customStyles = {
-//   overlay: {
-//     position: 'fixed',
-//     top: 0,
-//     left: 0,
-//     width: '100vw',
-//     height: '100vh',
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'rgba(18, 20, 23, 0.50)',
-//     overflow: 'hidden',
-//   },
-
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     margin: 'auto',
-//     margin: '20px auto',
-
-//     overflowY: 'auto',
-
-//     marginRight: '-50%',
-
-//     transform: 'translate(-50%, -50%)',
-//     padding: '48px 16px',
-
-//     backgroundColor: `${theme.colors.modalBackGround}`,
-//     border: `1px solid ${theme.colors.modalBorder}`,
-//     borderRadius: '12px',
-//     opacity: 1,
-//     transition: `opacity 250ms cubic-bezier(0.4, 0, 0.2, 1)`,
-//   },
-// };
-
 import SvgCustom from '../SvgCustom/SvgCustom';
 import theme from '../../styles/theme';
 import { CloseModalBtn } from './BasicModalWindow.styled';
