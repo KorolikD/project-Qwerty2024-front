@@ -12,6 +12,8 @@ const theme = {
     overlay: 'rgba(4, 4, 4, 0.4)',
     grey: '#636366',
     graphite: '#262625',
+    modalBackGround: '#10100F',
+    modalBorder: 'rgba(239, 237, 232, 0.2)',
   },
   fonts: {
     mainFont: 'Roboto, sans-serif',

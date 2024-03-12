@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
 export const ConteinerForIt = styled.div`
   width: 335px;
@@ -96,4 +97,99 @@ export const SpanRun = styled.span`
 
 export const SvgRun = styled.svg`
   fill: #efede8;
+`;
+
+export const ModalWrapper = styled.div`
+  width: 302px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* overflow-y: auto; */
+`;
+
+export const TrainingPreview = styled.img`
+  width: 270px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  margin-bottom: 14px;
+  border: 1px solid ${theme.colors.modalBorder};
+  border-radius: 12px;
+`;
+
+export const CaloriesText = styled.p`
+  margin-top: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${theme.colors.textWhite30};
+
+  & span {
+    color: ${theme.colors.primary};
+  }
+`;
+
+export const ExerciseModalList = styled.ul`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+  min-width: 302px;
+`;
+
+export const ExerciseModalListItem = styled.li`
+  height: auto;
+  width: 147px;
+
+  border: 1px solid ${theme.colors.modalBorder};
+  border-radius: 12px;
+  padding: 12px 18px;
+`;
+
+export const ModalTitle = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: ${theme.colors.textWhite40};
+`;
+
+export const ModalText = styled.p`
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+
+  color: ${theme.colors.white};
+  text-transform: capitalize;
+`;
+
+export const ModalButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  width: 150px;
+  height: 42px;
+  padding: 12px 12px;
+  margin-top: 24px;
+
+  background-color: ${theme.colors.primary};
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: ${theme.colors.white};
+  text-transform: capitalize;
+
+  border-radius: 12px;
+`;
+
+export const StyledButton = styled.button`
+  font-size: 0px;
+  font-weight: 500;
+  line-height: 1.2;
 `;

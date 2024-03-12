@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import icons from '../../img/sprite.svg';
 import {
   ConteinerForIt,
@@ -13,12 +13,50 @@ import {
   SvgStart,
   SpanRun,
   SvgRun,
+  ExerciseModalListItem,
+  ExerciseModalList,
+  ModalTitle,
+  ModalText,
+  TrainingPreview,
+  ModalWrapper,
+  ModalButton,
+  CaloriesText,
 } from './ExercisesSubcategoriesItem.styled';
-import { BasicModalWindow } from '../BasicModalWindow/BasicModalWindow';
+
+import { Link } from 'react-router-dom';
+import { Timer } from '../Timer/Timer';
+import { BasicModalWindow } from '../BasicModalWindow';
 
 const CustomExercisesItem = ({ subcategory }) => {
-  console.log('🤬>>>  subcategory:\n', subcategory);
+  // console.log('🤬>>>  subcategory:\n', subcategory.burnedCalories);
   const [modalIsOpen, setIsModalOpen] = useState(false);
+
+  const [timeFromExerciseParam] = useState(subcategory.time);
+  const [burnedCaloriesFromExerciseParam] = useState(
+    subcategory.burnedCalories
+  );
+
+  const [time, setTimer] = useState(0);
+  const [burnedCalories, setBurnedCalories] = useState(0);
+  // console.log('🤬>>>  time:\n', time);
+  // console.log('🤬>>>  burnedCalories:\n', burnedCalories);
+
+  const handleDataFromRenderTime = (timeInSeconds) => {
+    const minutes = Number(timeFromExerciseParam - timeInSeconds / 60);
+    setTimer(minutes);
+  };
+
+  useEffect(() => {
+    const handleBurnedCalories = () => {
+      setBurnedCalories(
+        Math.round(
+          (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
+        )
+      );
+    };
+
+    handleBurnedCalories();
+  }, [burnedCaloriesFromExerciseParam, timeFromExerciseParam, time]);
 
   function openModal() {
     setIsModalOpen(true);
@@ -31,8 +69,38 @@ const CustomExercisesItem = ({ subcategory }) => {
   return (
     <ConteinerForIt>
       <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
-        {/* Контент */}
-        <div style={{ height: 400, width: 400 }}></div>
+        <ModalWrapper>
+          <TrainingPreview src={subcategory.gifUrl} alt={subcategory.name} />
+
+          <Timer
+            time={timeFromExerciseParam}
+            getDataFromTimer={handleDataFromRenderTime}
+          />
+          <CaloriesText>
+            Burned calories: <span>{burnedCalories}</span>
+          </CaloriesText>
+
+          <ExerciseModalList>
+            <ExerciseModalListItem>
+              <ModalTitle>Name</ModalTitle>
+              <ModalText>{subcategory.name}</ModalText>
+            </ExerciseModalListItem>
+            <ExerciseModalListItem>
+              <ModalTitle>Target</ModalTitle>
+              <ModalText>{subcategory.target}</ModalText>
+            </ExerciseModalListItem>
+            <ExerciseModalListItem>
+              <ModalTitle>Body Part</ModalTitle>
+              <ModalText>{subcategory.bodyPart}</ModalText>
+            </ExerciseModalListItem>
+            <ExerciseModalListItem>
+              <ModalTitle>Equipment</ModalTitle>
+              <ModalText>{subcategory.equipment}</ModalText>
+            </ExerciseModalListItem>
+          </ExerciseModalList>
+          <ModalButton>Add to diary</ModalButton>
+        </ModalWrapper>
+        {/* <Link to="/diary">Diary</Link> */}
       </BasicModalWindow>
 
       <ExercisesItemWorkout>

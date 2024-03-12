@@ -19,66 +19,71 @@
 // ! _____________________ Кнопка відкриття модального вікна
 //  <Button onClick={openModal}></Button>
 
-const customStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'rgba(18, 20, 23, 0.50)',
-    overflow: 'hidden',
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
 // const customStyles = {
+//   overlay: {
+//     position: 'fixed',
+//     top: 0,
+//     left: 0,
+//     width: '100vw',
+//     height: '100vh',
+//     display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: 'rgba(18, 20, 23, 0.50)',
+//     overflow: 'hidden',
+//   },
+
 //   content: {
-//     maxWidth: 'fit-content',
-//     maxHeight: 'fit-content',
+//     top: '50%',
+//     left: '50%',
+//     right: 'auto',
+//     bottom: 'auto',
 //     margin: 'auto',
-//     overflow: 'auto',
-//     inset: 0,
-//     border: 'none',
-//     background: 'none',
-//     padding: 0,
+//     margin: '20px auto',
+
+//     overflowY: 'auto',
+
+//     marginRight: '-50%',
+
+//     transform: 'translate(-50%, -50%)',
+//     padding: '48px 16px',
+
+//     backgroundColor: `${theme.colors.modalBackGround}`,
+//     border: `1px solid ${theme.colors.modalBorder}`,
+//     borderRadius: '12px',
+//     opacity: 1,
+//     transition: `opacity 250ms cubic-bezier(0.4, 0, 0.2, 1)`,
 //   },
 // };
-
-import Modal from 'react-modal';
 
 import SvgCustom from '../SvgCustom/SvgCustom';
 import theme from '../../styles/theme';
 import { CloseModalBtn } from './BasicModalWindow.styled';
+import './ant.css';
 
+import { Modal } from 'antd';
 export const BasicModalWindow = ({ isOpen, onRequestClose, children }) => {
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      shouldCloseOnOverlayClick={true}
-      shouldCloseOnEsc={true}
-      ariaHideApp={false}
-      style={customStyles}
-    >
-      <CloseModalBtn type="button" onClick={onRequestClose}>
-        <SvgCustom
-          icon="icon-cross"
-          size="22"
-          color={theme.colors.white}
-          stroke={theme.colors.white}
-          hover={theme.colors.primary}
-        />
-      </CloseModalBtn>
-
-      {children}
-    </Modal>
+    <>
+      <Modal
+        centered
+        open={isOpen}
+        closeIcon={false}
+        onCancel={onRequestClose}
+        footer={null}
+        width={'auto'}
+      >
+        <CloseModalBtn type="button" onClick={onRequestClose}>
+          <SvgCustom
+            icon="icon-cross"
+            size="22"
+            color={theme.colors.white}
+            stroke={theme.colors.white}
+            hover={theme.colors.primary}
+          />
+        </CloseModalBtn>
+        {children}
+      </Modal>
+    </>
   );
 };
