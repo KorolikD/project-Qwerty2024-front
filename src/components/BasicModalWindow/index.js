@@ -1,1 +1,1 @@
-export { default } from './BasicModalWindow';
+export { BasicModalWindow } from './BasicModalWindow';

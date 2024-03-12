@@ -1,44 +1,85 @@
+import icons from '../../img/sprite.svg';
+import {
+  Title,
+  Form,
+  Input,
+  Button,
+  CategorySelect,
+  RecommendationSelect,
+  Option,
+  Wrapper,
+  ClearButton,
+  SvgSearch,
+  SvgCross,
+  InputWrapper,
+} from './ProductsFilters.styled';
+
 export const ProductsFilters = ({
   onSubmit,
+  handleClear,
   categories,
   onUpdateCategory,
   onUpdateRecommendation,
+  inputValue,
 }) => {
   return (
-    <div>
-      <h2>Products</h2>
-      <form>
-        <input type="text" autoComplete="off" autoFocus placeholder="Search" />
+    <Wrapper>
+      <Title>Products</Title>
+      <Form>
+        <InputWrapper>
+          <Input
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search"
+          />
 
-        <button
-          type="submit"
-          onClick={evt => {
-            onSubmit(evt.target.previousElementSibling.value);
-            evt.preventDefault();
-          }}
-        >
-          Search
-        </button>
-        <select
+          <Button
+            type="submit"
+            onClick={(evt) => {
+              onSubmit(evt.target.previousElementSibling.value);
+              evt.preventDefault();
+            }}
+          >
+            <SvgSearch width="24" height="24">
+              <use href={icons + '#icon-search'} />
+            </SvgSearch>
+          </Button>
+
+          {inputValue && (
+            <ClearButton
+              type="submit"
+              onClick={(evt) => {
+                handleClear;
+                evt.preventDefault();
+              }}
+            >
+              <SvgCross width="18" height="18">
+                <use href={icons + '#icon-cross'} />
+              </SvgCross>
+            </ClearButton>
+          )}
+        </InputWrapper>
+        <CategorySelect
           name="category"
-          onChange={evt => onUpdateCategory(evt.target.value)}
+          onChange={(evt) => onUpdateCategory(evt.target.value)}
         >
-          <option value="categories">Categories</option>
-          {categories.map(category => (
-            <option value={category} key={category}>
+          <Option value="categories">Categories</Option>
+          {categories.map((category) => (
+            <Option value={category} key={category}>
               {category}
-            </option>
+            </Option>
           ))}
-        </select>
-        <select
+        </CategorySelect>
+        <RecommendationSelect
           name="recommendation"
-          onChange={evt => onUpdateRecommendation(evt.target.value)}
+          onChange={(evt) => onUpdateRecommendation(evt.target.value)}
         >
-          <option value="All">All</option>
-          <option value="Recommended">Recommended</option>
-          <option value="Not recommended">Not recommended</option>
-        </select>
-      </form>
-    </div>
+          <Option value="All">All</Option>
+          <Option value="Recommended">Recommended</Option>
+          <Option value="Not recommended">Not recommended</Option>
+        </RecommendationSelect>
+      </Form>
+    </Wrapper>
   );
 };

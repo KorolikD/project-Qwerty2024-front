@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Radio as RadioAnt, Form, Input } from 'antd';
 
 export const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+
   @media screen and (max-width: 375px) {
   }
   @media screen and (min-width: 768px) {
@@ -10,11 +13,10 @@ export const StyledForm = styled(Form)`
   }
 `;
 export const Wrapper = styled.div`
-  display: inline-flex;
-  align-items: flex-end;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 14px;
-  
+
   @media screen and (max-width: 375px) {
   }
   @media screen and (min-width: 768px) {
@@ -25,7 +27,6 @@ export const Wrapper = styled.div`
 
 export const FieldItem = styled.div`
   width: calc(50% - 7px);
-  
 `;
 
 export const NameEmailSection = styled.div`
@@ -41,7 +42,7 @@ export const NameEmailSection = styled.div`
     align-items: center;
   }
 
-  @media screen and (min-width: 375px){
+  @media screen and (min-width: 375px) {
     width: 100%;
     gap: 14px;
     flex-direction: column;
@@ -49,16 +50,15 @@ export const NameEmailSection = styled.div`
     align-items: center;
   }
 
-  @media screen and (min-width:768px){
-    flex-direction:row;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
   }
 
-  @media screen and (min-width:1440px){
+  @media screen and (min-width: 1440px) {
     align-items: flex-start;
-    gap:14px;
+    gap: 14px;
     margin-bottom: 14px;
-    margin-right:auto;
-  
+    margin-right: auto;
   }
 `;
 
@@ -77,7 +77,6 @@ export const Label = styled.label`
     font-size: 14px;
   }
 `;
-
 
 export const StyledInputNameEmail = styled.input`
   width: 100%;
@@ -137,7 +136,6 @@ export const WrappInput = styled.div`
       left 0.2s,
       transform 0.2s;
     color: ${({ theme }) => theme.colors.primary};
-
   }
 `;
 
@@ -150,9 +148,8 @@ export const WrappLevel = styled.div`
     gap: 8px;
   }
 `;
- 
-export const Radio = styled(RadioAnt)`
 
+export const Radio = styled(RadioAnt)`
   > span {
     font-weight: 400;
     font-size: 14px;
@@ -166,4 +163,3 @@ export const Radio = styled(RadioAnt)`
     }
   }
 `;
-

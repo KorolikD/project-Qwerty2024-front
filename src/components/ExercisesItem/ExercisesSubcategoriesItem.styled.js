@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
 export const ConteinerForIt = styled.div`
   width: 335px;
@@ -96,4 +97,182 @@ export const SpanRun = styled.span`
 
 export const SvgRun = styled.svg`
   fill: #efede8;
+`;
+
+// ! -------------Modal-------------
+export const ModalWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+`;
+
+export const TabletModalWrapperFirstColumn = styled.div`
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+export const TabletModalWrapperSecondColumn = styled.div`
+  @media screen and (min-width: 768px) {
+    margin-left: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 344px;
+  }
+`;
+
+export const TrainingPreview = styled.img`
+  margin-bottom: 14px;
+  border: 1px solid ${theme.colors.modalBorder};
+  border-radius: 12px;
+`;
+
+export const InfoText = styled.p`
+  margin-top: 12px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${theme.colors.textWhite30};
+
+  & span {
+    color: ${theme.colors.primary};
+  }
+`;
+
+export const ExerciseModalList = styled.ul`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+  min-width: 302px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+    flex-direction: row;
+    justify-content: space-between;
+
+    min-width: 344px;
+  }
+`;
+
+export const ExerciseModalListItem = styled.li`
+  width: 147px;
+
+  border: 1px solid ${theme.colors.modalBorder};
+  border-radius: 12px;
+  padding: 12px 18px;
+
+  @media screen and (min-width: 768px) {
+    width: 168px;
+  }
+`;
+
+export const ModalTitle = styled.p`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: ${theme.colors.textWhite40};
+`;
+
+export const ModalText = styled.p`
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+
+  color: ${theme.colors.white};
+  text-transform: capitalize;
+`;
+
+export const ModalButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  width: 150px;
+  height: 42px;
+  padding: 12px 12px;
+  margin-top: 24px;
+
+  background-color: ${theme.colors.primary};
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: ${theme.colors.white};
+
+  border-radius: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+
+    height: 52px;
+  }
+`;
+
+// !-------------------------------------------
+export const SuccessModalWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const WellDoneImg = styled.img`
+  width: 118px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+  }
+`;
+
+export const Title = styled.p`
+  margin: 27px 0 16px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  color: ${theme.colors.white};
+
+  @media screen and (min-width: 768px) {
+    margin: 32px 0 16px;
+  }
+`;
+
+export const InfoTextSuccessModal = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${theme.colors.textWhite30};
+
+  & span {
+    color: ${theme.colors.primary};
+  }
+`;
+
+export const LinkToDiaryWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${theme.colors.textWhite30};
 `;
