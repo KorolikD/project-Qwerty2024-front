@@ -27,13 +27,13 @@ export const ProductsItem = ({
       <WrapperTop>
         <Diet>DIET</Diet>
         <WrapperRecommend>
-        <Recommendation>{recommendation}</Recommendation>
-        <Button>
-          Add
-          <SvgAdd width="16" height="16">
-            <use href={icons + '#icon-next'} />
-          </SvgAdd>
-        </Button>
+          <Recommendation>{recommendation}</Recommendation>
+          <Button>
+            Add
+            <SvgAdd width="16" height="16">
+              <use href={icons + '#icon-next'} />
+            </SvgAdd>
+          </Button>
         </WrapperRecommend>
       </WrapperTop>
       <WrapperForTitle>

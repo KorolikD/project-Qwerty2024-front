@@ -1,10 +1,10 @@
 import { ProductsItem } from '../ProductsItem/ProductsItem';
-import {List} from './ProductsList.styled';
+import { List } from './ProductsList.styled';
 
 export const ProductsList = ({ products, isRecommend, blood }) => {
   return (
     <List className="movies-list">
-      {products.map(product => (
+      {products.map((product) => (
         <li key={product._id}>
           <ProductsItem
             product={product}
