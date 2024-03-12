@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Radio as RadioAnt, Form } from 'antd';
 
 export const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+
   @media screen and (max-width: 375px) {
   }
   @media screen and (min-width: 768px) {
@@ -10,11 +13,9 @@ export const StyledForm = styled(Form)`
   }
 `;
 export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 14px;
   @media screen and (max-width: 375px) {
   }
   @media screen and (min-width: 768px) {

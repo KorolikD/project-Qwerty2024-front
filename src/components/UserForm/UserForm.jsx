@@ -76,80 +76,71 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
           disabled
         />
       </Form.Item>
-      <Form.Item
-        label="Height"
-        help={formik.errors.height}
-        validateStatus={checkStatus('height')}
-        hasFeedback
-      >
-        <Input
-          type="number"
-          name="height"
-          value={formik.values.height}
-          onChange={formik.handleChange}
-          required
-          onBlur={formik.handleBlur}
-        />
-      </Form.Item>
-      <Form.Item
-        label="Current Weight"
-        help={formik.errors.currentWeight}
-        validateStatus={checkStatus('currentWeight')}
-        hasFeedback
-      >
-        <Input
-          type="number"
-          name="currentWeight"
-          value={formik.values.currentWeight}
-          onChange={formik.handleChange}
-          required
-          onBlur={formik.handleBlur}
-        />
-      </Form.Item>
+      <Wrapper>
+        <Form.Item
+          label="Height"
+          help={formik.errors.height}
+          validateStatus={checkStatus('height')}
+          hasFeedback
+        >
+          <Input
+            type="number"
+            name="height"
+            value={formik.values.height}
+            onChange={formik.handleChange}
+            required
+            onBlur={formik.handleBlur}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Current Weight"
+          help={formik.errors.currentWeight}
+          validateStatus={checkStatus('currentWeight')}
+          hasFeedback
+        >
+          <Input
+            type="number"
+            name="currentWeight"
+            value={formik.values.currentWeight}
+            onChange={formik.handleChange}
+            required
+            onBlur={formik.handleBlur}
+          />
+        </Form.Item>
 
-      <Form.Item
-        label="Desired Weight"
-        help={formik.errors.desiredWeight}
-        validateStatus={checkStatus('desiredWeight')}
-        hasFeedback
-      >
-        <Input
-          type="number"
-          name="desiredWeight"
-          value={formik.values.desiredWeight}
-          onChange={formik.handleChange}
-          required
-          onBlur={formik.handleBlur}
-        />
-      </Form.Item>
-      {/*<div>*/}
-      {/*  <p>Date of birth</p>*/}
-      {/*  <button type="button" onClick={() => setIsOpenCalendar(true)}>*/}
-      {/*    <span>{date.split('/').join('.')}</span>*/}
-      {/*    <SvgCustom*/}
-      {/*      icon="icon-calendar"*/}
-      {/*      size="18"*/}
-      {/*      stroke={theme.colors.white}*/}
-      {/*    />*/}
-      {/*  </button>*/}
-      {/*</div>*/}
+        <Form.Item
+          label="Desired Weight"
+          help={formik.errors.desiredWeight}
+          validateStatus={checkStatus('desiredWeight')}
+          hasFeedback
+        >
+          <Input
+            type="number"
+            name="desiredWeight"
+            value={formik.values.desiredWeight}
+            onChange={formik.handleChange}
+            required
+            onBlur={formik.handleBlur}
+          />
+        </Form.Item>
 
-      <Form.Item
-        label="Date of birth"
-        help={formik.errors.birthday}
-        validateStatus={checkStatus('birthday')}
-        hasFeedback
-      >
-        <Input
-          type="text"
-          onClick={() => setIsOpenCalendar(true)}
-          name="birthday"
-          value={date}
-          required
-          onBlur={formik.handleBlur}
-          readOnly
-        />
-      </Form.Item>
+        <Form.Item
+          label="Date of birth"
+          help={formik.errors.birthday}
+          validateStatus={checkStatus('birthday')}
+          hasFeedback
+        >
+          <Input
+            type="text"
+            onClick={() => setIsOpenCalendar(true)}
+            name="birthday"
+            value={date}
+            required
+            onBlur={formik.handleBlur}
+            readOnly
+          />
+        </Form.Item>
+      </Wrapper>
       <Form.Item
         label="Blood"
         help={formik.errors.blood}
