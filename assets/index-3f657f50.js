@@ -1,4 +1,4 @@
-import{e as $,u as o,j as t,r as p,i as L,k as A}from"./index-676fc85d.js";import{s as w}from"./sprite-4bd27eea.js";const N=async()=>{try{return(await $.get("/products/categories")).data}catch(e){console.error(e)}},T=async()=>{try{return(await $.get("/products")).data}catch(e){console.error(e)}},E=async()=>{try{return(await $.get("/users/current")).data}catch(e){console.error(e)}},D=o.div`
+import{e as $,u as o,j as t,r as p,i as L,k as A}from"./index-7209f843.js";import{s as w}from"./sprite-188d3ebd.js";const N=async()=>{try{return(await $.get("/products/categories")).data}catch(e){console.error(e)}},T=async()=>{try{return(await $.get("/products")).data}catch(e){console.error(e)}},E=async()=>{try{return(await $.get("/users/current")).data}catch(e){console.error(e)}},D=o.div`
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;
