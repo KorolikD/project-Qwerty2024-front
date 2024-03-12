@@ -53,14 +53,6 @@ const CustomExercisesItem = ({ subcategory }) => {
   const [time, setTimer] = useState(0);
   const [burnedCalories, setBurnedCalories] = useState(0);
 
-  const postExerciseToDiary = async (requestBody) => {
-    try {
-      await axios.post(`/diary/exercise`, requestBody);
-    } catch (error) {
-      console.error('Error fetching exercises:', error);
-    }
-  };
-
   useEffect(() => {
     setTimeFromExerciseParam(subcategory.time);
     setBurnedCaloriesFromExerciseParam(subcategory.burnedCalories);
@@ -72,6 +64,27 @@ const CustomExercisesItem = ({ subcategory }) => {
       setBurnedCaloriesFromExerciseParam(subcategory.burnedCalories);
     }
   }, [modalIsOpen, subcategory.time, subcategory.burnedCalories]);
+
+  useEffect(() => {
+    const handleBurnedCalories = () => {
+      setBurnedCalories(
+        Math.round(
+          (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
+        )
+      ),
+        [burnedCaloriesFromExerciseParam, timeFromExerciseParam, time];
+    };
+
+    handleBurnedCalories();
+  });
+
+  const postExerciseToDiary = async (requestBody) => {
+    try {
+      await axios.post(`/diary/exercise`, requestBody);
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
+    }
+  };
 
   const handleFormSubmit = async () => {
     const { _id: exerciseId } = subcategory;
@@ -98,19 +111,6 @@ const CustomExercisesItem = ({ subcategory }) => {
     const minutes = Number(timeFromExerciseParam - timeInSeconds / 60);
     setTimer(minutes);
   };
-
-  useEffect(() => {
-    const handleBurnedCalories = () => {
-      setBurnedCalories(
-        Math.round(
-          (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
-        )
-      ),
-        [burnedCaloriesFromExerciseParam, timeFromExerciseParam, time];
-    };
-
-    handleBurnedCalories();
-  });
 
   function openModal() {
     setIsModalOpen(true);

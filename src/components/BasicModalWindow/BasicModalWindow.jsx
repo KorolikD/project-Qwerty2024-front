@@ -22,7 +22,7 @@
 import SvgCustom from '../SvgCustom/SvgCustom';
 import theme from '../../styles/theme';
 import { CloseModalBtn } from './BasicModalWindow.styled';
-import './ant.css';
+import './BasicModalWindow.css';
 
 import { Modal } from 'antd';
 export const BasicModalWindow = ({ isOpen, onRequestClose, children }) => {
