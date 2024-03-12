@@ -4,26 +4,21 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin-top: 90px;
+  padding-top: 58px;
   width: 335px;
   height: 368px;
-  position: absolute;
-  left: 20px;
-  z-index: 2;
 
   @media screen and (min-width: 768px) {
     width: 496px;
     height: 336px;
-    top: 189px;
-    left: 32px;
-    margin-top: 0px;
-    left: 32px;
+
+    padding-top: 108px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 496px;
     height: 336px;
-    left: 96px;
+    padding-top: 119px;
   }
 `;
 
@@ -50,7 +45,7 @@ export const Paragraph = styled.p`
   font-weight: 400px;
   line-height: 18px;
   margin-top: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

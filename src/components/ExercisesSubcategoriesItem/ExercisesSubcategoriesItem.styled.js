@@ -2,19 +2,15 @@ import styled from 'styled-components';
 
 export const ExercisesItem = styled.li`
   display: block;
-  padding-bottom: 20px;
+  padding-bottom: 16px;
 
   @media screen and (min-width: 768px) {
-    padding-bottom: 32px;
+    padding-bottom: 16px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-bottom: 32px;
+    padding-bottom: 16px;
   }
-
-  /* @media screen and (min-width: 768px) {
-    width: calc((100% - 16px) / 3);
-  } */
 `;
 
 export const ExerscisesItemContainer = styled.div`

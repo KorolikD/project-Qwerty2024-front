@@ -10,6 +10,8 @@ import {
   SvgBack,
   ExerciseCardsItem,
   ExercisesSkroll,
+  PageTitle,
+  NavTitle,
 } from './ExercisesCategories.styled';
 import icons from '../../img/sprite.svg';
 
@@ -21,19 +23,18 @@ const CATEGORIES = {
 
 const ExercisesCategories = () => {
   const [exercises, setExercises] = useState([]);
-  // [key, value] для цього апі params?key=equipment&value=barbell
   const [exercisesList, setExercisesList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [pageTitle, setPageTitle] = useState('Exercises');
+
   const isCategorySelected = selectedCategory !== null;
 
   const fetchExercises = async (category) => {
     setSelectedCategory(null);
     try {
       const response = await axios.get(`/exercises?filter=${category}`);
-
-      console.log(response, 'response');
       setExercises(response.data[category]);
-      // setSelectedCategory(category);
+      setPageTitle('Exercises');
     } catch (error) {
       console.error('Error fetching exercises:', error);
     }
@@ -44,8 +45,8 @@ const ExercisesCategories = () => {
       const response = await axios.get(
         `/exercises/params?key=${key}&value=${value}`
       );
-
       setExercisesList(response.data.exercises);
+      setPageTitle(value);
     } catch (error) {
       console.error('Error fetching exercises:', error);
     }
@@ -64,6 +65,7 @@ const ExercisesCategories = () => {
             onClick={() => {
               document.title = 'React App';
               setSelectedCategory(null);
+              setPageTitle('Exercises');
             }}
           >
             <SvgBack width="16" height="16">
@@ -110,23 +112,26 @@ const ExercisesCategories = () => {
 
   return (
     <div>
-      <CategoryLists>
-        <li>
-          <CategoryExercisesStyle onClick={() => fetchExercises('bodyPart')}>
-            Body parts
-          </CategoryExercisesStyle>
-        </li>
-        <li>
-          <CategoryExercisesStyle onClick={() => fetchExercises('equipment')}>
-            Equipment
-          </CategoryExercisesStyle>
-        </li>
-        <li>
-          <CategoryExercisesStyle onClick={() => fetchExercises('target')}>
-            Muscles
-          </CategoryExercisesStyle>
-        </li>
-      </CategoryLists>
+      <NavTitle>
+        <PageTitle>{pageTitle}</PageTitle>
+        <CategoryLists>
+          <li>
+            <CategoryExercisesStyle onClick={() => fetchExercises('bodyPart')}>
+              Body parts
+            </CategoryExercisesStyle>
+          </li>
+          <li>
+            <CategoryExercisesStyle onClick={() => fetchExercises('equipment')}>
+              Equipment
+            </CategoryExercisesStyle>
+          </li>
+          <li>
+            <CategoryExercisesStyle onClick={() => fetchExercises('target')}>
+              Muscles
+            </CategoryExercisesStyle>
+          </li>
+        </CategoryLists>
+      </NavTitle>
       {renderExercisesList()}
     </div>
   );
