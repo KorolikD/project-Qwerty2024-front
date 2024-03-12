@@ -1,4 +1,4 @@
-import{u as t,L as a,j as i}from"./index-bdf392bc.js";import{R as d}from"./ResponsiveBackground-c20ab44a.js";import{D as s}from"./DynamicElementBoxes-74ac56b4.js";const x=t.div`
+import{u as t,L as a,j as i}from"./index-a929bb4f.js";import{R as d}from"./ResponsiveBackground-2aa3c977.js";import{D as s}from"./DynamicElementBoxes-cabfec18.js";const x=t.div`
   text-align: left;
 
   padding-top: 66px;
