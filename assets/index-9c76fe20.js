@@ -1,7 +1,6 @@
-import{u as e,j as t}from"./index-7209f843.js";import{A as n}from"./AuthForm-60402014.js";import{R as p}from"./ResponsiveBackground-2316548c.js";import{D as o}from"./DynamicElementBoxes-ec93707e.js";import"./index.esm-e89bc3a3.js";import"./motion-41d7fba1.js";import"./index-80477980.js";import"./zoom-15b73a51.js";const r=e.div`
+import{u as e,j as t}from"./index-976255ee.js";import{A as o}from"./AuthForm-ed3e48ab.js";import{R as p}from"./ResponsiveBackground-2860226c.js";import{D as n}from"./DynamicElementBoxes-9cd81a0e.js";import"./formik.esm-f3e939ec.js";import"./index.esm-2afab274.js";import"./motion-bfca4096.js";import"./index-32b67e66.js";import"./zoom-94a1aa0f.js";const r=e.div`
   display: flex;
   flex-direction: column;
-
   padding-top: 58px;
   width: 335px;
   height: 368px;
@@ -9,7 +8,6 @@ import{u as e,j as t}from"./index-7209f843.js";import{A as n}from"./AuthForm-604
   @media screen and (min-width: 768px) {
     width: 496px;
     height: 336px;
-
     padding-top: 108px;
   }
 
@@ -18,20 +16,19 @@ import{u as e,j as t}from"./index-7209f843.js";import{A as n}from"./AuthForm-604
     height: 336px;
     padding-top: 119px;
   }
-`,s=e.h1`
+`,x=e.h1`
   color: ${i=>i.theme.colors.white};
   font-weight: 700px;
   font-size: 24px;
 
   @media screen and (min-width: 768px) {
+    padding: 0px;
+    margin: 0px;
     font-size: 32px;
     font-weight: 700;
     line-height: 44px;
     letter-spacing: 0em;
     text-align: left;
-  }
-
-  @media screen and (min-width: 1200px) {
   }
 `,a=e.p`
   color: ${i=>i.theme.colors.formBorder};
@@ -47,5 +44,7 @@ import{u as e,j as t}from"./index-7209f843.js";import{A as n}from"./AuthForm-604
     line-height: 24px;
     letter-spacing: 0px;
     text-align: left;
+    margin-top: 16px;
+    margin-bottom: 18px;
   }
-`,x=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(s,{children:"Sign Up"}),t.jsx(a,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),t.jsx(n,{type:"SignUp"})]}),t.jsx(o,{type:"videoTutorial"}),t.jsx(o,{type:"calories"}),t.jsx(p,{})]}),u=x;export{u as default};
+`,s=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(x,{children:"Sign In"}),t.jsx(a,{children:"Welcome! Please enter your credentials to login to the platform:"}),t.jsx(o,{type:"SignIn"})]}),t.jsx(p,{}),t.jsx(n,{type:"videoTutorial"}),t.jsx(n,{type:"calories"})]}),u=s;export{u as default};
