@@ -1,0 +1,20 @@
+.ant-modal-wrap {
+  background-color: rgba(18, 20, 23, 0.5);
+}
+
+.ant-modal-content {
+  background-color: #10100f !important;
+  border: 1px solid rgba(239, 237, 232, 0.2) !important;
+  border-radius: 12px !important;
+  padding: 48px 16px !important;
+  margin: 20px auto;
+  width: 335px;
+}
+
+@media screen and (min-width: 768px) {
+  .ant-modal-content {
+    min-width: 694px;
+    min-height: 550px;
+    padding: 48px 32px !important;
+  }
+}

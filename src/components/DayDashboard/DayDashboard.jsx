@@ -22,8 +22,8 @@ const DayDashboard = () => {
   const burnedCalories = useSelector(selectBurnedCalories);
   const timeSpentOnExercises = useSelector(selectTimeSpentOnExercises);
 
-  const restOfSports = dpa - timeSpentOnExercises;
-  const restOfCalories = bmr - totalCalories;
+  const restOfSports = Math.round(dpa - timeSpentOnExercises);
+  const restOfCalories = Math.round(bmr - totalCalories);
 
   const caloriesIndicator = restOfCalories < 0 ? 'red' : 'green';
   const timeIndicator = restOfSports < 0 ? 'green' : 'red';
@@ -62,7 +62,7 @@ const DayDashboard = () => {
             />
             <p>Calories consumed</p>
           </SvgTextWrap>
-          <DashboardText>{totalCalories}</DashboardText>
+          <DashboardText>{Math.round(totalCalories)}</DashboardText>
         </DashboardItem>
         <DashboardItem>
           <SvgTextWrap>
@@ -73,7 +73,7 @@ const DayDashboard = () => {
             />
             <p>Calories burned</p>
           </SvgTextWrap>
-          <DashboardText>{burnedCalories}</DashboardText>
+          <DashboardText>{Math.round(burnedCalories)}</DashboardText>
         </DashboardItem>
         <DashboardItem $border={caloriesIndicator}>
           <SvgTextWrap>

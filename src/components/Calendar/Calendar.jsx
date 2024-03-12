@@ -5,12 +5,14 @@ import { useEffect } from 'react';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
-const Calendar = ({ date, setDate, minDate, isOpen, setIsOpen }) => {
-  const formattedMinDate = dayjs(minDate).format(DATE_FORMAT);
+const Calendar = ({ date, setDate, minDate, maxDate, isOpen, setIsOpen }) => {
+  const formattedMinDate = minDate ? dayjs(minDate).format(DATE_FORMAT) : null;
+  const formattedMaxDate = maxDate ? dayjs(maxDate).format(DATE_FORMAT) : null;
 
   const onChangeDate = (newDate) => {
     const formattedDate = newDate.format(DATE_FORMAT);
     setDate(formattedDate);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -36,7 +38,12 @@ const Calendar = ({ date, setDate, minDate, isOpen, setIsOpen }) => {
             format={DATE_FORMAT}
             value={dayjs(date, DATE_FORMAT)}
             defaultValue={dayjs(date, DATE_FORMAT)}
-            minDate={dayjs(formattedMinDate, DATE_FORMAT)}
+            {...(formattedMaxDate && {
+              maxDate: dayjs(formattedMaxDate, DATE_FORMAT),
+            })}
+            {...(formattedMinDate && {
+              minDate: dayjs(formattedMinDate, DATE_FORMAT),
+            })}
             onChange={onChangeDate}
             open={isOpen}
           />

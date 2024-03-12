@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import icons from '../../img/sprite.svg';
 import {
   ConteinerForIt,
@@ -13,12 +13,103 @@ import {
   SvgStart,
   SpanRun,
   SvgRun,
+  ExerciseModalListItem,
+  ExerciseModalList,
+  ModalTitle,
+  ModalText,
+  TrainingPreview,
+  ModalWrapper,
+  ModalButton,
+  InfoText,
+  TabletModalWrapperFirstColumn,
+  TabletModalWrapperSecondColumn,
+  WellDoneImg,
+  Title,
+  InfoTextSuccessModal,
+  LinkToDiaryWrapper,
+  SuccessModalWrapper,
 } from './ExercisesSubcategoriesItem.styled';
-import { BasicModalWindow } from '../BasicModalWindow/BasicModalWindow';
+
+import { Link } from 'react-router-dom';
+import { Timer } from '../Timer/Timer';
+import { BasicModalWindow } from '../BasicModalWindow';
+import axios from 'axios';
+import dayjs from 'dayjs';
+import toast, { Toaster } from 'react-hot-toast';
+import likePicture from '../../img/like-1x.png';
+import SvgCustom from '../SvgCustom/SvgCustom';
+import theme from '../../styles/theme';
+
+const DATE_FORMAT = 'DD/MM/YYYY';
 
 const CustomExercisesItem = ({ subcategory }) => {
-  console.log('🤬>>>  subcategory:\n', subcategory);
   const [modalIsOpen, setIsModalOpen] = useState(false);
+  const [successModalIsOpen, setIsSuccessModalOpen] = useState(false);
+
+  const [timeFromExerciseParam, setTimeFromExerciseParam] = useState(0);
+  const [burnedCaloriesFromExerciseParam, setBurnedCaloriesFromExerciseParam] =
+    useState(0);
+
+  const [time, setTimer] = useState(0);
+  const [burnedCalories, setBurnedCalories] = useState(0);
+
+  useEffect(() => {
+    setTimeFromExerciseParam(subcategory.time);
+    setBurnedCaloriesFromExerciseParam(subcategory.burnedCalories);
+  }, [subcategory.time, subcategory.burnedCalories]);
+
+  useEffect(() => {
+    if (modalIsOpen === true) {
+      setTimeFromExerciseParam(subcategory.time);
+      setBurnedCaloriesFromExerciseParam(subcategory.burnedCalories);
+    }
+  }, [modalIsOpen, subcategory.time, subcategory.burnedCalories]);
+
+  useEffect(() => {
+    const handleBurnedCalories = () => {
+      setBurnedCalories(
+        Math.round(
+          (burnedCaloriesFromExerciseParam / timeFromExerciseParam) * time
+        )
+      ),
+        [burnedCaloriesFromExerciseParam, timeFromExerciseParam, time];
+    };
+
+    handleBurnedCalories();
+  });
+
+  const postExerciseToDiary = async (requestBody) => {
+    try {
+      await axios.post(`/diary/exercise`, requestBody);
+    } catch (error) {
+      console.error('Error fetching exercises:', error);
+    }
+  };
+
+  const handleFormSubmit = async () => {
+    const { _id: exerciseId } = subcategory;
+    const formattedDate = dayjs(Date.now()).format(DATE_FORMAT);
+
+    const requestBody = {
+      exerciseId,
+      date: formattedDate,
+      time,
+      burnedCalories,
+    };
+    if (time < 1 || burnedCalories < 1) {
+      toast.error('You should work out for more than one minute!');
+      return;
+    }
+
+    await postExerciseToDiary(requestBody);
+    closeModal();
+    openSuccessModal();
+  };
+
+  const handleDataFromRenderTime = (timeInSeconds) => {
+    const minutes = Number(timeFromExerciseParam - timeInSeconds / 60);
+    setTimer(minutes);
+  };
 
   function openModal() {
     setIsModalOpen(true);
@@ -28,12 +119,88 @@ const CustomExercisesItem = ({ subcategory }) => {
     setIsModalOpen(false);
   }
 
+  function openSuccessModal() {
+    setIsSuccessModalOpen(true);
+  }
+
+  function closeSuccessModal() {
+    setIsSuccessModalOpen(false);
+  }
+
   return (
     <ConteinerForIt>
-      <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
-        {/* Контент */}
-        <div style={{ height: 400, width: 400 }}></div>
-      </BasicModalWindow>
+      <Toaster position="top-right" reverseOrder={false} />
+      {modalIsOpen && (
+        <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
+          <ModalWrapper>
+            <TabletModalWrapperFirstColumn>
+              <TrainingPreview
+                src={subcategory.gifUrl}
+                alt={subcategory.name}
+              />
+
+              <Timer
+                time={timeFromExerciseParam}
+                getDataFromTimer={handleDataFromRenderTime}
+              />
+              <InfoText>
+                Burned calories: <span>{burnedCalories}</span>
+              </InfoText>
+            </TabletModalWrapperFirstColumn>
+
+            <TabletModalWrapperSecondColumn>
+              <ExerciseModalList>
+                <ExerciseModalListItem>
+                  <ModalTitle>Name</ModalTitle>
+                  <ModalText>{subcategory.name}</ModalText>
+                </ExerciseModalListItem>
+                <ExerciseModalListItem>
+                  <ModalTitle>Target</ModalTitle>
+                  <ModalText>{subcategory.target}</ModalText>
+                </ExerciseModalListItem>
+                <ExerciseModalListItem>
+                  <ModalTitle>Body Part</ModalTitle>
+                  <ModalText>{subcategory.bodyPart}</ModalText>
+                </ExerciseModalListItem>
+                <ExerciseModalListItem>
+                  <ModalTitle>Equipment</ModalTitle>
+                  <ModalText>{subcategory.equipment}</ModalText>
+                </ExerciseModalListItem>
+              </ExerciseModalList>
+              <ModalButton onClick={handleFormSubmit}>Add to diary</ModalButton>
+            </TabletModalWrapperSecondColumn>
+          </ModalWrapper>
+        </BasicModalWindow>
+      )}
+      {successModalIsOpen && (
+        <BasicModalWindow
+          isOpen={successModalIsOpen}
+          onRequestClose={closeSuccessModal}
+        >
+          <SuccessModalWrapper>
+            <WellDoneImg src={likePicture} alt="Well done" />
+            <Title>Well done</Title>
+            <InfoTextSuccessModal style={{ marginBottom: '4px' }}>
+              Your time: <span> 3 minutes</span>
+            </InfoTextSuccessModal>
+            <InfoTextSuccessModal>
+              Burned calories: <span>150</span>
+            </InfoTextSuccessModal>
+            <ModalButton onClick={closeSuccessModal}>Next product</ModalButton>
+
+            <LinkToDiaryWrapper>
+              <Link style={{ color: 'inherit' }} to="/diary">
+                To the diary
+              </Link>
+              <SvgCustom
+                icon="icon-next"
+                size="16"
+                color={theme.colors.textWhite30}
+              />
+            </LinkToDiaryWrapper>
+          </SuccessModalWrapper>
+        </BasicModalWindow>
+      )}
 
       <ExercisesItemWorkout>
         <Workout>WORKOUT</Workout>
