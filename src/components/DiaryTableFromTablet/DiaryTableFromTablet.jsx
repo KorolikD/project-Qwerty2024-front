@@ -43,8 +43,8 @@ const DiaryTableFromTablet = ({
                 <TableCell>{exercise.exerciseId.equipment}</TableCell>
                 <TableCell>{exercise.exerciseId.name}</TableCell>
                 <TableCell>{exercise.exerciseId.target}</TableCell>
-                <TableCell>{exercise.burnedCalories}</TableCell>
-                <TableCell>{exercise.time}</TableCell>
+                <TableCell>{Math.round(exercise.burnedCalories)}</TableCell>
+                <TableCell>{Math.round(exercise.time)}</TableCell>
                 <td>
                   <DiaryBtn
                     onClick={() => {
@@ -82,8 +82,8 @@ const DiaryTableFromTablet = ({
               <tr key={product._id}>
                 <TableCell>{product.productId.title}</TableCell>
                 <TableCell>{product.productId.category}</TableCell>
-                <TableCell>{product.calories}</TableCell>
-                <TableCell>{product.weight}</TableCell>
+                <TableCell>{Math.round(product.calories)}</TableCell>
+                <TableCell>{Math.round(product.weight)}</TableCell>
                 <TableCell
                   $recommend
                   $color={product.productId.groupBloodNotAllowed[blood]}
