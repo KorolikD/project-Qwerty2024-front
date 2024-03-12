@@ -1,4 +1,4 @@
-import{u as i,j as t}from"./index-f4f0eb10.js";import{A as o}from"./AuthForm-95970eff.js";import{R as p}from"./ResponsiveBackground-f112ee22.js";import{D as n}from"./DynamicElementBoxes-40665e5a.js";import"./index.esm-6fb89713.js";import"./index-046384ff.js";const r=i.div`
+import{u as i,j as t}from"./index-1e9fb2d9.js";import{A as o}from"./AuthForm-fd08eef8.js";import{R as p}from"./ResponsiveBackground-7ba4ebe0.js";import{D as n}from"./DynamicElementBoxes-17f94797.js";import"./index.esm-2ab1e9d1.js";import"./motion-55db76eb.js";import"./index-3748ffa4.js";import"./zoom-53ab3e47.js";const r=i.div`
   display: flex;
   flex-direction: column;
   padding-top: 58px;
@@ -47,4 +47,4 @@ import{u as i,j as t}from"./index-f4f0eb10.js";import{A as o}from"./AuthForm-959
     margin-top: 16px;
     margin-bottom: 18px;
   }
-`,s=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(x,{children:"Sign In"}),t.jsx(a,{children:"Welcome! Please enter your credentials to login to the platform:"}),t.jsx(o,{type:"SignIn"})]}),t.jsx(p,{}),t.jsx(n,{type:"videoTutorial"}),t.jsx(n,{type:"calories"})]}),f=s;export{f as default};
+`,s=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(x,{children:"Sign In"}),t.jsx(a,{children:"Welcome! Please enter your credentials to login to the platform:"}),t.jsx(o,{type:"SignIn"})]}),t.jsx(p,{}),t.jsx(n,{type:"videoTutorial"}),t.jsx(n,{type:"calories"})]}),j=s;export{j as default};

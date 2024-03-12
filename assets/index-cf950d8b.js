@@ -1,4 +1,4 @@
-import{u as i,j as e}from"./index-f4f0eb10.js";import{A as n}from"./AuthForm-95970eff.js";import{R as p}from"./ResponsiveBackground-f112ee22.js";import{D as o}from"./DynamicElementBoxes-40665e5a.js";import"./index.esm-6fb89713.js";import"./index-046384ff.js";const r=i.div`
+import{u as e,j as t}from"./index-1e9fb2d9.js";import{A as n}from"./AuthForm-fd08eef8.js";import{R as p}from"./ResponsiveBackground-7ba4ebe0.js";import{D as o}from"./DynamicElementBoxes-17f94797.js";import"./index.esm-2ab1e9d1.js";import"./motion-55db76eb.js";import"./index-3748ffa4.js";import"./zoom-53ab3e47.js";const r=e.div`
   display: flex;
   flex-direction: column;
 
@@ -18,8 +18,8 @@ import{u as i,j as e}from"./index-f4f0eb10.js";import{A as n}from"./AuthForm-959
     height: 336px;
     padding-top: 119px;
   }
-`,s=i.h1`
-  color: ${t=>t.theme.colors.white};
+`,s=e.h1`
+  color: ${i=>i.theme.colors.white};
   font-weight: 700px;
   font-size: 24px;
 
@@ -33,8 +33,8 @@ import{u as i,j as e}from"./index-f4f0eb10.js";import{A as n}from"./AuthForm-959
 
   @media screen and (min-width: 1200px) {
   }
-`,a=i.p`
-  color: ${t=>t.theme.colors.formBorder};
+`,a=e.p`
+  color: ${i=>i.theme.colors.formBorder};
   font-size: 14px;
   font-weight: 400px;
   line-height: 18px;
@@ -48,4 +48,4 @@ import{u as i,j as e}from"./index-f4f0eb10.js";import{A as n}from"./AuthForm-959
     letter-spacing: 0px;
     text-align: left;
   }
-`,x=()=>e.jsxs(e.Fragment,{children:[e.jsxs(r,{children:[e.jsx(s,{children:"Sign Up"}),e.jsx(a,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),e.jsx(n,{type:"SignUp"})]}),e.jsx(o,{type:"videoTutorial"}),e.jsx(o,{type:"calories"}),e.jsx(p,{})]}),f=x;export{f as default};
+`,x=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(s,{children:"Sign Up"}),t.jsx(a,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),t.jsx(n,{type:"SignUp"})]}),t.jsx(o,{type:"videoTutorial"}),t.jsx(o,{type:"calories"}),t.jsx(p,{})]}),u=x;export{u as default};
