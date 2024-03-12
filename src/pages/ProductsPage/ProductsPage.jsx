@@ -81,12 +81,12 @@ const ProductsPage = () => {
   const handleSubmit = (newQuery) => {
     // setPage(1),
     setProducts([]),
-    setParams({
-      query: newQuery,
-      // pageNumber: 1,
-      category,
-      recommendation,
-    });
+      setParams({
+        query: newQuery,
+        // pageNumber: 1,
+        category,
+        recommendation,
+      });
   };
 
   const handleChange = (evt) => {
@@ -97,8 +97,7 @@ const ProductsPage = () => {
     setInputValue('');
   };
 
-  console.log(inputValue);
-
+  // console.log(inputValue);
 
   // const handleScroll = () => {
   //   if (
@@ -129,7 +128,7 @@ const ProductsPage = () => {
   });
 
   return (
-    <Wrapper style={{backgroundImage: `url('../../img/products-2x.jpg')`}}>
+    <Wrapper style={{ backgroundImage: `url('../../img/products-2x.jpg')` }}>
       {isLoading && (
         <>
           <Loader />

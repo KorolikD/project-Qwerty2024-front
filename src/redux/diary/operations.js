@@ -13,6 +13,18 @@ export const getDayInfo = createAsyncThunk(
   }
 );
 
+export const addProduct = createAsyncThunk(
+  'addProduct',
+  async (productDate, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/diary/product', productDate);
+      return data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
+
 export const deleteProduct = createAsyncThunk(
   'deleteProduct',
   async (productDate, thunkAPI) => {
