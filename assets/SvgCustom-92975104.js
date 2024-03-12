@@ -1,4 +1,4 @@
-import{u as n,j as t}from"./index-94929a97.js";const a="/project-Qwerty2024-front/assets/sprite-1501b194.svg",c=n.svg`
+import{u as n,j as $}from"./index-f4f0eb10.js";import{s as a}from"./sprite-34ae3165.js";const h=n.svg`
   stroke: ${e=>e.$color||e.$stroke?e.$color||e.$stroke:e.theme.colors.secondary};
   fill: ${e=>e.$color?e.$color:"none"};
   width: ${e=>`${e.$size}px`};
@@ -14,4 +14,4 @@ import{u as n,j as t}from"./index-94929a97.js";const a="/project-Qwerty2024-fron
     width: ${e=>`${e.$tabSize}px`};
     height: ${e=>`${e.$tabSize}px`};
   }
-`,l=({icon:e,size:o,color:s,stroke:$,hover:r,tabSize:i})=>t.jsx(c,{$size:o,$color:s,$stroke:$,$hover:r,$tabSize:i,children:t.jsx("use",{href:`${a}#${e}`})});export{l as S,a as s};
+`,m=({icon:e,size:o,color:t,stroke:r,hover:s,tabSize:i})=>$.jsx(h,{$size:o,$color:t,$stroke:r,$hover:s,$tabSize:i,children:$.jsx("use",{href:`${a}#${e}`})});export{m as S};
