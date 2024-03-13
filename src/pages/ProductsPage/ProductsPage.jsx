@@ -30,7 +30,7 @@ const ProductsPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [pageNumber, currentCategory, recommendation, title]);
+  }, []);
 
   useEffect(() => {
     getProducts();
@@ -107,17 +107,6 @@ const ProductsPage = () => {
     if (title) {
       setProducts([]);
     }
-  };
-
-  const handleSubmit2 = (newQuery) => {
-    // setPage(1),
-    setProducts([]),
-      setParams({
-        query: newQuery,
-        // pageNumber: 1,
-        category,
-        recommendation,
-      });
   };
 
   const handleSubmit = (newQuery) => {
