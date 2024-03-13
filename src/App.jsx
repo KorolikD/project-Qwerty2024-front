@@ -1,10 +1,11 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { RestrictedRoute, PrivateRoute, ProtectedRoute } from './routes';
+import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefresh } from './redux/auth/authSelectors.js';
-import { refreshUser } from './redux/auth/authOperations.js';
+import { Route, Routes } from 'react-router-dom';
 import { Loader } from './components/Loader/Loader.jsx';
+import { refreshUser } from './redux/auth/authOperations.js';
+import { selectError, selectIsRefresh } from './redux/auth/authSelectors.js';
+import { PrivateRoute, ProtectedRoute, RestrictedRoute } from './routes';
 
 const SharedLayout = lazy(() => import('./components/SharedLayout'));
 const DiaryPage = lazy(() => import('./pages/DiaryPage'));
@@ -23,6 +24,8 @@ const ExercisesSubcategoriesList = lazy(() =>
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefresh);
+  const error = useSelector(selectError);
+  error && toast.error(error);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
