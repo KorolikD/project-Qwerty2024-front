@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  register,
   logIn,
-  refreshUser,
-  updateUser,
-  updateAvatar,
   logOut,
+  refreshUser,
+  register,
+  updateAvatar,
+  updateUser,
 } from './authOperations.js';
 
 const initialState = {
@@ -82,7 +82,7 @@ const authSlice = createSlice({
         state.error = action.payload.message;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.user = action.payload.message;
         state.isLoading = false;
         state.error = null;
       })
