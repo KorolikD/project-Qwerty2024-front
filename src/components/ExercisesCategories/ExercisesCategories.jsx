@@ -1,22 +1,22 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import { slider } from '../../helpers/slider/slider';
+import icons from '../../img/sprite.svg';
 import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
+  BackButton,
   CategoryExercisesStyle,
   CategoryLists,
   ExerciseCards,
-  BackButton,
-  SvgBack,
   ExerciseCardsItem,
-  ExercisesSkroll,
-  PageTitle,
-  NavTitle,
   ExercisesPictures,
+  ExercisesSkroll,
+  NavTitle,
+  PageTitle,
+  SvgBack,
 } from './ExercisesCategories.styled';
-import icons from '../../img/sprite.svg';
-import Slider from 'react-slick';
-import { slider } from '../../helpers/slider/slider';
 
 const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -29,6 +29,7 @@ const ExercisesCategories = () => {
   const [exercisesList, setExercisesList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [pageTitle, setPageTitle] = useState('Exercises');
+  const [active, setActive] = useState(1);
 
   const isCategorySelected = selectedCategory !== null;
 
@@ -121,17 +122,35 @@ const ExercisesCategories = () => {
         <PageTitle>{pageTitle}</PageTitle>
         <CategoryLists>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('bodyPart')}>
+            <CategoryExercisesStyle
+              $active={active === 1}
+              onClick={() => {
+                setActive(1);
+                fetchExercises('bodyPart');
+              }}
+            >
               Body parts
             </CategoryExercisesStyle>
           </li>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('equipment')}>
+            <CategoryExercisesStyle
+              $active={active === 2}
+              onClick={() => {
+                setActive(2);
+                fetchExercises('equipment');
+              }}
+            >
               Equipment
             </CategoryExercisesStyle>
           </li>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('target')}>
+            <CategoryExercisesStyle
+              $active={active === 3}
+              onClick={() => {
+                setActive(3);
+                fetchExercises('target');
+              }}
+            >
               Muscles
             </CategoryExercisesStyle>
           </li>
