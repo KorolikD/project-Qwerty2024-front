@@ -14,6 +14,7 @@ const theme = {
     graphite: '#262625',
     modalBackGround: '#10100F',
     modalBorder: 'rgba(239, 237, 232, 0.2)',
+    modalListItem: 'rgba(239, 237, 232, 0.05)',
   },
   fonts: {
     mainFont: 'Roboto, sans-serif',
