@@ -1,108 +1,86 @@
-# React + Vite template
+# PowerPulse <img align="center" width="32" height="32" src="./public/favicon.ico">
 
-Цей проєкт було створено за допомогою [Create Vite](https://vitejs.dev/). Для
-знайомства і налаштування додаткових можливостей
-[звернися до документації](https://vitejs.dev/guide/).
+Introducing PowerPulse - your personal fitness companion app designed to *help you take control of your body shape* and *achieve your desired level of activity*.
 
-## Створення репозиторію за шаблоном
+**So, let's take care of your health together in our app** ❤️
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проєкту. Для цього натисни на кнопку `"Use this template"` і
-обери опцію `"Create a new repository"`, як показано на зображенні.
+## 🔧 Main features:
 
-![Creating repo from a template step 1](./src/assets/template-step-1.png)
+1. Authentication and login page for **secure access**.
+2. **Profile page** to input user data including birth date, current and target weight, blood type, and level of activity.
+3. **Products page** categorizing items for easy addition to your daily, with calorie counts per gram and recommendations based on user blood type.
+4. **Exercises page** offering a selection of workouts targeting different muscle groups, complete with timers for tracking performance and the option to add exercises to your dairy.
+5. **Dairy** to store information about consumed products and completed exercises for each chosen day, along with details on recommended and consumed calories and workout times.
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`"Create repository from template"`.
+## 👨‍💻 Development team:
 
-![Creating repo from a template step 2](./src/assets/template-step-2.png)
+[![Dmytro Korolik](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/KorolikD) **Dmytro Korolik** - *Project Team Lead, FullStack Developer*
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+[![Igor Liakh](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/igorlyakh) **Igor Liakh** - *FrontEnd TeamLead, Frontend Developer*
 
-![Settings GitHub Actions permissions step 1](./src/assets/gh-actions-perm-1.png)
+[![Andrii Rod](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AndriiRod) **Andrii Rod** - *FrontEnd TeamLead, Frontend Developer*
 
-Проскроливши сторінку до самого кінця, у секції `"Workflow permissions"` вибери
-опцію `"Read and write permissions"` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проєкту.
+[![Anastasiia Zastup](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnastasiiaZastup) **Anastasiia Zastup** - *Scrum Master, Frontend Developer*
 
-![Settings GitHub Actions permissions step 2](./src/assets/gh-actions-perm-2.png)
+[![Ilia Semenova](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ILIANASEMENOVA) **Ilia Semenova** - *FullStack Developer*
 
-Тепер у тебе є особистий репозиторій проєкту, зі структурою файлів і папок
-репозиторія-шаблону. Далі працюй з ним як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй
-їх на GitHub.
+[![Anna Yavorska](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Anna-Yavorska) **Anna Yavorska** - *FullStack Developer*
 
-## Підготовка до роботи
+[![Viktoriia Yakymovych](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ViktoriiaYakymovych) **Viktoriia Yakymovych** - *Frontend Developer*
 
-1. Переконайся, що на комп'ютері встановлена LTS-версія Node.js.
-   [Скачай і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встановіть базові залежності проекту командою `npm install`.
-3. Запустіть режим розробки, виконавши команду `npm run dev`.
-4. Перейди в браузері за адресою, що зазначено в терміналі.
+[![Sofiia Pashchenko](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Sofiia-28) **Sofiia Pashchenko** - *Frontend Developer*
 
-## Деплой
+[![Daria Melnykova](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dmelnykova) **Daria Melnykova** - *Frontend Developer*
 
-Продакшн версія проєкту буде автоматично збиратися і деплоїтися на GitHub Pages,
-у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад, після
-прямого пушу або прийнятого пул-реквесту. Для цього необхідно у файлі
-`vite.config.js` відредагувати поле `base`, замінивши `react_vite` на свою назву
-репозиторію `"/your_repo_name"`, і відправити зміни на GitHub.
+[![Mariia Novosad](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/avemasha) **Mariia Novosad** - *Frontend Developer*
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+[![Hlieb Maraiev](https://img.shields.io/badge/git_hub-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Velms) **Hlieb Maraiev** - *Frontend Developer*
 
-![GitHub Pages settings](./src/assets/repo-settings.png)
+## 🛠 Tech Stack
+**Frontend side**
 
-### Статус деплоя
+![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white)
+![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white)
+![react-router-dom](https://img.shields.io/badge/-react--router--dom-CA4245?logo=react-router&logoColor=white)
+![Redux & Redux Toolkit](https://img.shields.io/badge/-Redux%20%26%20Redux%20Toolkit-764ABC?logo=redux&logoColor=white)
+![redux-persist](https://img.shields.io/badge/-redux--persist-764ABC?logo=redux&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![HTML & CSS](https://img.shields.io/badge/-HTML%20%26%20CSS-E34F26?logo=html5&logoColor=white)
+![axios](https://img.shields.io/badge/-axios-009688?logo=axios&logoColor=white)
+![StyledComponents](https://img.shields.io/badge/-StyledComponents-DB7093?logo=styled-components&logoColor=white)
+![emotion/styled](https://img.shields.io/badge/-emotion/styled-DB7093?logo=styled-components&logoColor=white)
+![swiper](https://img.shields.io/badge/-swiper-6332f6?logo=swiper&logoColor=white)
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+**Backend side**
 
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час збирання або деплою сталася помилка.
+![NodeJs](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white)
+![Postman](https://img.shields.io/badge/-Postman-FF6C37?logo=postman&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white)
+![bcrypt](https://img.shields.io/badge/-bcrypt-430089?logo=npm&logoColor=white)
+![cors](https://img.shields.io/badge/-cors-FF6C37?logo=npm&logoColor=white)
+![dotenv](https://img.shields.io/badge/-dotenv-00C7B7?logo=npm&logoColor=white)
+![joi](https://img.shields.io/badge/-joi-F7DF1E?logo=npm&logoColor=black)
+![jsonwebtoken](https://img.shields.io/badge/-jsonwebtoken-000000?logo=jsonwebtokens&logoColor=white)
+![render](https://img.shields.io/badge/-render-008080?logo=npm&logoColor=white)
 
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і в
-випадаючому вікні перейти за посиланням `Details`.
+## 🔗 API 
 
-![Deployment status](./src/assets/deploy-status.png)
+[![PowerPulse API](https://img.shields.io/badge/powerpulse_api-262625?style=for-the-badge&logo=github&logoColor=white)](https://github.com/KorolikD/project-Qwerty2024-back)
 
-### Жива сторінка
+[![Swagger](https://img.shields.io/badge/-Swagger-85EA2D?logo=Swagger&logoColor=white)](https://project-qwerty2024-back.onrender.com/api-docs/#/)
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною в налаштуваннях GitHub-репозиторію (`Settings` > `Pages`).
 
-![GitHub-pages URL](./src/assets/gh-pages-url.png)
+## ⚙️ Settings
 
-Якщо відкривається порожня сторінка, переконайся що у вкладці `Console` немає
-помилок пов'язаних із неправильними шляхами до CSS і JS файлів проекту
-(**404**). Швидше за все найімовірніше, у тебе неправильне значення поля `base`
-у файлі `vite.config.js`.
+To install project use command:
 
-### Маршрутизація
-
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши в пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
+```bash
+  npm install
 ```
-### Додавання змінних в  .env
-Для зберігання конфігураційних даних, таких як API ключі, адреси серверів, порти та інші змінні використовуйте файл `.env`. Для цього необхідно з назви файлу `.env.template` видалити зайві ".template",після чого файл відповідатиме умовам файлу `.ignore` і буде зберігатися лише локально, не публікуючись на віддаленому репозиторії з метою безпеки. Задля використання змінних на GitHub-pages усі змінні, передбачені файлом .env, слід додати до файлу `.github/workflows/deploy.yml`, а також до налаштувань репозиторію. Для цього слід перейти (`Settings` > `Secrets and variables` > `Actions`)
 
-![Add enviroments from .env](./src/assets/secrets.png)
+To run development mode use command: 
 
-## Як це працює
-
-1. Після кожного пушу в гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) з файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується і
-   проходить збірку перед деплоєм. 3 Якщо всі кроки пройшли успішно, зібрана
-   продакшн-версія файлів проєкту відправляється в гілку `gh-pages`. В іншому
-   випадку, в логах виконання скрипта буде вказано в чому проблема.
+```bash
+  npm run dev
+```

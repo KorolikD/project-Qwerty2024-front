@@ -35,7 +35,7 @@ import { Timer } from '../Timer/Timer';
 import { BasicModalWindow } from '../BasicModalWindow';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import likePicture from '../../img/like-1x.png';
 import SvgCustom from '../SvgCustom/SvgCustom';
 import theme from '../../styles/theme';
@@ -129,7 +129,6 @@ const CustomExercisesItem = ({ subcategory }) => {
 
   return (
     <ConteinerForIt>
-      <Toaster position="top-right" reverseOrder={false} />
       {modalIsOpen && (
         <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
           <ModalWrapper>

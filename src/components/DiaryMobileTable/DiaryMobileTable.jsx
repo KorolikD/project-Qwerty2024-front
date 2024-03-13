@@ -41,10 +41,13 @@ const DiaryMobileTable = ({
                 </div>
                 <div>
                   BurnedCalories{' '}
-                  <DiaryItemInfo>{exercise.burnedCalories}</DiaryItemInfo>
+                  <DiaryItemInfo>
+                    {Math.round(exercise.burnedCalories)}
+                  </DiaryItemInfo>
                 </div>
                 <div>
-                  Time <DiaryItemInfo>{exercise.time}</DiaryItemInfo>
+                  Time{' '}
+                  <DiaryItemInfo>{Math.round(exercise.time)}</DiaryItemInfo>
                 </div>
                 <button
                   onClick={() => {
@@ -76,10 +79,12 @@ const DiaryMobileTable = ({
               </div>
               <GroupTableItemWrap>
                 <div>
-                  Calories <DiaryItemInfo>{product.calories}</DiaryItemInfo>
+                  Calories{' '}
+                  <DiaryItemInfo>{Math.round(product.calories)}</DiaryItemInfo>
                 </div>
                 <div>
-                  Weight <DiaryItemInfo>{product.weight}</DiaryItemInfo>
+                  Weight{' '}
+                  <DiaryItemInfo>{Math.round(product.weight)}</DiaryItemInfo>
                 </div>
                 <div>
                   Recommend{' '}

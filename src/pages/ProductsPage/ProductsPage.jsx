@@ -109,6 +109,17 @@ const ProductsPage = () => {
     }
   };
 
+  const handleSubmit2 = (newQuery) => {
+    // setPage(1),
+    setProducts([]),
+      setParams({
+        query: newQuery,
+        // pageNumber: 1,
+        category,
+        recommendation,
+      });
+  };
+
   const handleSubmit = (newQuery) => {
     if (title !== newQuery) {
       setTitle(newQuery);
@@ -135,6 +146,8 @@ const ProductsPage = () => {
     }
   };
 
+  // console.log(inputValue);
+
   // const visibleProducts = products.filter((product) => {
   //   const hasProduct = product.title
   //     .toLowerCase()
@@ -154,7 +167,7 @@ const ProductsPage = () => {
   // });
 
   return (
-    <Wrapper>
+    <Wrapper style={{ backgroundImage: `url('../../img/products-2x.jpg')` }}>
       {isLoading && (
         <>
           <Loader />

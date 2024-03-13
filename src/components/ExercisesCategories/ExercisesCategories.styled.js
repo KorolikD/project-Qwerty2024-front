@@ -62,10 +62,17 @@ export const NavTitle = styled.div`
   }
 `;
 
+export const PictureCards = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
 export const ExerciseCards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 20px;
   margin-top: 23px;
   @media screen and (min-width: 1440px) {
     width: 842px;
@@ -74,16 +81,19 @@ export const ExerciseCards = styled.div`
 
 export const ExerciseCardsItem = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 15px;
   margin-top: 20px;
+  /*@media screen and (min-width: 1440px) {
+    margin-left: 500px;
+  }*/
 `;
 
 export const BackButton = styled.button`
   display: flex;
   gap: 8px;
+  margin-bottom: 15px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.29;
   color: rgba(239, 237, 232, 0.4);
   background: transparent;
@@ -140,5 +150,27 @@ export const ExercisesSkroll = styled.div`
   }
   @media (min-width: 1440px) {
     width: 850px;
+  }
+`;
+
+import backgroundImage1x from '../../img/exercises-side-1x.jpg';
+import backgroundImage2x from '../../img/exercises-side-2x.jpg';
+
+export const ExercisesPictures = styled.div`
+  @media screen and (min-width: 1440px) {
+    background-image: url(${backgroundImage1x});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+
+    max-width: 1440px;
+    height: 716px;
+    margin-right: -96px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${backgroundImage2x});
+    }
   }
 `;
