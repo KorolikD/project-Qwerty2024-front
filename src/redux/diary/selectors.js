@@ -11,4 +11,10 @@ export const selectTimeSpentOnExercises = (state) =>
 
 export const selectIsLoading = (state) => state.diary.isLoading;
 
+export const selectUpdateDiaryProduct = (state) =>
+  state.diary.updateDiaryProducts;
+
+export const selectUpdateDiaryExercise = (state) =>
+  state.diary.updateDiaryExercises;
+
 export const selectError = (state) => state.diary.error;
