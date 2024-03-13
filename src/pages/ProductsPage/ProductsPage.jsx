@@ -30,7 +30,7 @@ const ProductsPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pageNumber, currentCategory, recommendation, title]);
 
   useEffect(() => {
     getProducts();

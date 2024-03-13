@@ -4,8 +4,8 @@ import { List } from './ProductsList.styled';
 export const ProductsList = ({ products, isRecommend, blood }) => {
   return (
     <List className="movies-list">
-      {products.map((product) => (
-        <li key={product._id}>
+      {products.map((product, idx) => (
+        <li key={idx}>
           <ProductsItem
             product={product}
             isRecommend={isRecommend}
