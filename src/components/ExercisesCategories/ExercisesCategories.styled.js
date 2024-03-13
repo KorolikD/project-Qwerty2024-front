@@ -44,7 +44,7 @@ export const CategoryExercisesStyle = styled.a`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
-  color: grey;
+  color: ${(props) => (props.$active ? 'red' : 'grey')};
   cursor: pointer;
   &:hover {
     color: orange;
