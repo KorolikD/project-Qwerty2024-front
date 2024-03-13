@@ -1,3 +1,5 @@
+[UA](https://github.com/KorolikD/project-Qwerty2024-front/blob/main/README.uk.md)
+
 # PowerPulse <img align="center" width="32" height="32" src="./public/favicon.ico">
 
 Introducing PowerPulse - your personal fitness companion app designed to _help
