@@ -9,9 +9,11 @@ export const fetchCategories = async () => {
   }
 };
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (pageNumber, category, allowed, title) => {
   try {
-    const response = await axios.get('/products');
+    const response = await axios.get('/products', {
+      params: { pageNumber, category, allowed, title },
+    });
     return response.data;
   } catch (err) {
     console.error(err);

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const List = styled.ul`
   height: 500px;
-  margin-bottom: 68px;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
