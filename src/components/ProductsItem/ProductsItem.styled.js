@@ -20,9 +20,9 @@ export const WrapperTop = styled.div`
 `;
 
 export const WrapperRecommend = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 `;
 
 export const Diet = styled.p`
@@ -40,7 +40,7 @@ export const Recommendation = styled.p`
   color: ${({ theme }) => theme.colors.white};
   position: relative;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: -24px;
@@ -48,7 +48,8 @@ export const Recommendation = styled.p`
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background-color: ${({ children }) => (children === 'Not recommended' ? 'red' : 'green')};
+    background-color: ${({ children }) =>
+      children === 'Not recommended' ? 'red' : 'green'};
   }
 `;
 
