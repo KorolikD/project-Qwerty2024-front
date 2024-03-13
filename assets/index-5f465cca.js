@@ -1,4 +1,4 @@
-import{u as e,j as t}from"./index-0c37053f.js";import{A as o}from"./AuthForm-5bf8863f.js";import{R as p}from"./ResponsiveBackground-47ffe724.js";import{D as n}from"./DynamicElementBoxes-6416427c.js";import"./formik.esm-bc517f3c.js";import"./index.esm-30f5554b.js";import"./motion-8087da4d.js";import"./index-34965bed.js";import"./ResizeObserver.es-f4289e8a.js";import"./zoom-b791dc87.js";const r=e.div`
+import{u as e,j as t}from"./index-4ba4a0cd.js";import{A as o}from"./AuthForm-b50df463.js";import{R as p}from"./ResponsiveBackground-c38ac138.js";import{D as n}from"./DynamicElementBoxes-e3754dc9.js";import"./formik.esm-3917f13d.js";import"./index.esm-3825fc2c.js";import"./motion-cbed674a.js";import"./index-2cb1eb3e.js";import"./ResizeObserver.es-f4289e8a.js";import"./zoom-e2c9e285.js";const r=e.div`
   display: flex;
   flex-direction: column;
   padding-top: 58px;
