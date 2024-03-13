@@ -10,7 +10,7 @@ export const DiaryTableList = styled.ul`
   font-size: 12px;
   line-height: 1.5;
   color: ${(props) => props.theme.colors.secondary};
-  height: ${(props) => props.height}px;
+  height: ${(props) => props.height};
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -39,17 +39,17 @@ export const GroupTableItemWrap = styled.div`
 
     &:nth-child(1) {
       width: 81px;
-      margin-right: 16px;
+      margin-right: 15px;
     }
 
     &:nth-child(2) {
       width: 80px;
-      margin-right: 16px;
+      margin-right: 15px;
     }
 
     &:nth-child(3) {
       width: 76px;
-      margin-right: 16px;
+      margin-right: 14px;
     }
   }
 
