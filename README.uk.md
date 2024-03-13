@@ -1,3 +1,5 @@
+[EN](https://github.com/KorolikD/project-Qwerty2024-front/blob/main/README.md)
+
 # PowerPulse <img align="center" width="32" height="32" src="./public/favicon.ico">
 
 Представляємо PowerPulse — ваш особистий додаток для фітнесу, розроблений, щоб *допомогти вам контролювати форму свого тіла* та *досягти бажаного рівня активності*.
