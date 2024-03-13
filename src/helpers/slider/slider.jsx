@@ -4,26 +4,25 @@ export const slider = {
   speed: 200,
   slidesToShow: 5,
   slidesToScroll: 10,
-  initialSlide: 2,
+  initialSlide: 0,
   rows: 2,
   arrows: false,
   appendDots: (dots) => (
     <div
       style={{
-        borderRadius: '15px',
-        padding: '15px',
+        padding: '8px',
       }}
     >
-      <ul style={{ margin: '0px' }}> {dots} </ul>
+      <ul> {dots} </ul>
     </div>
   ),
   customPaging: () => (
     <div
       style={{
-        width: '14px',
-        height: '14px',
+        width: '15px',
+        height: '15px',
         borderRadius: '50%',
-        backgroundColor: 'rgba(239, 237, 232, 0.2)',
+        backgroundColor: 'grey',
         border: '1px black solid',
         transition: 'background-color 0.3s ease',
       }}
