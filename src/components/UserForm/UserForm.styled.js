@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Radio as RadioAnt, Form, Input } from 'antd';
+import { Radio as RadioAnt, Form, Input as InputAnt } from 'antd';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -22,6 +22,29 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const Input = styled(InputAnt)`
+  width: 100%;
+  padding: 14px;
+  line-height: 1.3;
+  margin-bottom: 14px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 12px;
+  border: 1px solid ${({ theme }) => theme.colors.formBorder};
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 14px;
+  &:focus,
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    background-color: transparent;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    max-width: 341px;
   }
 `;
 
@@ -65,58 +88,6 @@ export const NameEmailSection = styled.div`
 export const NameEmailItem = styled.div`
   @media screen and (min-width: 320px) and (max-width: 1439px) {
     width: 100%;
-  }
-`;
-
-export const Label = styled.label`
-  margin-bottom: 4px;
-  font-weight: 400;
-  font-size: 12px;
-  color: ${({ theme }) => theme.colors.textWhite50};
-  @media screen and (min-width: 768px) {
-    font-size: 14px;
-  }
-`;
-
-export const StyledInputNameEmail = styled.input`
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 14px;
-  align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  border: 1px solid ${({ theme }) => theme.colors.formBorder};
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 14px;
-  &:focus,
-  &:hover {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primary};
-    background-color: transparent;
-  }
-`;
-
-export const StyledInput = styled(Input)`
-  max-width: 335px;
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 14px;
-  align-items: center;
-  gap: 10px;
-  border-radius: 12px;
-  border: 1px solid ${({ theme }) => theme.colors.formBorder};
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 14px;
-  &:focus,
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.primary};
-    background-color: transparent;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    max-width: 341px;
   }
 `;
 

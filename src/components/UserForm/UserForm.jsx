@@ -1,19 +1,25 @@
 import { useFormik } from 'formik';
-import { Input, message, Form } from 'antd';
+import { Form } from 'antd';
 import validationSchema from './validationSchema';
 import { StyledButton } from '../Button/Button.styled';
-import { StyledForm, Label, Radio, Wrapper } from './UserForm.styled';
+import { StyledForm, Radio, Wrapper, Input } from './UserForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../redux/auth/authOperations';
 import radioGroups from './radioBtnConfig.js';
 import { selectUser } from '../../redux/auth/authSelectors';
 import SvgCustom from '../SvgCustom/index.js';
 import theme from '../../styles/theme.js';
-import dayjs from 'dayjs';
+import { useState } from 'react';
+import Calendar from '../Calendar/index.js';
+import './formStyles.css';
 
-const UserForm = ({ date, setIsOpenCalendar }) => {
-  const dispatch = useDispatch();
+const UserForm = () => {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const [date, setDate] = useState(
+    user.birthday ? user.birthday : '00.00.0000'
+  );
+  const [isOpenCalendar, setIsOpenCalendar] = useState(false);
 
   const handleSubmit = (values) => {
     const userInfo = {
@@ -22,6 +28,11 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
     };
     console.log(userInfo);
     dispatch(updateUser(userInfo));
+  };
+  const getMaxDate = () => {
+    const currentDate = new Date();
+    currentDate.setFullYear(currentDate.getFullYear() - 18);
+    return currentDate;
   };
   const checkStatus = (value) => {
     if (formik.touched[value] && !formik.errors[value]) {
@@ -51,10 +62,10 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
   return (
     <StyledForm onFinish={formik.handleSubmit}>
       <Form.Item
+        label="Name"
         help={formik.errors.name}
         validateStatus={checkStatus('name')}
         hasFeedback
-        label="Name"
       >
         <Input
           placeholder="Your name"
@@ -67,6 +78,7 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
       </Form.Item>
       <Form.Item label="Email">
         <Input
+          placeholder="Your Email"
           type="email"
           name="email"
           value={formik.values.email}
@@ -78,12 +90,13 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
       </Form.Item>
       <Wrapper>
         <Form.Item
-          label="Height"
           help={formik.errors.height}
           validateStatus={checkStatus('height')}
           hasFeedback
+          label="Height"
         >
           <Input
+            placeholder="Your Height"
             type="number"
             name="height"
             value={formik.values.height}
@@ -93,12 +106,13 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
           />
         </Form.Item>
         <Form.Item
-          label="Current Weight"
           help={formik.errors.currentWeight}
           validateStatus={checkStatus('currentWeight')}
           hasFeedback
+          label="Current Weight"
         >
           <Input
+            placeholder="Your Current Weight"
             type="number"
             name="currentWeight"
             value={formik.values.currentWeight}
@@ -115,6 +129,7 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
           hasFeedback
         >
           <Input
+            placeholder="Your Desired Weight"
             type="number"
             name="desiredWeight"
             value={formik.values.desiredWeight}
@@ -131,6 +146,7 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
           hasFeedback
         >
           <Input
+            placeholder="Your Date of birth"
             type="text"
             onClick={() => setIsOpenCalendar(true)}
             name="birthday"
@@ -140,6 +156,13 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
             readOnly
           />
         </Form.Item>
+        <Calendar
+          date={date}
+          setDate={setDate}
+          maxDate={getMaxDate()}
+          isOpen={isOpenCalendar}
+          setIsOpen={setIsOpenCalendar}
+        />
       </Wrapper>
       <Form.Item
         label="Blood"
@@ -161,33 +184,44 @@ const UserForm = ({ date, setIsOpenCalendar }) => {
           })}
         </Radio.Group>
       </Form.Item>
-      <Radio.Group
-        onChange={formik.handleChange}
-        value={formik.values.sex}
-        name={radioGroups[1].name}
+      <Form.Item
+        help={formik.errors.sex}
+        validateStatus={checkStatus('sex')}
+        hasFeedback
       >
-        {radioGroups[1].options.map((item, index) => {
-          return (
-            <Radio key={index} value={item}>
-              {item}
-            </Radio>
-          );
-        })}
-      </Radio.Group>
-
-      <Radio.Group
-        onChange={formik.handleChange}
-        value={formik.values.levelActivity}
-        name={radioGroups[2].name}
+        <Radio.Group
+          onChange={formik.handleChange}
+          value={formik.values.sex}
+          name={radioGroups[1].name}
+        >
+          {radioGroups[1].options.map((item, index) => {
+            return (
+              <Radio key={index} value={item}>
+                {item}
+              </Radio>
+            );
+          })}
+        </Radio.Group>
+      </Form.Item>
+      <Form.Item
+        help={formik.errors.levelActivity}
+        validateStatus={checkStatus('levelActivity')}
+        hasFeedback
       >
-        {radioGroups[2].options.map((item, index) => {
-          return (
-            <Radio key={index} value={index + 1}>
-              {item}
-            </Radio>
-          );
-        })}
-      </Radio.Group>
+        <Radio.Group
+          onChange={formik.handleChange}
+          value={formik.values.levelActivity}
+          name={radioGroups[2].name}
+        >
+          {radioGroups[2].options.map((item, index) => {
+            return (
+              <Radio key={index} value={index + 1}>
+                {item}
+              </Radio>
+            );
+          })}
+        </Radio.Group>
+      </Form.Item>
       <StyledButton disabled={!formik.isValid} type="submit" $type="filled">
         Save
       </StyledButton>
