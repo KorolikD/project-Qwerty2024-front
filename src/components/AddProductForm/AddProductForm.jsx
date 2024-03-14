@@ -1,6 +1,20 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import dayjs from 'dayjs';
 import axios from 'axios';
+import {
+  AddProductBtnWrapper,
+  AddProductCancelButton,
+  AddProductInputWrapper,
+  AddProductModalWrapper,
+  AddProductSubmitButton,
+  Calories,
+  CaloriesWrapper,
+  ProductInput,
+  WeightInput,
+  WeightInputWrapper,
+} from './AddProductForm.styled';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -12,63 +26,77 @@ export const AddProductForm = ({
   onClose,
   onSuccessOpen,
 }) => {
-  const postProductToDiary = async (requestBody) => {
-    try {
-      await axios.post(`/diary/product`, requestBody);
-    } catch (error) {
-      console.error('Error fetching product:', error);
-    }
+  const [totalCalories, setTotalCalories] = useState(0);
+
+  const postProductToDiary = (requestBody) => {
+    return axios.post(`/diary/product`, requestBody);
   };
 
   const handleSubmit = async (values) => {
-    const { weight, calories } = values;
-    const formattedDate = dayjs(Date.now()).format(DATE_FORMAT);
-    const formData = { productId, date: formattedDate, weight, calories };
+    try {
+      const { weight } = values;
+      const formattedDate = dayjs(Date.now()).format(DATE_FORMAT);
+      const formData = {
+        productId,
+        date: formattedDate,
+        weight,
+        calories: totalCalories,
+      };
 
-    await postProductToDiary(formData);
-    onСonsumeСalories(calories);
-    onClose();
-    onSuccessOpen();
+      await postProductToDiary(formData);
+      onСonsumeСalories(totalCalories);
+      onClose();
+      onSuccessOpen();
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
-    <>
+    <AddProductModalWrapper>
       <Formik
         initialValues={{ product, weight: 0, calories: 0 }}
         onSubmit={handleSubmit}
       >
         {({ values, setFieldValue }) => (
           <Form>
-            <Field type="text" name="product" disabled />
-            <Field
-              type="text"
-              name="weight"
-              onChange={(e) => {
-                const weight = e.target.value;
-                const parsedWeight = parseFloat(weight);
-                if (!isNaN(parsedWeight) || weight === '') {
-                  const calcCalories =
-                    weight === ''
-                      ? ''
-                      : Math.round((parsedWeight * calories) / 100);
-                  setFieldValue(
-                    'calories',
-                    isNaN(calcCalories) ? '' : calcCalories
-                  );
-                  setFieldValue(
-                    'weight',
-                    isNaN(parsedWeight) ? '' : parsedWeight
-                  );
-                }
-              }}
-            />
-            <Field type="text" name="calories" disabled />
-            <button type="submit">Submit</button>
-            <button type="button" onClick={onClose}>
-              Cancel
-            </button>
+            <AddProductInputWrapper>
+              <ProductInput type="text" name="product" disabled />
+              <WeightInputWrapper>
+                <WeightInput
+                  type="text"
+                  name="weight"
+                  onChange={(e) => {
+                    const weight = e.target.value;
+                    const parsedWeight = parseFloat(weight);
+                    if (!isNaN(parsedWeight) || weight === '') {
+                      const calcCalories =
+                        weight === ''
+                          ? 0
+                          : Math.round((parsedWeight * calories) / 100);
+                      setTotalCalories(isNaN(calcCalories) ? 0 : calcCalories);
+                      setFieldValue(
+                        'weight',
+                        isNaN(parsedWeight) ? 0 : parsedWeight
+                      );
+                    }
+                  }}
+                />
+              </WeightInputWrapper>
+            </AddProductInputWrapper>
+            <CaloriesWrapper>
+              Calories: <Calories>{totalCalories || 0}</Calories>
+            </CaloriesWrapper>
+            <AddProductBtnWrapper>
+              <AddProductSubmitButton type="submit">
+                Submit
+              </AddProductSubmitButton>
+              <AddProductCancelButton type="button" onClick={onClose}>
+                Cancel
+              </AddProductCancelButton>
+            </AddProductBtnWrapper>
           </Form>
         )}
       </Formik>
-    </>
+    </AddProductModalWrapper>
   );
 };
