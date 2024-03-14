@@ -6,7 +6,6 @@ import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { selectIsAuth } from '../../redux/auth/authSelectors.js';
 import { useState } from 'react';
-import { Toaster } from 'react-hot-toast';
 
 const SharedLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +21,6 @@ const SharedLayout = () => {
 
   return (
     <div style={{ height: '100%' }} id="outer-container">
-      <Toaster />
       {!isDesktop && isAuth && (
         <MobileMenu
           isOpen={isOpen}
