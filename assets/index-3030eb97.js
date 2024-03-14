@@ -1,4 +1,4 @@
-import{u as e,L as n,j as o}from"./index-be2148ce.js";import{R as p}from"./ResponsiveBackground-a93c8f74.js";import{C as r}from"./Container-9395ac75.js";const x=e.div`
+import{u as i,L as p,j as o}from"./index-7bc65556.js";import{R as n}from"./ResponsiveBackground-f505e50e.js";import{C as r}from"./Container-4442be9c.js";import"./hero-2x-31d4f1ba.js";const x=i.div`
   width: 240px;
   height: 100%;
   background-color: ${t=>t.theme.colors.primary};
@@ -22,7 +22,7 @@ import{u as e,L as n,j as o}from"./index-be2148ce.js";import{R as p}from"./Respo
     min-height: px;
     padding: 32px 96px;
   }
-`,d=e.h1`
+`,d=i.h1`
   padding: 0;
   margin: 0;
   font-size: 66px;
@@ -40,7 +40,7 @@ import{u as e,L as n,j as o}from"./index-be2148ce.js";import{R as p}from"./Respo
   @media (min-width: 1024px) {
     margin-top: 172px;
   }
-`,s=e.p`
+`,s=i.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -63,7 +63,7 @@ import{u as e,L as n,j as o}from"./index-be2148ce.js";import{R as p}from"./Respo
     margin-bottom: 28px;
     line-height: 24px;
   }
-`,a=e(n)`
+`,a=i(p)`
   padding: 12px 40px;
   font-size: 16px;
   font-weight: 500;
@@ -95,4 +95,4 @@ import{u as e,L as n,j as o}from"./index-be2148ce.js";import{R as p}from"./Respo
     padding: 16px 60px;
     margin-top: 28px;
   }
-`,h="/project-Qwerty2024-front/logo/404-mobile-Logo.png",g="/project-Qwerty2024-front/logo/404-mobile-Logo2x.png",i="/project-Qwerty2024-front/logo/404-desktopLogo.png",c="/project-Qwerty2024-front/logo/404-desktopLogo2x.png",m=()=>o.jsx(n,{to:"diary",children:o.jsxs("picture",{children:[o.jsx("source",{media:"(max-width: 768px)",srcSet:`${h} 1x,${g} 2x`}),o.jsx("source",{media:"(min-width: 768px)",srcSet:`${i} 1x,${c} 2x`}),o.jsx("img",{src:i,alt:"Logo"})]})}),l=()=>o.jsxs(r,{children:[o.jsxs(x,{children:[o.jsx(m,{}),o.jsx(d,{children:"404"}),o.jsx(s,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),o.jsx(a,{to:"/",children:"Go Home"})]}),o.jsx(p,{})]}),j=l;export{j as default};
+`,h="/project-Qwerty2024-front/logo/404-mobile-Logo.png",g="/project-Qwerty2024-front/logo/404-mobile-Logo2x.png",e="/project-Qwerty2024-front/logo/404-desktopLogo.png",m="/project-Qwerty2024-front/logo/404-desktopLogo2x.png",c=()=>o.jsx(p,{to:"diary",children:o.jsxs("picture",{children:[o.jsx("source",{media:"(max-width: 768px)",srcSet:`${h} 1x,${g} 2x`}),o.jsx("source",{media:"(min-width: 768px)",srcSet:`${e} 1x,${m} 2x`}),o.jsx("img",{src:e,alt:"Logo"})]})}),l=()=>o.jsxs(r,{children:[o.jsxs(x,{children:[o.jsx(c,{}),o.jsx(d,{children:"404"}),o.jsx(s,{children:"Sorry, you have reached a page that we could not find. It seems that you are lost among the numbers and letters of our virtual space. Perhaps this page went on vacation or decided to disappear into another dimension. We apologize for this inconvenience."}),o.jsx(a,{to:"/",children:"Go Home"})]}),o.jsx(n,{})]}),b=l;export{b as default};

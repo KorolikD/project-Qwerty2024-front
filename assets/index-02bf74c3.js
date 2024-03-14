@@ -1,4 +1,4 @@
-import{u as e,j as i}from"./index-be2148ce.js";import{A as n}from"./AuthForm-2e10f6ac.js";import{R as p}from"./ResponsiveBackground-a93c8f74.js";import{D as o}from"./DynamicElementBoxes-29749514.js";import"./formik.esm-1740cb3c.js";import"./index.esm-3b66e3e5.js";import"./motion-1440b6c3.js";import"./index-ce74c1f2.js";import"./ResizeObserver.es-f4289e8a.js";import"./zoom-ba83ae59.js";const r=e.div`
+import{u as e,j as i}from"./index-7bc65556.js";import{A as n}from"./AuthForm-6adb21b7.js";import{R as p}from"./ResponsiveBackground-f505e50e.js";import{D as o}from"./DynamicElementBoxes-6203a10a.js";import"./formik.esm-426deab0.js";import"./index.esm-e60956f6.js";import"./motion-7b8a3993.js";import"./index-e84055cd.js";import"./ResizeObserver.es-f4289e8a.js";import"./zoom-239256d9.js";import"./hero-2x-31d4f1ba.js";const r=e.div`
   display: flex;
   flex-direction: column;
 
@@ -48,4 +48,4 @@ import{u as e,j as i}from"./index-be2148ce.js";import{A as n}from"./AuthForm-2e1
     letter-spacing: 0px;
     text-align: left;
   }
-`,x=()=>i.jsxs(i.Fragment,{children:[i.jsxs(r,{children:[i.jsx(s,{children:"Sign Up"}),i.jsx(a,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),i.jsx(n,{type:"SignUp"})]}),i.jsxs(p,{children:[i.jsx(o,{type:"videoTutorial"}),i.jsx(o,{type:"calories"})]})]}),y=x;export{y as default};
+`,x=()=>i.jsxs(i.Fragment,{children:[i.jsxs(r,{children:[i.jsx(s,{children:"Sign Up"}),i.jsx(a,{children:"Thank you for your interest in our platform. To complete the registration process, please provide us with the following information."}),i.jsx(n,{type:"SignUp"})]}),i.jsxs(p,{children:[i.jsx(o,{type:"videoTutorial"}),i.jsx(o,{type:"calories"})]})]}),v=x;export{v as default};

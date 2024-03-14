@@ -1,4 +1,4 @@
-import{u as e,j as t}from"./index-be2148ce.js";import{A as o}from"./AuthForm-2e10f6ac.js";import{R as p}from"./ResponsiveBackground-a93c8f74.js";import{D as n}from"./DynamicElementBoxes-29749514.js";import"./formik.esm-1740cb3c.js";import"./index.esm-3b66e3e5.js";import"./motion-1440b6c3.js";import"./index-ce74c1f2.js";import"./ResizeObserver.es-f4289e8a.js";import"./zoom-ba83ae59.js";const r=e.div`
+import{u as e,j as t}from"./index-7bc65556.js";import{A as o}from"./AuthForm-6adb21b7.js";import{R as p}from"./ResponsiveBackground-f505e50e.js";import{D as n}from"./DynamicElementBoxes-6203a10a.js";import"./formik.esm-426deab0.js";import"./index.esm-e60956f6.js";import"./motion-7b8a3993.js";import"./index-e84055cd.js";import"./ResizeObserver.es-f4289e8a.js";import"./zoom-239256d9.js";import"./hero-2x-31d4f1ba.js";const r=e.div`
   display: flex;
   flex-direction: column;
   padding-top: 58px;
@@ -47,4 +47,4 @@ import{u as e,j as t}from"./index-be2148ce.js";import{A as o}from"./AuthForm-2e1
     margin-top: 16px;
     margin-bottom: 18px;
   }
-`,s=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(x,{children:"Sign In"}),t.jsx(a,{children:"Welcome! Please enter your credentials to login to the platform:"}),t.jsx(o,{type:"SignIn"})]}),t.jsxs(p,{children:[t.jsx(n,{type:"videoTutorial"}),t.jsx(n,{type:"calories"})]})]}),y=s;export{y as default};
+`,m=()=>t.jsxs(t.Fragment,{children:[t.jsxs(r,{children:[t.jsx(x,{children:"Sign In"}),t.jsx(a,{children:"Welcome! Please enter your credentials to login to the platform:"}),t.jsx(o,{type:"SignIn"})]}),t.jsxs(p,{children:[t.jsx(n,{type:"videoTutorial"}),t.jsx(n,{type:"calories"})]})]}),z=m;export{z as default};

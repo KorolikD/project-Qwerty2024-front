@@ -1,4 +1,4 @@
-import{u as n,L as a,j as i}from"./index-be2148ce.js";import{R as d}from"./ResponsiveBackground-a93c8f74.js";import{D as s}from"./DynamicElementBoxes-29749514.js";const x=n.div`
+import{u as n,L as a,j as i}from"./index-7bc65556.js";import{R as d}from"./ResponsiveBackground-f505e50e.js";import{D as s}from"./DynamicElementBoxes-6203a10a.js";import"./hero-2x-31d4f1ba.js";const x=n.div`
   text-align: left;
 
   padding-top: 66px;
@@ -83,4 +83,4 @@ import{u as n,L as a,j as i}from"./index-be2148ce.js";import{R as d}from"./Respo
     line-height: 1.2;
     letter-spacing: 0em;
   }
-`,r=({children:e,variant:t="signup",size:o="signup"})=>{const p=t==="signup"?"/signup":"/signin";return i.jsx(m,{to:p,$size:o,$type:t,children:e})},u=()=>i.jsxs(i.Fragment,{children:[i.jsxs(x,{children:[i.jsxs(c,{children:["Transforming your"," ",i.jsxs(h,{children:["body",i.jsx(g,{children:i.jsx("use",{href:"src/img/sprite.svg#icon-circle"})})]})," ","shape with Power Pulse"]}),i.jsxs(l,{children:[i.jsx(r,{size:"signup",variant:"signup",children:"Sign Up"}),i.jsx(r,{size:"signin",variant:"",children:"Sign In"})]})]}),i.jsxs(d,{children:[i.jsx(s,{type:"videoTutorial"}),i.jsx(s,{type:"calories"})]})]}),y=u;export{y as default};
+`,r=({children:e,variant:t="signup",size:o="signup"})=>{const p=t==="signup"?"/signup":"/signin";return i.jsx(m,{to:p,$size:o,$type:t,children:e})},u=()=>i.jsxs(i.Fragment,{children:[i.jsxs(x,{children:[i.jsxs(c,{children:["Transforming your"," ",i.jsxs(h,{children:["body",i.jsx(g,{children:i.jsx("use",{href:"src/img/sprite.svg#icon-circle"})})]})," ","shape with Power Pulse"]}),i.jsxs(l,{children:[i.jsx(r,{size:"signup",variant:"signup",children:"Sign Up"}),i.jsx(r,{size:"signin",variant:"",children:"Sign In"})]})]}),i.jsxs(d,{children:[i.jsx(s,{type:"videoTutorial"}),i.jsx(s,{type:"calories"})]})]}),j=u;export{j as default};
