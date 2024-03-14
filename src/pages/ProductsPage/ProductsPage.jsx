@@ -9,6 +9,7 @@ import { ProductsFilters } from '../../components/ProductsFilters/ProductsFilter
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Loader } from '../../components/Loader/Loader';
 import { Wrapper } from './ProductsPage.styled';
+import { NotFound } from '../../components/NotFoundProducts/NotFound';
 
 const ProductsPage = () => {
   const [params, setParams] = useSearchParams();
@@ -47,7 +48,6 @@ const ProductsPage = () => {
         title
       );
       const newProducts = resultsProducts.products;
-      console.log(newProducts);
       setProducts((prevState) => [...prevState, ...newProducts]);
 
       const resultsCategories = await fetchCategories();
@@ -56,7 +56,10 @@ const ProductsPage = () => {
       const resultsBlood = await fetchBlood();
       setBlood(resultsBlood.blood);
 
-      setHasMore(resultsProducts.page < resultsProducts.totalPages);
+      setHasMore(
+        resultsProducts.page < resultsProducts.totalPages &&
+          newProducts.length > 0
+      );
     } catch (error) {
       console.error(error);
     } finally {
@@ -73,23 +76,31 @@ const ProductsPage = () => {
   };
 
   const updateCategory = (value) => {
-    params.set('category', value);
-    setParams(params);
     setCurrentCategory(value);
     setPageNumber(1);
     setProducts([]);
+    if (value === '') {
+      params.delete('category');
+      setParams(params);
+    } else {
+      params.set('category', value);
+      setParams(params);
+    }
   };
 
   const updateRecommendation = (value) => {
-    params.set('recommended', value);
-    setParams(params);
-
     if (value === 'Recommended') {
       setRecommendation(true);
+      params.set('recommended', value);
+      setParams(params);
     } else if (value === 'Not recommended') {
       setRecommendation(false);
+      params.set('recommended', value);
+      setParams(params);
     } else {
       setRecommendation('');
+      params.delete('recommended');
+      setParams(params);
     }
     setPageNumber(1);
     setProducts([]);
@@ -107,20 +118,21 @@ const ProductsPage = () => {
     if (title) {
       setProducts([]);
     }
+    params.delete('query');
+    setParams(params);
   };
 
   const handleSubmit = (newQuery) => {
     if (title !== newQuery) {
       setTitle(newQuery);
       setPageNumber(1);
-      console.log('submit reset');
       setProducts([]);
       params.set('query', newQuery);
-      setParams({
-        query: newQuery,
-        category,
-        recommended,
-      });
+      setParams(params);
+    }
+    if (newQuery === '') {
+      params.delete('query');
+      setParams(params);
     }
   };
 
@@ -129,34 +141,14 @@ const ProductsPage = () => {
       !isLoading &&
       hasMore &&
       window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 20
+        document.documentElement.offsetHeight - 200
     ) {
       setPageNumber((prevState) => prevState + 1);
     }
   };
 
-  // console.log(inputValue);
-
-  // const visibleProducts = products.filter((product) => {
-  //   const hasProduct = product.title
-  //     .toLowerCase()
-  //     .includes(query.toLowerCase());
-
-  //   const matchesCategory =
-  //     category === 'categories' ||
-  //     category === '' ||
-  //     product.category === category;
-  //   const matchesRecommendation =
-  //     recommendation === 'All' ||
-  //     recommendation === '' ||
-  //     isRecommend(blood, product.groupBloodNotAllowed) === recommendation;
-
-  //   return hasProduct
-  //   && matchesCategory && matchesRecommendation;
-  // });
-
   return (
-    <Wrapper style={{ backgroundImage: `url('../../img/products-2x.jpg')` }}>
+    <Wrapper>
       {isLoading && (
         <>
           <Loader />
@@ -171,24 +163,18 @@ const ProductsPage = () => {
         onUpdateCategory={updateCategory}
         onUpdateRecommendation={updateRecommendation}
       />
-      {!isLoading && products.length === 0 && (
-        <>
-          <p>
-            Sorry, no results were found for the product filters you selected.
-            You may want to consider other search options to find the product
-            you want. Our range is wide and you have the opportunity to find
-            more options that suit your needs. Try changing the search
-            parameters.
-          </p>
-        </>
-      )}
-      {products.length > 0 && (
+      {!isLoading && products.length > 0 && (
         <>
           <ProductsList
             products={products}
             blood={blood}
             isRecommend={isRecommend}
           />
+        </>
+      )}
+      {!isLoading && products.length === 0 && (
+        <>
+          <NotFound />
         </>
       )}
     </Wrapper>
