@@ -1,29 +1,38 @@
 export const slider = {
-  dots: false,
+  dots: true,
   infinite: false,
   speed: 200,
   slidesToShow: 5,
   slidesToScroll: 10,
-  initialSlide: 2,
+  initialSlide: 0,
   rows: 2,
   arrows: false,
   appendDots: (dots) => (
     <div
       style={{
-        borderRadius: '10px',
-        padding: '10px',
+        padding: '0px 20px',
+        position: 'relative',
       }}
     >
-      <ul style={{ margin: '0px' }}> {dots} </ul>
+      <ul
+        style={{
+          position: 'absolute',
+          bottom: '-20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        {dots}
+      </ul>
     </div>
   ),
   customPaging: () => (
     <div
       style={{
-        width: '14px',
-        height: '14px',
+        width: '15px',
+        height: '15px',
         borderRadius: '50%',
-        backgroundColor: 'rgba(239, 237, 232, 0.2)',
+        backgroundColor: 'grey',
         border: '1px black solid',
         transition: 'background-color 0.3s ease',
       }}
@@ -38,11 +47,11 @@ export const slider = {
 
   responsive: [
     {
-      breakpoint: 1440,
+      breakpoint: 2000,
       settings: {
-        slidesToShow: 10,
-        slidesToScroll: 10,
-        infinite: false,
+        slidesToShow: 5,
+        slidesToScroll: 5,
+        rows: 2,
         dots: true,
       },
     },
@@ -55,6 +64,7 @@ export const slider = {
         dots: true,
       },
     },
+
     {
       breakpoint: 767,
       settings: {

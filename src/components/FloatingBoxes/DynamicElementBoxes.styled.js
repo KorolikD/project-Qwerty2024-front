@@ -18,22 +18,22 @@ export const VideoTutorialBox = styled(Box)`
   width: 146px;
   height: 66px;
 
-  top: 560px;
-  left: 121px;
+  bottom: 186px;
+  left: 44px;
 
   @media screen and (min-width: 768px) {
     width: 206px;
     height: 96px;
-    top: 714px;
-    left: 331px;
+    bottom: 214px;
+
     padding: 20px 36px 20px 23px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 206px;
     height: 96px;
-    top: 384px;
-    left: 770px;
+    bottom: 320px;
+    left: 0;
   }
 `;
 
@@ -44,25 +44,26 @@ export const CaloriesBox = styled(Box)`
   align-items: flex-start;
   gap: 8px;
   padding: 14px;
-  width: 119px;
+  min-width: 119px;
   height: 76px;
 
-  top: 696px;
-  left: 236px;
+  bottom: 40px;
+  right: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 180px;
+    min-width: 180px;
     height: 110px;
-    top: 866px;
-    left: 556px;
+
+    bottom: 48px;
+    right: 32px;
     gap: 12px;
     padding: 14px 28px;
   }
   @media screen and (min-width: 1200px) {
-    width: 180px;
+    min-width: 180px;
     height: 110px;
-    top: 519px;
-    left: 1228px;
+    bottom: 171px;
+    right: 32px;
   }
 `;
 

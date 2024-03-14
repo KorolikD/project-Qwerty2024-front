@@ -1,19 +1,22 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import { slider } from '../../helpers/slider/slider';
+import icons from '../../img/sprite.svg';
 import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import {
+  BackButton,
   CategoryExercisesStyle,
   CategoryLists,
   ExerciseCards,
-  BackButton,
-  SvgBack,
   ExerciseCardsItem,
+  ExercisesPictures,
   ExercisesSkroll,
-  PageTitle,
   NavTitle,
+  PageTitle,
+  SvgBack,
 } from './ExercisesCategories.styled';
-import icons from '../../img/sprite.svg';
 
 const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -26,6 +29,7 @@ const ExercisesCategories = () => {
   const [exercisesList, setExercisesList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [pageTitle, setPageTitle] = useState('Exercises');
+  const [active, setActive] = useState(1);
 
   const isCategorySelected = selectedCategory !== null;
 
@@ -60,32 +64,34 @@ const ExercisesCategories = () => {
     if (isCategorySelected) {
       return (
         <div>
-          <BackButton
-            type="button"
-            onClick={() => {
-              document.title = 'React App';
-              setSelectedCategory(null);
-              setPageTitle('Exercises');
-            }}
-          >
-            <SvgBack width="16" height="16">
-              <use href={icons + '#icon-next'} />
-            </SvgBack>
-            BACK
-          </BackButton>
+          <ExercisesPictures>
+            <BackButton
+              type="button"
+              onClick={() => {
+                document.title = 'React App';
+                setSelectedCategory(null);
+                setPageTitle('Exercises');
+              }}
+            >
+              <SvgBack width="16" height="16">
+                <use href={icons + '#icon-next'} />
+              </SvgBack>
+              BACK
+            </BackButton>
 
-          <ExercisesSkroll style={{ height: '500px' }}>
-            <ExerciseCards>
-              {exercisesList.length > 0
-                ? exercisesList.map((exercise) => (
-                    <CustomExercisesItem
-                      key={exercise._id}
-                      subcategory={exercise}
-                    />
-                  ))
-                : 'Empty'}
-            </ExerciseCards>
-          </ExercisesSkroll>
+            <ExercisesSkroll style={{ height: '500px' }}>
+              <ExerciseCards>
+                {exercisesList.length > 0
+                  ? exercisesList.map((exercise) => (
+                      <CustomExercisesItem
+                        key={exercise._id}
+                        subcategory={exercise}
+                      />
+                    ))
+                  : 'Empty'}
+              </ExerciseCards>
+            </ExercisesSkroll>
+          </ExercisesPictures>
         </div>
       );
     }
@@ -93,19 +99,20 @@ const ExercisesCategories = () => {
     return (
       exercises &&
       exercises.length > 0 && (
-        <ExerciseCardsItem>
+        <Slider {...slider}>
           {exercises.map((exercise) => (
-            <ExercisesSubcategoriesItem
-              key={exercise._id}
-              subcategory={exercise}
-              onSelect={async (key, value) => {
-                document.title = key;
-                await fetchExerciseList(CATEGORIES[key], value);
-                setSelectedCategory([key, value]);
-              }}
-            />
+            <ExerciseCardsItem key={exercise._id}>
+              <ExercisesSubcategoriesItem
+                subcategory={exercise}
+                onSelect={async (key, value) => {
+                  document.title = key;
+                  await fetchExerciseList(CATEGORIES[key], value);
+                  setSelectedCategory([key, value]);
+                }}
+              />
+            </ExerciseCardsItem>
           ))}
-        </ExerciseCardsItem>
+        </Slider>
       )
     );
   };
@@ -116,17 +123,35 @@ const ExercisesCategories = () => {
         <PageTitle>{pageTitle}</PageTitle>
         <CategoryLists>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('bodyPart')}>
+            <CategoryExercisesStyle
+              $active={active === 1}
+              onClick={() => {
+                setActive(1);
+                fetchExercises('bodyPart');
+              }}
+            >
               Body parts
             </CategoryExercisesStyle>
           </li>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('equipment')}>
+            <CategoryExercisesStyle
+              $active={active === 2}
+              onClick={() => {
+                setActive(2);
+                fetchExercises('equipment');
+              }}
+            >
               Equipment
             </CategoryExercisesStyle>
           </li>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('target')}>
+            <CategoryExercisesStyle
+              $active={active === 3}
+              onClick={() => {
+                setActive(3);
+                fetchExercises('target');
+              }}
+            >
               Muscles
             </CategoryExercisesStyle>
           </li>

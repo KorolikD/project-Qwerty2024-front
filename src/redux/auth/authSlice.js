@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  register,
   logIn,
-  refreshUser,
-  updateUser,
-  updateAvatar,
   logOut,
+  refreshUser,
+  register,
+  updateAvatar,
+  updateUser,
 } from './authOperations.js';
 
 const initialState = {
@@ -25,8 +25,8 @@ const initialState = {
     blood: null,
     sex: null,
     levelActivity: null,
-    bmr: null,
-    dpa: null,
+    bmr: 0,
+    dpa: 0,
     createdAt: null,
   },
 };

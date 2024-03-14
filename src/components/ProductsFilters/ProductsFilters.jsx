@@ -16,11 +16,12 @@ import {
 
 export const ProductsFilters = ({
   onSubmit,
+  onChange,
   handleClear,
+  inputValue,
   categories,
   onUpdateCategory,
   onUpdateRecommendation,
-  inputValue,
 }) => {
   return (
     <Wrapper>
@@ -32,28 +33,22 @@ export const ProductsFilters = ({
             autoComplete="off"
             autoFocus
             placeholder="Search"
+            value={inputValue}
+            onChange={onChange}
           />
-
           <Button
             type="submit"
             onClick={(evt) => {
-              onSubmit(evt.target.previousElementSibling.value);
+              onSubmit(inputValue);
               evt.preventDefault();
             }}
-          >
-            <SvgSearch width="24" height="24">
-              <use href={icons + '#icon-search'} />
-            </SvgSearch>
-          </Button>
+          ></Button>
+          <SvgSearch width="24" height="24">
+            <use href={icons + '#icon-search'} />
+          </SvgSearch>
 
           {inputValue && (
-            <ClearButton
-              type="submit"
-              onClick={(evt) => {
-                handleClear;
-                evt.preventDefault();
-              }}
-            >
+            <ClearButton onClick={handleClear}>
               <SvgCross width="18" height="18">
                 <use href={icons + '#icon-cross'} />
               </SvgCross>
@@ -64,7 +59,7 @@ export const ProductsFilters = ({
           name="category"
           onChange={(evt) => onUpdateCategory(evt.target.value)}
         >
-          <Option value="categories">Categories</Option>
+          <Option value="">Categories</Option>
           {categories.map((category) => (
             <Option value={category} key={category}>
               {category}
@@ -75,7 +70,7 @@ export const ProductsFilters = ({
           name="recommendation"
           onChange={(evt) => onUpdateRecommendation(evt.target.value)}
         >
-          <Option value="All">All</Option>
+          <Option value="">All</Option>
           <Option value="Recommended">Recommended</Option>
           <Option value="Not recommended">Not recommended</Option>
         </RecommendationSelect>

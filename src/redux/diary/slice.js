@@ -5,20 +5,43 @@ import {
   deleteExercise,
   addProduct,
 } from './operations';
+import { logOut } from '../auth/authOperations';
 
-const diaryInitialstate = {
+const diaryInitialState = {
   productsList: null,
   exercisesList: null,
   totalCalories: 0,
   burnedCalories: 0,
   timeSpentOnExercises: 0,
   isLoading: false,
+  updateDiaryProducts: false,
+  updateDiaryExercises: false,
   error: null,
 };
 
 const handlePending = (state) => {
   state.isLoading = true;
   state.error = null;
+};
+
+const handleDeleteProductPending = (state) => {
+  state.updateDiaryProducts = true;
+  state.error = null;
+};
+
+const handleDeleteExercisePending = (state) => {
+  state.updateDiaryExercises = true;
+  state.error = null;
+};
+
+const handleDeleteProductRejected = (state, { payload }) => {
+  state.updateDiaryProducts = false;
+  state.error = payload;
+};
+
+const handleDeleteExerciseRejected = (state, { payload }) => {
+  state.updateDiaryExercises = false;
+  state.error = payload;
 };
 
 const handleRejected = (state, { payload }) => {
@@ -31,6 +54,10 @@ const handleGetDayInfoRejected = (state) => {
   state.exercisesList = [];
   state.productsList = [];
 };
+
+const handleLogoutSuccess = () => ({
+  ...diaryInitialState,
+});
 
 const handleGetDayInfoSuccess = (state, { payload }) => {
   state.isLoading = false;
@@ -70,15 +97,16 @@ const handleAddProductSuccess = (state, { payload }) => {
   state.productsList = payload.products;
   state.totalCalories = payload.totalCalories;
 };
+
 const handleDeleteProductSuccess = (state, { payload }) => {
-  state.isLoading = false;
+  state.updateDiaryProducts = false;
   state.error = null;
   state.productsList = payload.products;
   state.totalCalories = payload.totalCalories;
 };
 
 const handleDeleteExerciseSuccess = (state, { payload }) => {
-  state.isLoading = false;
+  state.updateDiaryExercises = false;
   state.error = null;
   state.exercisesList = payload.exercises;
   state.burnedCalories = payload.burnedCalories;
@@ -87,22 +115,23 @@ const handleDeleteExerciseSuccess = (state, { payload }) => {
 
 const diary = createSlice({
   name: 'diary',
-  initialState: diaryInitialstate,
+  initialState: diaryInitialState,
   extraReducers: (builder) => {
     builder.addCase(getDayInfo.pending, handlePending);
     builder.addCase(addProduct.pending, handlePending);
-    builder.addCase(deleteProduct.pending, handlePending);
-    builder.addCase(deleteExercise.pending, handlePending);
+    builder.addCase(deleteProduct.pending, handleDeleteProductPending);
+    builder.addCase(deleteExercise.pending, handleDeleteExercisePending);
 
     builder.addCase(getDayInfo.rejected, handleGetDayInfoRejected);
     builder.addCase(addProduct.rejected, handleRejected);
-    builder.addCase(deleteProduct.rejected, handleRejected);
-    builder.addCase(deleteExercise.rejected, handleRejected);
+    builder.addCase(deleteProduct.rejected, handleDeleteProductRejected);
+    builder.addCase(deleteExercise.rejected, handleDeleteExerciseRejected);
 
     builder.addCase(getDayInfo.fulfilled, handleGetDayInfoSuccess);
     builder.addCase(addProduct.fulfilled, handleAddProductSuccess);
     builder.addCase(deleteProduct.fulfilled, handleDeleteProductSuccess);
     builder.addCase(deleteExercise.fulfilled, handleDeleteExerciseSuccess);
+    builder.addCase(logOut.fulfilled, handleLogoutSuccess);
   },
 });
 

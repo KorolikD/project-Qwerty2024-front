@@ -35,10 +35,11 @@ import { Timer } from '../Timer/Timer';
 import { BasicModalWindow } from '../BasicModalWindow';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import likePicture from '../../img/like-1x.png';
 import SvgCustom from '../SvgCustom/SvgCustom';
 import theme from '../../styles/theme';
+import noImage from '../../img/no-image.png';
 
 const DATE_FORMAT = 'DD/MM/YYYY';
 
@@ -96,7 +97,7 @@ const CustomExercisesItem = ({ subcategory }) => {
       time,
       burnedCalories,
     };
-    if (time < 1 || burnedCalories < 1) {
+    if (time < 0.1666666666666667 || burnedCalories < 1) {
       toast.error('You should work out for more than one minute!');
       return;
     }
@@ -129,13 +130,14 @@ const CustomExercisesItem = ({ subcategory }) => {
 
   return (
     <ConteinerForIt>
-      <Toaster position="top-right" reverseOrder={false} />
       {modalIsOpen && (
         <BasicModalWindow isOpen={modalIsOpen} onRequestClose={closeModal}>
           <ModalWrapper>
             <TabletModalWrapperFirstColumn>
               <TrainingPreview
-                src={subcategory.gifUrl}
+                width={'270px'}
+                height={'270px'}
+                src={subcategory.gifUrl ? subcategory.gifUrl : noImage}
                 alt={subcategory.name}
               />
 

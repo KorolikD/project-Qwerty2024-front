@@ -12,6 +12,10 @@ export const DiaryTablesWrap = styled.div`
   background: rgba(239, 237, 232, 0.05);
   border-radius: 12px;
 
+  @media screen and (max-width: 767px) {
+    min-height: 335px;
+  }
+
   @media screen and (min-width: 768px) {
     height: 238px;
     width: 704px;

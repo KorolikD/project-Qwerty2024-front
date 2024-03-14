@@ -42,7 +42,7 @@ const SignUpForm = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <Form.Item
-        help={formik.errors.name || 'correct'}
+        help={formik.errors.name || 'Success name'}
         hasFeedback
         validateStatus={checkStatus('name')}
       >
@@ -53,12 +53,13 @@ const SignUpForm = () => {
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          autoComplete="off"
           required
         />
       </Form.Item>
 
       <Form.Item
-        help={formik.errors.email || 'correct'}
+        help={formik.errors.email || 'Success email'}
         hasFeedback
         validateStatus={checkStatus('email')}
       >
@@ -69,12 +70,13 @@ const SignUpForm = () => {
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          autoComplete="off"
           required
         />
       </Form.Item>
 
       <Form.Item
-        help={formik.errors.password || 'correct'}
+        help={formik.errors.password || 'Success password'}
         hasFeedback
         validateStatus={checkStatus('password')}
       >
@@ -85,6 +87,7 @@ const SignUpForm = () => {
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          autoComplete="off"
           required
         />
       </Form.Item>
@@ -112,6 +115,7 @@ const SignInForm = () => {
     },
     validationSchema: signInValidationSchema,
   });
+
   const checkStatus = (item) => {
     if (formik.touched[item] && formik.errors[item]) {
       return 'error';
@@ -124,7 +128,7 @@ const SignInForm = () => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <Form.Item
-        help={formik.errors.email || 'correct'}
+        help={formik.errors.email || 'Success email'}
         hasFeedback
         validateStatus={checkStatus('email')}
       >
@@ -135,12 +139,13 @@ const SignInForm = () => {
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          autoComplete="off"
           required
         />
       </Form.Item>
 
       <Form.Item
-        help={formik.errors.password || 'correct'}
+        help={formik.errors.password || 'Success password'}
         hasFeedback
         validateStatus={checkStatus('password')}
       >
@@ -151,6 +156,7 @@ const SignInForm = () => {
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
+          autoComplete="off"
           required
         />
       </Form.Item>

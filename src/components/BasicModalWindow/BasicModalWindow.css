@@ -8,13 +8,12 @@
   border-radius: 12px !important;
   padding: 48px 16px !important;
   margin: 20px auto;
-  width: 335px;
+  min-width: min-content;
+  min-height: min-content;
 }
 
 @media screen and (min-width: 768px) {
   .ant-modal-content {
-    min-width: 694px;
-    min-height: 550px;
     padding: 48px 32px !important;
   }
 }
