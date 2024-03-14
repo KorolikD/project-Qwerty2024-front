@@ -1,1 +1,0 @@
-import{r as s,j as c,e as o}from"./index-f6852527.js";const a=()=>{const[i,t]=s.useState([]);return s.useEffect(()=>{(async()=>{try{const e=await o.get("/exercises"),r=[...e.data.bodyPart,...e.data.equipment,...e.data.target];t(r)}catch(e){console.error("Error fetching exercises:",e)}})()},[]),c.jsx("div",{})},E=a;export{E};

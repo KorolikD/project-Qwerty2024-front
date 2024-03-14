@@ -1,4 +1,4 @@
-import{u as t,L as a,j as i}from"./index-f6852527.js";import{R as d}from"./ResponsiveBackground-428009d9.js";import{D as s}from"./DynamicElementBoxes-0684ab03.js";const x=t.div`
+import{u as n,L as a,j as i}from"./index-825de9d0.js";import{R as d}from"./ResponsiveBackground-8a92e1b6.js";import{D as s}from"./DynamicElementBoxes-14d6da74.js";const x=n.div`
   text-align: left;
 
   padding-top: 66px;
@@ -12,7 +12,7 @@ import{u as t,L as a,j as i}from"./index-f6852527.js";import{R as d}from"./Respo
   @media screen and (min-width: 1024px) {
     padding-top: 200px;
   }
-`,c=t.h1`
+`,c=n.h1`
   color: ${e=>e.theme.colors.white};
   font-size: 38px;
   font-weight: 500;
@@ -27,7 +27,9 @@ import{u as t,L as a,j as i}from"./index-f6852527.js";import{R as d}from"./Respo
   }
   @media screen and (min-width: 1024px) {
   }
-`,h=t.div`
+`,h=n.span`
+  position: relative;
+`,l=n.div`
   display: flex;
   margin-top: 52px;
   gap: 14px;
@@ -35,27 +37,23 @@ import{u as t,L as a,j as i}from"./index-f6852527.js";import{R as d}from"./Respo
   @media screen and (min-width: 768px) {
     gap: 20px;
   }
-`,l=t.svg`
+`,g=n.svg`
   fill: transparent;
   position: absolute;
   z-index: -1;
   width: 98px;
   height: 35px;
-  top: 170px;
-  left: 11px;
+  top: 5px;
+  left: -8px;
   @media screen and (min-width: 768px) {
     width: 185px;
     height: 67px;
-    top: 320px;
-    left: 16px;
   }
   @media screen and (min-width: 1024px) {
     width: 185px;
     height: 67px;
-    top: 284px;
-    left: 80px;
   }
-`,g=t(a)`
+`,m=n(a)`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -85,4 +83,4 @@ import{u as t,L as a,j as i}from"./index-f6852527.js";import{R as d}from"./Respo
     line-height: 1.2;
     letter-spacing: 0em;
   }
-`,r=({children:e,variant:n="signup",size:p="signup"})=>{const o=n==="signup"?"/signup":"/signin";return i.jsx(g,{to:o,$size:p,$type:n,children:e})},m=()=>i.jsxs(i.Fragment,{children:[i.jsxs(x,{children:[i.jsx(l,{children:i.jsx("use",{href:"src/img/sprite.svg#icon-circle"})}),i.jsx(c,{children:"Transforming your body shape with Power Pulse"}),i.jsxs(h,{children:[i.jsx(r,{size:"signup",variant:"signup",children:"Sign Up"}),i.jsx(r,{size:"signin",variant:"",children:"Sign In"})]})]}),i.jsx(d,{}),i.jsx(s,{type:"videoTutorial"}),i.jsx(s,{type:"calories"})]}),$=m;export{$ as default};
+`,r=({children:e,variant:t="signup",size:o="signup"})=>{const p=t==="signup"?"/signup":"/signin";return i.jsx(m,{to:p,$size:o,$type:t,children:e})},u=()=>i.jsxs(i.Fragment,{children:[i.jsxs(x,{children:[i.jsxs(c,{children:["Transforming your"," ",i.jsxs(h,{children:["body",i.jsx(g,{children:i.jsx("use",{href:"src/img/sprite.svg#icon-circle"})})]})," ","shape with Power Pulse"]}),i.jsxs(l,{children:[i.jsx(r,{size:"signup",variant:"signup",children:"Sign Up"}),i.jsx(r,{size:"signin",variant:"",children:"Sign In"})]})]}),i.jsxs(d,{children:[i.jsx(s,{type:"videoTutorial"}),i.jsx(s,{type:"calories"})]})]}),y=u;export{y as default};

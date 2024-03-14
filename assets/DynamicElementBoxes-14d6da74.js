@@ -1,4 +1,4 @@
-import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
+import{e as p,u as i,r,j as t}from"./index-825de9d0.js";const x=async()=>{try{return(await p("https://project-qwerty2024-back.onrender.com/api/statistics")).data}catch{throw Error("Oops")}},o=i.div`
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -8,57 +8,58 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
   font-weight: 700;
   position: absolute;
   z-index: 2;
-`,p=t(n)`
+`,h=i(o)`
   background-color: rgba(48, 48, 48, 1);
 
   width: 146px;
   height: 66px;
 
-  top: 560px;
-  left: 121px;
+  bottom: 186px;
+  left: 44px;
 
   @media screen and (min-width: 768px) {
     width: 206px;
     height: 96px;
-    top: 714px;
-    left: 331px;
+    bottom: 214px;
+
     padding: 20px 36px 20px 23px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 206px;
     height: 96px;
-    top: 384px;
-    left: 770px;
+    bottom: 320px;
+    left: 0;
   }
-`,x=t(n)`
+`,d=i(o)`
   background-color: rgba(239, 137, 100, 1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   padding: 14px;
-  width: 119px;
+  min-width: 119px;
   height: 76px;
 
-  top: 696px;
-  left: 236px;
+  bottom: 40px;
+  right: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 180px;
+    min-width: 180px;
     height: 110px;
-    top: 866px;
-    left: 556px;
+
+    bottom: 48px;
+    right: 32px;
     gap: 12px;
     padding: 14px 28px;
   }
   @media screen and (min-width: 1200px) {
-    width: 180px;
+    min-width: 180px;
     height: 110px;
-    top: 519px;
-    left: 1228px;
+    bottom: 171px;
+    right: 32px;
   }
-`,r=t.span`
+`,c=i.span`
   color: ${e=>e.theme.colors.white};
 
   font-size: 16px;
@@ -75,7 +76,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
 
   @media screen and (min-width: 1200px) {
   }
-`,o=t.p`
+`,l=i.p`
   color: ${e=>e.theme.colors.grey};
   margin: 0;
   margin-top: 4px;
@@ -93,7 +94,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
 
   @media screen and (min-width: 1200px) {
   }
-`,h=t.span`
+`,g=i.span`
   color: ${e=>e.theme.colors.white};
   margin-top: 8px;
   font-size: 24px;
@@ -110,7 +111,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
 
   @media screen and (min-width: 1200px) {
   }
-`,d=t.span`
+`,m=i.span`
   color: ${e=>e.theme.colors.textWhite30};
   margin-left: 8px;
   font-size: 12px;
@@ -127,7 +128,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
 
   @media screen and (min-width: 1200px) {
   }
-`,s=t.div`
+`,w=i.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -142,7 +143,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
     height: 40px;
     margin-right: 12px;
   }
-`,a=t.div`
+`,f=i.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +157,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
     width: 24px;
     height: 24px;
   }
-`,c=t.svg`
+`,u=i.svg`
   width: 12px;
   height: 12px;
 
@@ -166,7 +167,7 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
     width: 20px;
     height: 20px;
   }
-`,l=t.svg`
+`,j=i.svg`
   width: 11px;
   height: 12px;
   fill: ${e=>e.theme.colors.white};
@@ -175,4 +176,4 @@ import{u as t,j as i}from"./index-f6852527.js";const n=t.div`
     width: 16px;
     height: 16px;
   }
-`,w=({type:e})=>(()=>{switch(e){case"videoTutorial":return i.jsxs(p,{children:[i.jsxs(s,{children:[" ",i.jsx(c,{children:i.jsx("use",{href:"src/img/sprite.svg#icon-play"})})]}),i.jsxs(r,{children:["350+",i.jsx(o,{children:"Video tutorial"})]})]});case"calories":return i.jsxs(x,{children:[i.jsx(a,{children:i.jsxs(l,{children:[" ",i.jsx("use",{href:"src/img/sprite.svg#icon-running"})]})}),i.jsx("p",{children:i.jsxs(h,{children:["500",i.jsx(d,{children:"cal"})]})})]});default:return null}})();export{w as D};
+`,v=({type:e})=>{r.useEffect(()=>{(async()=>{const a=await x();s(a)})()},[]);const[n,s]=r.useState([]);return(()=>{switch(e){case"videoTutorial":return t.jsxs(h,{children:[t.jsx(w,{children:t.jsx(u,{children:t.jsx("use",{href:"src/img/sprite.svg#icon-play"})})}),t.jsxs(c,{children:[n.videosQuantity,t.jsx(l,{children:"Video tutorial"})]})]});case"calories":return t.jsxs(d,{children:[t.jsx(f,{children:t.jsx(j,{children:t.jsx("use",{href:"src/img/sprite.svg#icon-running"})})}),t.jsx("p",{children:t.jsxs(g,{children:[Math.round(n.totalCaloriesBurned),t.jsx(m,{children:"cal"})]})})]});default:return null}})()};export{v as D};
