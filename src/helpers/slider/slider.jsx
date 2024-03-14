@@ -1,5 +1,5 @@
 export const slider = {
-  dots: false,
+  dots: true,
   infinite: false,
   speed: 200,
   slidesToShow: 5,
@@ -10,10 +10,20 @@ export const slider = {
   appendDots: (dots) => (
     <div
       style={{
-        padding: '8px',
+        padding: '0px 20px',
+        position: 'relative',
       }}
     >
-      <ul> {dots} </ul>
+      <ul
+        style={{
+          position: 'absolute',
+          bottom: '-20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+        }}
+      >
+        {dots}
+      </ul>
     </div>
   ),
   customPaging: () => (

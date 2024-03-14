@@ -15,13 +15,6 @@ export const CategoryLists = styled.ul`
   li {
     position: relative;
     cursor: pointer;
-    transition:
-      color 0.3s ease,
-      border-bottom-color 0.3s ease;
-    &:hover,
-    &:focus {
-      color: orange;
-    }
     &::before {
       content: '';
       position: absolute;
@@ -29,13 +22,6 @@ export const CategoryLists = styled.ul`
       bottom: -3px;
       width: 100%;
       height: 3px;
-      border-radius: 3px;
-      border-bottom: 3px solid transparent;
-      transition: border-bottom-color 0.3s ease;
-    }
-    &:hover::before,
-    &:focus::before {
-      border-bottom-color: orange;
     }
   }
 `;
@@ -44,17 +30,30 @@ export const CategoryExercisesStyle = styled.a`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.29;
-  color: ${(props) => (props.$active ? 'red' : 'grey')};
+  color: ${(props) => (props.$active ? '#efede8' : 'grey')};
   cursor: pointer;
+  position: relative;
   &:hover {
-    color: orange;
+    color: #efede8;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background-color: ${(props) => (props.$active ? '#EF8964' : 'transparent')};
+    transition: background-color 0.3s ease;
+    margin-bottom: -7px;
   }
 `;
 
 export const NavTitle = styled.div`
   justify-content: space-between;
   gap: 32px;
-  margin-bottom: 64px;
+  margin-bottom: 55px;
   margin-top: 64px;
 
   @media screen and (min-width: 768px) {
@@ -83,9 +82,6 @@ export const ExerciseCardsItem = styled.div`
   display: flex;
   gap: 15px;
   margin-top: 20px;
-  /*@media screen and (min-width: 1440px) {
-    margin-left: 500px;
-  }*/
 `;
 
 export const BackButton = styled.button`

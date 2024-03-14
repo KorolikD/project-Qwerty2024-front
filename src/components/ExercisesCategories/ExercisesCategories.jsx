@@ -64,20 +64,21 @@ const ExercisesCategories = () => {
     if (isCategorySelected) {
       return (
         <div>
-          <BackButton
-            type="button"
-            onClick={() => {
-              document.title = 'React App';
-              setSelectedCategory(null);
-              setPageTitle('Exercises');
-            }}
-          >
-            <SvgBack width="16" height="16">
-              <use href={icons + '#icon-next'} />
-            </SvgBack>
-            BACK
-          </BackButton>
           <ExercisesPictures>
+            <BackButton
+              type="button"
+              onClick={() => {
+                document.title = 'React App';
+                setSelectedCategory(null);
+                setPageTitle('Exercises');
+              }}
+            >
+              <SvgBack width="16" height="16">
+                <use href={icons + '#icon-next'} />
+              </SvgBack>
+              BACK
+            </BackButton>
+
             <ExercisesSkroll style={{ height: '500px' }}>
               <ExerciseCards>
                 {exercisesList.length > 0
