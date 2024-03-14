@@ -4,9 +4,10 @@ import {
   LinkToDiaryWrapper,
   ModalButton,
   SuccessModalWrapper,
-  WellDoneImg,
+  AddProductSuccessTitle,
+  AddProductSuccessWellDoneImg,
 } from '../ExercisesItem/ExercisesSubcategoriesItem.styled';
-import { Title } from '../ProductsItem/ProductsItem.styled';
+
 import SvgCustom from '../SvgCustom/SvgCustom';
 import theme from '../../styles/theme';
 import likePicture from '../../img/avocado-1x.png';
@@ -14,8 +15,8 @@ import likePicture from '../../img/avocado-1x.png';
 export const AddProductSuccess = ({ onClose, calories }) => {
   return (
     <SuccessModalWrapper>
-      <WellDoneImg src={likePicture} alt="Well done" />
-      <Title>Well done</Title>
+      <AddProductSuccessWellDoneImg src={likePicture} alt="Well done" />
+      <AddProductSuccessTitle>Well done</AddProductSuccessTitle>
 
       <InfoTextSuccessModal>
         Calories: <span>{calories}</span>

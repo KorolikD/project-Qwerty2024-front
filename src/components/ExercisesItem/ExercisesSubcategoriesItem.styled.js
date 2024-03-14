@@ -232,7 +232,13 @@ export const SuccessModalWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 303px;
+
+  @media screen and (min-width: 768px) {
+    width: 366px;
+  }
 `;
 
 export const WellDoneImg = styled.img`
@@ -242,12 +248,34 @@ export const WellDoneImg = styled.img`
     margin-top: 16px;
   }
 `;
+export const AddProductSuccessWellDoneImg = styled.img`
+  width: 123px;
+  height: 84px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+    height: 97px;
+  }
+`;
 
 export const Title = styled.p`
   margin: 27px 0 16px;
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
+  text-align: center;
+  color: ${theme.colors.white};
+
+  @media screen and (min-width: 768px) {
+    margin: 32px 0 16px;
+  }
+`;
+export const AddProductSuccessTitle = styled.p`
+  margin: 6px 0 16px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
   color: ${theme.colors.white};
 
   @media screen and (min-width: 768px) {
@@ -259,6 +287,7 @@ export const InfoTextSuccessModal = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+
   color: ${theme.colors.textWhite30};
 
   & span {
