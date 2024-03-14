@@ -1,16 +1,9 @@
 import styled from 'styled-components';
 
 export const ExercisesItem = styled.li`
-  display: block;
-  padding-bottom: 16px;
-
-  @media screen and (min-width: 768px) {
-    padding-bottom: 16px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding-bottom: 16px;
-  }
+  display: flex;
+  display-wrap: wrap;
+  gap: 16px;
 `;
 
 export const ExerscisesItemContainer = styled.div`
