@@ -15,9 +15,10 @@ const SignUpPage = () => {
         </Paragraph>
         <AuthForm type="SignUp" />
       </FormContainer>
-      <DynamicBox type="videoTutorial"></DynamicBox>
-      <DynamicBox type="calories"></DynamicBox>
-      <ResponsiveBackground />
+      <ResponsiveBackground>
+        <DynamicBox type="videoTutorial"></DynamicBox>
+        <DynamicBox type="calories"></DynamicBox>
+      </ResponsiveBackground>
     </>
   );
 };

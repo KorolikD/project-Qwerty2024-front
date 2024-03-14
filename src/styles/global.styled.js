@@ -51,6 +51,14 @@ color: ${(props) => props.theme.colors.grey} !important;
  border-color: green !important;
 }
 
+.ant-input-outlined:focus-within{
+  background-color: transparent !important;
+}
+
+/* .ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
+    background: #ffffff;
+   
+} */
 
   body {
     font-family: ${({ theme }) => theme.fonts.mainFont};

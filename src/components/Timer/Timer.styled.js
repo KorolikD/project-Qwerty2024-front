@@ -30,7 +30,8 @@ export const TimerValue = styled.span`
   transform: rotate(180deg) scaleX(-1);
 `;
 
-export const TimerButton = styled.div`
+export const TimerButton = styled.button`
+  cursor: pointer;
   margin-top: 18px;
   height: 24px;
   width: 24px;
@@ -40,4 +41,10 @@ export const TimerButton = styled.div`
   justify-content: center;
   background-color: ${theme.colors.primary};
   border-radius: 4px;
+
+  transition: background-color 350ms ease;
+  &:hover,
+  &:focus {
+    background-color: ${theme.colors.secondary};
+  }
 `;

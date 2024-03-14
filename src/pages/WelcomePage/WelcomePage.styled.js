@@ -33,6 +33,10 @@ export const Title = styled.h1`
   }
 `;
 
+export const Span = styled.span`
+  position: relative;
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   margin-top: 52px;
@@ -49,18 +53,14 @@ export const FloatingCircle = styled.svg`
   z-index: -1;
   width: 98px;
   height: 35px;
-  top: 170px;
-  left: 11px;
+  top: 5px;
+  left: -8px;
   @media screen and (min-width: 768px) {
     width: 185px;
     height: 67px;
-    top: 320px;
-    left: 16px;
   }
   @media screen and (min-width: 1024px) {
     width: 185px;
     height: 67px;
-    top: 284px;
-    left: 80px;
   }
 `;

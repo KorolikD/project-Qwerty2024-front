@@ -1,19 +1,24 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Slider from 'react-slick';
+import { slider } from '../../helpers/slider/slider';
+import icons from '../../img/sprite.svg';
 import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
+import { Loader } from '../Loader/Loader.jsx';
+
 import {
+  BackButton,
   CategoryExercisesStyle,
   CategoryLists,
   ExerciseCards,
-  BackButton,
-  SvgBack,
   ExerciseCardsItem,
+  ExercisesPictures,
   ExercisesSkroll,
-  PageTitle,
   NavTitle,
+  PageTitle,
+  SvgBack,
 } from './ExercisesCategories.styled';
-import icons from '../../img/sprite.svg';
 
 const CATEGORIES = {
   'Body parts': 'bodyPart',
@@ -26,21 +31,27 @@ const ExercisesCategories = () => {
   const [exercisesList, setExercisesList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [pageTitle, setPageTitle] = useState('Exercises');
+  const [active, setActive] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const isCategorySelected = selectedCategory !== null;
 
   const fetchExercises = async (category) => {
     setSelectedCategory(null);
+    setLoading(true);
     try {
       const response = await axios.get(`/exercises?filter=${category}`);
       setExercises(response.data[category]);
       setPageTitle('Exercises');
     } catch (error) {
       console.error('Error fetching exercises:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const fetchExerciseList = async (key, value) => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `/exercises/params?key=${key}&value=${value}`
@@ -49,6 +60,8 @@ const ExercisesCategories = () => {
       setPageTitle(value);
     } catch (error) {
       console.error('Error fetching exercises:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,53 +73,57 @@ const ExercisesCategories = () => {
     if (isCategorySelected) {
       return (
         <div>
-          <BackButton
-            type="button"
-            onClick={() => {
-              document.title = 'React App';
-              setSelectedCategory(null);
-              setPageTitle('Exercises');
-            }}
-          >
-            <SvgBack width="16" height="16">
-              <use href={icons + '#icon-next'} />
-            </SvgBack>
-            BACK
-          </BackButton>
-
-          <ExercisesSkroll style={{ height: '500px' }}>
-            <ExerciseCards>
-              {exercisesList.length > 0
-                ? exercisesList.map((exercise) => (
-                    <CustomExercisesItem
-                      key={exercise._id}
-                      subcategory={exercise}
-                    />
-                  ))
-                : 'Empty'}
-            </ExerciseCards>
-          </ExercisesSkroll>
+          <ExercisesPictures>
+            <BackButton
+              type="button"
+              onClick={() => {
+                document.title = 'React App';
+                setSelectedCategory(null);
+                setPageTitle('Exercises');
+              }}
+            >
+              <SvgBack width="16" height="16">
+                <use href={icons + '#icon-next'} />
+              </SvgBack>
+              BACK
+            </BackButton>
+            <ExercisesSkroll style={{ height: '500px' }}>
+              <ExerciseCards>
+                {exercisesList.length > 0
+                  ? exercisesList.map((exercise) => (
+                      <CustomExercisesItem
+                        key={exercise._id}
+                        subcategory={exercise}
+                      />
+                    ))
+                  : 'Empty'}
+              </ExerciseCards>
+            </ExercisesSkroll>
+          </ExercisesPictures>
         </div>
       );
     }
 
     return (
-      exercises &&
-      exercises.length > 0 && (
-        <ExerciseCardsItem>
-          {exercises.map((exercise) => (
-            <ExercisesSubcategoriesItem
-              key={exercise._id}
-              subcategory={exercise}
-              onSelect={async (key, value) => {
-                document.title = key;
-                await fetchExerciseList(CATEGORIES[key], value);
-                setSelectedCategory([key, value]);
-              }}
-            />
-          ))}
-        </ExerciseCardsItem>
-      )
+      <div>
+        {loading && <Loader loading={loading} />}
+        {!loading && exercises.length > 0 && (
+          <Slider {...slider}>
+            {exercises.map((exercise) => (
+              <ExerciseCardsItem key={exercise._id}>
+                <ExercisesSubcategoriesItem
+                  subcategory={exercise}
+                  onSelect={async (key, value) => {
+                    document.title = key;
+                    await fetchExerciseList(CATEGORIES[key], value);
+                    setSelectedCategory([key, value]);
+                  }}
+                />
+              </ExerciseCardsItem>
+            ))}
+          </Slider>
+        )}
+      </div>
     );
   };
 
@@ -116,17 +133,35 @@ const ExercisesCategories = () => {
         <PageTitle>{pageTitle}</PageTitle>
         <CategoryLists>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('bodyPart')}>
+            <CategoryExercisesStyle
+              $active={active === 1}
+              onClick={() => {
+                setActive(1);
+                fetchExercises('bodyPart');
+              }}
+            >
               Body parts
             </CategoryExercisesStyle>
           </li>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('equipment')}>
+            <CategoryExercisesStyle
+              $active={active === 2}
+              onClick={() => {
+                setActive(2);
+                fetchExercises('equipment');
+              }}
+            >
               Equipment
             </CategoryExercisesStyle>
           </li>
           <li>
-            <CategoryExercisesStyle onClick={() => fetchExercises('target')}>
+            <CategoryExercisesStyle
+              $active={active === 3}
+              onClick={() => {
+                setActive(3);
+                fetchExercises('target');
+              }}
+            >
               Muscles
             </CategoryExercisesStyle>
           </li>

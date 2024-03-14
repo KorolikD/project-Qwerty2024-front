@@ -31,6 +31,7 @@ export const Form = styled.form`
     padding-bottom: 32px;
   }
   @media screen and (min-width: 1440px) {
+    margin-right: 96px;
     padding: 0;
     position: relative;
     &::before {
@@ -54,6 +55,7 @@ export const InputWrapper = styled.div`
 
 export const Input = styled.input`
   width: 100%;
+  height: 100%;
   padding: 14px;
   font-size: 14px;
   color: ${({ theme }) => theme.colors.white};
@@ -75,19 +77,28 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
+  width: 24px;
+  height: 24px;
   position: absolute;
   top: 50%;
   right: 10px;
-  transform: translateY(-30%);
+  transform: translateY(-40%);
   border: none;
   background: transparent;
   cursor: pointer;
+  z-index: 1000;
 `;
 export const SvgSearch = styled.svg`
   fill: ${({ theme }) => theme.colors.white};
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-40%);
 `;
 
 export const ClearButton = styled.button`
+  width: 24px;
+  height: 24px;
   position: absolute;
   top: 50%;
   right: 35px;
@@ -107,6 +118,7 @@ export const CategorySelect = styled.select`
   width: 146px;
   padding: 14px;
   font-size: 14px;
+  text-transform: capitalize;
   color: ${({ theme }) => theme.colors.white};
   background: transparent;
   outline: none;
@@ -140,11 +152,18 @@ export const RecommendationSelect = styled.select`
 `;
 
 export const Option = styled.option`
+  appearance: none;
+  user-select: none;
+  text-indent: -9999px;
+
   background-color: ${({ theme }) => theme.colors.graphite};
   color: ${({ theme }) => theme.colors.white};
   font-size: 14px;
   font-family: ${({ theme }) => theme.fonts.mainFont};
   text-transform: capitalize;
+  &:focus:hover {
+    background-color: ${({ theme }) => theme.colors.grey};
+  }
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }

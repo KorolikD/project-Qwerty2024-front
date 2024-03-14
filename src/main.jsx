@@ -10,6 +10,7 @@ import { store } from './redux/store.js';
 import App from './App.jsx';
 import { GlobalStyle } from './styles/global.styled.js';
 import theme from './styles/theme.js';
+import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -19,6 +20,18 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <ThemeProvider theme={theme}>
             <GlobalStyle />
             <App />
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                error: {
+                  style: {
+                    background: theme.colors.black,
+                    color: theme.colors.white,
+                    border: `1px solid ${theme.colors.primary}`,
+                  },
+                },
+              }}
+            />
           </ThemeProvider>
         </BrowserRouter>
       </Provider>

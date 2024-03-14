@@ -13,9 +13,10 @@ const SignInPage = () => {
         </Paragraph>
         <AuthForm type="SignIn" />
       </FormContainer>
-      <ResponsiveBackground />
-      <DynamicBox type="videoTutorial"></DynamicBox>
-      <DynamicBox type="calories"></DynamicBox>
+      <ResponsiveBackground>
+        <DynamicBox type="videoTutorial"></DynamicBox>
+        <DynamicBox type="calories"></DynamicBox>
+      </ResponsiveBackground>
     </>
   );
 };

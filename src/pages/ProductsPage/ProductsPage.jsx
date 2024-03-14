@@ -9,39 +9,46 @@ import { ProductsFilters } from '../../components/ProductsFilters/ProductsFilter
 import { ProductsList } from '../../components/ProductsList/ProductsList';
 import { Loader } from '../../components/Loader/Loader';
 import { Wrapper } from './ProductsPage.styled';
+import { NotFound } from '../../components/NotFoundProducts/NotFound';
 
 const ProductsPage = () => {
+  const [params, setParams] = useSearchParams();
+  const query = params.get('query') ?? '';
+  const category = params.get('category') ?? '';
+  const recommended = params.get('recommendation') ?? 'All';
+
   const [products, setProducts] = useState([]);
   const [blood, setBlood] = useState('');
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  // const [pageNumber, setPage] = useState(1);
-  // const [hasMore, setHasMore] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [currentCategory, setCurrentCategory] = useState(category);
+  const [recommendation, setRecommendation] = useState(recommended);
+  const [title, setTitle] = useState(query);
 
-  const [params, setParams] = useSearchParams();
-  const query = params.get('query') ?? '';
-  const category = params.get('category') ?? '';
-  const recommendation = params.get('recommendation') ?? 'All';
-  // const pageNumber = params.get('pageNumber') ?? 1;
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, []);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [pageNumber, currentCategory, recommendation, title]);
 
   async function getProducts() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      const resultsProducts = await fetchProducts();
+      const resultsProducts = await fetchProducts(
+        pageNumber,
+        currentCategory,
+        recommendation,
+        title
+      );
       const newProducts = resultsProducts.products;
-      // setProducts((prevState) => [...prevState, ...newProducts]);
-      setProducts(newProducts);
+      setProducts((prevState) => [...prevState, ...newProducts]);
 
       const resultsCategories = await fetchCategories();
       setCategories(resultsCategories.productsCategories);
@@ -49,10 +56,10 @@ const ProductsPage = () => {
       const resultsBlood = await fetchBlood();
       setBlood(resultsBlood.blood);
 
-      // params.set('pageNumber', Number(pageNumber) + 1 );
-      // setParams(params);
-
-      // setHasMore(newProducts.length > 0);
+      setHasMore(
+        resultsProducts.page < resultsProducts.totalPages &&
+          newProducts.length > 0
+      );
     } catch (error) {
       console.error(error);
     } finally {
@@ -63,72 +70,85 @@ const ProductsPage = () => {
   const isRecommend = (UsersBlood, ProductsBlood) => {
     for (const key in ProductsBlood) {
       if (parseInt(key) === UsersBlood) {
-        return ProductsBlood[key] ? 'Not recommended' : 'Recommended';
+        return ProductsBlood[key] ? 'Recommended' : 'Not recommended';
       }
     }
   };
 
   const updateCategory = (value) => {
-    params.set('category', value);
-    setParams(params);
+    setCurrentCategory(value);
+    setPageNumber(1);
+    setProducts([]);
+    if (value === '') {
+      params.delete('category');
+      setParams(params);
+    } else {
+      params.set('category', value);
+      setParams(params);
+    }
   };
 
   const updateRecommendation = (value) => {
-    params.set('recommendation', value);
+    if (value === 'Recommended') {
+      setRecommendation(true);
+      params.set('recommended', value);
+      setParams(params);
+    } else if (value === 'Not recommended') {
+      setRecommendation(false);
+      params.set('recommended', value);
+      setParams(params);
+    } else {
+      setRecommendation('');
+      params.delete('recommended');
+      setParams(params);
+    }
+    setPageNumber(1);
+    setProducts([]);
+  };
+
+  const handleChange = (evt) => {
+    evt.preventDefault();
+    setInputValue(evt.target.value);
+  };
+
+  const handleClear = (evt) => {
+    evt.preventDefault();
+    setInputValue('');
+    setTitle('');
+    if (title) {
+      setProducts([]);
+    }
+    params.delete('query');
     setParams(params);
   };
 
   const handleSubmit = (newQuery) => {
-    // setPage(1),
-    setProducts([]),
-      setParams({
-        query: newQuery,
-        // pageNumber: 1,
-        category,
-        recommendation,
-      });
+    if (title !== newQuery) {
+      setTitle(newQuery);
+      setPageNumber(1);
+      setProducts([]);
+      params.set('query', newQuery);
+      setParams(params);
+    }
+    if (newQuery === '') {
+      params.delete('query');
+      setParams(params);
+    }
   };
 
-  const handleChange = (evt) => {
-    setInputValue(evt.target.previousElementSibling.value);
+  const handleScroll = () => {
+    if (
+      !isLoading &&
+      hasMore &&
+      window.innerHeight + document.documentElement.scrollTop >=
+        document.documentElement.offsetHeight - 200
+    ) {
+      setPageNumber((prevState) => prevState + 1);
+    }
   };
-
-  const handleClear = () => {
-    setInputValue('');
-  };
-
-  // console.log(inputValue);
-
-  // const handleScroll = () => {
-  //   if (
-  //     !isLoading &&
-  //     hasMore &&
-  //     window.innerHeight + document.documentElement.scrollTop >=
-  //       document.documentElement.offsetHeight - 200
-  //   ) {
-  //     getProducts();
-  //   }
-  // };
-
-  const visibleProducts = products.filter((product) => {
-    const hasProduct = product.title
-      .toLowerCase()
-      .includes(query.toLowerCase());
-
-    const matchesCategory =
-      category === 'categories' ||
-      category === '' ||
-      product.category === category;
-    const matchesRecommendation =
-      recommendation === 'All' ||
-      recommendation === '' ||
-      isRecommend(blood, product.groupBloodNotAllowed) === recommendation;
-
-    return hasProduct && matchesCategory && matchesRecommendation;
-  });
 
   return (
-    <Wrapper style={{ backgroundImage: `url('../../img/products-2x.jpg')` }}>
+    <Wrapper>
       {isLoading && (
         <>
           <Loader />
@@ -136,30 +156,25 @@ const ProductsPage = () => {
       )}
       <ProductsFilters
         onSubmit={handleSubmit}
+        onChange={handleChange}
         handleClear={handleClear}
+        inputValue={inputValue}
         categories={categories}
         onUpdateCategory={updateCategory}
         onUpdateRecommendation={updateRecommendation}
-        inputValue={inputValue}
       />
-      {!isLoading && products.length === 0 && (
-        <>
-          <p>
-            Sorry, no results were found for the product filters you selected.
-            You may want to consider other search options to find the product
-            you want. Our range is wide and you have the opportunity to find
-            more options that suit your needs. Try changing the search
-            parameters.
-          </p>
-        </>
-      )}
-      {products.length > 0 && (
+      {!isLoading && products.length > 0 && (
         <>
           <ProductsList
-            products={visibleProducts}
+            products={products}
             blood={blood}
             isRecommend={isRecommend}
           />
+        </>
+      )}
+      {!isLoading && products.length === 0 && (
+        <>
+          <NotFound />
         </>
       )}
     </Wrapper>

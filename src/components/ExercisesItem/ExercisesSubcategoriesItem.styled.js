@@ -40,6 +40,10 @@ export const Button = styled.button`
   color: #e6533c;
   background-color: transparent;
   border: none;
+
+  &:hover {
+    color: #ef8964;
+  }
 `;
 
 export const NameContainer = styled.div`
@@ -83,6 +87,10 @@ export const SpanItem = styled.span`
 
 export const SvgStart = styled.svg`
   stroke: #e6533c;
+  &:hover {
+    stroke: #ef8964;
+    transition: background-color 350ms ease;
+  }
 `;
 
 export const SpanRun = styled.span`
@@ -105,11 +113,13 @@ export const ModalWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
+  width: 302px;
 
   @media screen and (min-width: 768px) {
+    width: 628px;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: flex-start;
+    align-items: stretch;
   }
 `;
 
@@ -128,6 +138,7 @@ export const TabletModalWrapperFirstColumn = styled.div`
 `;
 export const TabletModalWrapperSecondColumn = styled.div`
   @media screen and (min-width: 768px) {
+    justify-content: space-between;
     margin-left: 16px;
     display: flex;
     flex-wrap: wrap;
@@ -138,6 +149,7 @@ export const TabletModalWrapperSecondColumn = styled.div`
 `;
 
 export const TrainingPreview = styled.img`
+  width: 270px;
   margin-bottom: 14px;
   border: 1px solid ${theme.colors.modalBorder};
   border-radius: 12px;
@@ -178,6 +190,7 @@ export const ExerciseModalListItem = styled.li`
   border: 1px solid ${theme.colors.modalBorder};
   border-radius: 12px;
   padding: 12px 18px;
+  background-color: ${theme.colors.modalListItem};
 
   @media screen and (min-width: 768px) {
     width: 168px;
@@ -185,6 +198,7 @@ export const ExerciseModalListItem = styled.li`
 `;
 
 export const ModalTitle = styled.p`
+  margin-bottom: 4px;
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
@@ -222,19 +236,24 @@ export const ModalButton = styled.button`
 
   @media screen and (min-width: 768px) {
     margin-top: 32px;
-
     height: 52px;
+  }
+
+  transition: background-color 350ms ease;
+  &:hover,
+  &:focus {
+    background-color: ${theme.colors.secondary};
   }
 `;
 
 // !-------------------------------------------
 export const SuccessModalWrapper = styled.div`
+  width: 302px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 303px;
 
   @media screen and (min-width: 768px) {
     width: 366px;
