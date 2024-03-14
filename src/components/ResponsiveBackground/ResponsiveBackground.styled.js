@@ -10,7 +10,7 @@ export const Background = styled.div`
   left: 107px;
   right: 0;
   bottom: 0;
-  background-image: url(${(props) => props.image}),
+  background-image: url(${(props) => props.$image}),
     linear-gradient(73.21deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
     linear-gradient(170.48deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%);
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Background } from './ResponsiveBackground.styled';
 
 import backgroundImageHero1x from '../../img/hero-1x.jpg';
@@ -8,7 +8,7 @@ import backgroundImageHeroMob1x from '../../img/hero-mob-1x.jpg';
 import backgroundImageHeroTab2x from '../../img/hero-tab-2x.jpg';
 import backgroundImageHeroTab1x from '../../img/hero-tab-1x.jpg';
 
-const ResponsiveBackground = () => {
+const ResponsiveBackground = ({ children }) => {
   const [imageSrc, setImageSrc] = useState('');
 
   const images = {
@@ -42,7 +42,7 @@ const ResponsiveBackground = () => {
     };
   }, [images]);
 
-  return <Background image={imageSrc} />;
+  return <Background $image={imageSrc}>{children}</Background>;
 };
 
 export default ResponsiveBackground;
