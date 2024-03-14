@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   width: ${({ $size }) => ($size === 'large' ? '136px' : '115px')};
   background-color: ${(props) =>
@@ -12,7 +15,8 @@ export const StyledButton = styled.button`
       : 'none'};
   border-radius: 12px;
   padding: 12px 40px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ disabled, theme }) =>
+    disabled ? 'rgba(239, 237, 232, 0.6)' : theme.colors.white};
   font-size: 20px;
   font-weight: 500;
   line-height: 1.2;
@@ -28,3 +32,5 @@ export const StyledButton = styled.button`
     }}
   }
 `;
+
+// disabled ? 'rgba(239, 237, 232, 0.6)' : theme.colors.white

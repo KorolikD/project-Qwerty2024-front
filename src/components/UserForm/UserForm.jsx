@@ -1,8 +1,21 @@
 import { useFormik } from 'formik';
-import { Form } from 'antd';
 import validationSchema from './validationSchema';
-import { StyledButton } from '../Button/Button.styled';
-import { StyledForm, Radio, Wrapper, Input } from './UserForm.styled';
+import Button from '../Button/index.js';
+import { Form } from 'antd';
+import {
+  StyledForm,
+  Radio,
+  Wrapper,
+  Input,
+  InputTextWrap,
+  InputNumberWrap,
+  RadioWrap,
+  RadioGroupGap8,
+  RadioGroupLevelActivity,
+  CalendarInputWrap,
+  Icon,
+  CalendarWrap,
+} from './UserForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../redux/auth/authOperations';
 import radioGroups from './radioBtnConfig.js';
@@ -61,7 +74,7 @@ const UserForm = () => {
 
   return (
     <StyledForm onFinish={formik.handleSubmit}>
-      <Form.Item
+      <InputTextWrap
         label="Name"
         help={formik.errors.name}
         validateStatus={checkStatus('name')}
@@ -75,8 +88,8 @@ const UserForm = () => {
           required
           onBlur={formik.handleBlur}
         />
-      </Form.Item>
-      <Form.Item label="Email">
+      </InputTextWrap>
+      <InputTextWrap label="Email">
         <Input
           placeholder="Your Email"
           type="email"
@@ -87,9 +100,9 @@ const UserForm = () => {
           readOnly
           disabled
         />
-      </Form.Item>
+      </InputTextWrap>
       <Wrapper>
-        <Form.Item
+        <InputNumberWrap
           help={formik.errors.height}
           validateStatus={checkStatus('height')}
           hasFeedback
@@ -104,8 +117,8 @@ const UserForm = () => {
             required
             onBlur={formik.handleBlur}
           />
-        </Form.Item>
-        <Form.Item
+        </InputNumberWrap>
+        <InputNumberWrap
           help={formik.errors.currentWeight}
           validateStatus={checkStatus('currentWeight')}
           hasFeedback
@@ -120,9 +133,9 @@ const UserForm = () => {
             required
             onBlur={formik.handleBlur}
           />
-        </Form.Item>
+        </InputNumberWrap>
 
-        <Form.Item
+        <InputNumberWrap
           label="Desired Weight"
           help={formik.errors.desiredWeight}
           validateStatus={checkStatus('desiredWeight')}
@@ -137,78 +150,88 @@ const UserForm = () => {
             required
             onBlur={formik.handleBlur}
           />
-        </Form.Item>
+        </InputNumberWrap>
 
-        <Form.Item
+        <InputNumberWrap
           label="Date of birth"
           help={formik.errors.birthday}
           validateStatus={checkStatus('birthday')}
+        >
+          <CalendarInputWrap>
+            <Input
+              placeholder="Your Date of birth"
+              type="text"
+              onClick={() => setIsOpenCalendar(true)}
+              name="birthday"
+              value={date}
+              required
+              onBlur={formik.handleBlur}
+              readOnly
+            />
+            <Icon>
+              <SvgCustom icon="icon-calendar" stroke="#EFEDE8" size="18" />
+            </Icon>
+            <CalendarWrap>
+              <Calendar
+                date={date}
+                setDate={setDate}
+                maxDate={getMaxDate()}
+                isOpen={isOpenCalendar}
+                setIsOpen={setIsOpenCalendar}
+              />
+            </CalendarWrap>
+          </CalendarInputWrap>
+        </InputNumberWrap>
+      </Wrapper>
+      <RadioWrap>
+        <Form.Item
+          label="Blood"
+          help={formik.errors.blood}
+          validateStatus={checkStatus('blood')}
           hasFeedback
         >
-          <Input
-            placeholder="Your Date of birth"
-            type="text"
-            onClick={() => setIsOpenCalendar(true)}
-            name="birthday"
-            value={date}
-            required
-            onBlur={formik.handleBlur}
-            readOnly
-          />
+          <RadioGroupGap8
+            onChange={formik.handleChange}
+            value={formik.values.blood}
+            name={radioGroups[0].name}
+          >
+            {radioGroups[0].options.map((item, index) => {
+              return (
+                <Radio key={index} value={item}>
+                  {item}
+                </Radio>
+              );
+            })}
+          </RadioGroupGap8>
         </Form.Item>
-        <Calendar
-          date={date}
-          setDate={setDate}
-          maxDate={getMaxDate()}
-          isOpen={isOpenCalendar}
-          setIsOpen={setIsOpenCalendar}
-        />
-      </Wrapper>
-      <Form.Item
-        label="Blood"
-        help={formik.errors.blood}
-        validateStatus={checkStatus('blood')}
-        hasFeedback
-      >
-        <Radio.Group
-          onChange={formik.handleChange}
-          value={formik.values.blood}
-          name={radioGroups[0].name}
+        <Form.Item
+          help={formik.errors.sex}
+          validateStatus={checkStatus('sex')}
+          hasFeedback
         >
-          {radioGroups[0].options.map((item, index) => {
-            return (
-              <Radio key={index} value={item}>
-                {item}
-              </Radio>
-            );
-          })}
-        </Radio.Group>
-      </Form.Item>
-      <Form.Item
-        help={formik.errors.sex}
-        validateStatus={checkStatus('sex')}
-        hasFeedback
-      >
-        <Radio.Group
-          onChange={formik.handleChange}
-          value={formik.values.sex}
-          name={radioGroups[1].name}
-        >
-          {radioGroups[1].options.map((item, index) => {
-            return (
-              <Radio key={index} value={item}>
-                {item}
-              </Radio>
-            );
-          })}
-        </Radio.Group>
-      </Form.Item>
+          <RadioGroupGap8
+            onChange={formik.handleChange}
+            value={formik.values.sex}
+            name={radioGroups[1].name}
+          >
+            {radioGroups[1].options.map((item, index) => {
+              let capitalizedWord =
+                item.charAt(0).toUpperCase() + item.slice(1);
+              return (
+                <Radio key={index} value={item}>
+                  {capitalizedWord}
+                </Radio>
+              );
+            })}
+          </RadioGroupGap8>
+        </Form.Item>
+      </RadioWrap>
       <Form.Item
         help={formik.errors.levelActivity}
         validateStatus={checkStatus('levelActivity')}
         hasFeedback
       >
-        <Radio.Group
+        <RadioGroupLevelActivity
           onChange={formik.handleChange}
           value={formik.values.levelActivity}
           name={radioGroups[2].name}
@@ -220,11 +243,16 @@ const UserForm = () => {
               </Radio>
             );
           })}
-        </Radio.Group>
+        </RadioGroupLevelActivity>
       </Form.Item>
-      <StyledButton disabled={!formik.isValid} type="submit" $type="filled">
+      <Button
+        $isDisabled={!formik.isValid}
+        $typeBtn="submit"
+        $type="filled"
+        size="small"
+      >
         Save
-      </StyledButton>
+      </Button>
     </StyledForm>
   );
 };
