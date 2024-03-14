@@ -142,7 +142,7 @@ const ProductsPage = () => {
         onUpdateRecommendation={updateRecommendation}
         inputValue={inputValue}
       />
-      {products.length === 0 && (
+      {!isLoading && products.length === 0 && (
         <>
           <p>
             Sorry, no results were found for the product filters you selected.
