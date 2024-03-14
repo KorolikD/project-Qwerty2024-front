@@ -40,6 +40,10 @@ export const Button = styled.button`
   color: #e6533c;
   background-color: transparent;
   border: none;
+
+  &:hover {
+    color: #ef8964;
+  }
 `;
 
 export const NameContainer = styled.div`
@@ -83,6 +87,10 @@ export const SpanItem = styled.span`
 
 export const SvgStart = styled.svg`
   stroke: #e6533c;
+  &:hover {
+    stroke: #ef8964;
+    transition: background-color 350ms ease;
+  }
 `;
 
 export const SpanRun = styled.span`
