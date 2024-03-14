@@ -66,7 +66,7 @@ const DiaryMobileTable = ({
                     </div>
                     <div>
                       Time{' '}
-                      <DiaryItemInfo>{Math.round(exercise.time)}</DiaryItemInfo>
+                      <DiaryItemInfo>{exercise.time.toFixed(2)}</DiaryItemInfo>
                     </div>
                     <button
                       onClick={() => {

@@ -55,7 +55,7 @@ const DiaryTableFromTablet = ({
                     <TableCell>{exercise.exerciseId.name}</TableCell>
                     <TableCell>{exercise.exerciseId.target}</TableCell>
                     <TableCell>{Math.round(exercise.burnedCalories)}</TableCell>
-                    <TableCell>{Math.round(exercise.time)}</TableCell>
+                    <TableCell>{exercise.time.toFixed(2)}</TableCell>
                     <td>
                       <DiaryBtn
                         onClick={() => {
