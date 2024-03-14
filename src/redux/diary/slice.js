@@ -5,8 +5,9 @@ import {
   deleteExercise,
   addProduct,
 } from './operations';
+import { logOut } from '../auth/authOperations';
 
-const diaryInitialstate = {
+const diaryInitialState = {
   productsList: null,
   exercisesList: null,
   totalCalories: 0,
@@ -54,6 +55,10 @@ const handleGetDayInfoRejected = (state) => {
   state.productsList = [];
 };
 
+const handleLogoutSuccess = () => ({
+  ...diaryInitialState,
+});
+
 const handleGetDayInfoSuccess = (state, { payload }) => {
   state.isLoading = false;
   if (!payload.userProductsDiary && !payload.userExercisesDiary) {
@@ -92,6 +97,7 @@ const handleAddProductSuccess = (state, { payload }) => {
   state.productsList = payload.products;
   state.totalCalories = payload.totalCalories;
 };
+
 const handleDeleteProductSuccess = (state, { payload }) => {
   state.updateDiaryProducts = false;
   state.error = null;
@@ -109,7 +115,7 @@ const handleDeleteExerciseSuccess = (state, { payload }) => {
 
 const diary = createSlice({
   name: 'diary',
-  initialState: diaryInitialstate,
+  initialState: diaryInitialState,
   extraReducers: (builder) => {
     builder.addCase(getDayInfo.pending, handlePending);
     builder.addCase(addProduct.pending, handlePending);
@@ -125,6 +131,7 @@ const diary = createSlice({
     builder.addCase(addProduct.fulfilled, handleAddProductSuccess);
     builder.addCase(deleteProduct.fulfilled, handleDeleteProductSuccess);
     builder.addCase(deleteExercise.fulfilled, handleDeleteExerciseSuccess);
+    builder.addCase(logOut.fulfilled, handleLogoutSuccess);
   },
 });
 
