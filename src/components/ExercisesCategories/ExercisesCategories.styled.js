@@ -95,7 +95,8 @@ export const BackButton = styled.button`
   background: transparent;
   border: none;
   &:hover {
-    color: orange;
+    color: #e6533c;
+    transition: background-color 350ms ease;
   }
 `;
 
@@ -113,7 +114,8 @@ export const SvgBack = styled.svg`
   transform: rotate(180deg);
   stroke: grey;
   &:hover {
-    color: orange;
+    stroke: #e6533c;
+    transition: background-color 350ms ease;
   }
 `;
 
