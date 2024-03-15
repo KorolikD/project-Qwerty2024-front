@@ -1,8 +1,19 @@
 import { StyledButton } from './Button.styled';
 
-const Button = ({ children, variant = 'filled', size = 'large'}) => {
+const Button = ({
+  children,
+  $size = 'large',
+  $isDisabled,
+  $typeBtn,
+  $type,
+}) => {
   return (
-    <StyledButton $size={size} $type={variant}>
+    <StyledButton
+      $size={$size}
+      $type={$type}
+      disabled={$isDisabled}
+      type={$typeBtn}
+    >
       {children}
     </StyledButton>
   );

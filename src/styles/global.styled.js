@@ -26,10 +26,8 @@ export const GlobalStyle = createGlobalStyle`
   .ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) {
 	    background: transparent;
 	    border-width: 1px;	  
-        border-style: solid;
+      border-style: solid;
 	   border-color: #ff4d4f;
-
-     
 }
 
 
@@ -97,5 +95,5 @@ color: ${(props) => props.theme.colors.grey} !important;
   h6,
   p {
   margin: 0;
-  };
+  }
 `;
