@@ -1,4 +1,4 @@
-import{u as n,L as a,j as i}from"./index-16014985.js";import{R as d}from"./ResponsiveBackground-85ac865f.js";import{D as s}from"./DynamicElementBoxes-51fdfe1f.js";import"./hero-2x-31d4f1ba.js";const x=n.div`
+import{u as n,L as a,j as i}from"./index-74324f87.js";import{R as d}from"./ResponsiveBackground-7a28c3a9.js";import{D as s}from"./DynamicElementBoxes-b36187d9.js";import{s as x}from"./sprite-a5e91dfb.js";import"./hero-2x-31d4f1ba.js";const c=n.div`
   text-align: left;
 
   padding-top: 66px;
@@ -12,7 +12,7 @@ import{u as n,L as a,j as i}from"./index-16014985.js";import{R as d}from"./Respo
   @media screen and (min-width: 1024px) {
     padding-top: 200px;
   }
-`,c=n.h1`
+`,h=n.h1`
   color: ${e=>e.theme.colors.white};
   font-size: 38px;
   font-weight: 500;
@@ -27,9 +27,9 @@ import{u as n,L as a,j as i}from"./index-16014985.js";import{R as d}from"./Respo
   }
   @media screen and (min-width: 1024px) {
   }
-`,h=n.span`
+`,l=n.span`
   position: relative;
-`,l=n.div`
+`,g=n.div`
   display: flex;
   margin-top: 52px;
   gap: 14px;
@@ -37,7 +37,7 @@ import{u as n,L as a,j as i}from"./index-16014985.js";import{R as d}from"./Respo
   @media screen and (min-width: 768px) {
     gap: 20px;
   }
-`,g=n.svg`
+`,m=n.svg`
   fill: transparent;
   position: absolute;
   z-index: -1;
@@ -53,7 +53,7 @@ import{u as n,L as a,j as i}from"./index-16014985.js";import{R as d}from"./Respo
     width: 185px;
     height: 67px;
   }
-`,m=n(a)`
+`,u=n(a)`
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -83,4 +83,4 @@ import{u as n,L as a,j as i}from"./index-16014985.js";import{R as d}from"./Respo
     line-height: 1.2;
     letter-spacing: 0em;
   }
-`,r=({children:e,variant:t="signup",size:o="signup"})=>{const p=t==="signup"?"/signup":"/signin";return i.jsx(m,{to:p,$size:o,$type:t,children:e})},u=()=>i.jsxs(i.Fragment,{children:[i.jsxs(x,{children:[i.jsxs(c,{children:["Transforming your"," ",i.jsxs(h,{children:["body",i.jsx(g,{children:i.jsx("use",{href:"src/img/sprite.svg#icon-circle"})})]})," ","shape with Power Pulse"]}),i.jsxs(l,{children:[i.jsx(r,{size:"signup",variant:"signup",children:"Sign Up"}),i.jsx(r,{size:"signin",variant:"",children:"Sign In"})]})]}),i.jsxs(d,{children:[i.jsx(s,{type:"videoTutorial"}),i.jsx(s,{type:"calories"})]})]}),j=u;export{j as default};
+`,r=({children:e,variant:t="signup",size:o="signup"})=>{const p=t==="signup"?"/signup":"/signin";return i.jsx(u,{to:p,$size:o,$type:t,children:e})},f=()=>i.jsxs(i.Fragment,{children:[i.jsxs(c,{children:[i.jsxs(h,{children:["Transforming your"," ",i.jsxs(l,{children:["body",i.jsx(m,{children:i.jsx("use",{href:`${x}#icon-circle`})})]})," ","shape with Power Pulse"]}),i.jsxs(g,{children:[i.jsx(r,{size:"signup",variant:"signup",children:"Sign Up"}),i.jsx(r,{size:"signin",variant:"",children:"Sign In"})]})]}),i.jsxs(d,{children:[i.jsx(s,{type:"videoTutorial"}),i.jsx(s,{type:"calories"})]})]}),v=f;export{v as default};
