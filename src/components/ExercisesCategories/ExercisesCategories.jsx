@@ -5,6 +5,8 @@ import { slider } from '../../helpers/slider/slider';
 import icons from '../../img/sprite.svg';
 import CustomExercisesItem from '../ExercisesItem/ExercisesItem';
 import ExercisesSubcategoriesItem from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
+import { Loader } from '../Loader/Loader.jsx';
+
 import {
   BackButton,
   CategoryExercisesStyle,
@@ -30,21 +32,26 @@ const ExercisesCategories = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [pageTitle, setPageTitle] = useState('Exercises');
   const [active, setActive] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const isCategorySelected = selectedCategory !== null;
 
   const fetchExercises = async (category) => {
     setSelectedCategory(null);
+    setLoading(true);
     try {
       const response = await axios.get(`/exercises?filter=${category}`);
       setExercises(response.data[category]);
       setPageTitle('Exercises');
     } catch (error) {
       console.error('Error fetching exercises:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
   const fetchExerciseList = async (key, value) => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `/exercises/params?key=${key}&value=${value}`
@@ -53,6 +60,8 @@ const ExercisesCategories = () => {
       setPageTitle(value);
     } catch (error) {
       console.error('Error fetching exercises:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,7 +87,6 @@ const ExercisesCategories = () => {
               </SvgBack>
               BACK
             </BackButton>
-
             <ExercisesSkroll style={{ height: '500px' }}>
               <ExerciseCards>
                 {exercisesList.length > 0
@@ -97,23 +105,25 @@ const ExercisesCategories = () => {
     }
 
     return (
-      exercises &&
-      exercises.length > 0 && (
-        <Slider {...slider}>
-          {exercises.map((exercise) => (
-            <ExerciseCardsItem key={exercise._id}>
-              <ExercisesSubcategoriesItem
-                subcategory={exercise}
-                onSelect={async (key, value) => {
-                  document.title = key;
-                  await fetchExerciseList(CATEGORIES[key], value);
-                  setSelectedCategory([key, value]);
-                }}
-              />
-            </ExerciseCardsItem>
-          ))}
-        </Slider>
-      )
+      <div>
+        {loading && <Loader loading={loading} />}
+        {!loading && exercises.length > 0 && (
+          <Slider {...slider}>
+            {exercises.map((exercise) => (
+              <ExerciseCardsItem key={exercise._id}>
+                <ExercisesSubcategoriesItem
+                  subcategory={exercise}
+                  onSelect={async (key, value) => {
+                    document.title = key;
+                    await fetchExerciseList(CATEGORIES[key], value);
+                    setSelectedCategory([key, value]);
+                  }}
+                />
+              </ExerciseCardsItem>
+            ))}
+          </Slider>
+        )}
+      </div>
     );
   };
 

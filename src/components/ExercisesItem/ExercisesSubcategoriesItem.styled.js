@@ -40,6 +40,10 @@ export const Button = styled.button`
   color: #e6533c;
   background-color: transparent;
   border: none;
+
+  &:hover {
+    color: #ef8964;
+  }
 `;
 
 export const NameContainer = styled.div`
@@ -83,6 +87,10 @@ export const SpanItem = styled.span`
 
 export const SvgStart = styled.svg`
   stroke: #e6533c;
+  &:hover {
+    stroke: #ef8964;
+    transition: background-color 350ms ease;
+  }
 `;
 
 export const SpanRun = styled.span`
@@ -240,14 +248,15 @@ export const ModalButton = styled.button`
 
 // !-------------------------------------------
 export const SuccessModalWrapper = styled.div`
-  min-width: 302px;
+  width: 302px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   @media screen and (min-width: 768px) {
-    min-width: 364px;
+    width: 366px;
   }
 `;
 
@@ -258,12 +267,34 @@ export const WellDoneImg = styled.img`
     margin-top: 16px;
   }
 `;
+export const AddProductSuccessWellDoneImg = styled.img`
+  width: 123px;
+  height: 84px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+    height: 97px;
+  }
+`;
 
 export const Title = styled.p`
   margin: 27px 0 16px;
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
+  text-align: center;
+  color: ${theme.colors.white};
+
+  @media screen and (min-width: 768px) {
+    margin: 32px 0 16px;
+  }
+`;
+export const AddProductSuccessTitle = styled.p`
+  margin: 6px 0 16px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
   color: ${theme.colors.white};
 
   @media screen and (min-width: 768px) {
@@ -275,6 +306,7 @@ export const InfoTextSuccessModal = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+
   color: ${theme.colors.textWhite30};
 
   & span {
