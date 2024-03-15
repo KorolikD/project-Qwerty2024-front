@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 export const DaySwitchWrap = styled.div`
+  position: relative;
   display: flex;
   gap: 20px;
   align-items: center;
@@ -37,5 +38,15 @@ export const SwitchWrap = styled.div`
   > button {
     height: 16px;
     background: transparent;
+  }
+
+  > div {
+    position: absolute;
+    top: 8px;
+    left: -34px;
+
+    @media screen and (min-width: 768px) {
+      left: 0;
+    }
   }
 `;

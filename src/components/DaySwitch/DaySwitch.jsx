@@ -67,13 +67,15 @@ const DaySwitch = ({ date, setDate, minDate }) => {
           />
         </button>
 
-        <Calendar
-          date={date}
-          setDate={setDate}
-          minDate={minDate}
-          isOpen={isOpenCalendar}
-          setIsOpen={setIsOpenCalendar}
-        />
+        <div>
+          <Calendar
+            date={date}
+            setDate={setDate}
+            minDate={minDate}
+            isOpen={isOpenCalendar}
+            setIsOpen={setIsOpenCalendar}
+          />
+        </div>
       </SwitchWrap>
     </DaySwitchWrap>
   );
