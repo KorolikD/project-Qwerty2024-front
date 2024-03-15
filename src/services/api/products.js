@@ -9,7 +9,12 @@ export const fetchCategories = async () => {
   }
 };
 
-export const fetchProducts = async (pageNumber, category, allowed, title) => {
+export const fetchProducts = async ({
+  pageNumber,
+  category,
+  allowed,
+  title,
+}) => {
   try {
     const params = { pageNumber, category, title };
     if (allowed === true || allowed === false) {
