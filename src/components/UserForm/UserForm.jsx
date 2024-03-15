@@ -40,7 +40,7 @@ const UserForm = () => {
       ...values,
       birthday: date,
     };
-    console.log(userInfo);
+
     dispatch(updateUser(userInfo));
   };
   const getMaxDate = () => {

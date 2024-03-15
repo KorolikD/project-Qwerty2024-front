@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
   fetchProducts,
@@ -13,6 +13,11 @@ import { NotFound } from '../../components/NotFoundProducts/NotFound';
 
 const ProductsPage = () => {
   const [params, setParams] = useSearchParams();
+
+  useEffect(() => {
+    setParams('');
+  }, [setParams]);
+
   const query = params.get('query') ?? '';
   const category = params.get('category') ?? '';
   const recommended = params.get('recommendation') ?? 'All';
@@ -28,22 +33,37 @@ const ProductsPage = () => {
   const [recommendation, setRecommendation] = useState(recommended);
   const [title, setTitle] = useState(query);
   const [noProduct, setNoProduct] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (
-  //       !isLoading &&
-  //       hasMore &&
-  //       window.innerHeight + document.documentElement.scrollTop >=
-  //         document.documentElement.offsetHeight - 200
-  //     ) {
-  //       setPageNumber((prevState) => prevState + 1);
-  //     }
-  //   };
+  const list = useRef('');
 
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, [isLoading, hasMore]);
+  useEffect(() => {
+    const listCurrent = list.current;
+
+    const handleScroll = () => {
+      if (
+        !isLoading &&
+        hasMore &&
+        listCurrent.scrollTop + listCurrent.clientHeight >=
+          listCurrent.scrollHeight
+      ) {
+        setPageNumber((prevState) => prevState + 1);
+        setScrollTop(listCurrent.scrollTop);
+      }
+    };
+
+    if (listCurrent) {
+      listCurrent.scrollTop = scrollTop;
+
+      listCurrent.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (listCurrent) {
+        listCurrent.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [hasMore, isLoading, scrollTop]);
 
   useEffect(() => {
     async function getProducts() {
@@ -181,6 +201,7 @@ const ProductsPage = () => {
           products={products}
           blood={blood}
           isRecommend={isRecommend}
+          listRef={list}
         />
       )}
 
