@@ -9,10 +9,24 @@ export const fetchCategories = async () => {
   }
 };
 
-export const fetchProducts = async (pageNumber, category, allowed, title) => {
+export const fetchProducts = async ({
+  pageNumber,
+  category,
+  allowed,
+  title,
+}) => {
   try {
+    const params = { pageNumber };
+
+    params.allowed =
+      allowed === true || allowed === false ? allowed : params.allowed;
+
+    params.category = category !== '' ? category : params.category;
+
+    params.title = title !== '' ? title : params.title;
+
     const response = await axios.get('/products', {
-      params: { pageNumber, category, allowed, title },
+      params,
     });
     return response.data;
   } catch (err) {

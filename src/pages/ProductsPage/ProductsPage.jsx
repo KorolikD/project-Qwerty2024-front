@@ -27,45 +27,72 @@ const ProductsPage = () => {
   const [currentCategory, setCurrentCategory] = useState(category);
   const [recommendation, setRecommendation] = useState(recommended);
   const [title, setTitle] = useState(query);
+  const [noProduct, setNoProduct] = useState(false);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (
+  //       !isLoading &&
+  //       hasMore &&
+  //       window.innerHeight + document.documentElement.scrollTop >=
+  //         document.documentElement.offsetHeight - 200
+  //     ) {
+  //       setPageNumber((prevState) => prevState + 1);
+  //     }
+  //   };
+
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, [isLoading, hasMore]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    async function getProducts() {
+      setIsLoading(true);
+      try {
+        const resultsProducts = await fetchProducts({
+          pageNumber,
+          category: currentCategory,
+          allowed: recommendation,
+          title,
+        });
 
-  useEffect(() => {
+        if (!resultsProducts) {
+          return;
+        }
+
+        const newProducts = resultsProducts.products;
+
+        if (products.length === 0) {
+          setProducts(newProducts);
+        } else {
+          setProducts((prevState) => {
+            return [...prevState, ...newProducts];
+          });
+        }
+
+        const resultsCategories = await fetchCategories();
+        setCategories(resultsCategories.productsCategories);
+
+        const resultsBlood = await fetchBlood();
+        setBlood(resultsBlood.blood);
+
+        resultsProducts.totalDocs === 0
+          ? setNoProduct(true)
+          : setNoProduct(false);
+
+        setHasMore(
+          resultsProducts.page < resultsProducts.totalPages &&
+            newProducts.length > 0
+        );
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
     getProducts();
   }, [pageNumber, currentCategory, recommendation, title]);
-
-  async function getProducts() {
-    if (isLoading) return;
-    setIsLoading(true);
-    try {
-      const resultsProducts = await fetchProducts(
-        pageNumber,
-        currentCategory,
-        recommendation,
-        title
-      );
-      const newProducts = resultsProducts.products;
-      setProducts((prevState) => [...prevState, ...newProducts]);
-
-      const resultsCategories = await fetchCategories();
-      setCategories(resultsCategories.productsCategories);
-
-      const resultsBlood = await fetchBlood();
-      setBlood(resultsBlood.blood);
-
-      setHasMore(
-        resultsProducts.page < resultsProducts.totalPages &&
-          newProducts.length > 0
-      );
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   const isRecommend = (UsersBlood, ProductsBlood) => {
     for (const key in ProductsBlood) {
@@ -136,24 +163,8 @@ const ProductsPage = () => {
     }
   };
 
-  const handleScroll = () => {
-    if (
-      !isLoading &&
-      hasMore &&
-      window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 200
-    ) {
-      setPageNumber((prevState) => prevState + 1);
-    }
-  };
-
   return (
     <Wrapper>
-      {isLoading && (
-        <>
-          <Loader />
-        </>
-      )}
       <ProductsFilters
         onSubmit={handleSubmit}
         onChange={handleChange}
@@ -163,20 +174,19 @@ const ProductsPage = () => {
         onUpdateCategory={updateCategory}
         onUpdateRecommendation={updateRecommendation}
       />
-      {!isLoading && products.length > 0 && (
-        <>
-          <ProductsList
-            products={products}
-            blood={blood}
-            isRecommend={isRecommend}
-          />
-        </>
+      {isLoading && <Loader />}
+
+      {!isLoading && !noProduct && (
+        <ProductsList
+          products={products}
+          blood={blood}
+          isRecommend={isRecommend}
+        />
       )}
-      {!isLoading && products.length === 0 && (
-        <>
-          <NotFound />
-        </>
-      )}
+
+      {noProduct && <NotFound />}
+
+      {products.length !== 0}
     </Wrapper>
   );
 };
