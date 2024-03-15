@@ -19,8 +19,6 @@ import SvgCustom from '../SvgCustom/SvgCustom';
 //! Стейт даних для формування запиту на бекенд /diary/exercise
 // const [time, setTimer] = useState(0);
 // const [burnedCalories, setBurnedCalories] = useState(0);
-// console.log('🤬>>>  time:\n', time);
-// console.log('🤬>>>  burnedCalories:\n', burnedCalories);
 
 // const handleDataFromRenderTime = (timeInSeconds) => {
 //   const minutes = Number(timeFromExerciseParam - timeInSeconds / 60);
