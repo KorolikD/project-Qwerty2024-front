@@ -1,4 +1,4 @@
-import{u as i,L as p,j as o}from"./index-856b5edb.js";import{R as n}from"./ResponsiveBackground-ef619459.js";import{C as r}from"./Container-98f3b13b.js";import"./hero-2x-31d4f1ba.js";const x=i.div`
+import{u as i,L as p,j as o}from"./index-2abda365.js";import{R as n}from"./ResponsiveBackground-4ae2a3b2.js";import{C as r}from"./Container-9ea5e832.js";import"./hero-2x-31d4f1ba.js";const x=i.div`
   width: 240px;
   height: 100%;
   background-color: ${t=>t.theme.colors.primary};
