@@ -138,6 +138,7 @@ const ExercisesCategories = () => {
               onClick={() => {
                 setActive(1);
                 fetchExercises('bodyPart');
+                setCurrentPage(1);
               }}
             >
               Body parts
@@ -149,6 +150,7 @@ const ExercisesCategories = () => {
               onClick={() => {
                 setActive(2);
                 fetchExercises('equipment');
+                setCurrentPage(1);
               }}
             >
               Equipment
@@ -160,6 +162,7 @@ const ExercisesCategories = () => {
               onClick={() => {
                 setActive(3);
                 fetchExercises('target');
+                setCurrentPage(1);
               }}
             >
               Muscles
@@ -178,6 +181,7 @@ const ExercisesCategories = () => {
                 document.title = 'React App';
                 setSelectedCategory(null);
                 setPageTitle('Exercises');
+                setCurrentPage(1);
               }}
             >
               <SvgBack width="16" height="16">
