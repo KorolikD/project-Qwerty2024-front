@@ -9,6 +9,8 @@ import AuthButton from '../../components/AuthButton/AuthButton';
 
 import ResponsiveBackground from '../../components/ResponsiveBackground/ResponsiveBackground.jsx';
 import DynamicBox from '../../components/FloatingBoxes/DynamicElementBoxes.jsx';
+import sprite from '../../img/sprite.svg';
+
 const WelcomePage = () => {
   return (
     <>
@@ -18,7 +20,7 @@ const WelcomePage = () => {
           <Span>
             body
             <FloatingCircle>
-              <use href="src/img/sprite.svg#icon-circle"></use>
+              <use href={`${sprite}#icon-circle`}></use>
             </FloatingCircle>
           </Span>{' '}
           shape with Power Pulse
