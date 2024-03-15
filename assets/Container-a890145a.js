@@ -1,4 +1,4 @@
-import{u as i,j as n}from"./index-f85a4f8d.js";const p=i.div`
+import{u as i,j as n}from"./index-c226385b.js";const p=i.div`
   padding: 0 5px;
   margin: 0 auto;
   width: 100%;
