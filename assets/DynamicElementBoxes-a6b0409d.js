@@ -1,4 +1,4 @@
-import{e as p,u as i,r,j as t}from"./index-2abda365.js";const x=async()=>{try{return(await p("https://project-qwerty2024-back.onrender.com/api/statistics")).data}catch{throw Error("Oops")}},o=i.div`
+import{e as p,u as i,r,j as t}from"./index-e0171bad.js";const x=async()=>{try{return(await p("https://project-qwerty2024-back.onrender.com/api/statistics")).data}catch{throw Error("Oops")}},o=i.div`
   border-radius: 12px;
   display: flex;
   justify-content: center;
