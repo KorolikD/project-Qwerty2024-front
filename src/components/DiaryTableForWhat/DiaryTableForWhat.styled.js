@@ -45,6 +45,12 @@ export const Link = styled(NavLink)`
   gap: 8px;
   align-items: center;
   color: ${(props) => props.theme.colors.primary};
+  transition: color 350ms ease;
+
+  &:hover,
+  &:focus {
+    color: ${(props) => props.theme.colors.secondary};
+  }
 
   @media screen and (min-width: 768px) {
     font-weight: 500;
