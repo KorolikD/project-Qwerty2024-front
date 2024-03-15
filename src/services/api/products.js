@@ -16,10 +16,15 @@ export const fetchProducts = async ({
   title,
 }) => {
   try {
-    const params = { pageNumber, category, title };
-    if (allowed === true || allowed === false) {
-      params.allowed = allowed;
-    }
+    const params = { pageNumber };
+
+    params.allowed =
+      allowed === true || allowed === false ? allowed : params.allowed;
+
+    params.category = category !== '' ? category : params.category;
+
+    params.title = title !== '' ? title : params.title;
+
     const response = await axios.get('/products', {
       params,
     });

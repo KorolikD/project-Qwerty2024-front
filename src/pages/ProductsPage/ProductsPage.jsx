@@ -30,25 +30,45 @@ const ProductsPage = () => {
   const [noProduct, setNoProduct] = useState(false);
 
   // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (
+  //       !isLoading &&
+  //       hasMore &&
+  //       window.innerHeight + document.documentElement.scrollTop >=
+  //         document.documentElement.offsetHeight - 200
+  //     ) {
+  //       setPageNumber((prevState) => prevState + 1);
+  //     }
+  //   };
+
   //   window.addEventListener('scroll', handleScroll);
   //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, []);
+  // }, [isLoading, hasMore]);
 
   useEffect(() => {
     async function getProducts() {
-      const reqData = {
-        pageNumber,
-        category: currentCategory,
-        allowed: recommendation,
-        title,
-      };
-
       setIsLoading(true);
       try {
-        const resultsProducts = await fetchProducts(reqData);
+        const resultsProducts = await fetchProducts({
+          pageNumber,
+          category: currentCategory,
+          allowed: recommendation,
+          title,
+        });
+
+        if (!resultsProducts) {
+          return;
+        }
 
         const newProducts = resultsProducts.products;
-        setProducts((prevState) => [...prevState, ...newProducts]);
+
+        if (products.length === 0) {
+          setProducts(newProducts);
+        } else {
+          setProducts((prevState) => {
+            return [...prevState, ...newProducts];
+          });
+        }
 
         const resultsCategories = await fetchCategories();
         setCategories(resultsCategories.productsCategories);
@@ -140,17 +160,6 @@ const ProductsPage = () => {
     if (newQuery === '') {
       params.delete('query');
       setParams(params);
-    }
-  };
-
-  const handleScroll = () => {
-    if (
-      !isLoading &&
-      hasMore &&
-      window.innerHeight + document.documentElement.scrollTop >=
-        document.documentElement.offsetHeight - 200
-    ) {
-      setPageNumber((prevState) => prevState + 1);
     }
   };
 
