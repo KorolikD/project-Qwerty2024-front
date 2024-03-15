@@ -54,6 +54,7 @@ const DaySwitch = ({ date, setDate, minDate }) => {
                 ? theme.colors.white
                 : 'rgba(239, 237, 232, 0.2)'
             }
+            hover={!toDisablePrevBtn && theme.colors.secondary}
           />
         </button>
         <button onClick={toNextDay}>
@@ -62,6 +63,7 @@ const DaySwitch = ({ date, setDate, minDate }) => {
             size="14"
             stroke={theme.colors.white}
             color={theme.colors.white}
+            hover={theme.colors.secondary}
           />
         </button>
 
