@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import validationSchema from './validationSchema';
-import Button from '../Button/index.js';
 import { Form } from 'antd';
 import {
   StyledForm,
@@ -15,13 +14,15 @@ import {
   CalendarInputWrap,
   Icon,
   CalendarWrap,
+  InputsText,
+  WrapActivity,
+  ButtonForm,
 } from './UserForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '../../redux/auth/authOperations';
 import radioGroups from './radioBtnConfig.js';
 import { selectUser } from '../../redux/auth/authSelectors';
 import SvgCustom from '../SvgCustom/index.js';
-import theme from '../../styles/theme.js';
 import { useState } from 'react';
 import Calendar from '../Calendar/index.js';
 import './formStyles.css';
@@ -74,33 +75,35 @@ const UserForm = () => {
 
   return (
     <StyledForm onFinish={formik.handleSubmit}>
-      <InputTextWrap
-        label="Name"
-        help={formik.errors.name}
-        validateStatus={checkStatus('name')}
-        hasFeedback
-      >
-        <Input
-          placeholder="Your name"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          name="name"
-          required
-          onBlur={formik.handleBlur}
-        />
-      </InputTextWrap>
-      <InputTextWrap label="Email">
-        <Input
-          placeholder="Your Email"
-          type="email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          style={{ color: 'rgba(239, 237, 232, 0.60)' }}
-          readOnly
-          disabled
-        />
-      </InputTextWrap>
+      <InputsText>
+        <InputTextWrap
+          label="Name"
+          help={formik.errors.name}
+          validateStatus={checkStatus('name')}
+          hasFeedback
+        >
+          <Input
+            placeholder="Your name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            name="name"
+            required
+            onBlur={formik.handleBlur}
+          />
+        </InputTextWrap>
+        <InputTextWrap label="Email">
+          <Input
+            placeholder="Your Email"
+            type="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            style={{ color: 'rgba(239, 237, 232, 0.60)' }}
+            readOnly
+            disabled
+          />
+        </InputTextWrap>
+      </InputsText>
       <Wrapper>
         <InputNumberWrap
           help={formik.errors.height}
@@ -226,7 +229,7 @@ const UserForm = () => {
           </RadioGroupGap8>
         </Form.Item>
       </RadioWrap>
-      <Form.Item
+      <WrapActivity
         help={formik.errors.levelActivity}
         validateStatus={checkStatus('levelActivity')}
         hasFeedback
@@ -244,15 +247,8 @@ const UserForm = () => {
             );
           })}
         </RadioGroupLevelActivity>
-      </Form.Item>
-      <Button
-        $isDisabled={!formik.isValid}
-        $typeBtn="submit"
-        $type="filled"
-        size="small"
-      >
-        Save
-      </Button>
+      </WrapActivity>
+      <ButtonForm disabled={!formik.isValid}>Save</ButtonForm>
     </StyledForm>
   );
 };

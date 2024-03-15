@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,5 +31,3 @@ export const StyledButton = styled.button`
     }}
   }
 `;
-
-// disabled ? 'rgba(239, 237, 232, 0.6)' : theme.colors.white

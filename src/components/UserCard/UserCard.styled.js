@@ -6,14 +6,16 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 18px;
+  margin: 40px auto 18px;
 
   @media screen and (min-width: 768px) {
     width: 439px;
     gap: 32px;
     margin-top: 64px;
+    margin-bottom: 38px;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0 auto;
   }
 `;
 
