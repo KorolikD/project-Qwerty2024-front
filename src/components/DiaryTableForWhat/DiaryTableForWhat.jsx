@@ -36,7 +36,12 @@ const DiaryTableForWhat = ({
         <p>{forExercisesTable ? 'Exercises' : 'Products'}</p>
         <Link to={to}>
           Add {forExercisesTable ? 'exercise' : 'product'}
-          <SvgCustom icon="icon-next" size="16" color={theme.colors.primary} />
+          <SvgCustom
+            icon="icon-next"
+            size="24"
+            color={theme.colors.primary}
+            hover={theme.colors.secondary}
+          />
         </Link>
       </DiaryTableHeader>
 

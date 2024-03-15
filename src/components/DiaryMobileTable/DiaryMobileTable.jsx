@@ -77,6 +77,7 @@ const DiaryMobileTable = ({
                         icon="icon-trash"
                         size="20"
                         stroke={theme.colors.secondary}
+                        hover={theme.colors.primary}
                       />
                     </button>
                   </GroupTableItemWrap>
@@ -136,6 +137,7 @@ const DiaryMobileTable = ({
                         icon="icon-trash"
                         size="20"
                         stroke={theme.colors.secondary}
+                        hover={theme.colors.primary}
                       />
                     </button>
                   </GroupTableItemWrap>

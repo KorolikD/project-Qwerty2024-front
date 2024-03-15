@@ -66,6 +66,7 @@ const DiaryTableFromTablet = ({
                           icon="icon-trash"
                           size="20"
                           stroke={theme.colors.secondary}
+                          hover={theme.colors.primary}
                         />
                       </DiaryBtn>
                     </td>
@@ -119,6 +120,7 @@ const DiaryTableFromTablet = ({
                           icon="icon-trash"
                           size="20"
                           stroke={theme.colors.secondary}
+                          hover={theme.colors.primary}
                         />
                       </DiaryBtn>
                     </td>
